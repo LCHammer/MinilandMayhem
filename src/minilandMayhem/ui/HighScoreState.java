@@ -5,8 +5,17 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import eea.engine.entity.StateBasedEntityManager;
 
 public class HighScoreState extends BasicGameState {
+	
+	private int stateID;
+	private StateBasedEntityManager entityManager;
+	
+	public HighScoreState(int stateID) {
+		this.stateID = stateID;
+		this.entityManager = StateBasedEntityManager.getInstance();
+	}
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {

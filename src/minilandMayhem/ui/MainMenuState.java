@@ -5,8 +5,18 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import eea.engine.entity.StateBasedEntityManager;
+
 
 public class MainMenuState extends BasicGameState{
+	
+	private int stateID = 0;
+    private StateBasedEntityManager entityManager;
+	
+	public MainMenuState(int stateID) {
+		this.stateID = stateID;
+		this.entityManager = StateBasedEntityManager.getInstance();
+	}
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
@@ -28,8 +38,7 @@ public class MainMenuState extends BasicGameState{
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return stateID;
 	}
 
 }

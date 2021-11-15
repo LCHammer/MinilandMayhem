@@ -1,0 +1,29 @@
+1)MainMenu füllen
+	auch Buttons "Start", "Beenden"
+	
+2)GamePlayState füllen
+	auch Übergänge: ESC -> Pause
+	auch Menge an Ressourcen sichtbar (als Zahl)
+
+3)PauseMenuState füllen
+	auch Übergänge: "Weiter" -> GamePlay, "Beenden" -> MainMenu
+	
+4) Spielelemente graphisch darstellen (irgendwo auf dem screen, dass man sieht, dass es geht)
+	
+
+5) Spiel an sich: Wände außerhalb des Bereichs, Einen Mario, der nach rechts läuft, 
+	bis er eine Wand trifft und dann Umdreht und nach links läuft
+
+6) Tür mechanik: wenn Mario Auf eine Tür läuft, "geht er durch" und wird entfernt
+
+7) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger, sofern man 
+	genug Ressourcen hat. Mario kann auf/gegen Träger laufen. Sockel kann maximal einen 
+	Träger halten.
+
+8) Stahlträger entfernen: auf einen der Sockel klicken entfernt Träger.
+
+9)Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
+
+10) Schwerkraft, Marios fallen, wenn sie keinen Boden unter den Füßen haben. (CE-Teil)
+
+11) Map-Parser (?)
