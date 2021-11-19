@@ -1,0 +1,65 @@
+\subsection{Anpassungen f\"ur Studierende im Studiengang CE}
+
+Die Anforderungen f\"ur Studierende im Studiengang CE ersetzen Teile der Ausbaustufe I-III, wie unten erl\"autert. Dabei sind zwei Aspekte
+umzusetzen: eine \emph{realistische Flugbahn unter Ber\"ucksichtigung der Luftreibung} sowie \emph{(semi-)dynamische Windb\"oen}.
+
+\emph{Achtung:} die Anforderung \glqq{}Wurfverhalten\grqq{} der minimalen Ausbaustufe ist zus\"atzlich \emph{unver\"andert} zu
+implementieren, da sonst zahlreiche Tests scheitern. Gehen Sie dazu so vor, dass in Ihrem Spiel \emph{zwei} Funktionen zur
+Berechnung der Flugbahn existieren. Das \emph{Spiel} selbst soll die realistischere, aber komplexere Formel nutzen, w\"ahrend die
+\emph{Tests} auf das vereinfachte \glqq{}Wurfverhalten\grqq{} zur\"uckgreifen.
+
+Die folgenden Anforderungen gelten f\"ur Studierende im Studiengang Computational Engineering (CE) sowie f\"ur gemischte Gruppen, an denen
+CE-Studierende beteiligt sind. Dabei geh\"oren die ersten beiden Punkte zusammen:
+
+\begin{description}
+\item[Die parabolische Flugbahn] soll die Luftreibung wie folgt ber\"ucksichtigen:
+
+\begin{equation*}
+F = 0.5 \cdot \rho \cdot C \cdot A \cdot V^2
+\end{equation*}
+
+mit 
+
+\begin{itemize}
+\item A = Fläche der Banane 
+\item $\rho$ = Dichte (1.293 $\frac{kg}{m^2}$) bei 0° Celsius und 1 Atmosphere Luftdruck) 
+\item C = 2.1 
+\item V = Geschwindigkeit relativ zur Luftgeschwindigkeit, d.h. $v(t) - v_{luft}(t)$.
+\end{itemize}
+
+Auf die Ber\"ucksichtigung der Rotation der Banane kann verzichtet werden.
+
+\item[Die Berechnung des Bananenflugs] soll entweder das Runge-Kutte-Verfahren\footnote{siehe \url{http://de.wikipedia.org/wiki/Runge-Kutta-Verfahren}}
+oder symplektische Euler-Integration wie folgt verwendet werden: 
+
+\begin{eqnarray*}
+a(t) & = & F(v(t), x(t), t)\\
+v(t+1) &=& v(t) + dt \cdot a(t)\\
+x(t+1) &=& x(t) + dt \cdot v(t+1)
+\end{eqnarray*}
+
+
+\item[Windb\"oen] wehen mit einer eigenen Luftgeschwindigkeit 
+ $v_{luft}(t) = v_l \cdot sin(2 \cdot \pi \cdot t / D)$, wobei $v_l$ und $D$ Zufallszahlen sind. Bestimmen Sie f\"ur die Zufallszahlen durch Ausprobieren
+ und/oder entsprechende \"Uberlegungen eine passende Begrenzung, um unrealistisch starke Winde oder unglaubw\"urdige Windrichtungen m\"oglichst
+ auszuschlie\ss{}en. 
+
+\textbf{Hinweis}: Die Windb\"oben sollen innerhalb eines Spielzugs---also von dem Zeitpunkt des Spielerwechsels bis zum Ende der Flugbahn der geworfenen
+Banane---\emph{konstant} bleiben, wechseln also erst mit dem n\"achsten Spielzug. Dies ist zwar nur bedingt realistisch, erm\"oglicht aber die \glqq{}Spielbarkeit\grqq{}.
+Bei (realistischen) dynamischen Windb\"oen, die auch w\"ahrend der Eingabe der Flugparameter und w\"ahrend des Flugs ihre St\"arke und/oder Richtung
+variieren k\"onnen, k\"onnen an sich pr\"azise ausgerechnete W\"urfe das Ziel verfehlen---und gleichzeitig ziemlich falsch berechnete Werte \glqq{}zuf\"allig
+treffen\grqq{}. Damit w\"are Gorillas effektiv unspielbar, da der Zufall eine zu gro\ss{}e Rolle spielen w\"wurde.
+\end{description}
+
+Die beiden ersten Aspekte (\glqq{}Parabolische Flugbahn mit Luftreibung und realistischer Berechnung\grqq{} ersetzen insgesamt die
+beiden Anforderungen \glqq{}Erdbeschleunigung kann ver\"andert werden\grqq{} und \glqq{}Sp\"ottische Bemerkungen\grqq{} aus Aufbaustufe III und ergeben
+daher 8 Punkte. 
+
+Die Anforderung \glqq{}Windb\"oen\grqq{} ersetzt f\"ur CE-Gruppen die Anforderung \glqq{}Sonne\grqq{} und ergibt damit 3 Punkte.
+
+\glqq{}Nicht-CE-Gruppen\grqq{}, die diese Aufgaben (korrekt) bearbeiten, erhalten die genannten Punktzahlen als \emph{Bonuspunkte}. Analog
+erhalten CE-Gruppen, die die \glqq{}gestrichenen\grqq{} Aufgabenteile (korrekt) bearbeiten, die entsprechende Punktzahl als Bonuspunkte.
+
+Bitte beachten Sie, dass die obigen Aufgaben \emph{nicht} Bestandteil der Testf\"alle sind. Weicht das von Ihnen berechnete Verhalten von der (einfacheren)
+allgemeinen Formel ab, werden die entsprechenden Tests entsprechend fehlschlagen. Dadurch m\"ussen Sie nicht in Panik geraten; ihr\_e Tutor\_in wird Ihre
+Implementierung dieser Aspekte im Code begutachten und bewerten. Denken Sie an den Tip mit den \glqq{}zwei Varianten\grqq{}, um Fehler in den Tests zu vermeiden!

@@ -1,0 +1,14 @@
+Der Wurf beginnt knapp über bzw. versetzt über dem Gorilla (möglichst realistisch). Das Wurfobjekt fliegt eine Parabelkurve.
+
+Für einen Wurf von links nach rechts lässt sich die Position $(x, y)$ des Wurfobjekts in Abhängigkeit der Zeit $t$, der Startposition $(x_0, y_0)$ der Startgeschwindigkeit $v$ und des Anfangswinkels $\alpha$ folgendermaßen berechnen: 
+
+\begin{align*}
+v_x &= \cos (\alpha) \cdot v \\
+v_y &= \sin (\alpha) \cdot v \\
+x &= x_0 + (v_x \cdot t) \\
+y &= y_0 - (v_y \cdot t) + (\frac{1}{2} \cdot g \cdot t^2) \\
+\end{align*}
+
+Der Wurf kann oben aus Bildschirm fliegen; der Zug ist erst beendet, wenn der Gegner oder die Skyline getroffen wurde, oder das Wurfobjekt den Bildschirm unten verlassen hat.
+
+Damit die Flugkurve realistisch wird, sollten Sie das \textit{delta} der Update-Methode von Slick, um zu $t$ zu gelangen mit einem konstanten Faktor skalieren. Diesen "time scaling"-Faktor müssen sie im Testadapter über eine Methode bereitstellen, damit die Flugkurve exakt testbar wird.

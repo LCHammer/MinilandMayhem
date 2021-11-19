@@ -1,0 +1,15 @@
+Das Wurfverhalten wird nun zusätzlich von Wind beeinflusst. Zu jeder Runde, also jeder neuen Karte/Skyline/Landschaft, wird zufällig festgelegt, wie stark der Wind von links oder rechts weht. Dies wird visualisiert (z. B. durch einen Windpfeil). Der Wind beeinflusst den Wurf realistisch.
+
+Für einen Wurf von links nach rechts lässt sich die Position $(x, y)$ des Wurfobjekts in Abhängigkeit der Zeit $t$, der Startposition $(x_0, y_0)$ der Startgeschwindigkeit $v$ und des Anfangswinkels $\alpha$ nun folgendermaßen berechnen: 
+
+\begin{align*}
+v_x &= \cos (\alpha) \cdot v \\
+v_y &= \sin (\alpha) \cdot v \\
+x &= x_0 + (v_x \cdot t) + (\frac{1}{2} \cdot w_{scale} \cdot w \cdot t^2) \\
+y &= y_0 - (v_y \cdot t) + (\frac{1}{2} \cdot g \cdot t^2) \\
+\end{align*}
+
+Die Variable $w$ besteht aus einem Wert zwischen -15 und 15. Diese Variable sollten Sie, analog zu der Skalierung des \textit{delta}
+der Update-Methode von Slick, mit dem Faktor $w_{scale}$ so verändern, dass der Wurf realistisch vom Wind beeinflusst wird. 
+
+Diesen "wind scaling"-Faktor müssen Sie im Testadapter wiederum über eine Methode bereitstellen, damit die Flugkurve exakt testbar wird.

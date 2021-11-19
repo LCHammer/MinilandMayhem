@@ -1,0 +1,48 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{times}
+\usepackage[ngerman]{babel}
+\usepackage[german]{varioref}
+\usepackage{amsmath}
+\usepackage{xspace}
+
+\renewcommand{\ttdefault}{txtt}
+
+\newcommand{\LORlevel}{Stufe}
+\newcommand{\LORpage}{Seite}
+\newcommand{\LORpoint}{Punkt}
+\newcommand{\LORmpoints}{e}
+\newcommand{\LORpts}{Punkte}
+\newcommand{\LORreq}{Anforderungen an das Projekt}
+\input{genericStart}
+
+%TODO: Version anheben.
+\renewcommand{\version}{1.0.1}
+\renewcommand{\beginDate}{Mittwoch, den 04.03.2015}
+\renewcommand{\finishDate}{Freitag, den 20.03.2015}
+\renewcommand{\gameTitle}{Mario vs. Donkey Kong - Aufruhr im Miniland\xspace}
+\renewcommand{\shortGameTitle}{Miniland}
+\renewcommand{\baseTestInterface}{GorillasTest}
+\renewcommand{\testAdapter}{\baseTestInterface\-Adapter}
+\renewcommand{\labTerm}{Winter\-semester 2014/15}
+\renewcommand{\publishDate}{Mittwoch, den 04.02.2015}
+\renewcommand{\minTest}{Gorillas\-Testsuite\-Minimal}
+\renewcommand{\levelSolved}{\textbf{levelWonOrLost}}
+\renewcommand{\testLvA}{Gorillas\-Testsuite\-Extended1}
+\renewcommand{\testLvB}{Gorillas\-Testsuite\-Extended2}
+\renewcommand{\testLvC}{Gorillas\-Testsuite\-Extended3}
+\renewcommand{\labTeam}{Guido R\"o\ss{}ling, Sebastian Fach, Peter Kl\"ockner}
+\renewcommand{\undoExtraComment}{}
+\renewcommand{\fileFormatDescription}{}
+\renewcommand{\everyObject}{jedes Spielobjekt}
+\renewcommand{\basepath}{tasks/de}
+\renewcommand{\gamepath}{\basepath/\shortGameTitle}
+\renewcommand{\myRegister}{\registerSLDE}
+\renewcommand{\myAvailable}{\fourBeforeDE}
+\renewcommand{\regSystem}{\portalDE}
+\renewcommand{\initWhere}{\initInConstructorDE}
+\newcommand{\tutorialURL}{\emph{\color{blue}\htmladdnormallink{Drop of Water Tutorial}%
+{https://moodle.informatik.tu-darmstadt.de/mod/resource/view.php?id=25446}}\xspace}
+\input{MinilandBody}

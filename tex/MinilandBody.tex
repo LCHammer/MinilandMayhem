@@ -1,0 +1,141 @@
+%\date{04.11.2008} %durch auskommentieren automatisch das aktuelle datum
+\author{\labTeam}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titel
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Projekt zu GdI 1 - \labTerm}
+
+
+\begin{document}
+\maketitle										% Erzeugt den Titel mit Author und Datum
+\centerline{Version \version}
+\tableofcontents % Erzeugt das Inhaltsverzeichniss
+\newpage
+\setlength\parskip{0.25\baselineskip}
+
+\input{de/intro}
+\input{de/orgaSL}
+
+\input{de/aufgabe}
+
+\input{\gamepath/minimalHeader} % Minimale Ausbaustufe
+
+\begin{description}
+\requirement{P\"unktliche Abnahme}{0}{Minimal}{deadline}{\basepath/ontime}
+
+\requirement{Compilierbares Java}{0}{Minimal}{compile} {\basepath/compiles}
+
+\requirement{Nur eigener Code}{0}{Minimal}{ownCode} {\basepath/ownCode}
+
+\requirement{Vorbereitung f\"ur automatisierte Tests}{0}{Minimal}{junit}{\gamepath/junitPrepared}%\gamepath/junitPrepared}
+
+\requirement{\"Offentliche Tests sind erfolgreich}{0}{Minimal}{minimalTest}{\gamepath/public0}
+
+\requirement{Grafische Benutzerschnittstelle}{3}{Minimal}{gui}{\basepath/gui}
+
+\requirement{Hauptmen\"u}{1}{Minimal}{menu}{\gamepath/menu}
+
+\requirement{Neues Spiel starten}{1}{Minimal}{newGame}{\gamepath/newGame}
+
+\requirement{Pause}{1}{Minimal}{pause}{\gamepath/pause}
+
+\requirement{Eingabe und Anzeige der Spielernamen}{6}{Minimal}{playerNames}{\gamepath/playerNames}
+
+\requirement{Grafische Umsetzung der Objekte}{4}{Minimal}{icons}{\gamepath/guiObjects}
+
+\requirement{Platzierung der Gorillas}{3}{Minimal}{gorillaPlacement}{\gamepath/gorillaPlacement}
+
+\requirement{Eingabe der Wurfparameter}{6}{Minimal}{keyboard}{\gamepath/keyboardControl}
+
+\requirement{Wurfverhalten}{8}{Minimal}{shootBehaviour}{\gamepath/shootBehaviour}
+
+\requirement{Erkennen Zugende: Skyline getroffen}{6}{Minimal}{skylineHit}{\gamepath/skylineHit}
+
+\requirement{Erkennen Zugende: Banane verlässt Bildschirm}{4}{Minimal}{leaveScreen}{\gamepath/leaveScreen}
+
+\requirement{Erkennen Zugende: Gegner getroffen}{6}{Minimal}{enemyHit}{\gamepath/enemyHit}
+
+
+\end{description}
+
+
+\input{\gamepath/ext1Header} % Ausbaustufe 1
+
+\begin{description} 
+\requirement{\"Offentliche Tests der Ausbaustufe 1 sind erfolgreich}{0}{1}{extended1Test}{\gamepath/public1}
+
+\requirement{Sinnvolle Modellierung}{5}{1}{\basepath/mvc}{\basepath/mvc}
+
+\requirement{Highscore-Liste}{5}{1}{highscoreDB}{\gamepath/highscore}
+
+\requirement{Highscore GUI}{5}{1}{highscoreGUI}{\gamepath/highscoreGUI}
+
+\requirement{Rundenbasiertes Spiel: Kartengenerator}{5}{1}{mapgenerator}{\gamepath/mapgenerator}
+
+\requirement{Rundenbasiertes Spiel: Spiel bis 3 und Score-Anzeige}{3}{1}{score}{\gamepath/score}
+
+\requirement{Wurfparameter werden gespeichert}{2}{1}{parametersaved}{\gamepath/parametersaved}
+
+\end{description}
+
+
+\input{\gamepath/ext2Header} % Ausbaustufe 2
+
+\begin{description}
+\requirement{\"Offentliche Tests der Ausbaustufe 2 sind erfolgreich}{0}{2}{extended2Test}{\gamepath/public2}
+
+\requirement{Wind}{5}{2}{wind}{\gamepath/wind}
+
+\requirement{Dotzen}{5}{2}{bounce}{\gamepath/bounce}
+
+\requirement{Sonne}{3}{2}{sun}{\gamepath/sun}
+
+\requirement{Spieler\_innennamen werden gespeichert}{2}{2}{namessaved}{\gamepath/namessaved}
+
+
+\end{description}
+
+
+\input{\gamepath/ext3Header} % Ausbaustufe 3
+
+\begin{description}
+
+\requirement{\"Offentliche Tests der Ausbaustufe 3 sind erfolgreich}{0}{3}{extended3Test}{\gamepath/public3}
+
+\requirement{Erdbeschleunigung kann verändert werden}{4}{3}{gravity}{\gamepath/gravity}
+
+\requirement{Spöttische Bemerkungen}{4}{3}{incitingmessages}{\gamepath/incitingmessages}
+
+\requirement{Anleitung}{2}{3}{instructions}{\gamepath/instructions}
+
+\end{description}
+
+\input{\gamepath/anpassungCE}
+
+\input{\gamepath/appStore}
+
+\input{\basepath/bonusHeader} % Bonuspunkte
+
+\begin{description}
+\requirement{Nutzung von Audio-Clips}{1}{Bonus}{audio}{\basepath/audio}
+
+\requirement{\glqq{}About\grqq-Fenster}{1}{Bonus}{aboutBox}{\basepath/about}
+
+\requirement{\"Uberraschen Sie uns}{0}{Bonus}{surprise}{\basepath/surprise}
+
+\end{description}
+
+\input{\gamepath/noDialog}
+
+\input{\gamepath/materialien}
+
+\input{\gamepath/zeitplanung}
+
+%\input{\gamepath/anpassungCE}
+
+\section{Liste der Anforderungen}
+\listofrequirements
+
+\end{document}

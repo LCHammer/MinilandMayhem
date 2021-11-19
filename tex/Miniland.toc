@@ -1,0 +1,21 @@
+\babel@toc {ngerman}{}
+\contentsline {section}{\numberline {1}Einf\IeC {\"u}hrung in das Projekt}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Das Spiel \emph {Mario vs. Donkey Kong - Aufruhr im Miniland\xspace }}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Organisation des Projekts}{3}{section.2}%
+\contentsline {section}{\numberline {3}Ihre Aufgabe}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Ablauf des Code-Review}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Dokumentation}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Hinweise}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Minimale Ausbaustufe}{7}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Ausbaustufe I}{10}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Ausbaustufe II}{11}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Ausbaustufe III}{12}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Anpassungen f\"ur Studierende im Studiengang CE}{13}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Optionale Aufgabe im Bereich Wirtschaft}{14}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Bonuspunkte}{15}{subsection.3.10}%
+\contentsline {section}{\numberline {4}Materialien}{16}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Klasse \emph {de.tu\_darmstadt.informatik.fop.gorillas.main.Gorillas}}{16}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Die ersten Schritte}{17}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Basisereignisse und Basisaktionen}{17}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Zeitplanung}{19}{section.5}%
+\contentsline {section}{\numberline {6}Liste der Anforderungen}{20}{section.6}%

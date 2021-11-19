@@ -1,0 +1,7 @@
+\textbf{Hinweis:} Der Code in den Testklassen \textbf{darf auf keinen Fall} zur Anzeige von
+Dialogfenstern f\"uhren. Dies darf auch bei inkorrekten Schritten nicht geschehen, da sonst eine Eingabe erfordert w\"urde, die in den JUnit-Tests nicht automatisiert erfolgen kann. Zum Testen darf nicht der \textit{org.newdawn.slick.AppGameContainer} werden, da dieser zur Anzeige von Dialogfenstern führt. Verwenden Sie stattdessen \textit{de.tu\_darmstadt.gdi1.gorillas.tests.TestAppGameContainer}.
+
+Die Tests benutzen weiterhin nicht die Klasse \textit{de.tu\_darmstadt.informatik.fop.gorillas.main.Gorillas} sondern die Klasse \textit{
+de.tu\_darmstadt.gdi1.gorillas.test.setup.TestGorillas}. Diese Klasse erbt statt von \textit{org.slick.StateBasedGame} von \textit{de.tu\_darmstadt.informatik.fop.gorillas.test.setup.TWLTest\allowbreak StateBasedGame}. Sie müssen folglich exakt wie Sie in der Klasse Gorillas Ihre States hinzugefügt haben, dies auch in TestGorillas tun. TWLTestStateBasedGame verzichtet im Gegensatz zu TWLStateBasedGame auf das Rendern der TWL-GUI-Elemente.
+
+Bitte achten Sie bei den Erweiterungen darauf, dass alte Funktionalität nicht verloren geht.
