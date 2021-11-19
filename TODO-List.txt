@@ -6,7 +6,9 @@
 	auch Menge an Ressourcen sichtbar (als Zahl)
 
 3)PauseMenuState füllen
-	auch Übergänge: "Weiter" -> GamePlay, "Beenden" -> MainMenu
+	auch Übergänge: "Weiter" -> GamePlay, "Hauptmenü" -> MainMenu, "Beenden" -> quit
+
+------------erledigt--------------------
 	
 4) Spielelemente graphisch darstellen (irgendwo auf dem screen, dass man sieht, dass es geht)
 	

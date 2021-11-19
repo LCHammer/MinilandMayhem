@@ -49,7 +49,7 @@ public class MinilandMayhem extends StateBasedGame {
 	 
 	        // Lege die Einstellungen des Fensters fest und starte das Fenster
 	        // (nicht aber im Vollbildmodus)
-	        app.setDisplayMode(1200, 900, false);
+	        app.setDisplayMode(800, 600, false);
 	        app.start();
 	    }
 
@@ -59,14 +59,14 @@ public class MinilandMayhem extends StateBasedGame {
 		//der zuerst hinzugefügte state ist der, mit dem das Spiel startet
 		this.addState(new MainMenuState(MAINMENUSTATE));
 		this.addState(new GamePlayState(GAMEPLAYSTATE));
-		this.addState(new OptionState(OPTIONSTATE));
-		this.addState(new HighScoreState(HIGHSCORESTATE));
+		//this.addState(new OptionState(OPTIONSTATE));
+		//this.addState(new HighScoreState(HIGHSCORESTATE));
 		this.addState(new PauseMenu(PAUSEMENUSTATE));
 		
 		StateBasedEntityManager.getInstance().addState(MAINMENUSTATE);
 		StateBasedEntityManager.getInstance().addState(GAMEPLAYSTATE);
-		StateBasedEntityManager.getInstance().addState(OPTIONSTATE);
-		StateBasedEntityManager.getInstance().addState(HIGHSCORESTATE);
+		//StateBasedEntityManager.getInstance().addState(OPTIONSTATE);
+		//StateBasedEntityManager.getInstance().addState(HIGHSCORESTATE);
 		StateBasedEntityManager.getInstance().addState(PAUSEMENUSTATE);
 		
 	}
