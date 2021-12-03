@@ -8,13 +8,21 @@
 3)PauseMenuState füllen
 	auch Übergänge: "Weiter" -> GamePlay, "Hauptmenü" -> MainMenu, "Beenden" -> quit
 
-------------erledigt--------------------
-	
+
 4) Spielelemente graphisch darstellen (irgendwo auf dem screen, dass man sieht, dass es geht)
+
+
+5) Spiel an sich: Einen Mario, der nach rechts läuft, 
+	bis er eine Wand trifft und dann Umdreht und nach links läuft
+	
+  5.1) Mario kann per klick aktiviert werden und läuft dann nach rechts.
 	
 
-5) Spiel an sich: Wände außerhalb des Bereichs, Einen Mario, der nach rechts läuft, 
-	bis er eine Wand trifft und dann Umdreht und nach links läuft
+  5.2)Läuft der Mario gegen eine Wand, so dreht er um und läuft in die entgegen gesetzte Richtung
+	von der Wand weg.
+
+
+------------erledigt--------------------
 
 6) Tür mechanik: wenn Mario Auf eine Tür läuft, "geht er durch" und wird entfernt
 

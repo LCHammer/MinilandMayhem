@@ -17,6 +17,7 @@ import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.basicevents.KeyPressedEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
+import minilandMayhem.model.entities.*;
 
 public class GamePlayState extends BasicGameState {
 	
@@ -47,10 +48,9 @@ public class GamePlayState extends BasicGameState {
     	entityManager.addEntity(stateID, esc_Listener);
     	
     	
-    	
+    	if(MinilandMayhem.debug) {
     	//das hier ist nur ein test, um zu schauen, wie man mithilfe von Actions
-    	//eigene Methoden aufrufen kann, wird später gelöscht!
-    	Entity click = new Entity("Click");
+    	/*Entity click = new Entity("Click");
     	MouseClickedEvent e = new MouseClickedEvent();
     	e.addAction( new Action() {
     	
@@ -63,8 +63,24 @@ public class GamePlayState extends BasicGameState {
     	);
     	click.addComponent(e);
     	entityManager.addEntity(stateID, click);
-    			
-		
+    		
+    	*/
+    	
+    	Entity mario = new RobotMario("Mario1");
+    	mario.setPosition(new Vector2f(100,100));
+    	mario.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	entityManager.addEntity(stateID, mario);
+    	
+    	Entity wallR = new Wall("WandR");
+    	wallR.setPosition(new Vector2f(00,100));
+    	wallR.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	entityManager.addEntity(stateID, wallR);
+    	
+    	Entity wallL = new Wall("WandL");
+    	wallL.setPosition(new Vector2f(200,100));
+    	wallL.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	entityManager.addEntity(stateID, wallL);
+    	}	
 	}
 
 	@Override
