@@ -80,6 +80,22 @@ public class GamePlayState extends BasicGameState {
     	wallL.setPosition(new Vector2f(200,100));
     	wallL.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
     	entityManager.addEntity(stateID, wallL);
+    	
+    	Entity mario2 = new RobotMario("Mario2");
+    	mario2.setPosition(new Vector2f(100,200));
+    	mario2.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	entityManager.addEntity(stateID, mario2);
+    	
+    	Entity wallR2 = new Wall("WandR2");
+    	wallR2.setPosition(new Vector2f(00,200));
+    	wallR2.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	entityManager.addEntity(stateID, wallR2);
+    	
+    	Entity wallL2 = new Wall("WandL2");
+    	wallL2.setPosition(new Vector2f(200,200));
+    	wallL2.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	entityManager.addEntity(stateID, wallL2);
+    	
     	}	
 	}
 

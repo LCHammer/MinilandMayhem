@@ -18,15 +18,6 @@ public class TurnMarioAround implements Action {
 	public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 		RobotMario r = (RobotMario)event.getOwnerEntity();
 		if(!r.collided) {
-		r.removeComponent("LoopEvent");
-		Event e = new LoopEvent();
-			if(r.getLooksRight()) {
-				e.addAction(new MoveLeftAction(r.speed));
-				r.addComponent(e);
-			}else {
-				e.addAction(new MoveRightAction(r.speed));
-				r.addComponent(e);
-			}
 			r.changeDirection();
 			r.collided=true;
 		}
