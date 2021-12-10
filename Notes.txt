@@ -1,0 +1,7 @@
+Marios, die nicht aktiviert wurden, können nicht zerstört werden oder Kollidieren
+
+Abgeschlossene Türen bleiben für ander Marios aufgeschlossen,
+nachdem ein erster Mario sie geöffnet hat
+
+Marios können unendlich oft kollidieren.
+

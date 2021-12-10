@@ -68,32 +68,26 @@ public class GamePlayState extends BasicGameState {
     	
     	Entity mario = new RobotMario("Mario1");
     	mario.setPosition(new Vector2f(100,100));
-    	mario.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
     	entityManager.addEntity(stateID, mario);
     	
     	Entity wallR = new Wall("WandR");
-    	wallR.setPosition(new Vector2f(00,100));
-    	wallR.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	wallR.setPosition(new Vector2f(200,100));
     	entityManager.addEntity(stateID, wallR);
     	
-    	Entity wallL = new Wall("WandL");
-    	wallL.setPosition(new Vector2f(200,100));
-    	wallL.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
-    	entityManager.addEntity(stateID, wallL);
+    	Entity doorL = new Door("TürL",false);
+    	doorL.setPosition(new Vector2f(00,100));
+    	entityManager.addEntity(stateID, doorL);
     	
     	Entity mario2 = new RobotMario("Mario2");
     	mario2.setPosition(new Vector2f(100,200));
-    	mario2.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
     	entityManager.addEntity(stateID, mario2);
     	
     	Entity wallR2 = new Wall("WandR2");
-    	wallR2.setPosition(new Vector2f(00,200));
-    	wallR2.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	wallR2.setPosition(new Vector2f(200,200));
     	entityManager.addEntity(stateID, wallR2);
     	
     	Entity wallL2 = new Wall("WandL2");
-    	wallL2.setPosition(new Vector2f(200,200));
-    	wallL2.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    	wallL2.setPosition(new Vector2f(00,200));
     	entityManager.addEntity(stateID, wallL2);
     	
     	}	

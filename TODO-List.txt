@@ -22,18 +22,23 @@
 	von der Wand weg.
 
 
-------------erledigt--------------------
-
 6) Tür mechanik: wenn Mario Auf eine Tür läuft, "geht er durch" und wird entfernt
 
-7) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger, sofern man 
+
+7) Schlüssel Pickup: Muss erst eingesammelt werden und zur Tür gebracht werden, bevor sie sich öffnet
+
+------------erledigt--------------------
+
+8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger, sofern man 
 	genug Ressourcen hat. Mario kann auf/gegen Träger laufen. Sockel kann maximal einen 
 	Träger halten.
 
-8) Stahlträger entfernen: auf einen der Sockel klicken entfernt Träger.
+9) Stahlträger entfernen: auf einen der Sockel klicken entfernt Träger.
 
-9)Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
+10)Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
 
-10) Schwerkraft, Marios fallen, wenn sie keinen Boden unter den Füßen haben. (CE-Teil)
+11) Schwerkraft, Marios fallen, wenn sie keinen Boden unter den Füßen haben. (CE-Teil)
 
-11) Map-Parser (?)
+12) Map-Parser (?)
+
+13) Level zu ende (?)
