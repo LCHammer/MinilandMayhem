@@ -1,13 +1,22 @@
 package minilandMayhem.model.entities;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
 import eea.engine.action.basicactions.DestroyEntityAction;
+import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.event.basicevents.LoopEvent;
 
 public class Key extends Collectable {
 
 	public Key(String entityID) {
 		super(entityID);
-		// TODO Auto-generated constructor stub
+		try {
+			this.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+		}
+		catch(SlickException e) {
+			System.out.println("Schluesselbild konnte nicht geladen werden");
+		}
 	}
 	
 	public void destroy() {

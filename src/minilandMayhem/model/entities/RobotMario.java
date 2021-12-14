@@ -26,8 +26,8 @@ import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
 import eea.engine.event.basicevents.MovementDoesNotCollideEvent;
 import minilandMayhem.model.action.Collide;
-import minilandMayhem.model.events.MoveMarioLeft;
-import minilandMayhem.model.events.MoveMarioRight;
+import minilandMayhem.model.events.MarioLooksLeftEvent;
+import minilandMayhem.model.events.MarioLooksRightEvent;
 
 public class RobotMario extends Entity{
 
@@ -102,11 +102,11 @@ public class RobotMario extends Entity{
 	private void activate() {
 		if(!this.isActive) {
 			this.isActive=true;
-			ANDEvent right = new ANDEvent(new LoopEvent(), new MoveMarioRight("MoveRight"));
+			ANDEvent right = new ANDEvent(new LoopEvent(), new MarioLooksRightEvent("MoveRight"));
 			right.addAction(new MoveRightAction(speed));
 			this.addComponent(right);
 			
-			ANDEvent left = new ANDEvent(new LoopEvent(), new MoveMarioLeft("MoveLeft"));
+			ANDEvent left = new ANDEvent(new LoopEvent(), new MarioLooksLeftEvent("MoveLeft"));
 			left.addAction(new MoveLeftAction(speed));
 			this.addComponent(left);
 		}

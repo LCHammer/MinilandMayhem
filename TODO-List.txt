@@ -30,8 +30,9 @@
 ------------erledigt--------------------
 
 8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger, sofern man 
-	genug Ressourcen hat. Mario kann auf/gegen Träger laufen. Sockel kann maximal einen 
-	Träger halten.
+	genug Ressourcen hat. Mario kann gegen Träger laufen (wenn mehr als 45 Grad) und auf
+	ihm bei 44 Grad oder weniger. Sockel kann maximal einen Träger halten.
+
 
 9) Stahlträger entfernen: auf einen der Sockel klicken entfernt Träger.
 
