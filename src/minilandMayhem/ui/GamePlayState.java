@@ -25,6 +25,7 @@ public class GamePlayState extends BasicGameState {
 	private int stateID;
     private StateBasedEntityManager entityManager;
     public static int ressources = 5;
+    public static BeamSocket selectedSocket = null;
 	
 	public GamePlayState(int stateID) {
 		this.stateID = stateID;
@@ -83,17 +84,27 @@ public class GamePlayState extends BasicGameState {
     	key.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
     	entityManager.addEntity(stateID, key);
     	
+    	
     	Entity mario2 = new RobotMario("Mario2");
     	mario2.setPosition(new Vector2f(100,200));
     	entityManager.addEntity(stateID, mario2);
     	
-    	Entity wallR2 = new Wall("WandR2");
-    	wallR2.setPosition(new Vector2f(200,200));
-    	entityManager.addEntity(stateID, wallR2);
     	
-    	Entity wallL2 = new Wall("WandL2");
-    	wallL2.setPosition(new Vector2f(00,200));
-    	entityManager.addEntity(stateID, wallL2);
+    	Entity socket2 = new BeamSocket("Socket2");
+    	socket2.setPosition(new Vector2f(200,200));
+    	entityManager.addEntity(stateID, socket2);
+    	
+    	
+    	BeamSocket socketR2 = new BeamSocket("SocketR2");
+    	socketR2.setPosition(new Vector2f(300,200));
+    	entityManager.addEntity(stateID, socketR2);
+    	
+    	
+    	
+    	Entity sockel = new BeamSocket("SocketL2");
+    	sockel.setPosition(new Vector2f(100,200));
+    	entityManager.addEntity(stateID, sockel);
+    	
     	
     	}	
 	}
@@ -118,6 +129,18 @@ public class GamePlayState extends BasicGameState {
 	@Override
 	public int getID() {
 		return stateID;
+	}
+
+	public static void createBeam(BeamSocket firstSocket, BeamSocket secondSocket) {
+		Vector2f first = firstSocket.getPosition();
+		Vector2f second = secondSocket.getPosition();
+		double xdist = (double)(first.x - second.x);
+		double ydist = (double)(first.y - second.y);
+		double length = Math.sqrt(xdist*xdist + ydist*ydist);
+		System.out.println(length);
+		//TODO: also compute angle
+		//add Beam to the game, also remove it
+		
 	}
 
 }
