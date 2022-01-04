@@ -25,21 +25,71 @@
 6) Tür mechanik: wenn Mario Auf eine Tür läuft, "geht er durch" und wird entfernt
 
 
-7) Schlüssel Pickup: Muss erst eingesammelt werden und zur Tür gebracht werden, bevor sie sich öffnet
+7) Schlüssel Pickup: Muss erst eingesammelt werden und zur Tür gebracht werden, bevor sie sich öffnet -> Ausbaustufe 1
 
 ------------erledigt--------------------
 
 8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger, sofern man 
 	genug Ressourcen hat. Mario kann gegen Träger laufen (wenn mehr als 45 Grad) und auf
-	ihm bei 44 Grad oder weniger. Sockel kann maximal einen Träger halten.
+	ihm bei 44 Grad oder weniger. Verbraucht Ressourcen, sofern nicht genug vorhanden, kann kein Stahlträger gebaut werden. (vorerst nur waagerecht)
 
 
-9) Stahlträger entfernen: auf einen der Sockel klicken entfernt Träger.
+9) Stahlträger entfernen: auf einen der Sockel klicken entfernt alle Träger des Sockels. Gibt entsprechend Ressouren zurück.
 
 10)Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
 
 11) Schwerkraft, Marios fallen, wenn sie keinen Boden unter den Füßen haben. (CE-Teil)
+	-Mario von Erdbeschleunigung beeinflusst. Beschl. ist 0, wenn Mario auf Boden steht (oder Leiter/Stahlträger)
 
-12) Map-Parser (?)
+12) Leiter Mechanik: Es soll Leitern geben (als block) die der Mario bei Berührung herunterklettert. Kann er nicht herunterklettern, so klettert er nach oben.
+	Diese Bewegung pausiert das Bewegen nach links/rechts. Ist er am ende der Leiter angekommen, so bewegt er sich danach weiter wie zuvor.
+	Während ein Mario auf einer Leiter ist, fällt er nicht.
 
-13) Level zu ende (?)
+13) Map-Parser: Map soll im Main menu aus Textdatei geladen werden können und bei Spielstart soll geladene Map angezeigt werden können.
+    Laden der Map erfolgt aus einer Textdatei: M: Mario, W: Wand, _: nichts/Luft, D:Tür, L: Leiter, S: Sockel, X:Gefahr (z.B. Stacheboden)
+    speichere auch anzahl an Marios.
+
+
+14) Level zu ende, sofern alle Marios das Spielfeld verlassen haben (entweder zerstört oder durch die Tür) 
+	Danach soll es einen Ende-screen geben mit Punktzahl und zurück ins hauptmenü
+
+
+
+
+Ausbaustufe 1: 
+
+15) Ressourcen Pickup: einmaliges Pickup, welches 1 Ressource gibt (soll auch in Mapparser eingefügt werden) R:Ressource
+
+16) Schlüssel Pickup (auch in Mapparser einfügen) (K:Schlüssel)
+
+17) Münzen Pickup für mehr Punkte (einmalig) (auch in Parser hinzufügen) C: Coin
+
+18) verschiedene Winkel bei Stahlträgern möglich. Bei über 45 Grad zählen sie als Wand und Marios prallen an ihnen ab.
+  Bei 44 Grad oder weniger können Marios sie hochlaufen. Runterlaufen/"Runterfallen" ist immer möglich.
+
+
+
+
+
+Ausbaustufe 2:
+
+
+19) Jumppad (J:Jumppad): lässt Mario Springen (in Parabelform)
+
+
+20) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen bei aufprall kaputt (egal ob Mario oder Wand).
+  Fliegen immer nur nach links oder rechts, von schwerkraft nicht beeinflusst. Kanone schießt in regelmäßigen Abständen (z.B. alle 5 Sekunden).
+  In Mapparser integrieren (B:Kanone)"english Bullet Bill"
+
+21) Goomba Roboter, die Marios bei berührung zerstören (gehen selbst nicht kaputt außer sie laufen in stacheln/Kugelwilli)
+  Laufen wie Marios, können nicht springen/leitern klettern. (G:Goomba) Laufen anfangs nach links
+
+
+Ausbaustufe 3:
+
+22) Highscores die gespeichert werden können (von Ende screen aus) in Datei  (mit Name, Level, Punktzahl)
+
+23) Highscorescreen vom Startmenü aus der Highscore einträge anzeigt (nur die besten 5)
+
+24) Toad und Peach Roboter: identisches verhalten zu Mario, haben aber eigene Türen. (in Mapparser integrieren) P:Peach, T:Toad
+
