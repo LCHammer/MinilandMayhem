@@ -8,6 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.action.Action;
 import eea.engine.action.basicactions.DestroyEntityAction;
+import eea.engine.action.basicactions.MoveDownAction;
 import eea.engine.action.basicactions.MoveForwardAction;
 import eea.engine.action.basicactions.MoveLeftAction;
 import eea.engine.action.basicactions.MoveRightAction;
@@ -26,6 +27,7 @@ import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
 import eea.engine.event.basicevents.MovementDoesNotCollideEvent;
 import minilandMayhem.model.action.Collide;
+import minilandMayhem.model.events.GroundCollision;
 import minilandMayhem.model.events.MarioLooksLeftEvent;
 import minilandMayhem.model.events.MarioLooksRightEvent;
 
@@ -36,6 +38,10 @@ public class RobotMario extends Entity{
 	public float speed;
 	public boolean collided;
 	private boolean hasKey;
+	private PhysicsHitbox pHitbox;
+	private LoopEvent fall;
+	private int fallings = 0;
+	private boolean isFalling = false;
 	
 	/**
 	 * Konstruktor
@@ -48,6 +54,11 @@ public class RobotMario extends Entity{
 		speed = 0.125f;
 		collided = false;
 		hasKey = false;
+		pHitbox = new PhysicsHitbox("Phyisc"+entityID, this.getPosition(), this);
+		this.setPassable(true);
+		fall = new LoopEvent();
+		this.addComponent(fall);
+		
 		
 		try {
 			this.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
@@ -77,12 +88,13 @@ public class RobotMario extends Entity{
 		
 		//resets the collision field if no collision occurs, otherwise a collision still occurs even if the 
 		//movement was changed. This new collision would make the mario turn back to the wall again
-		NOTEvent reset = new NOTEvent(new CollisionEvent());
+		NOTEvent reset = new NOTEvent(new GroundCollision());
 		reset.addAction(new Action() {
 
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				RobotMario m = (RobotMario)event.getOwnerEntity();
+				//System.out.println("bla");
 				m.collided=false;
 				
 			}
@@ -106,6 +118,7 @@ public class RobotMario extends Entity{
 			right.addAction(new MoveRightAction(speed));
 			this.addComponent(right);
 			
+			
 			ANDEvent left = new ANDEvent(new LoopEvent(), new MarioLooksLeftEvent("MoveLeft"));
 			left.addAction(new MoveLeftAction(speed));
 			this.addComponent(left);
@@ -125,7 +138,9 @@ public class RobotMario extends Entity{
 	 * Ändert die Blickrichtung dieses Marios und somit auch die Richtung, in die er sich bewegt.
 	 */
 	public void changeDirection() { 
+		if(!isFalling) {
 		looksRight = !looksRight;
+		}
 	}
 	
 
@@ -136,6 +151,7 @@ public class RobotMario extends Entity{
 	public void destroy() {
 		Event l = new LoopEvent();
 		l.addAction(new DestroyEntityAction());
+		this.pHitbox.destroy();
 		this.addComponent(l);
 	}
 	
@@ -162,4 +178,47 @@ public class RobotMario extends Entity{
 		return this.isActive;
 	}
 	
+	/**
+	 * 
+	 * @return die PhysicsHitbox von diesem Mario
+	 */
+	public PhysicsHitbox getHitbox() {
+		return this.pHitbox;
+	}
+	
+	
+	/**
+	 * laesst den Mario fallen. Dabei wird er enstsprechend 1/10 der Erdgravitation beschleunigt.
+	 * Um Echtzeitverhalten zu simulieren, werden die aktuellen FPS miteinbezogen
+	 */
+	public void fall(int fps) {
+		isFalling = true;
+		if(isActive) {
+		fallings +=1;
+		//collided = true;
+		isFalling = true;
+		fall.addAction(new MoveDownAction(0.981f/fps));
+		}
+	}
+	
+	
+	/**
+	 * beendet die Fallbewegung und laesst den Mario landen
+	 */
+	public void land() {
+		for(int i =0; i<fallings; i++) {
+		fall.removeAction(0);
+		}
+		fallings = 0;
+		isFalling = false;
+		collided = true;
+	}
+	
+	/**
+	 * 
+	 * @return true wenn der Mario gerade faellt, sonst false.
+	 */
+	public boolean getFalling() {
+		return isFalling;
+	}
 }

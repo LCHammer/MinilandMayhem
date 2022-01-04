@@ -7,6 +7,7 @@ import eea.engine.action.Action;
 import eea.engine.component.Component;
 import eea.engine.entity.Entity;
 import eea.engine.event.basicevents.CollisionEvent;
+import minilandMayhem.model.entities.BeamSocket;
 import minilandMayhem.model.entities.Danger;
 import minilandMayhem.model.entities.Door;
 import minilandMayhem.model.entities.Key;
@@ -27,7 +28,7 @@ public class Collide implements Action {
 		if(mario.getIsActive()) {
 		
 			//mit einer Wand kollidiert:
-			if (collider instanceof Wall) { 
+			if (collider instanceof Wall || collider instanceof BeamSocket) { 
 				if(!mario.collided) {
 					mario.changeDirection();
 					mario.collided=true;
