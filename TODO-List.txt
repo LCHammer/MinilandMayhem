@@ -93,3 +93,8 @@ Ausbaustufe 3:
 
 24) Toad und Peach Roboter: identisches verhalten zu Mario, haben aber eigene Türen. (in Mapparser integrieren) P:Peach, T:Toad
 
+
+
+Zu fixen: 
+Pausemenü pausiert nicht, sondern startet neu!
+Schwerkraft Hitboxen
