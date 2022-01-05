@@ -24,7 +24,8 @@ public class PhysicsHitbox extends Entity{
 	public PhysicsHitbox(String entityID, Vector2f position, RobotMario mario) {
 		super(entityID);
 		owner = mario;
-		System.out.println(this.getSize());
+		this.setVisible(false);
+		this.setSize(new Vector2f(2,2));
 		
 		try {
 			this.addComponent(new ImageRenderComponent(new Image("/assets/socket.png")));
@@ -56,9 +57,8 @@ public class PhysicsHitbox extends Entity{
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
 				RobotMario mario = self.getOwner();
-				
 				if(mario.getFalling()) {
-				System.out.println("land");
+					System.out.println("land");
 				mario.land();
 				}
 				
@@ -74,7 +74,7 @@ public class PhysicsHitbox extends Entity{
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				PhysicsHitbox ph = (PhysicsHitbox)event.getOwnerEntity();
 				Vector2f pos = ph.getOwner().getPosition();
-				ph.setPosition(new Vector2f(pos.x, pos.y+50));
+				ph.setPosition(new Vector2f(pos.x, pos.y+40));
 				
 			}
 			

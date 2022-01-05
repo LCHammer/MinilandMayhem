@@ -26,14 +26,21 @@ public class Collide implements Action {
 		RobotMario mario = (RobotMario)event.getOwnerEntity();
 		//ist der Mario inaktiv, passiert nichts
 		if(mario.getIsActive()) {
+			
+			//System.out.println("coll");
 		
 			//mit einer Wand kollidiert:
 			if (collider instanceof Wall || collider instanceof BeamSocket) { 
-				if(!mario.collided) {
-					mario.changeDirection();
-					mario.collided=true;
-				}
+		
+				System.out.println(mario.getPosition().y +" "+collider.getPosition().y);
+				//if(mario.getPosition().y > collider.getPosition().y && 
+				if(( mario.getLooksRight() && mario.getPosition().x < collider.getPosition().x) ||
+				(!mario.getLooksRight() && mario.getPosition().x > collider.getPosition().x)){
+						System.out.println("change");
+						mario.changeDirection();
+						mario.collided=true;
 			
+				}
 				//mit einer Tür kollidiert
 			}else if(collider instanceof Door) { 
 				Door d = (Door)collider;

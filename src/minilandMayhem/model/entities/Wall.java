@@ -12,10 +12,11 @@ public class Wall extends Entity{
 		super(entityID);
 		
 		try {
-		this.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+		this.addComponent(new ImageRenderComponent(new Image("/assets/wall.png")));
 		}catch (SlickException e) {
 			System.out.println("Wandbild konnte nicht geladen werden");
 		}
+		this.setPassable(false);
 	}
 
 }

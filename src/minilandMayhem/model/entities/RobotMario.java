@@ -61,7 +61,7 @@ public class RobotMario extends Entity{
 		
 		
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+			this.addComponent(new ImageRenderComponent(new Image("/assets/mario1.png")));
 		}
 		catch(SlickException e) {
 			System.out.println("Mariobild konnte nicht geladen werden");
@@ -85,23 +85,7 @@ public class RobotMario extends Entity{
 		CollisionEvent collide = new CollisionEvent();
 		collide.addAction(new Collide());
 		this.addComponent(collide);
-		
-		//resets the collision field if no collision occurs, otherwise a collision still occurs even if the 
-		//movement was changed. This new collision would make the mario turn back to the wall again
-		NOTEvent reset = new NOTEvent(new GroundCollision());
-		reset.addAction(new Action() {
-
-			@Override
-			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
-				RobotMario m = (RobotMario)event.getOwnerEntity();
-				//System.out.println("bla");
-				m.collided=false;
 				
-			}
-			
-		});
-		this.addComponent(reset);
-		
 		
 	}
 	
@@ -211,7 +195,7 @@ public class RobotMario extends Entity{
 		}
 		fallings = 0;
 		isFalling = false;
-		collided = true;
+		//collided = true;
 	}
 	
 	/**

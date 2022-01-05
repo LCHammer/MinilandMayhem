@@ -73,38 +73,35 @@ public class GamePlayState extends BasicGameState {
     	entityManager.addEntity(stateID, mario);
     	entityManager.addEntity(stateID, mario.getHitbox());
     	
-    	Entity wallR = new Wall("WandR");
-    	wallR.setPosition(new Vector2f(400,100));
-    	entityManager.addEntity(stateID, wallR);
     	
-    	Entity wall1 = new BeamSocket("Boden");
-    	wall1.setPosition(new Vector2f(100,170));
+    	Entity wall1 = new Wall("Boden");
+    	wall1.setPosition(new Vector2f(100,400));
     	entityManager.addEntity(stateID, wall1);
     	
-    	Entity wall2 = new BeamSocket("Wand2");
+    	Entity wall2 = new Wall("Wand2");
     	wall2.setPosition(new Vector2f(200,400));
     	entityManager.addEntity(stateID, wall2);
     	
-    	Entity wall3 = new BeamSocket("Wand3");
-    	wall3.setPosition(new Vector2f(225,400));
+    	Entity wall3 = new Wall("Wand3");
+    	wall3.setPosition(new Vector2f(150,350));
     	entityManager.addEntity(stateID, wall3);
     	
-    	Entity wall4 = new BeamSocket("Wand4");
+    	Entity wall4 = new Wall("Wand4");
     	wall4.setPosition(new Vector2f(250,400));
     	entityManager.addEntity(stateID, wall4);
     	
-    	Entity wall5 = new BeamSocket("Wand5");
-    	wall5.setPosition(new Vector2f(275,350));
+    	Entity wall5 = new Wall("Wand5");
+    	wall5.setPosition(new Vector2f(300,350));
     	entityManager.addEntity(stateID, wall5);
-    	
-    	Entity wall6 = new BeamSocket("Wand6");
-    	wall6.setPosition(new Vector2f(175,400));
+    /*	
+    	Entity wall6 = new Wall("Wand6");
+    	wall6.setPosition(new Vector2f(100,400));
     	entityManager.addEntity(stateID, wall6);
-    	
-    	Entity wall7 = new BeamSocket("Wand7");
-    	wall7.setPosition(new Vector2f(150,350));
+    */	
+    	Entity wall7 = new Wall("Wand7");
+    	wall7.setPosition(new Vector2f(150,400));
     	entityManager.addEntity(stateID, wall7);
-    	
+    /*	
     	Entity doorL = new Door("TürL",false);
     	doorL.setPosition(new Vector2f(00,100));
     	entityManager.addEntity(stateID, doorL);
@@ -115,18 +112,18 @@ public class GamePlayState extends BasicGameState {
     	entityManager.addEntity(stateID, key);
     	
     	
-    	/*
+    	
     	Entity socket2 = new BeamSocket("Socket2");
     	socket2.setPosition(new Vector2f(200,200));
     	entityManager.addEntity(stateID, socket2);
-    	*/
+    	
     	
     	BeamSocket socketR2 = new BeamSocket("SocketR2");
     	socketR2.setPosition(new Vector2f(300,200));
     	entityManager.addEntity(stateID, socketR2);
     	
     	
-    	/*
+    	
     	Entity sockel = new BeamSocket("SocketL2");
     	sockel.setPosition(new Vector2f(100,200));
     	entityManager.addEntity(stateID, sockel);
