@@ -47,7 +47,7 @@
 
 13) Map-Parser: Map soll im Main menu aus Textdatei geladen werden können und bei Spielstart soll geladene Map angezeigt werden können.
     Laden der Map erfolgt aus einer Textdatei: M: Mario, W: Wand, _: nichts/Luft, D:Tür, L: Leiter, S: Sockel, X:Gefahr (z.B. Stacheboden)
-    speichere auch anzahl an Marios.
+    speichere auch anzahl an Marios. Unbekannte Zeichen sollen auch als Luft interpretiert werden. Füge zusätzlich eine Bounding Box aus Wänden hinzu, damit man nicht aus der Welt fällt.
 
 
 14) Level zu ende, sofern alle Marios das Spielfeld verlassen haben (entweder zerstört oder durch die Tür) 

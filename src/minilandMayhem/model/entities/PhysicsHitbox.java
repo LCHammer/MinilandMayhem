@@ -24,18 +24,13 @@ public class PhysicsHitbox extends Entity{
 	public PhysicsHitbox(String entityID, Vector2f position, RobotMario mario) {
 		super(entityID);
 		owner = mario;
-		this.setVisible(false);
-		this.setSize(new Vector2f(2,2));
-		
-		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/socket.png")));
-		}
-		catch(SlickException e) {
-			System.out.println("Schluesselbild konnte nicht geladen werden");
-		}
+		this.setVisible(false); 
+		//Wichtig: setzt die Groesse der Hitbox. Diese darf nicht mit dem entsprechenden Mario kollidieren,
+		//da sonst alle anderen Kollisionen überdeckt werden.
+		this.setSize(new Vector2f(50,2));		
 		
 		
-		
+		//ueberprueft, ob der Mario aktuell KEINEN Boden unter sich hat.
 		Event falling = new NOTEvent(new GroundCollision());
 		falling.addAction(new Action() {
 
@@ -43,6 +38,7 @@ public class PhysicsHitbox extends Entity{
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
 				RobotMario mario = self.getOwner();
+				//Hat der Mario keinen Boden unter sich, soll er fallen und dabei schneller werden.
 				mario.fall(gc.getFPS());
 				
 			}
@@ -50,6 +46,8 @@ public class PhysicsHitbox extends Entity{
 		});
 		this.addComponent(falling);
 		
+		
+		//ueberprueft, ob der Mario gerade auf festem Boden steht.
 		Event grounded = new GroundCollision();
 		grounded.addAction(new Action() {
 
@@ -57,15 +55,16 @@ public class PhysicsHitbox extends Entity{
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
 				RobotMario mario = self.getOwner();
+				//ist der Mario gerade am fallen und hat nun festen Boden unter sich, soll er landen (und nicht mehr fallen)
 				if(mario.getFalling()) {
-					System.out.println("land");
-				mario.land();
+					mario.land();
 				}
 				
 			}
 			
 		});
 		this.addComponent(grounded);
+
 		
 		LoopEvent e = new LoopEvent();
 		e.addAction(new Action() {
@@ -74,7 +73,8 @@ public class PhysicsHitbox extends Entity{
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				PhysicsHitbox ph = (PhysicsHitbox)event.getOwnerEntity();
 				Vector2f pos = ph.getOwner().getPosition();
-				ph.setPosition(new Vector2f(pos.x, pos.y+40));
+				//sorgt dafuer, dass diese Hitbox sich immer unter ihrem jeweiligen Mario befindet.
+				ph.setPosition(new Vector2f(pos.x, pos.y+30));
 				
 			}
 			

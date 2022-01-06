@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.action.Action;
@@ -58,6 +59,7 @@ public class RobotMario extends Entity{
 		this.setPassable(true);
 		fall = new LoopEvent();
 		this.addComponent(fall);
+		this.setSize(new Vector2f(48,48));
 		
 		
 		try {

@@ -45,7 +45,7 @@ public class MinilandMayhem extends StateBasedGame {
 	    	}
 	    	
 	    	// Setze dieses StateBasedGame in einen App Container (oder Fenster)
-	        AppGameContainer app = new AppGameContainer(new MinilandMayhem(true));
+	        AppGameContainer app = new AppGameContainer(new MinilandMayhem(false));
 	 
 	        // Lege die Einstellungen des Fensters fest und starte das Fenster
 	        // (nicht aber im Vollbildmodus)

@@ -16,15 +16,15 @@ public class GroundCollision extends CollisionEvent{
 	}
 	
 	@Override
+	/**
+	 * Das event wird getriggert, wenn eine Kollision mit Wand/Boden oder einem Sockel passiert.
+	 */
 	protected boolean performAction(GameContainer gc, StateBasedGame game, int delta) {
 		if(super.performAction(gc, game, delta)) {
 			Entity e = super.getCollidedEntity();
 			if(e instanceof Wall || e instanceof BeamSocket) {
 				return true;
-			}else if( e instanceof RobotMario) {
-				System.out.println("too much!");
 			}
-			
 		}
 		return false;
 		

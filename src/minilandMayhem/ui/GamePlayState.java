@@ -18,6 +18,7 @@ import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.basicevents.KeyPressedEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import minilandMayhem.model.entities.*;
+import minilandMayhem.model.mapParser.Parser;
 
 public class GamePlayState extends BasicGameState {
 	
@@ -49,23 +50,8 @@ public class GamePlayState extends BasicGameState {
     	entityManager.addEntity(stateID, esc_Listener);
     	
     	
-    	if(MinilandMayhem.debug) {
-    	//das hier ist nur ein test, um zu schauen, wie man mithilfe von Actions
-    	/*Entity click = new Entity("Click");
-    	MouseClickedEvent e = new MouseClickedEvent();
-    	e.addAction( new Action() {
+    	if(MinilandMayhem.debug || Parser.map==null) {
     	
-    			public void update(GameContainer gc, StateBasedGame sb, int delta,
-    					Component event) {
-    				//bei maus-klick, wird die ressouce um 1 erhöht
-    			GamePlayState.ressources +=1;
-    		}
-    	}
-    	);
-    	click.addComponent(e);
-    	entityManager.addEntity(stateID, click);
-    		
-    	*/
     	
     	RobotMario mario = new RobotMario("Mario1");
     	mario.setPosition(new Vector2f(100,100));
@@ -75,7 +61,7 @@ public class GamePlayState extends BasicGameState {
     	
     	
     	Entity wall1 = new Wall("Boden");
-    	wall1.setPosition(new Vector2f(100,400));
+    	wall1.setPosition(new Vector2f(150,400));
     	entityManager.addEntity(stateID, wall1);
     	
     	Entity wall2 = new Wall("Wand2");
@@ -83,7 +69,7 @@ public class GamePlayState extends BasicGameState {
     	entityManager.addEntity(stateID, wall2);
     	
     	Entity wall3 = new Wall("Wand3");
-    	wall3.setPosition(new Vector2f(150,350));
+    	wall3.setPosition(new Vector2f(100,350));
     	entityManager.addEntity(stateID, wall3);
     	
     	Entity wall4 = new Wall("Wand4");
@@ -91,7 +77,7 @@ public class GamePlayState extends BasicGameState {
     	entityManager.addEntity(stateID, wall4);
     	
     	Entity wall5 = new Wall("Wand5");
-    	wall5.setPosition(new Vector2f(300,350));
+    	wall5.setPosition(new Vector2f(300,400));
     	entityManager.addEntity(stateID, wall5);
     /*	
     	Entity wall6 = new Wall("Wand6");
@@ -101,11 +87,11 @@ public class GamePlayState extends BasicGameState {
     	Entity wall7 = new Wall("Wand7");
     	wall7.setPosition(new Vector2f(150,400));
     	entityManager.addEntity(stateID, wall7);
-    /*	
-    	Entity doorL = new Door("TürL",false);
-    	doorL.setPosition(new Vector2f(00,100));
-    	entityManager.addEntity(stateID, doorL);
     	
+    	Entity doorL = new Door("TürL",true);
+    	doorL.setPosition(new Vector2f(300,350));
+    	entityManager.addEntity(stateID, doorL);
+    /*	
     	Entity key = new Key("Schluessel");
     	key.setPosition(new Vector2f(200,100));
     	key.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
@@ -129,7 +115,54 @@ public class GamePlayState extends BasicGameState {
     	entityManager.addEntity(stateID, sockel);
     	*/
     	
-    	}	
+    	}
+    	else if(Parser.map != null) {
+    		Entity[][] map = Parser.parse();
+    		int y_dim = map.length;
+    		int x_dim = map[0].length;
+    		for (int y = 0; y < y_dim; y++) {
+    			for( int x = 0; x < x_dim; x++) {
+    				//wichtig: beachte reihenfolge der Dimensionen!
+    				if(map[y][x] != null) {
+    					
+    					map[y][x].setPosition(new Vector2f(100+x*50,100+y*50));
+    					entityManager.addEntity(stateID, map[y][x]);
+    					if(map[y][x] instanceof RobotMario) {
+    						RobotMario m = (RobotMario) map[y][x];
+    						entityManager.addEntity(stateID, m.getHitbox());
+    					}
+    				}
+    			}
+    		}
+    		
+    		//erstellt Levelraender
+    		//Decke
+    		for (int i=0; i < x_dim+2;i++) {
+    			Wall w = new Wall("Wand");
+    			w.setPosition(new Vector2f(50+i*50,50));
+    			entityManager.addEntity(stateID, w);
+    		}
+    		//Boden
+    		for (int i=0; i < x_dim+2;i++) {
+    			Wall w = new Wall("Wand");
+    			w.setPosition(new Vector2f(50+i*50,y_dim*50+100));
+    			entityManager.addEntity(stateID, w);
+    		}
+    		
+    		//Linke Wand
+    		for (int i = 0; i<y_dim;i++) {
+    			Wall w = new Wall("Wand");
+    			w.setPosition(new Vector2f(50,100+50*i));
+    			entityManager.addEntity(stateID, w);
+    		}
+    		
+    		//Rechte Wand
+    		for (int i = 0; i<y_dim;i++) {
+    			Wall w = new Wall("Wand");
+    			w.setPosition(new Vector2f(50*x_dim+100,100+50*i));
+    			entityManager.addEntity(stateID, w);
+    		}
+    	}
 	}
 
 	@Override

@@ -1,5 +1,15 @@
 package minilandMayhem.ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+import javax.swing.JFileChooser;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -11,12 +21,14 @@ import org.newdawn.slick.state.StateBasedGame;
 import eea.engine.action.Action;
 import eea.engine.action.basicactions.ChangeStateInitAction;
 import eea.engine.action.basicactions.QuitAction;
+import eea.engine.component.Component;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
+import minilandMayhem.model.mapParser.Parser;
 
 
 public class MainMenuState extends BasicGameState{
@@ -66,7 +78,7 @@ public class MainMenuState extends BasicGameState{
    	Entity quit_Entity = new Entity("Beenden");
     	
     	// Setze Position und Bildkomponente
-    	quit_Entity.setPosition(new Vector2f(218, 290));
+    	quit_Entity.setPosition(new Vector2f(218, 390));
     	quit_Entity.setScale(0.28f);
     	quit_Entity.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
     	
@@ -79,6 +91,62 @@ public class MainMenuState extends BasicGameState{
     	// Fuege die Entity zum StateBasedEntityManager hinzu
     	entityManager.addEntity(this.stateID, quit_Entity);
     	
+    	
+    	//Level waehlen
+    	Entity choose_level = new Entity("Choose_Level");
+    	
+    	choose_level.setPosition(new Vector2f(218,290));
+    	choose_level.setScale(0.28f);
+    	choose_level.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
+    	
+    	ANDEvent choose = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
+    	Action choose_a = new Action() {
+
+			@Override
+			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
+				JFileChooser fc = new JFileChooser();
+				int retval = fc.showOpenDialog(null);
+				File file = fc.getSelectedFile();
+				if(file != null) {
+				
+				
+				try {
+					FileReader f = new FileReader(file);
+					BufferedReader b = new BufferedReader(f);
+					LinkedList<String> lst = new LinkedList<String>();
+					for (String line=b.readLine(); line !=null; line = b.readLine()) {
+						//System.out.println(line);
+						lst.add(line);
+					}
+					String[] str_arr = new String[lst.size()];
+					str_arr = lst.toArray(str_arr);
+					
+					for (int i =0; i<str_arr.length; i++) {
+						System.out.println(str_arr[i]);
+					}
+					Parser.setMap(str_arr);
+					Parser.levelname = file.getName();
+					
+					f.close();
+					b.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				}
+				
+				
+			}
+    		
+    	};
+    	choose.addAction(choose_a);
+    	choose_level.addComponent(choose);
+    	entityManager.addEntity(this.stateID, choose_level);
 		
 	}
 
@@ -90,6 +158,7 @@ public class MainMenuState extends BasicGameState{
 		int counter = 0;
 		
 		g.drawString("Neues Spiel", 110, start_Position+counter*distance); counter++;
+		g.drawString("Aktuelles level: "+ Parser.levelname, 110,start_Position+counter*distance);counter++;
 		g.drawString("Beenden", 110, start_Position+counter*distance); counter++;
 		
 	}

@@ -5,3 +5,4 @@ nachdem ein erster Mario sie geöffnet hat
 
 Marios können unendlich oft kollidieren.
 
+ALLE level müssel rechteckig im aufbau sein.
