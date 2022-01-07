@@ -56,6 +56,7 @@ public class Parser {
 		case 'M': return new RobotMario("Mario");
 		case 'W': return new Wall("Wand");
 		case 'D': return new Door("Tür",true);
+		case 'S': return new BeamSocket("Sockel");
 		default: return null;
 		
 		

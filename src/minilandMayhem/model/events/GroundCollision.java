@@ -5,9 +5,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.entity.Entity;
 import eea.engine.event.basicevents.CollisionEvent;
-import minilandMayhem.model.entities.BeamSocket;
-import minilandMayhem.model.entities.RobotMario;
-import minilandMayhem.model.entities.Wall;
+import minilandMayhem.model.entities.*;
+
 
 public class GroundCollision extends CollisionEvent{
 	
@@ -22,7 +21,7 @@ public class GroundCollision extends CollisionEvent{
 	protected boolean performAction(GameContainer gc, StateBasedGame game, int delta) {
 		if(super.performAction(gc, game, delta)) {
 			Entity e = super.getCollidedEntity();
-			if(e instanceof Wall || e instanceof BeamSocket) {
+			if(e instanceof Wall || e instanceof BeamSocket || e instanceof Beam) {
 				return true;
 			}
 		}

@@ -1,5 +1,7 @@
 package minilandMayhem.ui;
 
+import java.util.LinkedList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -125,7 +127,7 @@ public class GamePlayState extends BasicGameState {
     				//wichtig: beachte reihenfolge der Dimensionen!
     				if(map[y][x] != null) {
     					
-    					map[y][x].setPosition(new Vector2f(100+x*50,100+y*50));
+    					map[y][x].setPosition(new Vector2f(100+x*50,150+y*50));
     					entityManager.addEntity(stateID, map[y][x]);
     					if(map[y][x] instanceof RobotMario) {
     						RobotMario m = (RobotMario) map[y][x];
@@ -139,27 +141,27 @@ public class GamePlayState extends BasicGameState {
     		//Decke
     		for (int i=0; i < x_dim+2;i++) {
     			Wall w = new Wall("Wand");
-    			w.setPosition(new Vector2f(50+i*50,50));
+    			w.setPosition(new Vector2f(50+i*50,100));
     			entityManager.addEntity(stateID, w);
     		}
     		//Boden
     		for (int i=0; i < x_dim+2;i++) {
     			Wall w = new Wall("Wand");
-    			w.setPosition(new Vector2f(50+i*50,y_dim*50+100));
+    			w.setPosition(new Vector2f(50+i*50,y_dim*50+150));
     			entityManager.addEntity(stateID, w);
     		}
     		
     		//Linke Wand
     		for (int i = 0; i<y_dim;i++) {
     			Wall w = new Wall("Wand");
-    			w.setPosition(new Vector2f(50,100+50*i));
+    			w.setPosition(new Vector2f(50,150+50*i));
     			entityManager.addEntity(stateID, w);
     		}
     		
     		//Rechte Wand
     		for (int i = 0; i<y_dim;i++) {
     			Wall w = new Wall("Wand");
-    			w.setPosition(new Vector2f(50*x_dim+100,100+50*i));
+    			w.setPosition(new Vector2f(50*x_dim+100,150+50*i));
     			entityManager.addEntity(stateID, w);
     		}
     	}
@@ -187,16 +189,48 @@ public class GamePlayState extends BasicGameState {
 		return stateID;
 	}
 
-	public static void createBeam(BeamSocket firstSocket, BeamSocket secondSocket) {
+	/**
+	 * Baut einen Stahlträger zwischen dem ersten und zweiten Sockel
+	 * @param firstSocket erster Sockel
+	 * @param secondSocket zweiter Sockel
+	 */
+	public void createBeam(BeamSocket firstSocket, BeamSocket secondSocket) {
 		Vector2f first = firstSocket.getPosition();
 		Vector2f second = secondSocket.getPosition();
+		//Abstaende zwischen erstem und zweiten Sockel
 		double xdist = (double)(first.x - second.x);
 		double ydist = (double)(first.y - second.y);
 		double length = Math.sqrt(xdist*xdist + ydist*ydist);
-		System.out.println(length);
-		//TODO: also compute angle
-		//add Beam to the game, also remove it
 		
+		//Winkel, den der Stahltraeger haben muss
+		double angle =Math.toDegrees(Math.asin(ydist/length));
+		
+		//Anzahl an Stahltraeger-teilen, die gebaut werden müssen. Jedes kostet genau eine Ressource.
+		double round_up = Math.ceil(length/50)*50;
+		int count = (int)round_up/50;
+		//GamePlayState.ressources=20;
+		if(GamePlayState.ressources>=count-1) {
+		LinkedList<Beam> lst = new LinkedList<Beam>();
+		//Fülle den Zwischenraum mit Stahltraegern
+		for (int i=1; i<count;i++) {
+			Beam b  = new Beam("Stahltraeger");
+			int x = (int)(second.x+(xdist/count)*i);
+			int y= (int)(second.y+(ydist/count)*i);
+			b.setPosition(new Vector2f(x,y));
+			//Rotiere sie entsprechend des Winkels
+			if(angle<0) {
+				b.setRotation((float) ( angle-180));
+			}else {
+				b.setRotation((float) angle);
+			}
+			
+			entityManager.addEntity(stateID, b);
+		}
+		//entferne Ressourcen
+		GamePlayState.ressources-=count-1;
+		
+		//TODO: also remove it
+		}
 	}
 
 }

@@ -22,7 +22,7 @@ public class BeamSocket extends Entity{
 		super(entityID);
 		
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/socket.png")));
+			this.addComponent(new ImageRenderComponent(new Image("/assets/Wall.png")));
 		}
 		catch(SlickException e) {
 			System.out.println("Sockelbild konnte nicht geladen werden");
@@ -35,13 +35,19 @@ public class BeamSocket extends Entity{
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				BeamSocket thisSocket = (BeamSocket) event.getOwnerEntity();
-				if(!thisSocket.hasBeam) {
+				//if(!thisSocket.hasBeam) {
 					if( GamePlayState.selectedSocket == null) {
 						GamePlayState.selectedSocket = thisSocket;
 						System.out.println("socket set");
 					}
 					else if(!GamePlayState.selectedSocket.equals(thisSocket)) {
-						GamePlayState.createBeam(thisSocket,GamePlayState.selectedSocket);
+						if(game.getCurrentState() instanceof GamePlayState) {
+						GamePlayState g = (GamePlayState) game.getCurrentState();
+						g.createBeam(thisSocket,GamePlayState.selectedSocket);
+						}else {
+							System.out.println("nö");
+						}
+						
 						GamePlayState.selectedSocket.hasBeam = true;
 						GamePlayState.selectedSocket=null;
 						thisSocket.hasBeam=true;
@@ -53,10 +59,10 @@ public class BeamSocket extends Entity{
 						GamePlayState.selectedSocket = null;
 					
 					}
-				}
-				else {
-					System.out.println("TODO: remove beam");
-				}
+				//}
+				//else {
+					//System.out.println("TODO: remove beam");
+			//	}
 			}
 			
 		});

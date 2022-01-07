@@ -32,11 +32,8 @@ public class Collide implements Action {
 			//mit einer Wand kollidiert:
 			if (collider instanceof Wall || collider instanceof BeamSocket) { 
 		
-				System.out.println(mario.getPosition().y +" "+collider.getPosition().y);
-				//if(mario.getPosition().y > collider.getPosition().y && 
 				if(( mario.getLooksRight() && mario.getPosition().x < collider.getPosition().x) ||
 				(!mario.getLooksRight() && mario.getPosition().x > collider.getPosition().x)){
-						System.out.println("change");
 						mario.changeDirection();
 						mario.collided=true;
 			
