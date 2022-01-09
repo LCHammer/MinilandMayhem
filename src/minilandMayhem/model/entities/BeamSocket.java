@@ -1,5 +1,7 @@
 package minilandMayhem.model.entities;
 
+import java.util.LinkedList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -16,7 +18,7 @@ import minilandMayhem.ui.GamePlayState;
 
 public class BeamSocket extends Entity{
 
-	public boolean hasBeam = false;
+	private LinkedList<Beam> beams = new LinkedList<Beam>();
 	
 	public BeamSocket(String entityID) {
 		super(entityID);
@@ -35,39 +37,64 @@ public class BeamSocket extends Entity{
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				BeamSocket thisSocket = (BeamSocket) event.getOwnerEntity();
-				//if(!thisSocket.hasBeam) {
+					
 					if( GamePlayState.selectedSocket == null) {
+						//Es wurde vorher noch kein anderer Sockel ausgewählt
 						GamePlayState.selectedSocket = thisSocket;
-						System.out.println("socket set");
 					}
 					else if(!GamePlayState.selectedSocket.equals(thisSocket)) {
-						if(game.getCurrentState() instanceof GamePlayState) {
-						GamePlayState g = (GamePlayState) game.getCurrentState();
-						g.createBeam(thisSocket,GamePlayState.selectedSocket);
-						}else {
-							System.out.println("nö");
-						}
-						
-						GamePlayState.selectedSocket.hasBeam = true;
-						GamePlayState.selectedSocket=null;
-						thisSocket.hasBeam=true;
-					
+						//Es wurden auf 2 unterschiedliche Sockel geklickt -> baue Traeger
+							if(game.getCurrentState() instanceof GamePlayState) {
+								GamePlayState g = (GamePlayState) game.getCurrentState();
+								g.createBeam(thisSocket,GamePlayState.selectedSocket);
+							}
+							GamePlayState.selectedSocket=null;
 					}
 					else
 					{
-						System.out.println("gleicher sockel");
+						//es wurde 2 mal auf den selben Sockel geklickt -> entferne alle Traeger
+						thisSocket.removeBeams(thisSocket.beams);
 						GamePlayState.selectedSocket = null;
 					
 					}
-				//}
-				//else {
-					//System.out.println("TODO: remove beam");
-			//	}
 			}
 			
 		});
 		this.addComponent(e);
 		
+	}
+	
+	
+	/**
+	 * zerstoert alle Stahltraeger, die in der uebergebenen Liste sind und erstattet Ressourcen für jeden zerstoerten Traeger.
+	 * @param beamList zu zuerstoerende Stahltraeger
+	 */
+	public void removeBeams(LinkedList<Beam> beamList) {
+		int pre = beamList.size();
+		for (int i =0; i<beamList.size();) {
+			beamList.get(i).destroy();
+		}
+		int post = beamList.size();
+		GamePlayState.ressources+=(pre-post);
+	}
+	
+	
+	/**
+	 * fuegt diesem Sockel alle Stahltraeger der uebergebenen Liste hinzu
+	 * @param beamList Liste von Stahltraegern, die an diesen Sockel gebaut sind
+	 */
+	public void addBeams(LinkedList<Beam> beamList) {
+		beams.addAll(beamList);
+	}
+	
+	
+	/**
+	 * entfernt einen einzelnen Stahltraeger aus der Liste. 
+	 * Wird aufgerufen, wenn ein anderer Sockel seine Traeger entfernt und Bestandteile davon an diesen Sockel angebaut sind. 
+	 * @param b zu erntfernender Traeger.
+	 */
+	public void removeSingleBeam(Beam b) {
+		this.beams.remove(b);
 	}
 
 }

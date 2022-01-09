@@ -7,12 +7,7 @@ import eea.engine.action.Action;
 import eea.engine.component.Component;
 import eea.engine.entity.Entity;
 import eea.engine.event.basicevents.CollisionEvent;
-import minilandMayhem.model.entities.BeamSocket;
-import minilandMayhem.model.entities.Danger;
-import minilandMayhem.model.entities.Door;
-import minilandMayhem.model.entities.Key;
-import minilandMayhem.model.entities.RobotMario;
-import minilandMayhem.model.entities.Wall;
+import minilandMayhem.model.entities.*;
 
 public class Collide implements Action {
 
@@ -32,12 +27,20 @@ public class Collide implements Action {
 			//mit einer Wand kollidiert:
 			if (collider instanceof Wall || collider instanceof BeamSocket) { 
 		
-				if(( mario.getLooksRight() && mario.getPosition().x < collider.getPosition().x) ||
-				(!mario.getLooksRight() && mario.getPosition().x > collider.getPosition().x)){
-						mario.changeDirection();
-						mario.collided=true;
-			
+				if(canCollide(mario,collider)){
+					mario.changeDirection();
 				}
+			//mit einem Stahltraeger kollidiert
+			}else if(collider instanceof Beam) {
+				Beam b = (Beam)collider;
+				if(b.getRotation() > 44f || b.getRotation() < -44f) {
+					//Stahltraeger zu steil zum hochlaufen
+					if(canCollide(mario,collider)){
+						mario.changeDirection();
+					}
+				}
+				
+		
 				//mit einer Tür kollidiert
 			}else if(collider instanceof Door) { 
 				Door d = (Door)collider;
@@ -50,9 +53,8 @@ public class Collide implements Action {
 						d.unlock(); //schließe Tür auf
 					}
 				}else {
-					if(!mario.collided) {
+					if(canCollide(mario,collider)){
 						mario.changeDirection();
-						mario.collided=true;
 					}
 				}
 				
@@ -70,6 +72,18 @@ public class Collide implements Action {
 			}
 		
 		}
+	}
+	
+	/**
+	 * berechnet, ob der Mario aufgrund der Kollision mit der Entity seine Richtung aendern darf oder nicht.
+	 * Er darf die Richtung aendern, wenn er in Richtung Entity schaut und diese vor ihm (und nicht hinter ihm) liegt.
+	 * @param mario 
+	 * @param collider Entity, mit der der Mario kollidiert ist.
+	 * @return true, wenn der Mario aufgrund der Kollision mit der Entity seine Richtung aendern darf. Sonst false. 
+	 */
+	public boolean canCollide(RobotMario mario, Entity collider) {
+		return ( mario.getLooksRight() && mario.getPosition().x < collider.getPosition().x) ||
+				(!mario.getLooksRight() && mario.getPosition().x > collider.getPosition().x);
 	}
 
 }

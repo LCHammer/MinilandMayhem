@@ -34,10 +34,10 @@
 
 ------------erledigt--------------------
 
-	8.1) Mario kann gegen Träger laufen (wenn mehr als 45 Grad) und auf
+	8.1) Mario kann gegen und auf Träger laufen (wenn mehr als 45 Grad) und auf
 	ihm bei 44 Grad oder weniger.
 
-9) Stahlträger entfernen: zwei mal auf einen der Sockel klicken entfernt alle Träger des Sockels. Gibt entsprechend Ressouren zurück.
+9) Stahlträger entfernen: zwei mal hintereinander auf den selben Sockel klicken entfernt alle Träger des Sockels. Gibt entsprechend Ressouren zurück.
 
 10) Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
 
@@ -99,3 +99,4 @@ Zu fixen:
 Pausemenü pausiert nicht, sondern startet neu!
 Animationen
 Mario soll auch in andere Richtung schauen, wenn er sich umdreht
+Stahltraeger nur bauen, wenn sie mit nichts kollidieren werden

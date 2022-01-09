@@ -37,7 +37,7 @@ public class RobotMario extends Entity{
 	private boolean isActive;
 	private boolean looksRight;
 	public float speed;
-	public boolean collided;
+	//public boolean collided;
 	private boolean hasKey;
 	private PhysicsHitbox pHitbox;
 	private LoopEvent fall;
@@ -53,7 +53,6 @@ public class RobotMario extends Entity{
 		isActive = false;
 		looksRight = true;
 		speed = 0.125f;
-		collided = false;
 		hasKey = false;
 		pHitbox = new PhysicsHitbox("Phyisc"+entityID, this.getPosition(), this);
 		this.setPassable(true);

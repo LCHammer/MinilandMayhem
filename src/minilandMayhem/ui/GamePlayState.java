@@ -27,7 +27,7 @@ public class GamePlayState extends BasicGameState {
 	
 	private int stateID;
     private StateBasedEntityManager entityManager;
-    public static int ressources = 5;
+    public static int ressources = 50;
     public static BeamSocket selectedSocket = null;
 	
 	public GamePlayState(int stateID) {
@@ -211,21 +211,29 @@ public class GamePlayState extends BasicGameState {
 		//GamePlayState.ressources=20;
 		if(GamePlayState.ressources>=count-1) {
 		LinkedList<Beam> lst = new LinkedList<Beam>();
+		if(first.x < second.x ) {
+			angle*=-1;
+			
+		}
+		System.out.println(angle);
 		//Fülle den Zwischenraum mit Stahltraegern
 		for (int i=1; i<count;i++) {
-			Beam b  = new Beam("Stahltraeger");
+			Beam b  = new Beam("Stahltraeger",firstSocket,secondSocket);
 			int x = (int)(second.x+(xdist/count)*i);
 			int y= (int)(second.y+(ydist/count)*i);
 			b.setPosition(new Vector2f(x,y));
+			lst.add(b);
 			//Rotiere sie entsprechend des Winkels
-			if(angle<0) {
-				b.setRotation((float) ( angle-180));
-			}else {
-				b.setRotation((float) angle);
-			}
+			
+			
+			
+			b.setRotation((float) angle);
+			
 			
 			entityManager.addEntity(stateID, b);
 		}
+		firstSocket.addBeams(lst);
+		secondSocket.addBeams(lst);
 		//entferne Ressourcen
 		GamePlayState.ressources-=count-1;
 		
