@@ -13,6 +13,7 @@ import eea.engine.action.basicactions.MoveDownAction;
 import eea.engine.action.basicactions.MoveForwardAction;
 import eea.engine.action.basicactions.MoveLeftAction;
 import eea.engine.action.basicactions.MoveRightAction;
+import eea.engine.action.basicactions.MoveUpAction;
 import eea.engine.action.basicactions.RemoveEventAction;
 import eea.engine.component.Component;
 import eea.engine.component.render.ImageRenderComponent;
@@ -43,6 +44,10 @@ public class RobotMario extends Entity{
 	private LoopEvent fall;
 	private int fallings = 0;
 	private boolean isFalling = false;
+	private LoopEvent walkUp;
+	private boolean isWalkingUp=false;
+	private BeamSocket start;
+	private BeamSocket end;
 	
 	/**
 	 * Konstruktor
@@ -57,8 +62,12 @@ public class RobotMario extends Entity{
 		pHitbox = new PhysicsHitbox("Phyisc"+entityID, this.getPosition(), this);
 		this.setPassable(true);
 		fall = new LoopEvent();
+		walkUp = new LoopEvent();
+		this.addComponent(walkUp);
 		this.addComponent(fall);
 		this.setSize(new Vector2f(48,48));
+		//this.setRotation(30f);
+		//this.pHitbox.setRotation(30f);
 		
 		
 		try {
@@ -178,6 +187,13 @@ public class RobotMario extends Entity{
 	 */
 	public void fall(int fps) {
 		isFalling = true;
+		if(this.isWalkingUp) {
+			this.setRotation(0);
+			this.pHitbox.setRotation(0);
+			this.isWalkingUp = false;
+			this.walkUp.removeAction(0);
+		}
+		
 		if(isActive) {
 		fallings +=1;
 		//collided = true;
@@ -205,5 +221,75 @@ public class RobotMario extends Entity{
 	 */
 	public boolean getFalling() {
 		return isFalling;
+	}
+	
+	/**
+	 * laesst den uebergebenen Mario den Stahltraeger hochlaufen
+	 * @param b Stahltraeger, den der Mario hochlaeuft
+	 */
+	public void walkOnBeam(Beam b) {
+		//System.out.println(isFalling);
+		if(!isWalkingUp) {
+			BeamSocket first = b.getFirst();
+			BeamSocket second = b.getSecond();
+			if(this.looksRight && first.getPosition().x < second.getPosition().x
+					|| !this.looksRight && first.getPosition().x > second.getPosition().x) {
+				this.start=first;
+				this.end=second;
+			}else {
+				this.start = second;
+				this.end = first;
+			}
+			this.setRotation(b.getRotation());
+			this.pHitbox.setRotation(b.getRotation());
+			double angle =Math.toRadians(Math.abs((double)b.getRotation()));
+			double up_distance = Math.tan(angle)*(double)speed;
+			System.out.println(Math.tan(angle));
+			this.walkUp.addAction(new MoveUpAction((float)up_distance));
+			this.isWalkingUp =true;
+		}
+	}
+	
+	/**
+	 * beendet das Hochlaufen auf einem Stahlträger.
+	 * @param Sockel, an dem der Mario sein Hochlaufen beendet
+	 */
+	public void endWalkingUp(BeamSocket socket) {
+		
+		Vector2f socketpos = socket.getPosition();
+		Vector2f pos = this.getPosition();
+	
+		if(socket.equals(end) && pos.y < socketpos.y-50) {
+			this.setRotation(0f);
+			this.pHitbox.setRotation(0f);
+			this.isWalkingUp=false;
+			this.walkUp.removeAction(0);
+		}
+	}
+	
+	/**
+	 * 
+	 * @return true, wenn der Mario gerade einen Stahltraeger hochlaeuft, sonst false.
+	 */
+	public boolean getIsWalkingUp() {
+		return this.isWalkingUp;
+	}
+	
+	/**
+	 * 
+	 * @return startsockel des Hochlaufens
+	 */
+	public BeamSocket getStart() {
+		return this.start;
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @return Endsockel des Hochlaufens
+	 */
+	public BeamSocket getEnd() {
+		return this.end;
 	}
 }

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.action.Action;
@@ -29,7 +30,7 @@ public class BeamSocket extends Entity{
 		catch(SlickException e) {
 			System.out.println("Sockelbild konnte nicht geladen werden");
 		}
-		
+		this.setSize(new Vector2f(48,48));
 		
 		ANDEvent e = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
 		e.addAction(new Action() {

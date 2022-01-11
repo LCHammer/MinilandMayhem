@@ -1,7 +1,7 @@
-1)MainMenu füllen
+X1)MainMenu füllen
 	auch Buttons "Start", "Beenden"
 	
-2)GamePlayState füllen
+X2)GamePlayState füllen
 	auch Übergänge: ESC -> Pause
 	auch Menge an Ressourcen sichtbar (als Zahl)
 
@@ -15,39 +15,54 @@
 5) Spiel an sich: Einen Mario, der nach rechts läuft, 
 	bis er eine Wand trifft und dann Umdreht und nach links läuft
 	
-  5.1) Mario kann per klick aktiviert werden und läuft dann nach rechts.
+	X5.1) Mario kann per klick aktiviert werden und läuft dann nach rechts.
 	
 
-  5.2)Läuft der Mario gegen eine Wand, so dreht er um und läuft in die entgegen gesetzte Richtung
+	X5.2)Läuft der Mario gegen eine Wand, so dreht er um und läuft in die entgegen gesetzte Richtung
 	von der Wand weg.
 
-
-6) Tür mechanik: wenn Mario Auf eine Tür läuft, "geht er durch" und wird entfernt
-
-
-7) Schlüssel Pickup: Muss erst eingesammelt werden und zur Tür gebracht werden, bevor sie sich öffnet -> Ausbaustufe 1
+	5.3) Mario hat laufanimation und schaut nach links, wenn er nach links läuft
 
 
-8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger, sofern man 
+X6) Tür mechanik: wenn Mario Auf eine Tür läuft, "geht er durch" und wird entfernt
+
+
+X7) Schlüssel Pickup: Muss erst eingesammelt werden und zur Tür gebracht werden, bevor sie sich öffnet -> Ausbaustufe 1
+
+
+X8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger, sofern man 
 	genug Ressourcen hat. Ressourcen werden außerdem verbraucht.
 
+	X8.1) Mario kann gegen und auf Träger laufen (wenn mehr als 45 Grad) und auf
+	ihm bei 44 Grad oder weniger. Dabei wird er auch entsprechend rotiert, bis er oben ist.
 
-------------erledigt--------------------
+	8.2) Läuft der Mario von der "falschen" seite gegen den Träger, so kollidiert er
+	als wäre es eine Wand
 
-	8.1) Mario kann gegen und auf Träger laufen (wenn mehr als 45 Grad) und auf
-	ihm bei 44 Grad oder weniger.
+	X8.3) Marios können auf stahlträger fallen und laufen sie dann auch hoch (bei <45°)
 
-9) Stahlträger entfernen: zwei mal hintereinander auf den selben Sockel klicken entfernt alle Träger des Sockels. Gibt entsprechend Ressouren zurück.
+	8.4) Marios können Träger herrunterlaufen (immer), Mario wird auch rotiert bis er unten ist.
+
+	8.5) Kollidiert ein Mario gegen etwas (und ändert seine Richtung) während er hochläuft,
+	so läuft er nun runter und umgekehrt
+
+	X8.6) Während ein Mario hoch/runterläuft, ignoriert er alle anderen Stahlträger, die weniger als 45° haben.
+
+X9) Stahlträger entfernen: zwei mal hintereinander auf den selben Sockel klicken entfernt alle Träger des Sockels. Gibt entsprechend Ressouren zurück.
+	
+	9.1) Wird ein Träger entfernt, auf dem ein Mario gerade hoch/runterläuft, so fällt er und beendet das hoch/runterlaufen.
 
 10) Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
 
-11) Schwerkraft, Marios fallen, wenn sie keinen Boden unter den Füßen haben. (CE-Teil)
-	-Mario von Erdbeschleunigung beeinflusst. Beschl. ist 0, wenn Mario auf Boden steht (oder Leiter/Stahlträger)
+X11) Schwerkraft, Marios fallen, wenn sie keinen Boden unter den Füßen haben. (CE-Teil)
+	-Mario von Erdbeschleunigung beeinflusst. Beschl. ist 0, wenn Mario auf Boden steht (oder Leiter/Stahlträger/Sockel)
 
 
-12) Map-Parser: Map soll im Main menu aus Textdatei geladen werden können und bei Spielstart soll geladene Map angezeigt werden können.
+X12) Map-Parser: Map soll im Main menu aus Textdatei geladen werden können und bei Spielstart soll geladene Map angezeigt werden können.
     Laden der Map erfolgt aus einer Textdatei: M: Mario, W: Wand, _: nichts/Luft, D:Tür, L: Leiter, S: Sockel, X:Gefahr (z.B. Stacheboden)
-    speichere auch anzahl an Marios. Unbekannte Zeichen sollen auch als Luft interpretiert werden. Füge zusätzlich eine Bounding Box aus Wänden hinzu, damit man nicht aus der Welt fällt.
+    speichere auch anzahl an Marios. Unbekannte Zeichen sollen auch als Luft interpretiert werden. 
+	
+	X12.1)Füge zusätzlich eine Bounding Box aus Wänden hinzu, damit man nicht aus der Welt fällt.
 
 
 13) Level zu ende, sofern alle Marios das Spielfeld verlassen haben (entweder zerstört oder durch die Tür) 
@@ -99,4 +114,6 @@ Zu fixen:
 Pausemenü pausiert nicht, sondern startet neu!
 Animationen
 Mario soll auch in andere Richtung schauen, wenn er sich umdreht
-Stahltraeger nur bauen, wenn sie mit nichts kollidieren werden
+Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
+Marios kollidieren mit anderen Marios
+Glitch beim träger hochlaufen, wenn "hochgehen" nicht beendet (gibt sich ggf noch)

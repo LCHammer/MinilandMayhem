@@ -24,7 +24,7 @@ public class Beam extends Entity {
 			}catch (SlickException e) {
 				System.out.println("Wandbild konnte nicht geladen werden");
 			}
-			this.setSize(new Vector2f(50,50));
+			this.setSize(new Vector2f(48,48));
 	}
 	
 	
@@ -37,6 +37,25 @@ public class Beam extends Entity {
 		Event l = new LoopEvent();
 		l.addAction(new DestroyEntityAction());
 		this.addComponent(l);
+	}
+	
+	
+	/**
+	 * 
+	 * @return erster Sockel
+	 */
+	public BeamSocket getFirst() {
+		return this.first;
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @return zweiter Sockel
+	 */
+	public BeamSocket getSecond() {
+		return this.second;
 	}
 
 

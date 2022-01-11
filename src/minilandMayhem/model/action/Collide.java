@@ -25,19 +25,41 @@ public class Collide implements Action {
 			//System.out.println("coll");
 		
 			//mit einer Wand kollidiert:
-			if (collider instanceof Wall || collider instanceof BeamSocket) { 
+			if (collider instanceof Wall ) { 
 		
 				if(canCollide(mario,collider)){
 					mario.changeDirection();
 				}
 			//mit einem Stahltraeger kollidiert
-			}else if(collider instanceof Beam) {
+			}else if(collider instanceof BeamSocket) {
+				//ist es der Beamsocket, an dem er ankommen soll?
+				//TODO: nicht nur instanceof sondern auch equals!
+				BeamSocket socket = (BeamSocket)collider;
+				if(mario.getIsWalkingUp() ) {
+					if( canCollide(mario,socket)) {
+						mario.endWalkingUp(socket);
+					}
+					
+				}//Der Mario ist beim normalen Laufen mit einem Sockel kollidiert
+				else {
+					if(canCollide(mario,collider)){
+						mario.changeDirection();
+					}
+				}
+				
+			}
+			//Kollision mit Stahltraeger
+			else if(collider instanceof Beam) {
 				Beam b = (Beam)collider;
 				if(b.getRotation() > 44f || b.getRotation() < -44f) {
 					//Stahltraeger zu steil zum hochlaufen
 					if(canCollide(mario,collider)){
 						mario.changeDirection();
 					}
+				}else {
+					//Stahltraeger flach genug, um ihn hochzulaufen
+					mario.walkOnBeam(b);
+					
 				}
 				
 		

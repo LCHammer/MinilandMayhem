@@ -27,7 +27,7 @@ public class PhysicsHitbox extends Entity{
 		this.setVisible(false); 
 		//Wichtig: setzt die Groesse der Hitbox. Diese darf nicht mit dem entsprechenden Mario kollidieren,
 		//da sonst alle anderen Kollisionen überdeckt werden.
-		this.setSize(new Vector2f(50,2));		
+		this.setSize(new Vector2f(48,2));		
 		
 		
 		//ueberprueft, ob der Mario aktuell KEINEN Boden unter sich hat.
@@ -74,7 +74,7 @@ public class PhysicsHitbox extends Entity{
 				PhysicsHitbox ph = (PhysicsHitbox)event.getOwnerEntity();
 				Vector2f pos = ph.getOwner().getPosition();
 				//sorgt dafuer, dass diese Hitbox sich immer unter ihrem jeweiligen Mario befindet.
-				ph.setPosition(new Vector2f(pos.x, pos.y+30));
+				ph.setPosition(new Vector2f(pos.x, pos.y+32));
 				
 			}
 			
