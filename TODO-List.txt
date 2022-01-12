@@ -106,7 +106,7 @@ Ausbaustufe 3:
 
 22) Highscorescreen vom Startmenü aus der Highscore einträge anzeigt (nur die besten 5)
 
-23) Toad und Peach Roboter: identisches verhalten zu Mario, haben aber eigene Türen. (in Mapparser integrieren) P:Peach, T:Toad
+23) Hammer Pickup (H:Hammer). Mario zerstört alle Kugelwillis (Raketen) und Goombas, die er berührt. Er selbst bleibt dabei unversehrt.
 
 
 
@@ -116,4 +116,4 @@ Animationen
 Mario soll auch in andere Richtung schauen, wenn er sich umdreht
 Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
 Marios kollidieren mit anderen Marios
-Glitch beim träger hochlaufen, wenn "hochgehen" nicht beendet (gibt sich ggf noch)
+Glitch beim Träger hochlaufen, wenn "hochgehen" nicht beendet (gibt sich ggf noch)
