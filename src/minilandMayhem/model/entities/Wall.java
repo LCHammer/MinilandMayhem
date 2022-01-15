@@ -25,7 +25,7 @@ public class Wall extends Entity{
 			System.out.println("Wandbild konnte nicht geladen werden");
 		}
 		this.setPassable(false);
-		this.setSize(new Vector2f(48,48));
+		this.setSize(new Vector2f(45,45));
 	}
 	
 	

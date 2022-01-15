@@ -16,6 +16,7 @@ import eea.engine.event.NOTEvent;
 import eea.engine.event.basicevents.CollisionEvent;
 import eea.engine.event.basicevents.LoopEvent;
 import minilandMayhem.model.events.GroundCollision;
+import minilandMayhem.model.events.IsOnBeamEvent;
 
 public class PhysicsHitbox extends Entity{
 	
@@ -81,6 +82,28 @@ public class PhysicsHitbox extends Entity{
 		});
 		
 		this.addComponent(e);
+		
+		IsOnBeamEvent isOnBeam = new IsOnBeamEvent();
+		isOnBeam.addAction(new Action() {
+
+			@Override
+			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
+				PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
+				IsOnBeamEvent e = (IsOnBeamEvent) event;
+				Beam b = (Beam) e.getCollidedEntity();
+				if(b.getRotation() <= 44f && b.getRotation() >= -44f && !(b.getRotation() == 0f)) {
+					if(self.getOwner().getLooksRight() == b.getUpRight()) {
+					}else {
+						self.getOwner().walkDownBeam(b);
+					}
+					
+				}
+				
+				
+			}
+			
+		});
+		this.addComponent(isOnBeam);
 		
 		
 		

@@ -31,6 +31,7 @@ public class BeamSocket extends Entity{
 			System.out.println("Sockelbild konnte nicht geladen werden");
 		}
 		this.setSize(new Vector2f(48,48));
+		this.setRotation(90f);
 		
 		ANDEvent e = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
 		e.addAction(new Action() {

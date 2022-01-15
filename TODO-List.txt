@@ -79,35 +79,30 @@ Ausbaustufe 1:
 
 16) Münzen Pickup für mehr Punkte (einmalig) (auch in Parser hinzufügen) C: Coin
 
-17) Leiter Mechanik: Es soll Leitern geben (als block) die der Mario bei Berührung herunterklettert. Kann er nicht herunterklettern, so klettert er nach oben.
-	Diese Bewegung pausiert das Bewegen nach links/rechts. Ist er am ende der Leiter angekommen, so bewegt er sich danach weiter wie zuvor.
-	Während ein Mario auf einer Leiter ist, fällt er nicht.
-
-
-
 
 Ausbaustufe 2:
 
 
-18) Jumppad (J:Jumppad): lässt Mario Springen (in Parabelform)
+17) Jumppad (J:Jumppad): lässt Mario Springen (in Parabelform)
 
 
-19) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen bei aufprall kaputt (egal ob Mario oder Wand).
+18) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen bei aufprall kaputt (egal ob Mario oder Wand).
   Fliegen immer nur nach links oder rechts, von schwerkraft nicht beeinflusst. Kanone schießt in regelmäßigen Abständen (z.B. alle 5 Sekunden).
   In Mapparser integrieren (B:Kanone)"english Bullet Bill"
 
-20) Goomba Roboter, die Marios bei berührung zerstören (gehen selbst nicht kaputt außer sie laufen in stacheln/Kugelwilli)
+19) Goomba Roboter, die Marios bei berührung zerstören (gehen selbst nicht kaputt außer sie laufen in stacheln/Kugelwilli)
   Laufen wie Marios, können nicht springen/leitern klettern. (G:Goomba) Laufen anfangs nach links
 
 
 Ausbaustufe 3:
 
-21) Highscores die gespeichert werden können (von Ende screen aus) in Datei  (mit Name, Level, Punktzahl)
+20) Highscores die gespeichert werden können (von Ende screen aus) in Datei  (mit Name, Level, Punktzahl)
 
-22) Highscorescreen vom Startmenü aus der Highscore einträge anzeigt (nur die besten 5)
+21) Highscorescreen vom Startmenü aus der Highscore einträge anzeigt (nur die besten 5)
 
-23) Hammer Pickup (H:Hammer). Mario zerstört alle Kugelwillis (Raketen) und Goombas, die er berührt. Er selbst bleibt dabei unversehrt.
-
+22)  Leiter Mechanik: Es soll Leitern geben (als block) die der Mario bei Berührung herunterklettert. Kann er nicht herunterklettern, so klettert er nach oben.
+	Diese Bewegung pausiert das Bewegen nach links/rechts. Ist er am ende der Leiter angekommen, so bewegt er sich danach weiter wie zuvor.
+	Während ein Mario auf einer Leiter ist, fällt er nicht.
 
 
 Zu fixen: 
@@ -117,3 +112,5 @@ Mario soll auch in andere Richtung schauen, wenn er sich umdreht
 Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
 Marios kollidieren mit anderen Marios
 Glitch beim Träger hochlaufen, wenn "hochgehen" nicht beendet (gibt sich ggf noch)
+Hintergrundbilder und Button Bilder
+Fenstergröße

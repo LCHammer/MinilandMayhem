@@ -48,6 +48,8 @@ public class RobotMario extends Entity{
 	private boolean isWalkingUp=false;
 	private BeamSocket start;
 	private BeamSocket end;
+	private LoopEvent walkDown;
+	private boolean isWalkingDown = false;
 	
 	/**
 	 * Konstruktor
@@ -62,16 +64,18 @@ public class RobotMario extends Entity{
 		pHitbox = new PhysicsHitbox("Phyisc"+entityID, this.getPosition(), this);
 		this.setPassable(true);
 		fall = new LoopEvent();
+		this.addComponent(fall);
 		walkUp = new LoopEvent();
 		this.addComponent(walkUp);
-		this.addComponent(fall);
+		walkDown = new LoopEvent();
+		this.addComponent(walkDown);
 		this.setSize(new Vector2f(48,48));
 		//this.setRotation(30f);
 		//this.pHitbox.setRotation(30f);
 		
 		
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/mario1.png")));
+			this.addComponent(new ImageRenderComponent(new Image("/assets/mario4.png")));
 		}
 		catch(SlickException e) {
 			System.out.println("Mariobild konnte nicht geladen werden");
@@ -135,6 +139,7 @@ public class RobotMario extends Entity{
 		if(!isFalling) {
 		looksRight = !looksRight;
 		}
+		System.out.println("coll");
 	}
 	
 
@@ -187,13 +192,26 @@ public class RobotMario extends Entity{
 	 */
 	public void fall(int fps) {
 		isFalling = true;
-		if(this.isWalkingUp) {
+		/*
+		if(this.getIsWalkingUp()) {
+			
 			this.setRotation(0);
 			this.pHitbox.setRotation(0);
 			this.isWalkingUp = false;
 			this.walkUp.removeAction(0);
 		}
 		
+		if(this.getIsWalkingDown()) {
+			System.out.println("falling");
+			
+			this.setRotation(0f);
+			this.pHitbox.setRotation(0f);
+			this.isWalkingDown = false;
+			this.walkDown.removeAction(0);
+			
+		}
+		*/
+	
 		if(isActive) {
 		fallings +=1;
 		//collided = true;
@@ -229,7 +247,7 @@ public class RobotMario extends Entity{
 	 */
 	public void walkOnBeam(Beam b) {
 		//System.out.println(isFalling);
-		if(!isWalkingUp) {
+		if(!getIsWalkingUp() && !getIsWalkingDown()) {
 			BeamSocket first = b.getFirst();
 			BeamSocket second = b.getSecond();
 			if(this.looksRight && first.getPosition().x < second.getPosition().x
@@ -240,13 +258,21 @@ public class RobotMario extends Entity{
 				this.start = second;
 				this.end = first;
 			}
+			//System.out.println(b.getRotation());
 			this.setRotation(b.getRotation());
 			this.pHitbox.setRotation(b.getRotation());
 			double angle =Math.toRadians(Math.abs((double)b.getRotation()));
 			double up_distance = Math.tan(angle)*(double)speed;
-			System.out.println(Math.tan(angle));
-			this.walkUp.addAction(new MoveUpAction((float)up_distance));
-			this.isWalkingUp =true;
+			
+			if(this.getLooksRight() == b.getUpRight()) {
+				this.walkUp.addAction(new MoveUpAction((float)up_distance));
+				this.isWalkingUp =true;
+			}else {
+				this.walkDown.addAction(new MoveDownAction((float)up_distance));
+				this.isWalkingDown=true;
+				//this.setPosition(new Vector2f(this.getPosition().x,this.getPosition().y+5));
+			}
+			
 		}
 	}
 	
@@ -264,12 +290,15 @@ public class RobotMario extends Entity{
 			this.pHitbox.setRotation(0f);
 			this.isWalkingUp=false;
 			this.walkUp.removeAction(0);
+			System.out.println("end");
+			this.end=null;
+			this.start=null;
 		}
 	}
 	
 	/**
 	 * 
-	 * @return true, wenn der Mario gerade einen Stahltraeger hochlaeuft, sonst false.
+	 * @return true, wenn der Mario gerade einen Stahltraeger hochlaeuft, sonst false. 
 	 */
 	public boolean getIsWalkingUp() {
 		return this.isWalkingUp;
@@ -291,5 +320,39 @@ public class RobotMario extends Entity{
 	 */
 	public BeamSocket getEnd() {
 		return this.end;
+	}
+	
+	
+	public boolean getIsWalkingDown() {
+		return this.isWalkingDown;
+	}
+	
+	public void walkDownBeam(Beam b) {
+		//System.out.println("down");
+		walkOnBeam(b);
+	}
+	
+	
+	public void endWalkingDown(BeamSocket s) {
+		//System.out.println(s.getPosition().y);
+		//System.out.println(this.getPosition().y);
+		
+		if(s.equals(end) && s.getPosition().y -55 < this.getPosition().y) {
+			this.setRotation(0f);
+			this.pHitbox.setRotation(0f);
+			this.isWalkingDown=false;
+			this.walkDown.removeAction(0);
+			this.smoothLanding();
+			this.end=null;
+			this.start=null;
+			System.out.println("end");
+		}
+	}
+	
+	public void smoothLanding() {
+		float height = this.getPosition().y;
+		double smoothHeight = Math.round(height/50)*50;
+		this.setPosition(new Vector2f(this.getPosition().x,(float)smoothHeight));
+		
 	}
 }

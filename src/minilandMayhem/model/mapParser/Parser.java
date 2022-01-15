@@ -57,6 +57,7 @@ public class Parser {
 		case 'W': return new Wall("Wand");
 		case 'D': return new Door("Tür",true);
 		case 'S': return new BeamSocket("Sockel");
+		//case 'H': return new Hammer("Hammer");
 		default: return null;
 		
 		

@@ -202,6 +202,12 @@ public class GamePlayState extends BasicGameState {
 		double ydist = (double)(first.y - second.y);
 		double length = Math.sqrt(xdist*xdist + ydist*ydist);
 		
+		//berechnet, ob der Traeger nach oben rechts / unten links zeigt
+		boolean upRight = false;
+		if(xdist*ydist < 0) {
+			upRight = true;
+			System.out.println("upRight");
+		}
 		//Winkel, den der Stahltraeger haben muss
 		double angle =Math.toDegrees(Math.asin(ydist/length));
 		
@@ -218,7 +224,7 @@ public class GamePlayState extends BasicGameState {
 		System.out.println(angle);
 		//Fülle den Zwischenraum mit Stahltraegern
 		for (int i=1; i<count;i++) {
-			Beam b  = new Beam("Stahltraeger",firstSocket,secondSocket);
+			Beam b  = new Beam("Stahltraeger",firstSocket,secondSocket,upRight);
 			int x = (int)(second.x+(xdist/count)*i);
 			int y= (int)(second.y+(ydist/count)*i);
 			b.setPosition(new Vector2f(x,y));

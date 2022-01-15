@@ -40,6 +40,10 @@ public class Collide implements Action {
 						mario.endWalkingUp(socket);
 					}
 					
+				}else if(mario.getIsWalkingDown()){
+					mario.endWalkingDown(socket);
+					
+					
 				}//Der Mario ist beim normalen Laufen mit einem Sockel kollidiert
 				else {
 					if(canCollide(mario,collider)){
@@ -57,12 +61,16 @@ public class Collide implements Action {
 						mario.changeDirection();
 					}
 				}else {
+					
 					//Stahltraeger flach genug, um ihn hochzulaufen
-					mario.walkOnBeam(b);
+					if(mario.getLooksRight() == b.getUpRight()) {
+						mario.walkOnBeam(b);
+						
+					} 				
 					
 				}
 				
-		
+			
 				//mit einer Tür kollidiert
 			}else if(collider instanceof Door) { 
 				Door d = (Door)collider;

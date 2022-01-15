@@ -14,17 +14,19 @@ public class Beam extends Entity {
 	
 	private BeamSocket first;
 	private BeamSocket second;
+	private boolean upRight;
 
-	public Beam(String entityID,BeamSocket first,BeamSocket second) {
+	public Beam(String entityID,BeamSocket first,BeamSocket second, boolean isUpRight) {
 		super(entityID);
 		this.first=first;
 		this.second=second;
+		this.upRight=isUpRight;
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/wall.png")));
+			this.addComponent(new ImageRenderComponent(new Image("/assets/Wall.png")));
 			}catch (SlickException e) {
 				System.out.println("Wandbild konnte nicht geladen werden");
 			}
-			this.setSize(new Vector2f(48,48));
+			this.setSize(new Vector2f(50,50));
 	}
 	
 	
@@ -56,6 +58,15 @@ public class Beam extends Entity {
 	 */
 	public BeamSocket getSecond() {
 		return this.second;
+	}
+	
+	
+	/**
+	 * 
+	 * @return true, wenn der Traeger nach oben rechts /oder unten links zeigt, false wenn er nach oben links/unten rechts zeigt
+	 */
+	public boolean getUpRight() {
+		return this.upRight;
 	}
 
 
