@@ -22,11 +22,11 @@ public class Beam extends Entity {
 		this.second=second;
 		this.upRight=isUpRight;
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/Wall.png")));
+			this.addComponent(new ImageRenderComponent(new Image("/assets/Beam.png")));
 			}catch (SlickException e) {
 				System.out.println("Wandbild konnte nicht geladen werden");
 			}
-			this.setSize(new Vector2f(50,50));
+			this.setSize(new Vector2f(48,48));
 	}
 	
 	

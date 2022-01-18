@@ -36,12 +36,12 @@ X8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger,
 	X8.1) Mario kann gegen und auf Träger laufen (wenn mehr als 45 Grad) und auf
 	ihm bei 44 Grad oder weniger. Dabei wird er auch entsprechend rotiert, bis er oben ist.
 
-	8.2) Läuft der Mario von der "falschen" seite gegen den Träger, so kollidiert er
+	X8.2) Läuft der Mario von der "falschen" seite gegen den Träger, so kollidiert er
 	als wäre es eine Wand
 
 	X8.3) Marios können auf stahlträger fallen und laufen sie dann auch hoch (bei <45°)
 
-	8.4) Marios können Träger herrunterlaufen (immer), Mario wird auch rotiert bis er unten ist.
+	X8.4) Marios können Träger herrunterlaufen (immer), Mario wird auch rotiert bis er unten ist.
 
 	8.5) Kollidiert ein Mario gegen etwas (und ändert seine Richtung) während er hochläuft,
 	so läuft er nun runter und umgekehrt
@@ -50,7 +50,7 @@ X8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger,
 
 X9) Stahlträger entfernen: zwei mal hintereinander auf den selben Sockel klicken entfernt alle Träger des Sockels. Gibt entsprechend Ressouren zurück.
 	
-	9.1) Wird ein Träger entfernt, auf dem ein Mario gerade hoch/runterläuft, so fällt er und beendet das hoch/runterlaufen.
+	X9.1) Wird ein Träger entfernt, auf dem ein Mario gerade hoch/runterläuft, so fällt er und beendet das hoch/runterlaufen.
 
 10) Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
 
@@ -75,7 +75,7 @@ Ausbaustufe 1:
 
 14) Ressourcen Pickup: einmaliges Pickup, welches 1 Ressource gibt (soll auch in Mapparser eingefügt werden) R:Ressource
 
-15) Schlüssel Pickup (auch in Mapparser einfügen) (K:Schlüssel)
+X15) Schlüssel Pickup (auch in Mapparser einfügen) (K:Schlüssel)
 
 16) Münzen Pickup für mehr Punkte (einmalig) (auch in Parser hinzufügen) C: Coin
 
@@ -100,7 +100,7 @@ Ausbaustufe 3:
 
 21) Highscorescreen vom Startmenü aus der Highscore einträge anzeigt (nur die besten 5)
 
-22)  Leiter Mechanik: Es soll Leitern geben (als block) die der Mario bei Berührung herunterklettert. Kann er nicht herunterklettern, so klettert er nach oben.
+22) Leiter Mechanik: Es soll Leitern geben (als block) die der Mario bei Berührung herunterklettert. Kann er nicht herunterklettern, so klettert er nach oben.
 	Diese Bewegung pausiert das Bewegen nach links/rechts. Ist er am ende der Leiter angekommen, so bewegt er sich danach weiter wie zuvor.
 	Während ein Mario auf einer Leiter ist, fällt er nicht.
 
@@ -110,7 +110,9 @@ Pausemenü pausiert nicht, sondern startet neu!
 Animationen
 Mario soll auch in andere Richtung schauen, wenn er sich umdreht
 Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
+Ausgewählte Stahlträger sollen graphisch erkennbar sein
 Marios kollidieren mit anderen Marios
 Glitch beim Träger hochlaufen, wenn "hochgehen" nicht beendet (gibt sich ggf noch)
-Hintergrundbilder und Button Bilder
+Hintergrundbilder und Button Bilder, Main menu Bilder
 Fenstergröße
+"smooth" landing

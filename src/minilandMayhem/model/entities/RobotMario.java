@@ -16,18 +16,13 @@ import eea.engine.action.basicactions.MoveRightAction;
 import eea.engine.action.basicactions.MoveUpAction;
 import eea.engine.action.basicactions.RemoveEventAction;
 import eea.engine.component.Component;
+import eea.engine.component.render.AnimationRenderComponent;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.Event;
 import eea.engine.event.NOTEvent;
-import eea.engine.event.basicevents.CollisionEvent;
-import eea.engine.event.basicevents.KeyPressedEvent;
-import eea.engine.event.basicevents.LeavingScreenEvent;
-import eea.engine.event.basicevents.LoopEvent;
-import eea.engine.event.basicevents.MouseClickedEvent;
-import eea.engine.event.basicevents.MouseEnteredEvent;
-import eea.engine.event.basicevents.MovementDoesNotCollideEvent;
+import eea.engine.event.basicevents.*;
 import minilandMayhem.model.action.Collide;
 import minilandMayhem.model.events.GroundCollision;
 import minilandMayhem.model.events.MarioLooksLeftEvent;
@@ -50,6 +45,9 @@ public class RobotMario extends Entity{
 	private BeamSocket end;
 	private LoopEvent walkDown;
 	private boolean isWalkingDown = false;
+	private Component image;
+	private Component animationLeft;
+	private Component animationRight;
 	
 	/**
 	 * Konstruktor
@@ -75,7 +73,13 @@ public class RobotMario extends Entity{
 		
 		
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/mario4.png")));
+			this.image = new ImageRenderComponent(new Image("/assets/mario4.png"));
+			Image r1 = new Image("assets/mario4.png");
+			Image r2 = new Image("assets/mario2.png");
+			Image r3 = new Image("assets/mario3.png");
+			Image[] arrRight = new Image[] {r1,r2,r3};
+			//this.animationRight = new AnimationRenderComponent(arrRight, 6f, 50, 50, true);
+			this.addComponent(image);
 		}
 		catch(SlickException e) {
 			System.out.println("Mariobild konnte nicht geladen werden");
@@ -99,6 +103,7 @@ public class RobotMario extends Entity{
 		CollisionEvent collide = new CollisionEvent();
 		collide.addAction(new Collide());
 		this.addComponent(collide);
+		
 				
 		
 	}
@@ -120,6 +125,9 @@ public class RobotMario extends Entity{
 			ANDEvent left = new ANDEvent(new LoopEvent(), new MarioLooksLeftEvent("MoveLeft"));
 			left.addAction(new MoveLeftAction(speed));
 			this.addComponent(left);
+			//TODO: change animation!
+			//this.removeComponent(image);
+			//this.addComponent(animationRight);
 		}
 	}
 	
@@ -139,7 +147,6 @@ public class RobotMario extends Entity{
 		if(!isFalling) {
 		looksRight = !looksRight;
 		}
-		System.out.println("coll");
 	}
 	
 
@@ -214,7 +221,6 @@ public class RobotMario extends Entity{
 	
 		if(isActive) {
 		fallings +=1;
-		//collided = true;
 		isFalling = true;
 		fall.addAction(new MoveDownAction(0.981f/fps));
 		}
@@ -230,7 +236,6 @@ public class RobotMario extends Entity{
 		}
 		fallings = 0;
 		isFalling = false;
-		//collided = true;
 	}
 	
 	/**
@@ -349,10 +354,35 @@ public class RobotMario extends Entity{
 		}
 	}
 	
+	//TODO: nur ausführen, wenn Wall unter den füßen/Beam mit rotation 0/ sockel
 	public void smoothLanding() {
 		float height = this.getPosition().y;
 		double smoothHeight = Math.round(height/50)*50;
 		this.setPosition(new Vector2f(this.getPosition().x,(float)smoothHeight));
 		
+	}
+	
+	/**
+	 * beendet das Hoch-/Runterlaufen auf einem Träger
+	 */
+	public void stopWalkOnBeam() {
+		
+		if(this.getIsWalkingUp()) {	
+			this.setRotation(0);
+			this.pHitbox.setRotation(0);
+			this.isWalkingUp = false;
+			this.walkUp.removeAction(0);
+		}
+		
+		
+		if(this.getIsWalkingDown()) {
+			this.setRotation(0f);
+			this.pHitbox.setRotation(0f);
+			this.isWalkingDown = false;
+			this.walkDown.removeAction(0);
+		}
+		this.isFalling=true;
+		this.end=null;
+		this.start=null;
 	}
 }

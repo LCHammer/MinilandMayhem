@@ -12,7 +12,7 @@ public class Key extends Collectable {
 	public Key(String entityID) {
 		super(entityID);
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+			this.addComponent(new ImageRenderComponent(new Image("/assets/fire.png")));
 		}
 		catch(SlickException e) {
 			System.out.println("Schluesselbild konnte nicht geladen werden");

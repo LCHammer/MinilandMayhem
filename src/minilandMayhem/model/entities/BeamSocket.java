@@ -25,7 +25,7 @@ public class BeamSocket extends Entity{
 		super(entityID);
 		
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/Wall.png")));
+			this.addComponent(new ImageRenderComponent(new Image("/assets/Socket.png")));
 		}
 		catch(SlickException e) {
 			System.out.println("Sockelbild konnte nicht geladen werden");
@@ -40,27 +40,29 @@ public class BeamSocket extends Entity{
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				BeamSocket thisSocket = (BeamSocket) event.getOwnerEntity();
 					
+				if(game.getCurrentState() instanceof GamePlayState) {
+					GamePlayState g = (GamePlayState) game.getCurrentState();
+					
+				
 					if( GamePlayState.selectedSocket == null) {
 						//Es wurde vorher noch kein anderer Sockel ausgewählt
 						GamePlayState.selectedSocket = thisSocket;
 					}
 					else if(!GamePlayState.selectedSocket.equals(thisSocket)) {
 						//Es wurden auf 2 unterschiedliche Sockel geklickt -> baue Traeger
-							if(game.getCurrentState() instanceof GamePlayState) {
-								GamePlayState g = (GamePlayState) game.getCurrentState();
-								g.createBeam(thisSocket,GamePlayState.selectedSocket);
-							}
-							GamePlayState.selectedSocket=null;
+						g.createBeam(thisSocket,GamePlayState.selectedSocket);
+						GamePlayState.selectedSocket=null;
 					}
 					else
 					{
 						//es wurde 2 mal auf den selben Sockel geklickt -> entferne alle Traeger
 						thisSocket.removeBeams(thisSocket.beams);
 						GamePlayState.selectedSocket = null;
-					
+						g.dropRobotFromBeams(thisSocket);
 					}
-			}
+				}
 			
+			}	
 		});
 		this.addComponent(e);
 		

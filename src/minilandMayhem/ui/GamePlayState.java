@@ -29,6 +29,7 @@ public class GamePlayState extends BasicGameState {
     private StateBasedEntityManager entityManager;
     public static int ressources = 50;
     public static BeamSocket selectedSocket = null;
+    private static LinkedList<RobotMario> marios = new LinkedList<RobotMario>();
 	
 	public GamePlayState(int stateID) {
 		this.stateID = stateID;
@@ -132,6 +133,7 @@ public class GamePlayState extends BasicGameState {
     					if(map[y][x] instanceof RobotMario) {
     						RobotMario m = (RobotMario) map[y][x];
     						entityManager.addEntity(stateID, m.getHitbox());
+    						marios.add(m);
     					}
     				}
     			}
@@ -206,7 +208,6 @@ public class GamePlayState extends BasicGameState {
 		boolean upRight = false;
 		if(xdist*ydist < 0) {
 			upRight = true;
-			System.out.println("upRight");
 		}
 		//Winkel, den der Stahltraeger haben muss
 		double angle =Math.toDegrees(Math.asin(ydist/length));
@@ -221,7 +222,6 @@ public class GamePlayState extends BasicGameState {
 			angle*=-1;
 			
 		}
-		System.out.println(angle);
 		//Fülle den Zwischenraum mit Stahltraegern
 		for (int i=1; i<count;i++) {
 			Beam b  = new Beam("Stahltraeger",firstSocket,secondSocket,upRight);
@@ -244,6 +244,19 @@ public class GamePlayState extends BasicGameState {
 		GamePlayState.ressources-=count-1;
 		
 		//TODO: also remove it
+		}
+	}
+	
+	
+	/**
+	 *  Ist ein Roboter auf einem der entfernten Träger, so soll er das Hoch/Runterlaufen beenden
+	 * @param socket Sockel, auf den 2 mal geklickt wurde. 
+	 */
+	public void dropRobotFromBeams(BeamSocket socket) {
+		for(RobotMario m : marios){
+			if(socket.equals(m.getStart())|| socket.equals(m.getEnd())) {
+				m.stopWalkOnBeam();
+			}
 		}
 	}
 

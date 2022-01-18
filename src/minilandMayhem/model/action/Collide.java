@@ -55,15 +55,19 @@ public class Collide implements Action {
 			//Kollision mit Stahltraeger
 			else if(collider instanceof Beam) {
 				Beam b = (Beam)collider;
-				if(b.getRotation() > 44f || b.getRotation() < -44f) {
+				if(b.getRotation() > 44f || b.getRotation() < -44f 
+						||(b.getUpRight() && mario.getPosition().x > b.getPosition().x)
+						||(!b.getUpRight() && mario.getPosition().x < b.getPosition().x)) {
 					//Stahltraeger zu steil zum hochlaufen
 					if(canCollide(mario,collider)){
 						mario.changeDirection();
+						
+						System.out.println(mario.getPosition().y);
 					}
 				}else {
 					
 					//Stahltraeger flach genug, um ihn hochzulaufen
-					if(mario.getLooksRight() == b.getUpRight()) {
+					if(mario.getLooksRight() == b.getUpRight() && b.getRotation() != 0f) {
 						mario.walkOnBeam(b);
 						
 					} 				

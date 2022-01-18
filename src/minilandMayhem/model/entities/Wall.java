@@ -20,7 +20,7 @@ public class Wall extends Entity{
 		super(entityID);
 		
 		try {
-		this.addComponent(new ImageRenderComponent(new Image("/assets/wall.png")));
+		this.addComponent(new ImageRenderComponent(new Image("/assets/Wall.png")));
 		}catch (SlickException e) {
 			System.out.println("Wandbild konnte nicht geladen werden");
 		}
