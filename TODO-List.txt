@@ -52,7 +52,7 @@ X9) Stahlträger entfernen: zwei mal hintereinander auf den selben Sockel klicke
 	
 	X9.1) Wird ein Träger entfernt, auf dem ein Mario gerade hoch/runterläuft, so fällt er und beendet das hoch/runterlaufen.
 
-10) Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
+X10) Hindernisse: "Stachelboden"/Wasser, wenn Mario darauf läuft, geht er kaputt.
 
 X11) Schwerkraft, Marios fallen, wenn sie keinen Boden unter den Füßen haben. (CE-Teil)
 	-Mario von Erdbeschleunigung beeinflusst. Beschl. ist 0, wenn Mario auf Boden steht (oder Leiter/Stahlträger/Sockel)
@@ -73,14 +73,27 @@ X12) Map-Parser: Map soll im Main menu aus Textdatei geladen werden können und 
 
 Ausbaustufe 1: 
 
-14) Ressourcen Pickup: einmaliges Pickup, welches 1 Ressource gibt (soll auch in Mapparser eingefügt werden) R:Ressource
+14) Ressourcen Pickup: einmaliges Pickup, welches 3 Ressource gibt (soll auch in Mapparser eingefügt werden) R:Ressource
 
 X15) Schlüssel Pickup (auch in Mapparser einfügen) (K:Schlüssel)
+
+	x15.1) verschlossene Türen (d:closedDoor)
+
+	X15.2) Tür soll danach auch offen bleiben (und Aussehen ändern)
 
 16) Münzen Pickup für mehr Punkte (einmalig) (auch in Parser hinzufügen) C: Coin
 
 
 Ausbaustufe 2:
+
+20) Highscores, die gespeichert werden können (von Ende screen aus) in Datei  (mit Name, Level, Punktzahl)
+
+21) Highscorescreen vom Startmenü aus, der Highscore einträge anzeigt (nur die besten 5)
+
+22) PowerUp: Mario mit Power up unbesiegbar.
+
+
+Ausbaustufe 3:
 
 
 17) Jumppad (J:Jumppad): lässt Mario Springen (in Parabelform)
@@ -94,15 +107,6 @@ Ausbaustufe 2:
   Laufen wie Marios, können nicht springen/leitern klettern. (G:Goomba) Laufen anfangs nach links
 
 
-Ausbaustufe 3:
-
-20) Highscores die gespeichert werden können (von Ende screen aus) in Datei  (mit Name, Level, Punktzahl)
-
-21) Highscorescreen vom Startmenü aus der Highscore einträge anzeigt (nur die besten 5)
-
-22) Leiter Mechanik: Es soll Leitern geben (als block) die der Mario bei Berührung herunterklettert. Kann er nicht herunterklettern, so klettert er nach oben.
-	Diese Bewegung pausiert das Bewegen nach links/rechts. Ist er am ende der Leiter angekommen, so bewegt er sich danach weiter wie zuvor.
-	Während ein Mario auf einer Leiter ist, fällt er nicht.
 
 
 Zu fixen: 
@@ -116,3 +120,4 @@ Glitch beim Träger hochlaufen, wenn "hochgehen" nicht beendet (gibt sich ggf no
 Hintergrundbilder und Button Bilder, Main menu Bilder
 Fenstergröße
 "smooth" landing
+code schön machen

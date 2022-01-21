@@ -17,9 +17,13 @@ import eea.engine.component.Component;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
+import eea.engine.event.Event;
+import eea.engine.event.OREvent;
 import eea.engine.event.basicevents.KeyPressedEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import minilandMayhem.model.entities.*;
+import minilandMayhem.model.events.NoMarioLeftEvent;
+import minilandMayhem.model.events.TimedEvent;
 import minilandMayhem.model.mapParser.Parser;
 
 public class GamePlayState extends BasicGameState {
@@ -29,7 +33,7 @@ public class GamePlayState extends BasicGameState {
     private StateBasedEntityManager entityManager;
     public static int ressources = 50;
     public static BeamSocket selectedSocket = null;
-    private static LinkedList<RobotMario> marios = new LinkedList<RobotMario>();
+    public static LinkedList<RobotMario> marios = new LinkedList<RobotMario>();
 	
 	public GamePlayState(int stateID) {
 		this.stateID = stateID;
@@ -46,11 +50,26 @@ public class GamePlayState extends BasicGameState {
     	entityManager.addEntity(stateID, background);
     	
     	// Bei DrÃ¼cken der ESC-Taste ins Pause-Menü wechseln
-    	Entity esc_Listener = new Entity("ESC_Listener");
-    	KeyPressedEvent esc_pressed = new KeyPressedEvent(Input.KEY_ESCAPE);
-    	esc_pressed.addAction(new ChangeStateAction(MinilandMayhem.PAUSEMENUSTATE));
-    	esc_Listener.addComponent(esc_pressed);    	
-    	entityManager.addEntity(stateID, esc_Listener);
+    	Entity finished = new Entity("finished");
+    	Event end_game = new OREvent(new KeyPressedEvent(Input.KEY_ESCAPE),new NoMarioLeftEvent("noMario",this));
+    	end_game.addAction(new ChangeStateAction(MinilandMayhem.ENDSCREENSTATE));
+    	finished.addComponent(end_game);    	
+    	entityManager.addEntity(stateID, finished);
+    	
+    	Entity t = new Entity("Timer");
+    	
+    	Event time = new TimedEvent("Timer",1000);
+    	time.addAction(new Action() {
+
+			@Override
+			public void update(GameContainer arg0, StateBasedGame arg1, int arg2, Component arg3) {
+				// TODO Auto-generated method stub
+				System.out.println("time");
+			}
+    		
+    	});
+    	t.addComponent(time);
+    	entityManager.addEntity(stateID, t);
     	
     	
     	if(MinilandMayhem.debug || Parser.map==null) {
@@ -123,6 +142,7 @@ public class GamePlayState extends BasicGameState {
     		Entity[][] map = Parser.parse();
     		int y_dim = map.length;
     		int x_dim = map[0].length;
+    		marios= new LinkedList<RobotMario>();
     		for (int y = 0; y < y_dim; y++) {
     			for( int x = 0; x < x_dim; x++) {
     				//wichtig: beachte reihenfolge der Dimensionen!
@@ -134,6 +154,7 @@ public class GamePlayState extends BasicGameState {
     						RobotMario m = (RobotMario) map[y][x];
     						entityManager.addEntity(stateID, m.getHitbox());
     						marios.add(m);
+    						
     					}
     				}
     			}
@@ -167,6 +188,9 @@ public class GamePlayState extends BasicGameState {
     			entityManager.addEntity(stateID, w);
     		}
     	}
+    	
+    	
+    	
 	}
 
 	@Override
@@ -259,5 +283,7 @@ public class GamePlayState extends BasicGameState {
 			}
 		}
 	}
+	
+	
 
 }

@@ -45,9 +45,12 @@ public class RobotMario extends Entity{
 	private BeamSocket end;
 	private LoopEvent walkDown;
 	private boolean isWalkingDown = false;
-	private Component image;
+	private Component imageR;
+	private Component imageL;
 	private Component animationLeft;
 	private Component animationRight;
+	private Image r1;
+	private boolean isDestroyed = false;
 	
 	/**
 	 * Konstruktor
@@ -73,13 +76,14 @@ public class RobotMario extends Entity{
 		
 		
 		try {
-			this.image = new ImageRenderComponent(new Image("/assets/mario4.png"));
-			Image r1 = new Image("assets/mario4.png");
+			this.imageR = new ImageRenderComponent(new Image("/assets/mario4.png"));
+			this.imageL = new ImageRenderComponent(new Image("assets/Mario1Left.png"));
+			this.r1 = new Image("assets/mario1.png");
 			Image r2 = new Image("assets/mario2.png");
 			Image r3 = new Image("assets/mario3.png");
 			Image[] arrRight = new Image[] {r1,r2,r3};
-			//this.animationRight = new AnimationRenderComponent(arrRight, 6f, 50, 50, true);
-			this.addComponent(image);
+			//this.animationRight = new AnimationRenderComponent(arrRight, -100f, 50, 50, false);
+			this.addComponent(this.imageR);
 		}
 		catch(SlickException e) {
 			System.out.println("Mariobild konnte nicht geladen werden");
@@ -126,8 +130,8 @@ public class RobotMario extends Entity{
 			left.addAction(new MoveLeftAction(speed));
 			this.addComponent(left);
 			//TODO: change animation!
-			//this.removeComponent(image);
-			//this.addComponent(animationRight);
+			//this.removeComponent(imageR);
+			//this.addComponent(imageL);
 		}
 	}
 	
@@ -145,7 +149,15 @@ public class RobotMario extends Entity{
 	 */
 	public void changeDirection() { 
 		if(!isFalling) {
-		looksRight = !looksRight;
+			if(this.looksRight) {
+				this.removeComponent(imageR);
+				this.addComponent(imageL);
+			}else {
+				this.removeComponent(imageL);
+				this.addComponent(imageR);
+			}
+			looksRight = !looksRight;
+			
 		}
 	}
 	
@@ -155,10 +167,12 @@ public class RobotMario extends Entity{
 	 * Wird aufgerufen, wenn Mario durch eine Tür geht oder von einer Gefahr zerstört wird.
 	 */
 	public void destroy() {
+		isDestroyed  = true;
 		Event l = new LoopEvent();
 		l.addAction(new DestroyEntityAction());
 		this.pHitbox.destroy();
 		this.addComponent(l);
+		
 	}
 	
 	/**
@@ -384,5 +398,10 @@ public class RobotMario extends Entity{
 		this.isFalling=true;
 		this.end=null;
 		this.start=null;
+	}
+	
+	
+	public boolean getDestroyed() {
+		return isDestroyed;
 	}
 }

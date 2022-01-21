@@ -8,6 +8,7 @@ import eea.engine.component.Component;
 import eea.engine.entity.Entity;
 import eea.engine.event.basicevents.CollisionEvent;
 import minilandMayhem.model.entities.*;
+import minilandMayhem.ui.GamePlayState;
 
 public class Collide implements Action {
 
@@ -19,10 +20,11 @@ public class Collide implements Action {
 		CollisionEvent collide =(CollisionEvent) event;
 		collider =collide.getCollidedEntity();
 		RobotMario mario = (RobotMario)event.getOwnerEntity();
+			
+		
 		//ist der Mario inaktiv, passiert nichts
 		if(mario.getIsActive()) {
 			
-			//System.out.println("coll");
 		
 			//mit einer Wand kollidiert:
 			if (collider instanceof Wall ) { 
@@ -83,6 +85,7 @@ public class Collide implements Action {
 				if(mario.getHasKey() || d.getUnlocked()) { 
 					//TODO: gib Punkte
 					mario.destroy();
+					
 					if(!d.getUnlocked()) {
 						d.unlock(); //schließe Tür auf
 					}
@@ -96,6 +99,7 @@ public class Collide implements Action {
 			}else if(collider instanceof Danger) {
 				//ziehe Punkte ab
 				mario.destroy();
+				
 				
 			//mit einem Schlüssel kollidiert	
 			}else if(collider instanceof Key) {

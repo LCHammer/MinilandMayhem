@@ -20,7 +20,7 @@ import eea.engine.event.ANDEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
 
-public class PauseMenu extends BasicGameState {
+public class EndScreen extends BasicGameState {
 	
 	private int stateID;
 	private StateBasedEntityManager entityManager;
@@ -29,7 +29,7 @@ public class PauseMenu extends BasicGameState {
     private final int distance = 100;
     private final int start_Position = 180;
 	
-	public PauseMenu(int stateID) {
+	public EndScreen(int stateID) {
 		this.stateID = stateID;
 		this.entityManager = StateBasedEntityManager.getInstance();
 	}
