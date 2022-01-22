@@ -5,7 +5,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.Event;
-import minilandMayhem.model.entities.RobotMario;
+import minilandMayhem.model.entities.Mario;
 import minilandMayhem.ui.GamePlayState;
 
 public class NoMarioLeftEvent extends Event {
@@ -24,7 +24,7 @@ public class NoMarioLeftEvent extends Event {
 	 */
 	protected boolean performAction(GameContainer gc, StateBasedGame game, int delta) {
 		
-		for(RobotMario m: GamePlayState.marios) {
+		for(Mario m: GamePlayState.marios) {
 			if(StateBasedEntityManager.getInstance().hasEntity(game.getCurrentStateID(), m.getID())){
 				return false;
 			}

@@ -33,7 +33,7 @@ public class GamePlayState extends BasicGameState {
     private StateBasedEntityManager entityManager;
     public static int ressources = 50;
     public static BeamSocket selectedSocket = null;
-    public static LinkedList<RobotMario> marios = new LinkedList<RobotMario>();
+    public static LinkedList<Mario> marios = new LinkedList<Mario>();
 	
 	public GamePlayState(int stateID) {
 		this.stateID = stateID;
@@ -64,18 +64,38 @@ public class GamePlayState extends BasicGameState {
 			@Override
 			public void update(GameContainer arg0, StateBasedGame arg1, int arg2, Component arg3) {
 				// TODO Auto-generated method stub
-				System.out.println("time");
+				//System.out.println("time");
 			}
     		
     	});
     	t.addComponent(time);
     	entityManager.addEntity(stateID, t);
     	
+    	Entity p = new Entity("Pause");
+    	// Wird die Taste 'p' gedrueckt, ...
+    	
+    	Event pause = new KeyPressedEvent(Input.KEY_P);
+    	// ... dann wird das Spiel pausiert
+    	pause.addAction(new Action(){
+    		@Override
+			public void update(GameContainer gc, StateBasedGame sb, int delta,
+					Component event) {
+				if(gc.isPaused()){
+					gc.resume();
+				} else {
+					gc.pause();
+				}
+				
+			}    		
+    	});
+    	p.addComponent(pause);
+    	entityManager.addEntity(stateID, p);
+    	
     	
     	if(MinilandMayhem.debug || Parser.map==null) {
     	
     	
-    	RobotMario mario = new RobotMario("Mario1");
+    	Mario mario = new Mario("Mario1");
     	mario.setPosition(new Vector2f(100,100));
     	//mario.getHitbox().setPosition(new Vector2f(200,230));
     	entityManager.addEntity(stateID, mario);
@@ -142,7 +162,7 @@ public class GamePlayState extends BasicGameState {
     		Entity[][] map = Parser.parse();
     		int y_dim = map.length;
     		int x_dim = map[0].length;
-    		marios= new LinkedList<RobotMario>();
+    		marios= new LinkedList<Mario>();
     		for (int y = 0; y < y_dim; y++) {
     			for( int x = 0; x < x_dim; x++) {
     				//wichtig: beachte reihenfolge der Dimensionen!
@@ -150,8 +170,8 @@ public class GamePlayState extends BasicGameState {
     					
     					map[y][x].setPosition(new Vector2f(100+x*50,150+y*50));
     					entityManager.addEntity(stateID, map[y][x]);
-    					if(map[y][x] instanceof RobotMario) {
-    						RobotMario m = (RobotMario) map[y][x];
+    					if(map[y][x] instanceof Mario) {
+    						Mario m = (Mario) map[y][x];
     						entityManager.addEntity(stateID, m.getHitbox());
     						marios.add(m);
     						
@@ -277,7 +297,7 @@ public class GamePlayState extends BasicGameState {
 	 * @param socket Sockel, auf den 2 mal geklickt wurde. 
 	 */
 	public void dropRobotFromBeams(BeamSocket socket) {
-		for(RobotMario m : marios){
+		for(Mario m : marios){
 			if(socket.equals(m.getStart())|| socket.equals(m.getEnd())) {
 				m.stopWalkOnBeam();
 			}

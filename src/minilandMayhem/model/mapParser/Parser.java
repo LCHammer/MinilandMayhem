@@ -53,7 +53,7 @@ public class Parser {
 	public static Entity convert(char c) {
 		switch (c) {
 		case '_': return null;
-		case 'M': return new RobotMario("Mario");
+		case 'M': return new Mario("Mario");
 		case 'W': return new Wall("Wand");
 		case 'D': return new Door("Tür",true);
 		case 'd': return new Door("Tür",false);

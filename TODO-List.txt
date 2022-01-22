@@ -110,7 +110,7 @@ Ausbaustufe 3:
 
 
 Zu fixen: 
-Pausemenü pausiert nicht, sondern startet neu!
+Pausemenü pausiert nicht, sondern startet neu! (erledigt)
 Animationen
 Mario soll auch in andere Richtung schauen, wenn er sich umdreht
 Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden

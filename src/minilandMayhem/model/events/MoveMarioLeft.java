@@ -4,7 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.event.Event;
-import minilandMayhem.model.entities.RobotMario;
+import minilandMayhem.model.entities.Mario;
 
 public class MoveMarioLeft extends Event {
 
@@ -16,7 +16,7 @@ public class MoveMarioLeft extends Event {
 	@Override
 	protected boolean performAction(GameContainer gc, StateBasedGame game, int delta) {
 		// TODO Auto-generated method stub
-		RobotMario r = (RobotMario) this.owner;
+		Mario r = (Mario) this.owner;
 		if(r.getLooksRight()) {
 		return false;
 		}else {

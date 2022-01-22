@@ -20,45 +20,47 @@ import minilandMayhem.model.events.IsOnBeamEvent;
 
 public class PhysicsHitbox extends Entity{
 	
-	private RobotMario owner;
+	private Robot owner;
 
-	public PhysicsHitbox(String entityID, Vector2f position, RobotMario mario) {
+	public PhysicsHitbox(String entityID, Vector2f position, Robot robot) {
 		super(entityID);
-		owner = mario;
+		owner = robot;
 		this.setVisible(false); 
-		//Wichtig: setzt die Groesse der Hitbox. Diese darf nicht mit dem entsprechenden Mario kollidieren,
+		//Wichtig: setzt die Groesse der Hitbox. Diese darf nicht mit dem entsprechenden Roboter kollidieren,
 		//da sonst alle anderen Kollisionen überdeckt werden.
 		this.setSize(new Vector2f(48,2));		
+		this.setPassable(true);
 		
 		
-		//ueberprueft, ob der Mario aktuell KEINEN Boden unter sich hat.
+		//ueberprueft, ob der Roboter aktuell KEINEN Boden unter sich hat.
 		Event falling = new NOTEvent(new GroundCollision());
 		falling.addAction(new Action() {
 
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
-				PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
-				RobotMario mario = self.getOwner();
-				//Hat der Mario keinen Boden unter sich, soll er fallen und dabei schneller werden.
-				mario.fall(gc.getFPS());
-				
+				if(!gc.isPaused()) {
+					PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
+					Robot r = self.getOwner();
+					//Hat der Roboter keinen Boden unter sich, soll er fallen und dabei schneller werden.
+					r.fall(gc.getFPS());
+				}
 			}
 			
 		});
 		this.addComponent(falling);
 		
 		
-		//ueberprueft, ob der Mario gerade auf festem Boden steht.
+		//ueberprueft, ob der Roboter gerade auf festem Boden steht.
 		Event grounded = new GroundCollision();
 		grounded.addAction(new Action() {
 
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
-				RobotMario mario = self.getOwner();
-				//ist der Mario gerade am fallen und hat nun festen Boden unter sich, soll er landen (und nicht mehr fallen)
-				if(mario.getFalling()) {
-					mario.land();
+				Robot r = self.getOwner();
+				//ist der Roboter gerade am fallen und hat nun festen Boden unter sich, soll er landen (und nicht mehr fallen)
+				if(r.getFalling()) {
+					r.land();
 				}
 				
 			}
@@ -74,7 +76,7 @@ public class PhysicsHitbox extends Entity{
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				PhysicsHitbox ph = (PhysicsHitbox)event.getOwnerEntity();
 				Vector2f pos = ph.getOwner().getPosition();
-				//sorgt dafuer, dass diese Hitbox sich immer unter ihrem jeweiligen Mario befindet.
+				//sorgt dafuer, dass diese Hitbox sich immer unter ihrem jeweiligen Roboter befindet.
 				ph.setPosition(new Vector2f(pos.x, pos.y+32));
 				
 			}
@@ -94,7 +96,7 @@ public class PhysicsHitbox extends Entity{
 				if(b.getRotation() <= 44f && b.getRotation() >= -44f && !(b.getRotation() == 0f)) {
 					if(self.getOwner().getLooksRight() == b.getUpRight()) {
 					}else {
-						self.getOwner().walkDownBeam(b);
+						self.getOwner().walkOnBeam(b);
 					}
 					
 				}
@@ -111,9 +113,9 @@ public class PhysicsHitbox extends Entity{
 	
 	/**
 	 * 
-	 * @return der Mario dieser Hitbox
+	 * @return der Roboter dieser Hitbox
 	 */
-	public RobotMario getOwner() {
+	public Robot getOwner() {
 		return this.owner;
 	}
 
