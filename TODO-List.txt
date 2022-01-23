@@ -43,7 +43,7 @@ X8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger,
 
 	X8.4) Marios können Träger herrunterlaufen (immer), Mario wird auch rotiert bis er unten ist.
 
-	8.5) Kollidiert ein Mario gegen etwas (und ändert seine Richtung) während er hochläuft,
+	erstmal nicht:8.5) Kollidiert ein Mario gegen etwas (und ändert seine Richtung) während er hochläuft,
 	so läuft er nun runter und umgekehrt
 
 	X8.6) Während ein Mario hoch/runterläuft, ignoriert er alle anderen Stahlträger, die weniger als 45° haben.
@@ -99,12 +99,13 @@ Ausbaustufe 3:
 17) Jumppad (J:Jumppad): lässt Mario Springen (in Parabelform)
 
 
-18) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen bei aufprall kaputt (egal ob Mario oder Wand).
-  Fliegen immer nur nach links oder rechts, von schwerkraft nicht beeinflusst. Kanone schießt in regelmäßigen Abständen (z.B. alle 5 Sekunden).
-  In Mapparser integrieren (B:Kanone)"english Bullet Bill"
+X18) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen bei aufprall kaputt (egal ob Mario oder Wand).
+  	Fliegen immer nur nach links oder rechts, von schwerkraft nicht beeinflusst.
+	18.1) Kanone schießt in regelmäßigen Abständen (z.B. alle 5 Sekunden).
+  	In Mapparser integrieren (B:Kanone)"english Bullet Bill"
 
-19) Goomba Roboter, die Marios bei berührung zerstören (gehen selbst nicht kaputt außer sie laufen in stacheln/Kugelwilli)
-  Laufen wie Marios, können nicht springen/leitern klettern. (G:Goomba) Laufen anfangs nach links
+19) Feuer Roboter, die Marios bei berührung zerstören (gehen selbst nicht kaputt außer sie laufen in stacheln/Kugelwilli)
+  Laufen wie Marios, können nicht springen/leitern klettern. (F:Feuer) Laufen anfangs nach links
 
 
 
@@ -116,7 +117,6 @@ Mario soll auch in andere Richtung schauen, wenn er sich umdreht
 Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
 Ausgewählte Stahlträger sollen graphisch erkennbar sein
 Marios kollidieren mit anderen Marios
-Glitch beim Träger hochlaufen, wenn "hochgehen" nicht beendet (gibt sich ggf noch)
 Hintergrundbilder und Button Bilder, Main menu Bilder
 Fenstergröße
 "smooth" landing
