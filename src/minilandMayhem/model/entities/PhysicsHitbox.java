@@ -29,7 +29,7 @@ public class PhysicsHitbox extends Entity{
 		//Wichtig: setzt die Groesse der Hitbox. Diese darf nicht mit dem entsprechenden Roboter kollidieren,
 		//da sonst alle anderen Kollisionen überdeckt werden.
 		this.setSize(new Vector2f(48,2));		
-		this.setPassable(true);
+		//this.setPassable(true);
 		
 		
 		//ueberprueft, ob der Roboter aktuell KEINEN Boden unter sich hat.

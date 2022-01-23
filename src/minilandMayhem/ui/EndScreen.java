@@ -85,8 +85,8 @@ public class EndScreen extends BasicGameState {
 		entityManager.renderEntities(container, game, g);
 		
 		int counter = 0;
-		
-		g.drawString("Weiter", 110, start_Position+counter*distance); counter++;
+		g.drawString("Spielende!", 220, 10);
+		g.drawString("Neustart", 110, start_Position+counter*distance); counter++;
 		g.drawString("Hauptmenü", 110, start_Position+counter*distance); counter++;
 		g.drawString("Beenden", 110, start_Position+counter*distance); counter++;
 	}

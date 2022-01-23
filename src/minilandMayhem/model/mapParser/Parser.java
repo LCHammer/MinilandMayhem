@@ -7,6 +7,9 @@ public class Parser {
 	
 	public static String[] map=null;
 	public static String levelname = "default";
+	//sorgt für eine unique benennung der Marios und des Feuers. Die nummer selbst ist egal,
+	//wichtig ist nur, dass unterschiedliche Roboter unterschiedliche Nummern besitzen.
+	private static int uniqueNum=0;
 	
 	
 	
@@ -53,7 +56,10 @@ public class Parser {
 	public static Entity convert(char c) {
 		switch (c) {
 		case '_': return null;
-		case 'M': return new Mario("Mario");
+		case 'M': uniqueNum +=1;
+				  return new Mario("Mario"+uniqueNum);
+		case 'F': uniqueNum +=1;
+				  return new Fire("Feuer"+uniqueNum);
 		case 'W': return new Wall("Wand");
 		case 'D': return new Door("Tür",true);
 		case 'd': return new Door("Tür",false);
@@ -61,7 +67,7 @@ public class Parser {
 		case 'K': return new Key("Key");
 		case 'X': return new Danger("Gefahr");
 		case 'C': return new Coin("Coin");
-		//case 'H': return new Hammer("Hammer");
+		case 'T': return new Trampoline("Trampoline");
 		default: return null;
 		
 		

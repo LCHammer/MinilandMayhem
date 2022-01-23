@@ -21,7 +21,6 @@ public class MarioCollide extends Collide {
 		this.collider =collide.getCollidedEntity();
 		
 		Mario mario = (Mario)event.getOwnerEntity();
-		
 		//mit einer Tür kollidiert
 		if(collider instanceof Door) { 
 			Door d = (Door)collider;
@@ -40,14 +39,23 @@ public class MarioCollide extends Collide {
 				}
 			}
 			
-			//mit einem Schlüssel kollidiert	
-			}else if(collider instanceof Key) {
-				//gib diesem Mario einen Schlüssel (auch graphisch anzeigen) und entferne das Pickup
-				Key k = (Key)collider;
-				k.destroy();
-				mario.collectKey();
-			}else {
-				super.update(gc, game, delta, event);
+				
+		//Mit einem anderen Mario kollidiert
+		}else if(collider instanceof Mario) {
+			if(canCollide(mario,collider)) {
+				Mario other = (Mario) collider;
+				other.changeDirection();
+				mario.changeDirection();
 			}
+			
+		}//mit einem Schlüssel kollidiert
+		else if(collider instanceof Key) {
+				//gib diesem Mario einen Schlüssel (auch graphisch anzeigen) und entferne das Pickup
+			Key k = (Key)collider;
+			k.destroy();
+			mario.collectKey();
+		}else {
+				super.update(gc, game, delta, event);
+		}
 	}
 }

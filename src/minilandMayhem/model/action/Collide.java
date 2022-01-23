@@ -24,12 +24,14 @@ public class Collide implements Action {
 		
 			//mit einer Wand kollidiert:
 			if (collider instanceof Wall ) { 
+				robot.endJump();
 		
 				if(canCollide(robot,collider)){
 					robot.changeDirection();
 				}
 			//mit einem Stahltraeger kollidiert
 			}else if(collider instanceof BeamSocket) {
+				robot.endJump();
 				//ist es der Beamsocket, an dem er ankommen soll?
 				//TODO: nicht nur instanceof sondern auch equals!
 				BeamSocket socket = (BeamSocket)collider;
@@ -52,6 +54,7 @@ public class Collide implements Action {
 			}
 			//Kollision mit Stahltraeger
 			else if(collider instanceof Beam) {
+				robot.endJump();
 				Beam b = (Beam)collider;
 				//soll nur kollidieren, wenn er aktuell nicht hoch- oder runterlaeuft.
 				if(!robot.getWalkingUpDown()) {
@@ -75,10 +78,22 @@ public class Collide implements Action {
 			}else if(collider instanceof Danger) {
 				//ziehe Punkte ab
 				robot.destroy();
-				
-				
 			
+			//mit einem Trampolin kollidiert
+			} else if(collider instanceof Trampoline) {
+				robot.jump();
+				
+				
+			//Mit einem Mario kollidiert
+			//Beachte: Dies ist das Standardverhalten für das Feuer, welches die Marios zerstört.
+			//Diese besitzen jedoch ein eigenes Verhalten bei Kollision mit einem anderen Mario,
+			//welches dieses hier überschreibt
+			}else if(collider instanceof Mario) {
+				Mario m = (Mario) collider;
+				m.destroy();
 			}
+			
+			
 		
 		}
 	

@@ -5,8 +5,8 @@ X2)GamePlayState füllen
 	auch Übergänge: ESC -> Pause
 	auch Menge an Ressourcen sichtbar (als Zahl)
 
-3)PauseMenuState füllen
-	auch Übergänge: "Weiter" -> GamePlay, "Hauptmenü" -> MainMenu, "Beenden" -> quit
+X3)EndScreenStateState füllen
+	auch Übergänge: "Neustart" -> GamePlay, "Hauptmenü" -> MainMenu, "Beenden" -> quit
 
 
 4) Spielelemente graphisch darstellen (irgendwo auf dem screen, dass man sieht, dass es geht)
@@ -43,7 +43,7 @@ X8) Stahlträger Mechanik: Auf 2 sockel klicken, die verbinden sich mit Träger,
 
 	X8.4) Marios können Träger herrunterlaufen (immer), Mario wird auch rotiert bis er unten ist.
 
-	erstmal nicht:8.5) Kollidiert ein Mario gegen etwas (und ändert seine Richtung) während er hochläuft,
+	8.5) Kollidiert ein Mario gegen etwas (und ändert seine Richtung) während er hochläuft,
 	so läuft er nun runter und umgekehrt
 
 	X8.6) Während ein Mario hoch/runterläuft, ignoriert er alle anderen Stahlträger, die weniger als 45° haben.
@@ -66,7 +66,7 @@ X12) Map-Parser: Map soll im Main menu aus Textdatei geladen werden können und 
 
 
 13) Level zu ende, sofern alle Marios das Spielfeld verlassen haben (entweder zerstört oder durch die Tür) 
-	Danach soll es einen Ende-screen geben mit Punktzahl und zurück ins hauptmenü
+	Danach soll es einen Ende-screen geben mit Punktzahl
 
 
 
@@ -96,7 +96,7 @@ Ausbaustufe 2:
 Ausbaustufe 3:
 
 
-17) Jumppad (J:Jumppad): lässt Mario Springen (in Parabelform)
+X17) Jumppad (T:Trampoline): lässt Mario Springen (in Parabelform)
 
 
 X18) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen bei aufprall kaputt (egal ob Mario oder Wand).
@@ -111,13 +111,14 @@ X18) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen
 
 
 Zu fixen: 
-Pausemenü pausiert nicht, sondern startet neu! (erledigt)
-Animationen
-Mario soll auch in andere Richtung schauen, wenn er sich umdreht
-Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
-Ausgewählte Stahlträger sollen graphisch erkennbar sein
-Marios kollidieren mit anderen Marios
-Hintergrundbilder und Button Bilder, Main menu Bilder
-Fenstergröße
-"smooth" landing
-code schön machen
+(X)Pausemenü pausiert nicht, sondern startet neu! 
+( )Animationen
+(X)Mario soll auch in andere Richtung schauen, wenn er sich umdreht 
+(-)Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
+( )Ausgewählte Stahlträger sollen graphisch erkennbar sein
+(X)Marios kollidieren mit anderen Marios 
+( )Hintergrundbilder und Button Bilder, Main menu Bilder
+( )Fenstergröße
+( )"smooth" landing
+( )fallen bei Stahlträger-Abbau
+( )code schön machen

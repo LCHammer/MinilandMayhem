@@ -27,13 +27,24 @@ public abstract class Robot extends Entity{
 	protected LoopEvent walkDown;
 	protected boolean isWalkingDown = false;
 	
+	protected LoopEvent jump;
+	protected boolean jumping = false;
+	
 	
 	public Robot(String entityID) {
 		super(entityID);
 		looksRight = true;
 		speed = 0.125f;
 		pHitbox = new PhysicsHitbox("Phyisc"+entityID, this.getPosition(), this);
-		// TODO Auto-generated constructor stub
+
+		fall = new LoopEvent();
+		this.addComponent(fall);
+		jump = new LoopEvent();
+		this.addComponent(jump);
+		walkUp = new LoopEvent();
+		this.addComponent(walkUp);
+		walkDown = new LoopEvent();
+		this.addComponent(walkDown);
 	}
 
 	
@@ -43,13 +54,6 @@ public abstract class Robot extends Entity{
 	 */
 	public void changeDirection() { 
 		if(!isFalling) {
-			if(this.looksRight) {
-				//this.removeComponent(imageR);
-				//this.addComponent(imageL);
-			}else {
-				//this.removeComponent(imageL);
-				//this.addComponent(imageR);
-			}
 			looksRight = !looksRight;
 			
 		}
@@ -98,6 +102,7 @@ public abstract class Robot extends Entity{
 	 * beendet die Fallbewegung und laesst den Roboter landen
 	 */
 	public void land() {
+		this.endJump();
 		for(int i =0; i<fallings; i++) {
 		fall.removeAction(0);
 		}
@@ -214,6 +219,26 @@ public abstract class Robot extends Entity{
 	}
 	
 	
+	/**
+	 * laesst den Roboter Springen. 
+	 */
+	public void jump() {
+		if(!this.jumping) {
+			land();
+			this.jump.addAction(new MoveUpAction(0.5f));
+			this.jumping = true;
+		}
+	}
+	
+	/**
+	 * beended das Springen des Roboters, wenn er mit einem Festen Objekt (Wand/Sockel/Stahlträger) kollidiert
+	 */
+	public void endJump() {
+		if(this.jumping) {
+			this.jumping = false;
+			jump.removeAction(0);
+		}
+	}
 	
 	
 	

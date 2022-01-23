@@ -45,18 +45,10 @@ public class Mario extends Robot{
 		super(entityID);
 		isActive = false;
 		
-		
 		hasKey = false;
-		this.setPassable(true);
+		this.setPassable(false);
 		
-		fall = new LoopEvent();
-		this.addComponent(fall);
-		walkUp = new LoopEvent();
-		this.addComponent(walkUp);
-		walkDown = new LoopEvent();
-		this.addComponent(walkDown);
 		this.setSize(new Vector2f(48,48));
-		this.setPassable(true);
 		//this.setRotation(30f);
 		//this.pHitbox.setRotation(30f);
 		
@@ -119,6 +111,25 @@ public class Mario extends Robot{
 			//this.addComponent(imageL);
 		}
 	}
+	
+	@Override
+	/**
+	 * aendert die Laufrichtung und das Bild des Marios.
+	 */
+	public void changeDirection() {
+		if(!this.isFalling) {
+			if(this.looksRight) {
+				this.removeComponent(imageR);
+				this.addComponent(imageL);
+			}else {
+				this.removeComponent(imageL);
+				this.addComponent(imageR);
+			}
+		}
+		super.changeDirection();
+	}
+	
+	
 		
 	/**
 	 * setzt das Feld hasKey auf true, somit kann dieser Mario nun verschlossene Türen aufschließen.
