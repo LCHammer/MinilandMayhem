@@ -56,6 +56,7 @@ public class GamePlayState extends BasicGameState {
     	finished.addComponent(end_game);    	
     	entityManager.addEntity(stateID, finished);
     	
+    	/*
     	Entity t = new Entity("Timer");
     	
     	Event time = new TimedEvent("Timer",1000);
@@ -70,6 +71,7 @@ public class GamePlayState extends BasicGameState {
     	});
     	t.addComponent(time);
     	entityManager.addEntity(stateID, t);
+    	*/
     	
     	Entity p = new Entity("Pause");
     	// Wird die Taste 'p' gedrueckt, ...

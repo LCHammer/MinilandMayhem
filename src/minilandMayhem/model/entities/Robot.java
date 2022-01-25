@@ -26,6 +26,7 @@ public abstract class Robot extends Entity{
 	protected BeamSocket end;
 	protected LoopEvent walkDown;
 	protected boolean isWalkingDown = false;
+	private double up_distance;
 	
 	protected LoopEvent jump;
 	protected boolean jumping = false;
@@ -53,6 +54,24 @@ public abstract class Robot extends Entity{
 	 * Ändert die Blickrichtung dieses Roboters und somit auch die Richtung, in die er sich bewegt.
 	 */
 	public void changeDirection() { 
+		if(getIsWalkingUp()) {
+			this.isWalkingUp=false;
+			this.walkUp.removeAction(0);
+			BeamSocket s = this.end;
+			this.end=start;
+			this.start=s;
+			this.walkDown.addAction(new MoveDownAction((float) this.up_distance));
+			this.isWalkingDown =true;
+			
+		}else if(getIsWalkingDown()) {
+			this.isWalkingDown=false;
+			this.walkDown.removeAction(0);
+			BeamSocket s = this.end;
+			this.end=start;
+			this.start=s;
+			this.walkUp.addAction(new MoveUpAction((float) this.up_distance));
+			this.isWalkingUp =true;
+		}
 		if(!isFalling) {
 			looksRight = !looksRight;
 			
@@ -132,7 +151,7 @@ public abstract class Robot extends Entity{
 			this.setRotation(b.getRotation());
 			this.pHitbox.setRotation(b.getRotation());
 			double angle =Math.toRadians(Math.abs((double)b.getRotation()));
-			double up_distance = Math.tan(angle)*(double)speed;
+			this.up_distance = Math.tan(angle)*(double)speed;
 			
 			if(this.getLooksRight() == b.getUpRight()) {
 				this.walkUp.addAction(new MoveUpAction((float)up_distance));
@@ -163,6 +182,7 @@ public abstract class Robot extends Entity{
 			this.walkUp.removeAction(0);
 			this.end=null;
 			this.start=null;
+			this.up_distance = 0;
 		}
 	}
 	
@@ -179,6 +199,7 @@ public abstract class Robot extends Entity{
 			this.smoothLanding();
 			this.end=null;
 			this.start=null;
+			this.up_distance = 0;
 		}
 	}
 	

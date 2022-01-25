@@ -117,7 +117,7 @@ public class Mario extends Robot{
 	 * aendert die Laufrichtung und das Bild des Marios.
 	 */
 	public void changeDirection() {
-		if(!this.isFalling) {
+		if(this.isActive) {
 			if(this.looksRight) {
 				this.removeComponent(imageR);
 				this.addComponent(imageL);
@@ -125,8 +125,9 @@ public class Mario extends Robot{
 				this.removeComponent(imageL);
 				this.addComponent(imageR);
 			}
-		}
+		
 		super.changeDirection();
+		}
 	}
 	
 	

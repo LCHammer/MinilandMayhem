@@ -68,6 +68,7 @@ public class Parser {
 		case 'X': return new Danger("Gefahr");
 		case 'C': return new Coin("Coin");
 		case 'T': return new Trampoline("Trampoline");
+		case 'B': return new BillBlaster("Kanone");
 		default: return null;
 		
 		

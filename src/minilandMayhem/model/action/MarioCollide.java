@@ -44,8 +44,20 @@ public class MarioCollide extends Collide {
 		}else if(collider instanceof Mario) {
 			if(canCollide(mario,collider)) {
 				Mario other = (Mario) collider;
-				other.changeDirection();
-				mario.changeDirection();
+				
+				if(mario.getFalling()) {
+					mario.land();
+					mario.changeDirection();
+				}
+				else if(other.getFalling()) {
+					other.land();
+					other.changeDirection();
+				}else {
+					mario.changeDirection();
+					other.changeDirection();
+				}
+				
+			
 			}
 			
 		}//mit einem Schlüssel kollidiert

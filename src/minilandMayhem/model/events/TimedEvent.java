@@ -22,6 +22,11 @@ public class TimedEvent extends Event {
 	 * Dieses Event feuert, wenn genügend Zeit beim internen Timer vergangen ist.
 	 */
 	protected boolean performAction(GameContainer gc, StateBasedGame game, int delta) {
+		if(gc.isPaused()) {
+			timer.pause();
+		}else {
+			timer.unpause();
+		}
 		return timer.didEnoughTimePass(timeUntilTrigger);
 	}
 }

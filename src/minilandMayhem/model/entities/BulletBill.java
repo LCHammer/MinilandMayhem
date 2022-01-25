@@ -2,8 +2,10 @@ package minilandMayhem.model.entities;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.action.basicactions.DestroyEntityAction;
+import eea.engine.action.basicactions.MoveLeftAction;
 import eea.engine.action.basicactions.MoveRightAction;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
@@ -11,16 +13,20 @@ import eea.engine.event.Event;
 import eea.engine.event.basicevents.CollisionEvent;
 import eea.engine.event.basicevents.LoopEvent;
 import minilandMayhem.model.action.BulletBillCollision;
+import minilandMayhem.model.events.TimedEvent;
 
 
 public class BulletBill extends Entity{
 	
-	public float speed;
+	private float speed;
+	private boolean looksLeft;
 
 	
-		public BulletBill(String entityID) {
+		public BulletBill(String entityID, boolean looksLeft) {
 			super(entityID);
 			speed = 0.125f;
+			this.looksLeft = looksLeft;
+			this.setSize(new Vector2f(50,30));
 				activate();
 				
 				try {
@@ -35,7 +41,7 @@ public class BulletBill extends Entity{
 				collide.addAction(new BulletBillCollision());
 				this.addComponent(collide);
 				
-				//this.addComponent(collide);
+				
 			}
 		
 		
@@ -49,10 +55,13 @@ public class BulletBill extends Entity{
 
 	private void activate() {
 			
-			LoopEvent right = new LoopEvent();
-			
-			right.addAction(new MoveRightAction(speed));
-			this.addComponent(right);
+			LoopEvent flight = new LoopEvent();
+			if(looksLeft) {
+				flight.addAction(new MoveLeftAction(speed));
+			}else {
+				flight.addAction(new MoveRightAction(speed));
+			}
+			this.addComponent(flight);
 
 		}
 

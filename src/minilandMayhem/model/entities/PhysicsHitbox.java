@@ -30,6 +30,12 @@ public class PhysicsHitbox extends Entity{
 		//da sonst alle anderen Kollisionen überdeckt werden.
 		this.setSize(new Vector2f(48,2));		
 		//this.setPassable(true);
+		try {
+			this.addComponent(new ImageRenderComponent(new Image("assets/stahltrager.png")));
+		} catch (SlickException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		
 		//ueberprueft, ob der Roboter aktuell KEINEN Boden unter sich hat.

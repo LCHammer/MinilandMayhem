@@ -12,7 +12,7 @@ public class Trampoline extends Entity {
 		super(entityID);
 		// TODO Auto-generated constructor stub
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("assets/fire.png")));
+			this.addComponent(new ImageRenderComponent(new Image("assets/trampoline.png")));
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Trampolinbild konnte nicht geladen werden");
