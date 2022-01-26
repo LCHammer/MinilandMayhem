@@ -34,7 +34,9 @@ public class GamePlayState extends BasicGameState {
     public static int ressources = 50;
     public static BeamSocket selectedSocket = null;
     public static LinkedList<Mario> marios = new LinkedList<Mario>();
-	
+    public static int successfulMario;
+	public static int score;
+    
 	public GamePlayState(int stateID) {
 		this.stateID = stateID;
 		this.entityManager = StateBasedEntityManager.getInstance();
@@ -56,22 +58,22 @@ public class GamePlayState extends BasicGameState {
     	finished.addComponent(end_game);    	
     	entityManager.addEntity(stateID, finished);
     	
-    	/*
+    	
     	Entity t = new Entity("Timer");
     	
     	Event time = new TimedEvent("Timer",1000);
     	time.addAction(new Action() {
 
 			@Override
-			public void update(GameContainer arg0, StateBasedGame arg1, int arg2, Component arg3) {
-				// TODO Auto-generated method stub
-				//System.out.println("time");
+			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
+				//Zieht jede sekunde einen Punkt ab.
+				GamePlayState.score -= 1;
 			}
     		
     	});
     	t.addComponent(time);
     	entityManager.addEntity(stateID, t);
-    	*/
+    	
     	
     	Entity p = new Entity("Pause");
     	// Wird die Taste 'p' gedrueckt, ...
@@ -93,6 +95,12 @@ public class GamePlayState extends BasicGameState {
     	p.addComponent(pause);
     	entityManager.addEntity(stateID, p);
     	
+    	
+    	
+    	
+    	
+    	successfulMario = 0;
+    	score = 500;
     	
     	if(MinilandMayhem.debug || Parser.map==null) {
     	
@@ -219,10 +227,12 @@ public class GamePlayState extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		entityManager.renderEntities(container, game, g);
 		
-		String ressourcen = "Stahträger: "+ this.ressources;
+		String ressourcen = "Stahträger: "+ ressources;
+		String points = "Punktzahl: "+ score;
 		
 		//float werte sind x und y koordinate der Stringposition
 		g.drawString(ressourcen, 110, 10);
+		g.drawString(points, 330, 10);
 		
 	}
 
@@ -286,10 +296,10 @@ public class GamePlayState extends BasicGameState {
 		}
 		firstSocket.addBeams(lst);
 		secondSocket.addBeams(lst);
-		//entferne Ressourcen
+		//entferne Ressourcen und ziehe 10 Punkte ab
 		GamePlayState.ressources-=count-1;
+		GamePlayState.score -= 10;
 		
-		//TODO: also remove it
 		}
 	}
 	

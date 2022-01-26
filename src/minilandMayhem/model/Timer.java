@@ -15,8 +15,8 @@ public class Timer {
 	
 	
 	public void start() {
-			startTime = System.currentTimeMillis();
-			elapsedTime = 0;
+		startTime = System.currentTimeMillis();
+		elapsedTime = 0;
 		
 	}
 	
@@ -26,18 +26,18 @@ public class Timer {
 			isPaused = true;
 			elapsedTime += System.currentTimeMillis() - startTime;
 		}
+		startTime = System.currentTimeMillis();
 	}
 	
+	
 	public void unpause() {
-		if(isPaused) {
-			startTime = System.currentTimeMillis();
 			isPaused = false;
-		}
 	}
+	
 	
 	public boolean didEnoughTimePass(long enoughTime) {
 		long currentTime = System.currentTimeMillis();
-		if(currentTime - startTime + elapsedTime > enoughTime) {
+		if(currentTime - (startTime + elapsedTime) >= enoughTime) {
 			start();
 			return true;
 		}else {

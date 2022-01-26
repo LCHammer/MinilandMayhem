@@ -2,6 +2,13 @@ package minilandMayhem.ui;
 
 
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.LinkedList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -13,12 +20,16 @@ import org.newdawn.slick.state.StateBasedGame;
 import eea.engine.action.Action;
 import eea.engine.action.basicactions.ChangeStateInitAction;
 import eea.engine.action.basicactions.QuitAction;
+import eea.engine.component.Component;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
+import minilandMayhem.highscore.Highcore;
+import minilandMayhem.highscore.HighscoreEntry;
+import minilandMayhem.model.mapParser.Parser;
 
 public class EndScreen extends BasicGameState {
 	
@@ -65,8 +76,53 @@ public class EndScreen extends BasicGameState {
 		main.addComponent(main_event);
 		entityManager.addEntity(stateID, main);
 		
+		
+		Entity highscore = new Entity("Highscore");
+		highscore.setPosition(new Vector2f(218,390));
+		highscore.setScale(0.28f);
+		highscore.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
+		ANDEvent highscore_event = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
+		Action highscore_act = new Action() {
+
+			@Override
+			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
+				// TODO Auto-generated method stub
+				String path  ="src\\highscores\\Highscore_"+Parser.levelname;
+				File highscore = new File(path);
+				HighscoreEntry entry = new HighscoreEntry(GamePlayState.score,GamePlayState.successfulMario,GamePlayState.marios.size());
+				try {
+					if(highscore.createNewFile()) {
+						System.out.println("created");
+					}else {
+						System.out.println("already there");
+					}
+					FileReader f = new FileReader(highscore);
+					BufferedReader b = new BufferedReader(f);
+					LinkedList<String> lst = new LinkedList<String>();
+					for (String line=b.readLine(); line !=null; line = b.readLine()) {
+						//lst.add(line);
+						//alle einlesen (bis zu 5) und erstellen
+					}
+					// mit insertionsort aktuellen eintragen, in datei schreiben (nur besten 5)
+					
+					FileWriter fw = new FileWriter(highscore);
+					fw.write(entry.toString());
+					fw.close();
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		};
+		highscore_event.addAction(highscore_act);
+		highscore.addComponent(highscore_event);
+		entityManager.addEntity(stateID, highscore);
+		
+		
 		Entity end = new Entity("Beenden");
-		end.setPosition(new Vector2f(218,390));
+		end.setPosition(new Vector2f(218,490));
 		end.setScale(0.28f);
 		end.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
 		ANDEvent end_event = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
@@ -78,6 +134,9 @@ public class EndScreen extends BasicGameState {
 		
 		
 		
+		
+		
+		
 	}
 
 	@Override
@@ -85,10 +144,14 @@ public class EndScreen extends BasicGameState {
 		entityManager.renderEntities(container, game, g);
 		
 		int counter = 0;
-		g.drawString("Spielende!", 220, 10);
+		String result = "Spielende! "+GamePlayState.successfulMario+ " von "+GamePlayState.marios.size() + " haben es zur Tür geschafft!";
+		g.drawString(result, 100, 10);
+		g.drawString("Erreichte Punktzahl: "+GamePlayState.score, 100, 30);
 		g.drawString("Neustart", 110, start_Position+counter*distance); counter++;
 		g.drawString("Hauptmenü", 110, start_Position+counter*distance); counter++;
+		g.drawString("Highscore speichern",110,start_Position+counter*distance); counter++;
 		g.drawString("Beenden", 110, start_Position+counter*distance); counter++;
+		
 	}
 
 	@Override

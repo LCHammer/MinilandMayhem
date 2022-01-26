@@ -9,6 +9,7 @@ import eea.engine.event.basicevents.CollisionEvent;
 import minilandMayhem.model.entities.Door;
 import minilandMayhem.model.entities.Key;
 import minilandMayhem.model.entities.Mario;
+import minilandMayhem.ui.GamePlayState;
 
 public class MarioCollide extends Collide {
 
@@ -28,7 +29,7 @@ public class MarioCollide extends Collide {
 			//Kollidierender Mario hat Schlüssel oder Tür bereits aufgeschlossen
 			if(mario.getHasKey() || d.getUnlocked()) { 
 				//TODO: gib Punkte
-				mario.destroy();
+				mario.score();
 				
 				if(!d.getUnlocked()) {
 					d.unlock(); //schließe Tür auf

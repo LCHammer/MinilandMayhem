@@ -1,5 +1,6 @@
 package minilandMayhem.model.entities;
 
+import org.newdawn.slick.Game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
@@ -22,11 +23,13 @@ import minilandMayhem.model.action.MarioCollide;
 import minilandMayhem.model.events.GroundCollision;
 import minilandMayhem.model.events.MarioLooksLeftEvent;
 import minilandMayhem.model.events.MarioLooksRightEvent;
+import minilandMayhem.ui.GamePlayState;
 
 public class Mario extends Robot{
 
 	//public boolean collided;
 	private boolean hasKey;
+	private boolean destroyed;
 	
 
 	
@@ -44,6 +47,7 @@ public class Mario extends Robot{
 	public Mario(String entityID) {
 		super(entityID);
 		isActive = false;
+		destroyed = false;
 		
 		hasKey = false;
 		this.setPassable(false);
@@ -130,6 +134,29 @@ public class Mario extends Robot{
 		}
 	}
 	
+	/**
+	 * Zieht dem Spieler Punkte ab und entfernt den Mario. Wird aufgerufen, wenn der Mario mit einer Gefahr/Gegner kollidiert.
+	 */
+	public void destroy() {
+		if(!this.destroyed) {
+			this.destroyed = true;
+			GamePlayState.score-= 500;
+			this.removeEntity();
+		}
+	}
+	
+	/**
+	 * Gibt dem Spieler Punkte und entfernt den Mario. Wird aufgerufen, wenn der Mario durch eine Tür laeuft
+	 */
+	public void score() {
+		if(!this.destroyed) {
+			GamePlayState.score += 500;
+			GamePlayState.successfulMario +=1;
+			this.removeEntity();
+			this.destroyed = true;
+			
+		}
+	}
 	
 		
 	/**

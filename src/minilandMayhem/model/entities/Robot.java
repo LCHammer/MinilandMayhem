@@ -81,14 +81,20 @@ public abstract class Robot extends Entity{
 	/**
 	 * Zerstört diesen Roboter
 	 */
-	public void destroy() {
+	public abstract void destroy(); 
+	
+	
+	/**
+	 * Entfernt diesen Roboter
+	 */
+	public void removeEntity() {
+
 		Event l = new LoopEvent();
 		l.addAction(new DestroyEntityAction());
 		this.pHitbox.destroy();
 		this.addComponent(l);
 		
 	}
-	
 
 	/**
 	 * laesst den Roboter fallen. Dabei wird er enstsprechend 1/10 der Erdgravitation beschleunigt.

@@ -6,3 +6,5 @@ nachdem ein erster Mario sie geöffnet hat
 Marios können unendlich oft kollidieren.
 
 ALLE level müssel rechteckig im aufbau sein.
+
+100 Punkte, wenn Feuer zerstört
