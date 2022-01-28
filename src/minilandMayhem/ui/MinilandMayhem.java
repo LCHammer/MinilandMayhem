@@ -60,13 +60,13 @@ public class MinilandMayhem extends StateBasedGame {
 		this.addState(new MainMenuState(MAINMENUSTATE));
 		this.addState(new GamePlayState(GAMEPLAYSTATE));
 		//this.addState(new OptionState(OPTIONSTATE));
-		//this.addState(new HighScoreState(HIGHSCORESTATE));
+		this.addState(new HighScoreState(HIGHSCORESTATE));
 		this.addState(new EndScreen(ENDSCREENSTATE));
 		
 		StateBasedEntityManager.getInstance().addState(MAINMENUSTATE);
 		StateBasedEntityManager.getInstance().addState(GAMEPLAYSTATE);
 		//StateBasedEntityManager.getInstance().addState(OPTIONSTATE);
-		//StateBasedEntityManager.getInstance().addState(HIGHSCORESTATE);
+		StateBasedEntityManager.getInstance().addState(HIGHSCORESTATE);
 		StateBasedEntityManager.getInstance().addState(ENDSCREENSTATE);
 		
 	}

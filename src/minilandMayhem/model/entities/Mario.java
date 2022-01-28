@@ -21,8 +21,8 @@ import eea.engine.event.basicevents.*;
 import minilandMayhem.model.action.Collide;
 import minilandMayhem.model.action.MarioCollide;
 import minilandMayhem.model.events.GroundCollision;
-import minilandMayhem.model.events.MarioLooksLeftEvent;
-import minilandMayhem.model.events.MarioLooksRightEvent;
+import minilandMayhem.model.events.RobotLooksLeftEvent;
+import minilandMayhem.model.events.RobotLooksRightEvent;
 import minilandMayhem.ui.GamePlayState;
 
 public class Mario extends Robot{
@@ -30,9 +30,6 @@ public class Mario extends Robot{
 	//public boolean collided;
 	private boolean hasKey;
 	private boolean destroyed;
-	
-
-	
 	
 	private Component imageR;
 	private Component imageL;
@@ -103,11 +100,11 @@ public class Mario extends Robot{
 	private void activate() {
 		if(!this.isActive) {
 			this.isActive=true;
-			ANDEvent right = new ANDEvent(new LoopEvent(), new MarioLooksRightEvent("MoveRight"));
+			ANDEvent right = new ANDEvent(new LoopEvent(), new RobotLooksRightEvent("MoveRight"));
 			right.addAction(new MoveRightAction(speed));
 			this.addComponent(right);
 			
-			ANDEvent left = new ANDEvent(new LoopEvent(), new MarioLooksLeftEvent("MoveLeft"));
+			ANDEvent left = new ANDEvent(new LoopEvent(), new RobotLooksLeftEvent("MoveLeft"));
 			left.addAction(new MoveLeftAction(speed));
 			this.addComponent(left);
 			//TODO: change animation!

@@ -5,17 +5,18 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.event.Event;
 import minilandMayhem.model.entities.Mario;
+import minilandMayhem.model.entities.Robot;
 
-public class MarioLooksLeftEvent extends Event {
+public class RobotLooksLeftEvent extends Event {
 
-	public MarioLooksLeftEvent(String id) {
+	public RobotLooksLeftEvent(String id) {
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	protected boolean performAction(GameContainer gc, StateBasedGame game, int delta) {
-		Mario r = (Mario) this.owner;
+		Robot r = (Robot) this.owner;
 		if(r.getLooksRight()) {
 		return false;
 		}else {

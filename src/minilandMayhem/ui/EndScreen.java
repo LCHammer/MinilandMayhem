@@ -27,7 +27,7 @@ import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
-import minilandMayhem.highscore.Highcore;
+import minilandMayhem.highscore.Highscore;
 import minilandMayhem.highscore.HighscoreEntry;
 import minilandMayhem.model.mapParser.Parser;
 
@@ -93,21 +93,8 @@ public class EndScreen extends BasicGameState {
 				try {
 					if(highscore.createNewFile()) {
 						System.out.println("created");
-					}else {
-						System.out.println("already there");
 					}
-					FileReader f = new FileReader(highscore);
-					BufferedReader b = new BufferedReader(f);
-					LinkedList<String> lst = new LinkedList<String>();
-					for (String line=b.readLine(); line !=null; line = b.readLine()) {
-						//lst.add(line);
-						//alle einlesen (bis zu 5) und erstellen
-					}
-					// mit insertionsort aktuellen eintragen, in datei schreiben (nur besten 5)
-					
-					FileWriter fw = new FileWriter(highscore);
-					fw.write(entry.toString());
-					fw.close();
+					Highscore.insert(entry);
 					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

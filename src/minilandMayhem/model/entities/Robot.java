@@ -6,6 +6,7 @@ import eea.engine.action.basicactions.DestroyEntityAction;
 import eea.engine.action.basicactions.MoveDownAction;
 import eea.engine.action.basicactions.MoveUpAction;
 import eea.engine.entity.Entity;
+import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.Event;
 import eea.engine.event.basicevents.LoopEvent;
 
@@ -35,9 +36,9 @@ public abstract class Robot extends Entity{
 	public Robot(String entityID) {
 		super(entityID);
 		looksRight = true;
-		speed = 0.125f;
+		speed = 0.1f;
 		pHitbox = new PhysicsHitbox("Phyisc"+entityID, this.getPosition(), this);
-
+		//StateBasedEntityManager.getInstance().addEntity(1, pHitbox);
 		fall = new LoopEvent();
 		this.addComponent(fall);
 		jump = new LoopEvent();
@@ -46,6 +47,7 @@ public abstract class Robot extends Entity{
 		this.addComponent(walkUp);
 		walkDown = new LoopEvent();
 		this.addComponent(walkDown);
+		//this.setSize(new Vector2f(48,48));
 	}
 
 	
@@ -102,20 +104,6 @@ public abstract class Robot extends Entity{
 	 */
 	public void fall(int fps) {
 		isFalling = true;
-		/*
-		if(this.getIsWalkingUp()) {
-			this.setRotation(0);
-			this.pHitbox.setRotation(0);
-			this.isWalkingUp = false;
-			this.walkUp.removeAction(0);
-		}
-		if(this.getIsWalkingDown()) {
-			this.setRotation(0f);
-			this.pHitbox.setRotation(0f);
-			this.isWalkingDown = false;
-			this.walkDown.removeAction(0);	
-		}
-		*/
 		if(isActive) {
 		fallings +=1;
 		isFalling = true;

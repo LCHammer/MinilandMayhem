@@ -1,16 +1,35 @@
 package minilandMayhem.ui;
 
+import java.io.File;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import eea.engine.action.basicactions.ChangeStateAction;
+import eea.engine.component.render.ImageRenderComponent;
+import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
+import eea.engine.event.ANDEvent;
+import eea.engine.event.Event;
+import eea.engine.event.OREvent;
+import eea.engine.event.basicevents.KeyPressedEvent;
+import eea.engine.event.basicevents.MouseClickedEvent;
+import eea.engine.event.basicevents.MouseEnteredEvent;
+import minilandMayhem.highscore.Highscore;
+import minilandMayhem.model.events.NoMarioLeftEvent;
 
 public class HighScoreState extends BasicGameState {
 	
 	private int stateID;
 	private StateBasedEntityManager entityManager;
+	public static File highscore = null;
+	private static String score;
 	
 	public HighScoreState(int stateID) {
 		this.stateID = stateID;
@@ -18,27 +37,48 @@ public class HighScoreState extends BasicGameState {
 	}
 
 	@Override
-	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
-		// TODO Auto-generated method stub
+	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		
+		Entity background = new Entity("menu");	// Entitaet fuer Hintergrund
+    	background.setPosition(new Vector2f(400,300));	// Startposition des Hintergrunds
+    	background.addComponent(new ImageRenderComponent(new Image("/assets/background.png")));
+    	entityManager.addEntity(stateID, background);
+    	
+		if(highscore !=null) {
+			Highscore.readFile(highscore);
+			score = Highscore.score();
+		}
+		
+		
+		Entity mainmenu = new Entity("zurück");
+		mainmenu.setPosition(new Vector2f(218,390));
+    	mainmenu.setScale(0.28f);
+    	mainmenu.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
+    	
+		Event back =new OREvent(new KeyPressedEvent(Input.KEY_ESCAPE),new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent()));
+    	back.addAction(new ChangeStateAction(MinilandMayhem.MAINMENUSTATE));
+    	mainmenu.addComponent(back);    	
+    	entityManager.addEntity(stateID, mainmenu);
 	}
 
 	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException {
-		// TODO Auto-generated method stub
-		
+	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
+		entityManager.renderEntities(gc, game, g);
+		if(score!=null) {
+			g.drawString(score, 100, 100);
+		}
+		g.drawString("Zurück", 110, 380);
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException {
-		// TODO Auto-generated method stub
+	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
+		entityManager.updateEntities(gc, game, delta);
 		
 	}
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return stateID;
 	}
 
 }

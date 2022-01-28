@@ -184,7 +184,10 @@ public class GamePlayState extends BasicGameState {
     						Mario m = (Mario) map[y][x];
     						entityManager.addEntity(stateID, m.getHitbox());
     						marios.add(m);
-    						
+    					}else if(map[y][x] instanceof Fire) {
+    						Fire f = (Fire)map[y][x];
+    						entityManager.addEntity(stateID, f.getHitbox());
+    						//soll auch hinzugefügt werden, damit es auch von träger fallen kann, wenn dieser abgebaut wird
     					}
     				}
     			}

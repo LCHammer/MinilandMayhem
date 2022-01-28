@@ -86,9 +86,9 @@ X15) Schlüssel Pickup (auch in Mapparser einfügen) (K:Schlüssel)
 
 Ausbaustufe 2:
 
-20) Highscores, die gespeichert werden können (von Ende screen aus) in Datei  (mit Name, Level, Punktzahl)
+X20) Highscores, die gespeichert werden können (von Ende screen aus) in Datei. Datei wird nach Level benannt.
 
-21) Highscorescreen vom Startmenü aus, der Highscore einträge anzeigt (nur die besten 5)
+X21) Highscorescreen vom Startmenü aus, der Highscore einträge anzeigt (nur die besten 5)
 
 22) PowerUp: Mario mit Power up unbesiegbar.
 
@@ -121,5 +121,6 @@ Zu fixen:
 ( )Hintergrundbilder und Button Bilder, Main menu Bilder
 ( )Fenstergröße
 ( )"smooth" landing
-( )fallen bei Stahlträger-Abbau
+( )fallen bei Stahlträger-Abbau (auch Feuer!)
+( )Falsche Nutzereingaben (Highscore und Map)
 ( )code schön machen
