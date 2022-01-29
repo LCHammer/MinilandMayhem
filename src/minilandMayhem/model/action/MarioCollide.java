@@ -6,6 +6,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import eea.engine.component.Component;
 import eea.engine.entity.Entity;
 import eea.engine.event.basicevents.CollisionEvent;
+import minilandMayhem.model.entities.Collectable;
 import minilandMayhem.model.entities.Door;
 import minilandMayhem.model.entities.Key;
 import minilandMayhem.model.entities.Mario;
@@ -57,16 +58,12 @@ public class MarioCollide extends Collide {
 					mario.changeDirection();
 					other.changeDirection();
 				}
-				
-			
 			}
 			
-		}//mit einem Schlüssel kollidiert
-		else if(collider instanceof Key) {
-				//gib diesem Mario einen Schlüssel (auch graphisch anzeigen) und entferne das Pickup
-			Key k = (Key)collider;
-			k.destroy();
-			mario.collectKey();
+		}//mit einem Collectable kollidiert
+		else if(collider instanceof Collectable) {
+			Collectable c = (Collectable)collider;
+			c.collect(mario);
 		}else {
 				super.update(gc, game, delta, event);
 		}

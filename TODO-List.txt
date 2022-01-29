@@ -12,7 +12,7 @@ X3)EndScreenStateState füllen
 4) Spielelemente graphisch darstellen (irgendwo auf dem screen, dass man sieht, dass es geht)
 
 
-5) Spiel an sich: Einen Mario, der nach rechts läuft, 
+X5) Spiel an sich: Einen Mario, der nach rechts läuft, 
 	bis er eine Wand trifft und dann Umdreht und nach links läuft
 	
 	X5.1) Mario kann per klick aktiviert werden und läuft dann nach rechts.
@@ -21,7 +21,7 @@ X3)EndScreenStateState füllen
 	X5.2)Läuft der Mario gegen eine Wand, so dreht er um und läuft in die entgegen gesetzte Richtung
 	von der Wand weg.
 
-	5.3) Mario hat laufanimation und schaut nach links, wenn er nach links läuft
+	X5.3) Mario hat laufanimation und schaut nach links, wenn er nach links läuft
 
 
 X6) Tür mechanik: wenn Mario Auf eine Tür läuft, "geht er durch" und wird entfernt
@@ -65,7 +65,7 @@ X12) Map-Parser: Map soll im Main menu aus Textdatei geladen werden können und 
 	X12.1)Füge zusätzlich eine Bounding Box aus Wänden hinzu, damit man nicht aus der Welt fällt.
 
 
-13) Level zu ende, sofern alle Marios das Spielfeld verlassen haben (entweder zerstört oder durch die Tür) 
+X13) Level zu ende, sofern alle Marios das Spielfeld verlassen haben (entweder zerstört oder durch die Tür) 
 	Danach soll es einen Ende-screen geben mit Punktzahl
 
 
@@ -73,7 +73,7 @@ X12) Map-Parser: Map soll im Main menu aus Textdatei geladen werden können und 
 
 Ausbaustufe 1: 
 
-14) Ressourcen Pickup: einmaliges Pickup, welches 3 Ressource gibt (soll auch in Mapparser eingefügt werden) R:Ressource
+X14) Ressourcen Pickup: einmaliges Pickup, welches 3 Ressource gibt (soll auch in Mapparser eingefügt werden) R:Ressource
 
 X15) Schlüssel Pickup (auch in Mapparser einfügen) (K:Schlüssel)
 
@@ -81,7 +81,7 @@ X15) Schlüssel Pickup (auch in Mapparser einfügen) (K:Schlüssel)
 
 	X15.2) Tür soll danach auch offen bleiben (und Aussehen ändern)
 
-16) Münzen Pickup für mehr Punkte (einmalig) (auch in Parser hinzufügen) C: Coin
+X16) Münzen Pickup für mehr Punkte (einmalig) (auch in Parser hinzufügen) C: Coin
 
 
 Ausbaustufe 2:
@@ -90,7 +90,7 @@ X20) Highscores, die gespeichert werden können (von Ende screen aus) in Datei. 
 
 X21) Highscorescreen vom Startmenü aus, der Highscore einträge anzeigt (nur die besten 5)
 
-22) PowerUp: Mario mit Power up unbesiegbar.
+22) PowerUp: Mario mit Power up unbesiegbar und ändert Farbe
 
 
 Ausbaustufe 3:
@@ -104,7 +104,7 @@ X18) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen
 	18.1) Kanone schießt in regelmäßigen Abständen (z.B. alle 5 Sekunden).
   	In Mapparser integrieren (B:Kanone)"english Bullet Bill"
 
-19) Feuer Roboter, die Marios bei berührung zerstören (gehen selbst nicht kaputt außer sie laufen in stacheln/Kugelwilli)
+X19) Feuer Roboter, die Marios bei berührung zerstören (gehen selbst nicht kaputt außer sie laufen in stacheln/Kugelwilli)
   Laufen wie Marios, können nicht springen/leitern klettern. (F:Feuer) Laufen anfangs nach links
 
 
@@ -112,15 +112,17 @@ X18) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen
 
 Zu fixen: 
 (X)Pausemenü pausiert nicht, sondern startet neu! 
-( )Animationen
+(X)Animationen
 (X)Mario soll auch in andere Richtung schauen, wenn er sich umdreht 
-( )Kugelwilli soll auch in andere Richtung schauen, wenn er in eine andere Fliegt
+(X)Kugelwilli soll auch in andere Richtung schauen, wenn er in eine andere Fliegt
 (-)Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
-( )Ausgewählte Stahlträger sollen graphisch erkennbar sein
+(X)Ausgewählte Stahlträger sollen graphisch erkennbar sein
 (X)Marios kollidieren mit anderen Marios 
 ( )Hintergrundbilder und Button Bilder, Main menu Bilder
 ( )Fenstergröße
+( )Feuer mit Feuer kollidieren
 ( )"smooth" landing
 ( )fallen bei Stahlträger-Abbau (auch Feuer!)
 ( )Falsche Nutzereingaben (Highscore und Map)
+( )Feuer fällt bei Start durch Boden
 ( )code schön machen

@@ -30,7 +30,11 @@ public class BulletBill extends Entity{
 				activate();
 				
 				try {
-					this.addComponent(new ImageRenderComponent(new Image("/assets/rocket.png")));
+					if(looksLeft) {
+						this.addComponent(new ImageRenderComponent(new Image("/assets/rocket.png")));
+					}else {
+						this.addComponent(new ImageRenderComponent(new Image("/assets/rocketRight.png")));
+					}
 				}
 				catch(SlickException e) {
 					System.out.println("Bullet Bill konnte nicht geladen werden");

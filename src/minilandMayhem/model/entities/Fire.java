@@ -7,6 +7,7 @@ import org.newdawn.slick.geom.Vector2f;
 import eea.engine.action.basicactions.DestroyEntityAction;
 import eea.engine.action.basicactions.MoveLeftAction;
 import eea.engine.action.basicactions.MoveRightAction;
+import eea.engine.component.Component;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.Event;
@@ -21,13 +22,17 @@ import minilandMayhem.ui.GamePlayState;
 public class Fire extends Robot {
 
 	private boolean destroyed;
+	private Component imageL;
+	private Component imageR;
 	
 	public Fire(String entityID) {
 		super(entityID);
 		destroyed = false;
 		
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("assets/fire.png")));
+			imageL = new ImageRenderComponent(new Image("assets/fire.png"));
+			imageR = new ImageRenderComponent(new Image("assets/fireRight.png"));
+			this.addComponent(imageL);
 		} catch (SlickException e) {
 			System.out.println("Feuerbild konnte nicht geladen werden");
 		}
@@ -36,7 +41,6 @@ public class Fire extends Robot {
 		CollisionEvent collide = new CollisionEvent();
 		collide.addAction(new Collide());
 		this.addComponent(collide);
-		//smoothLanding();
 		activate();
 		
 	}
@@ -63,6 +67,22 @@ public class Fire extends Robot {
 			this.removeEntity();
 		}
 	
+	}
+	
+	
+	@Override
+	/**
+	 * aendert die Blick- und Laufrichtung des Feuers
+	 */
+	public void changeDirection() {
+		if(this.looksRight) {
+			this.removeComponent(imageR);
+			this.addComponent(imageL);
+		}else {
+			this.removeComponent(imageL);
+			this.addComponent(imageR);
+		}
+		super.changeDirection();
 	}
 
 }

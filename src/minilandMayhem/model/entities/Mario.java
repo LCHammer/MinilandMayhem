@@ -1,5 +1,6 @@
 package minilandMayhem.model.entities;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -23,19 +24,18 @@ import minilandMayhem.model.action.MarioCollide;
 import minilandMayhem.model.events.GroundCollision;
 import minilandMayhem.model.events.RobotLooksLeftEvent;
 import minilandMayhem.model.events.RobotLooksRightEvent;
+import minilandMayhem.render.MyAnimationRenderComponent;
 import minilandMayhem.ui.GamePlayState;
 
 public class Mario extends Robot{
 
-	//public boolean collided;
 	private boolean hasKey;
 	private boolean destroyed;
+	private boolean hasPowerUp;
 	
 	private Component imageR;
-	private Component imageL;
 	private Component animationLeft;
 	private Component animationRight;
-	private Image r1;
 	
 	/**
 	 * Konstruktor
@@ -45,23 +45,28 @@ public class Mario extends Robot{
 		super(entityID);
 		isActive = false;
 		destroyed = false;
+		hasPowerUp = false;
 		
 		hasKey = false;
 		this.setPassable(false);
 		
 		this.setSize(new Vector2f(48,48));
-		//this.setRotation(30f);
-		//this.pHitbox.setRotation(30f);
 		
 		
 		try {
-			this.imageR = new ImageRenderComponent(new Image("/assets/mario4.png"));
-			this.imageL = new ImageRenderComponent(new Image("assets/Mario1Left.png"));
-			this.r1 = new Image("assets/mario1.png");
+			this.imageR = new ImageRenderComponent(new Image("assets/mario1.png"));
+			Image r1 = new Image("assets/mario1.png");
 			Image r2 = new Image("assets/mario2.png");
 			Image r3 = new Image("assets/mario3.png");
-			Image[] arrRight = new Image[] {r1,r2,r3};
-			//this.animationRight = new AnimationRenderComponent(arrRight, -100f, 50, 50, false);
+			Image[] arrRight = new Image[] {r1,r2,r1,r3};
+			
+			Image l1 = new Image("assets/mario1Left.png");
+			Image l2 = new Image("assets/mario2Left.png");
+			Image l3 = new Image("assets/mario3Left.png");
+			Image[] arrLeft = new Image[] {l1,l2,l1,l3};
+			
+			this.animationRight = new MyAnimationRenderComponent(arrRight, 0.002f, 48, 48, true);
+			this.animationLeft = new MyAnimationRenderComponent(arrLeft, 0.002f, 48, 48, true);
 			this.addComponent(this.imageR);
 		}
 		catch(SlickException e) {
@@ -107,9 +112,9 @@ public class Mario extends Robot{
 			ANDEvent left = new ANDEvent(new LoopEvent(), new RobotLooksLeftEvent("MoveLeft"));
 			left.addAction(new MoveLeftAction(speed));
 			this.addComponent(left);
-			//TODO: change animation!
-			//this.removeComponent(imageR);
-			//this.addComponent(imageL);
+			this.removeComponent(imageR);
+			this.addComponent(animationRight);
+			
 		}
 	}
 	
@@ -120,11 +125,11 @@ public class Mario extends Robot{
 	public void changeDirection() {
 		if(this.isActive) {
 			if(this.looksRight) {
-				this.removeComponent(imageR);
-				this.addComponent(imageL);
+				this.removeComponent(animationRight);
+				this.addComponent(animationLeft);
 			}else {
-				this.removeComponent(imageL);
-				this.addComponent(imageR);
+				this.removeComponent(animationLeft);
+				this.addComponent(animationRight);
 			}
 		
 		super.changeDirection();
@@ -161,6 +166,14 @@ public class Mario extends Robot{
 	 */
 	public void collectKey() {
 		this.hasKey=true;
+	}
+	
+	/**
+	 * laesst den Mario (fast) unbesiegbar werden und aendert seine Farbe
+	 */
+	public void powerUp() {
+		this.hasPowerUp = true;
+		//TODO ueberschreibe animationleft und animationRight
 	}
 	
 	/**

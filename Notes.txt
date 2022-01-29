@@ -8,3 +8,6 @@ Marios können unendlich oft kollidieren.
 ALLE level müssel rechteckig im aufbau sein.
 
 100 Punkte, wenn Feuer zerstört
+
+Mario muss sich nicht drehen, wenn er Träger hochläuft (von Animation überlagert), 
+Feuer soll sich aber dennoch drehen

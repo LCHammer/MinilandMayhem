@@ -18,11 +18,13 @@ public class Key extends Collectable {
 			System.out.println("Schluesselbild konnte nicht geladen werden");
 		}
 	}
-	
-	public void destroy() {
-		LoopEvent l  = new LoopEvent();
-		l.addAction(new DestroyEntityAction());
-		this.addComponent(l);
+
+	@Override
+	public void performPickup(Mario m) {
+		m.collectKey();
+		
 	}
+	
+	
 
 }

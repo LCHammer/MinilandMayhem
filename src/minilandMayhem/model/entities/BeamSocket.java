@@ -47,16 +47,21 @@ public class BeamSocket extends Entity{
 					if( GamePlayState.selectedSocket == null) {
 						//Es wurde vorher noch kein anderer Sockel ausgewählt
 						GamePlayState.selectedSocket = thisSocket;
+						thisSocket.setRotation(180f);
 					}
 					else if(!GamePlayState.selectedSocket.equals(thisSocket)) {
 						//Es wurden auf 2 unterschiedliche Sockel geklickt -> baue Traeger
 						g.createBeam(thisSocket,GamePlayState.selectedSocket);
+						GamePlayState.selectedSocket.setRotation(90f);
+						thisSocket.setRotation(90f);
 						GamePlayState.selectedSocket=null;
+						
 					}
 					else
 					{
 						//es wurde 2 mal auf den selben Sockel geklickt -> entferne alle Traeger
 						thisSocket.removeBeams(thisSocket.beams);
+						GamePlayState.selectedSocket.setRotation(90f);
 						GamePlayState.selectedSocket = null;
 						g.dropRobotFromBeams(thisSocket);
 					}
