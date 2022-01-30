@@ -22,8 +22,8 @@ public class Collide implements Action {
 		Robot robot = (Robot)event.getOwnerEntity();
 			
 		
-			//mit einer Wand kollidiert:
-			if (collider instanceof Wall ) { 
+			//mit einer Wand (oder einer Kanone) kollidiert:
+			if (collider instanceof Wall || collider instanceof BillBlaster ) { 
 				robot.endJump();
 		
 				if(canCollide(robot,collider)){
@@ -90,7 +90,28 @@ public class Collide implements Action {
 			//welches dieses hier überschreibt
 			}else if(collider instanceof Mario) {
 				Mario m = (Mario) collider;
+				if(m.getHasPowerUp()) {
+					robot.destroy();
+				}else {
 				m.destroy();
+				}
+				//Dieses Feuer ist mit einem anderen Feuer kollidiert
+			}else if(collider instanceof Fire && robot instanceof Fire) {
+				if(canCollide(robot,collider)) {
+					Fire other = (Fire) collider;
+					
+					if(robot.getFalling()) {
+						robot.land();
+						robot.changeDirection();
+					}
+					else if(other.getFalling()) {
+						other.land();
+						other.changeDirection();
+					}else {
+						robot.changeDirection();
+						other.changeDirection();
+					}
+				}
 			}
 			
 			

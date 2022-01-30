@@ -28,7 +28,6 @@ public class HighScoreState extends BasicGameState {
 	
 	private int stateID;
 	private StateBasedEntityManager entityManager;
-	public static File highscore = null;
 	private static String score;
 	
 	public HighScoreState(int stateID) {
@@ -44,10 +43,8 @@ public class HighScoreState extends BasicGameState {
     	background.addComponent(new ImageRenderComponent(new Image("/assets/background.png")));
     	entityManager.addEntity(stateID, background);
     	
-		if(highscore !=null) {
-			Highscore.readFile(highscore);
-			score = Highscore.score();
-		}
+	
+		score = Highscore.score();
 		
 		
 		Entity mainmenu = new Entity("zurück");

@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.regex.Pattern;
 
 public class Highscore {
 
@@ -15,11 +16,13 @@ public class Highscore {
 	
 	public static String score() {
 		String ret ="";
-		for(HighscoreEntry e: entries) {
-			if(ret == "") {
-				ret = e.toString();
-			}else {
-			ret += System.lineSeparator() + e.toString();
+		if(entries != null) {
+			for(HighscoreEntry e: entries) {
+				if(ret == "") {
+					ret = e.toString();
+				}else {
+					ret += System.lineSeparator() + e.toString();
+				}
 			}
 		}
 		return ret;
@@ -33,7 +36,12 @@ public class Highscore {
 		}
 	}
 	
-	public static void readFile(File highscore) {
+	/**
+	 * 
+	 * @param highscore liest den highscore in der angegebenen Datei ein und speichert diesen in Highscore.entries, sofern es keine Fehler gibt
+	 * @return true, wenn die Datei problemlos eingelesen werden kann, sonst false
+	 */
+	public static boolean readFile(File highscore) {
 		
 		try {
 			FileReader f= new FileReader(highscore);
@@ -41,17 +49,23 @@ public class Highscore {
 			BufferedReader b = new BufferedReader(f);
 			Highscore.entries = new LinkedList<HighscoreEntry>();
 			for (String line=b.readLine(); line !=null; line = b.readLine()) {
-				HighscoreEntry h = new HighscoreEntry(line);
-				Highscore.entries.add(h);
+				if(Pattern.matches("-?[0-9]+,[0-9]+/[0-9]+", line) ) {
+					HighscoreEntry h = new HighscoreEntry(line);
+					Highscore.entries.add(h);
+				}else {
+					//loesche alle bereits vorhandenen Werte.
+					Highscore.entries = new LinkedList<HighscoreEntry>();
+					return false;
+				}
 			}
 		
-			FileWriter fw = new FileWriter(highscore);
-			fw.write(Highscore.score());
-			fw.close();
+			
 			b.close();
 		}catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
+		return true;
 	}
 }

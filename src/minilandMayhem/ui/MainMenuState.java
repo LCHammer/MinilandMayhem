@@ -28,6 +28,7 @@ import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
+import minilandMayhem.highscore.Highscore;
 import minilandMayhem.model.mapParser.Parser;
 
 
@@ -67,7 +68,19 @@ public class MainMenuState extends BasicGameState{
     	// Erstelle das Ausloese-Event und die zugehoerige Action
     	ANDEvent mainEvents = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
     	
-    	Action new_Game_Action = new ChangeStateInitAction(MinilandMayhem.GAMEPLAYSTATE);
+    	Action new_Game_Action = new Action() {
+
+			@Override
+			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
+				if(Parser.map != null && Parser.check()) {
+					Action a = new ChangeStateInitAction(MinilandMayhem.GAMEPLAYSTATE);
+					a.update(gc, game, delta, event);
+				}else {
+					System.out.println("Level nicht rechteckig!");
+				}
+			}
+    		
+    	};
     	mainEvents.addAction(new_Game_Action);
     	new_Game_Entity.addComponent(mainEvents);
     	
@@ -120,17 +133,13 @@ public class MainMenuState extends BasicGameState{
 						String[] str_arr = new String[lst.size()];
 						str_arr = lst.toArray(str_arr);
 					
-						for (int i =0; i<str_arr.length; i++) {
-							System.out.println(str_arr[i]);
-						}
 						Parser.setMap(str_arr);
 						Parser.levelname = file.getName();
 					
 						f.close();
 						b.close();
 					} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+						System.out.println("Fehler beim Lesen der Datei");
 					}
 				
 				}
@@ -158,10 +167,11 @@ public class MainMenuState extends BasicGameState{
 				JFileChooser fc = new JFileChooser();
 				int retval = fc.showOpenDialog(null);
 				File file = fc.getSelectedFile();
-				if(file != null) { // bessere überprüfung!
-					HighScoreState.highscore = file;
+				if(file != null && Highscore.readFile(file)) { 
 					Action a = new ChangeStateInitAction(MinilandMayhem.HIGHSCORESTATE);
 					a.update(gc, game, delta, event);
+				}else {
+					System.out.println("Keine Datei ausgewählt oder Datei hat falsches Format");
 				}
 			}
     		

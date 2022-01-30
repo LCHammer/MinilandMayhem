@@ -36,9 +36,9 @@ public class EndScreen extends BasicGameState {
 	private int stateID;
 	private StateBasedEntityManager entityManager;
 	
-	  //werte aus DOW, ändern!
     private final int distance = 100;
     private final int start_Position = 180;
+    private boolean alreadyUsed = false;
 	
 	public EndScreen(int stateID) {
 		this.stateID = stateID;
@@ -87,19 +87,29 @@ public class EndScreen extends BasicGameState {
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				// TODO Auto-generated method stub
-				String path  ="src\\highscores\\Highscore_"+Parser.levelname;
-				File highscore = new File(path);
-				HighscoreEntry entry = new HighscoreEntry(GamePlayState.score,GamePlayState.successfulMario,GamePlayState.marios.size());
-				try {
-					if(highscore.createNewFile()) {
-						System.out.println("created");
-					}
-					Highscore.insert(entry);
+				if(!alreadyUsed) {
+					alreadyUsed = true;
+					String path  ="src\\highscores\\Highscore_"+Parser.levelname;
+					File highscore = new File(path);
+					HighscoreEntry entry = new HighscoreEntry(GamePlayState.score,GamePlayState.successfulMario,GamePlayState.maxMarios);
+					try {
+						if(highscore.createNewFile()) {
+							System.out.println("created");
+						}
+						Highscore.readFile(highscore);
+						Highscore.insert(entry);
+						FileWriter fw = new FileWriter(highscore);
+						fw.write(Highscore.score());
+						fw.close();
 					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}else {
+					System.out.println("already used");
 				}
+		
 			}
 			
 		};

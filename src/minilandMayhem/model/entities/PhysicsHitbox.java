@@ -11,10 +11,12 @@ import eea.engine.action.basicactions.DestroyEntityAction;
 import eea.engine.component.Component;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
+import eea.engine.event.ANDEvent;
 import eea.engine.event.Event;
 import eea.engine.event.NOTEvent;
 import eea.engine.event.basicevents.CollisionEvent;
 import eea.engine.event.basicevents.LoopEvent;
+import minilandMayhem.model.events.FlatGroundCollision;
 import minilandMayhem.model.events.GroundCollision;
 import minilandMayhem.model.events.IsOnBeamEvent;
 
@@ -57,7 +59,7 @@ public class PhysicsHitbox extends Entity{
 		
 		
 		//ueberprueft, ob der Roboter gerade auf festem Boden steht.
-		Event grounded = new GroundCollision();
+		Event grounded = new ANDEvent(new NOTEvent(new FlatGroundCollision()), new GroundCollision());
 		grounded.addAction(new Action() {
 
 			@Override
@@ -73,6 +75,25 @@ public class PhysicsHitbox extends Entity{
 			
 		});
 		this.addComponent(grounded);
+		
+		Event flat = new FlatGroundCollision();
+		flat.addAction(new Action() {
+
+			@Override
+			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
+				PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
+				Robot r = self.getOwner();
+				//ist der Roboter gerade am fallen und hat nun festen Boden unter sich, soll er landen (und nicht mehr fallen)
+				//zusätzlich ist dieser Boden gerade, daher soll der Roboter auch direkt auf ihm stehen
+				if(r.getFalling()) {
+					r.land();
+					r.smoothLanding();
+				}
+				
+			}
+			
+		});
+		this.addComponent(flat);
 
 		
 		LoopEvent e = new LoopEvent();

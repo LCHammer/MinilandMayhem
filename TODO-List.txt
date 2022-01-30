@@ -120,9 +120,9 @@ Zu fixen:
 (X)Marios kollidieren mit anderen Marios 
 ( )Hintergrundbilder und Button Bilder, Main menu Bilder
 ( )Fenstergröße
-( )Feuer mit Feuer kollidieren
-( )"smooth" landing
+(X)Feuer mit Feuer kollidieren
+(X)"smooth" landing
 ( )fallen bei Stahlträger-Abbau (auch Feuer!)
-( )Falsche Nutzereingaben (Highscore und Map)
+(X)Falsche Nutzereingaben (Highscore und Map)
 ( )Feuer fällt bei Start durch Boden
 ( )code schön machen

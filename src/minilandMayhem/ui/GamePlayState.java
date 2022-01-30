@@ -1,6 +1,7 @@
 package minilandMayhem.ui;
 
 import java.util.LinkedList;
+import java.util.regex.Pattern;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -36,6 +37,7 @@ public class GamePlayState extends BasicGameState {
     public static LinkedList<Mario> marios = new LinkedList<Mario>();
     public static int successfulMario;
 	public static int score;
+	public static int maxMarios;
     
 	public GamePlayState(int stateID) {
 		this.stateID = stateID;
@@ -184,6 +186,7 @@ public class GamePlayState extends BasicGameState {
     						Mario m = (Mario) map[y][x];
     						entityManager.addEntity(stateID, m.getHitbox());
     						marios.add(m);
+    						maxMarios +=1;
     					}else if(map[y][x] instanceof Fire) {
     						Fire f = (Fire)map[y][x];
     						entityManager.addEntity(stateID, f.getHitbox());

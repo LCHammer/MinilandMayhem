@@ -185,4 +185,9 @@ public class Mario extends Robot{
 	}
 	
 	
+	public boolean getHasPowerUp() {
+		return this.hasPowerUp;
+	}
+	
+	
 }

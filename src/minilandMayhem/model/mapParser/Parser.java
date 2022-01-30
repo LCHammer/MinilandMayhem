@@ -69,10 +69,26 @@ public class Parser {
 		case 'C': return new Coin("Coin");
 		case 'T': return new Trampoline("Trampoline");
 		case 'B': return new BillBlaster("Kanone");
+		case 'P': return new PowerUp("PowerUp");
 		default: return null;
 		
 		
 		}
+	}
+	
+	
+	/**
+	 * 
+	 * @return true, wenn das aktuelle Level rechteckig ist.
+	 */
+	public static boolean check(){
+		int length = Parser.map[0].length();
+		for(int y = 0; y < Parser.map.length; y++) {
+			if(Parser.map[y].length() != length) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }
