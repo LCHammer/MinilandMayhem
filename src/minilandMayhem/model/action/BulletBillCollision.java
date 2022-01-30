@@ -7,8 +7,7 @@ import eea.engine.action.Action;
 import eea.engine.component.Component;
 import eea.engine.entity.Entity;
 import eea.engine.event.basicevents.CollisionEvent;
-import minilandMayhem.model.entities.BulletBill;
-import minilandMayhem.model.entities.Robot;
+import minilandMayhem.model.entities.*;
 
 public class BulletBillCollision implements Action{
 
@@ -23,12 +22,15 @@ public class BulletBillCollision implements Action{
 		collider =collide.getCollidedEntity();
 		BulletBill b = (BulletBill) collide.getOwnerEntity();
         
-		if(collider instanceof Robot) {
+		if(collider instanceof Mario) {
         	
-			Robot m = (Robot)collider;
-			//if(!m.hasPowerUp()) {
+			Mario m = (Mario)collider;
+			if(!m.getHasPowerUp()) {
 				m.destroy();
-			//}
+			}
+        }else if(collider instanceof Fire) {
+        	Fire f = (Fire)collider;
+        	f.destroy();
         }
 		b.destroy();
        

@@ -120,6 +120,7 @@ Zu fixen:
 (X)Marios kollidieren mit anderen Marios 
 ( )Hintergrundbilder und Button Bilder, Main menu Bilder
 ( )Fenstergröße
+( )PowerUp ändert Farbe
 (X)Feuer mit Feuer kollidieren
 (X)"smooth" landing
 ( )fallen bei Stahlträger-Abbau (auch Feuer!)
