@@ -4,17 +4,14 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
-import eea.engine.action.basicactions.DestroyEntityAction;
 import eea.engine.action.basicactions.MoveLeftAction;
 import eea.engine.action.basicactions.MoveRightAction;
 import eea.engine.component.Component;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.event.ANDEvent;
-import eea.engine.event.Event;
 import eea.engine.event.basicevents.CollisionEvent;
 import eea.engine.event.basicevents.LoopEvent;
 import minilandMayhem.model.action.Collide;
-import minilandMayhem.model.action.MarioCollide;
 import minilandMayhem.model.events.RobotLooksLeftEvent;
 import minilandMayhem.model.events.RobotLooksRightEvent;
 import minilandMayhem.ui.GamePlayState;
@@ -25,7 +22,7 @@ public class Fire extends Robot {
 	private Component imageL;
 	private Component imageR;
 	
-	public Fire(String entityID) {
+	public Fire(String entityID, boolean canMove) {
 		super(entityID);
 		destroyed = false;
 		
@@ -41,7 +38,9 @@ public class Fire extends Robot {
 		CollisionEvent collide = new CollisionEvent();
 		collide.addAction(new Collide());
 		this.addComponent(collide);
-		activate();
+		if(canMove) {
+			activate();
+		}
 		
 	}
 	

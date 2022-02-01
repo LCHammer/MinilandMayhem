@@ -12,10 +12,12 @@ import eea.engine.action.Action;
 import eea.engine.component.Component;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
+import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
 import minilandMayhem.ui.GamePlayState;
+import minilandMayhem.ui.MinilandMayhem;
 
 public class BeamSocket extends Entity{
 
@@ -81,7 +83,10 @@ public class BeamSocket extends Entity{
 	public void removeBeams(LinkedList<Beam> beamList) {
 		int pre = beamList.size();
 		for (int i =0; i<beamList.size();) {
-			beamList.get(i).destroy();
+			Beam b = beamList.get(i);
+			b.getFirst().removeSingleBeam(b);
+			b.getSecond().removeSingleBeam(b);
+			StateBasedEntityManager.getInstance().removeEntity(MinilandMayhem.GAMEPLAYSTATE, b);
 		}
 		int post = beamList.size();
 		GamePlayState.ressources+=(pre-post);

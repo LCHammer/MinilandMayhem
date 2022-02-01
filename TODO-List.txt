@@ -9,7 +9,7 @@ X3)EndScreenStateState füllen
 	auch Übergänge: "Neustart" -> GamePlay, "Hauptmenü" -> MainMenu, "Beenden" -> quit
 
 
-4) Spielelemente graphisch darstellen (irgendwo auf dem screen, dass man sieht, dass es geht)
+X4) Spielelemente graphisch darstellen (irgendwo auf dem screen, dass man sieht, dass es geht)
 
 
 X5) Spiel an sich: Einen Mario, der nach rechts läuft, 
@@ -118,12 +118,12 @@ Zu fixen:
 (-)Stahltraeger nur bauen, wenn sie mit nichts (außer Sockel und anderen Trägern) kollidieren werden
 (X)Ausgewählte Stahlträger sollen graphisch erkennbar sein
 (X)Marios kollidieren mit anderen Marios 
-( )Hintergrundbilder und Button Bilder, Main menu Bilder
-( )Fenstergröße
-( )PowerUp ändert Farbe
+(X)Hintergrundbilder und Button Bilder, Main menu Bilder
+(X)Fenstergröße
+(X)PowerUp ändert Farbe
 (X)Feuer mit Feuer kollidieren
 (X)"smooth" landing
-( )fallen bei Stahlträger-Abbau (auch Feuer!)
+(X)fallen bei Stahlträger-Abbau (auch Feuer!)
 (X)Falsche Nutzereingaben (Highscore und Map)
-( )Feuer fällt bei Start durch Boden
+(X)Feuer fällt bei Start durch Boden
 ( )code schön machen

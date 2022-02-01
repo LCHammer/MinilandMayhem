@@ -59,7 +59,7 @@ public class Parser {
 		case 'M': uniqueNum +=1;
 				  return new Mario("Mario"+uniqueNum);
 		case 'F': uniqueNum +=1;
-				  return new Fire("Feuer"+uniqueNum);
+				  return new Fire("Feuer"+uniqueNum,true);
 		case 'W': return new Wall("Wand");
 		case 'D': return new Door("Tür",true);
 		case 'd': return new Door("Tür",false);
@@ -70,6 +70,7 @@ public class Parser {
 		case 'T': return new Trampoline("Trampoline");
 		case 'B': return new BillBlaster("Kanone");
 		case 'P': return new PowerUp("PowerUp");
+		case 'R': return new SteelPickup("Ressource");
 		default: return null;
 		
 		

@@ -131,6 +131,7 @@ public abstract class Robot extends Entity{
 	 */
 	public void walkOnBeam(Beam b) {
 		//System.out.println(isFalling);
+		System.out.println("start");
 		if(!getIsWalkingUp() && !getIsWalkingDown()) {
 			BeamSocket first = b.getFirst();
 			BeamSocket second = b.getSecond();
@@ -221,6 +222,7 @@ public abstract class Robot extends Entity{
 			this.isWalkingUp = false;
 			this.walkUp.removeAction(0);
 		}
+		System.out.println("here");
 		
 		if(this.getIsWalkingDown()) {
 			this.setRotation(0f);

@@ -1,7 +1,6 @@
 package minilandMayhem.ui;
 
 import java.util.LinkedList;
-import java.util.regex.Pattern;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -21,7 +20,6 @@ import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.Event;
 import eea.engine.event.OREvent;
 import eea.engine.event.basicevents.KeyPressedEvent;
-import eea.engine.event.basicevents.MouseClickedEvent;
 import minilandMayhem.model.entities.*;
 import minilandMayhem.model.events.NoMarioLeftEvent;
 import minilandMayhem.model.events.TimedEvent;
@@ -35,9 +33,11 @@ public class GamePlayState extends BasicGameState {
     public static int ressources = 50;
     public static BeamSocket selectedSocket = null;
     public static LinkedList<Mario> marios = new LinkedList<Mario>();
+    public static LinkedList<Robot> robots = new LinkedList<Robot>();
     public static int successfulMario;
 	public static int score;
 	public static int maxMarios;
+	private String pausetext = "";
     
 	public GamePlayState(int stateID) {
 		this.stateID = stateID;
@@ -88,8 +88,10 @@ public class GamePlayState extends BasicGameState {
 					Component event) {
 				if(gc.isPaused()){
 					gc.resume();
+					pausetext = "";
 				} else {
 					gc.pause();
+					pausetext = "pausiert";
 				}
 				
 			}    		
@@ -109,72 +111,74 @@ public class GamePlayState extends BasicGameState {
     	
     	Mario mario = new Mario("Mario1");
     	mario.setPosition(new Vector2f(100,100));
-    	//mario.getHitbox().setPosition(new Vector2f(200,230));
     	entityManager.addEntity(stateID, mario);
     	entityManager.addEntity(stateID, mario.getHitbox());
     	
-    	
     	Entity wall1 = new Wall("Boden");
-    	wall1.setPosition(new Vector2f(150,400));
+    	wall1.setPosition(new Vector2f(150,100));
     	entityManager.addEntity(stateID, wall1);
     	
-    	Entity wall2 = new Wall("Wand2");
-    	wall2.setPosition(new Vector2f(200,400));
-    	entityManager.addEntity(stateID, wall2);
+    	Fire fire = new Fire("Feuer",false);
+    	fire.setPosition(new Vector2f(200,100));
+    	entityManager.addEntity(stateID, fire);
+    	entityManager.addEntity(stateID, fire.getHitbox());
     	
-    	Entity wall3 = new Wall("Wand3");
-    	wall3.setPosition(new Vector2f(100,350));
-    	entityManager.addEntity(stateID, wall3);
+    	Entity socket = new BeamSocket("Sockel");
+    	socket.setPosition(new Vector2f(250,100));
+    	entityManager.addEntity(stateID, socket);
     	
-    	Entity wall4 = new Wall("Wand4");
-    	wall4.setPosition(new Vector2f(250,400));
-    	entityManager.addEntity(stateID, wall4);
+    	Entity beam = new Beam("Träger", null, null, false);
+    	beam.setPosition(new Vector2f(300,100));
+    	entityManager.addEntity(stateID, beam);
     	
-    	Entity wall5 = new Wall("Wand5");
-    	wall5.setPosition(new Vector2f(300,400));
-    	entityManager.addEntity(stateID, wall5);
-    /*	
-    	Entity wall6 = new Wall("Wand6");
-    	wall6.setPosition(new Vector2f(100,400));
-    	entityManager.addEntity(stateID, wall6);
-    */	
-    	Entity wall7 = new Wall("Wand7");
-    	wall7.setPosition(new Vector2f(150,400));
-    	entityManager.addEntity(stateID, wall7);
+    	Entity blaster = new BillBlaster("Kanone");
+    	blaster.setPosition(new Vector2f(250,400));
+    	entityManager.addEntity(stateID, blaster);
     	
-    	Entity doorL = new Door("TürL",true);
-    	doorL.setPosition(new Vector2f(300,350));
+    	Entity closed = new Door("geschlossen",false);
+    	closed.setPosition(new Vector2f(350,100));
+    	entityManager.addEntity(stateID, closed);
+    	
+    	
+    	Entity doorL = new Door("Tür",true);
+    	doorL.setPosition(new Vector2f(400,100));
     	entityManager.addEntity(stateID, doorL);
-    /*	
-    	Entity key = new Key("Schluessel");
-    	key.setPosition(new Vector2f(200,100));
-    	key.addComponent(new ImageRenderComponent(new Image("/assets/drop.png")));
+    
+    	Entity coin = new Coin("coin");
+    	coin.setPosition(new Vector2f(450,100));
+    	entityManager.addEntity(stateID, coin);
+    	
+    	Entity danger = new Danger("Gefahr");
+    	danger.setPosition(new Vector2f(100,200));
+    	entityManager.addEntity(stateID, danger);
+    	
+    	Entity key = new Key("key");
+    	key.setPosition(new Vector2f(150,200));
     	entityManager.addEntity(stateID, key);
     	
+    	Entity star = new PowerUp("PowerUp");
+    	star.setPosition(new Vector2f(200,200));
+    	entityManager.addEntity(stateID, star);
     	
+    	Entity iron = new SteelPickup("Ressource");
+    	iron.setPosition(new Vector2f(250,200));
+    	entityManager.addEntity(stateID, iron);
     	
-    	Entity socket2 = new BeamSocket("Socket2");
-    	socket2.setPosition(new Vector2f(200,200));
-    	entityManager.addEntity(stateID, socket2);
+    	Entity trampoline = new Trampoline("Trampolin");
+    	trampoline.setPosition(new Vector2f(300,200));
+    	entityManager.addEntity(stateID, trampoline);
     	
+    	Entity bill = new BulletBill("Bill",false);
+    	bill.setPosition(new Vector2f(100,300));
+    	entityManager.addEntity(stateID, bill);
     	
-    	BeamSocket socketR2 = new BeamSocket("SocketR2");
-    	socketR2.setPosition(new Vector2f(300,200));
-    	entityManager.addEntity(stateID, socketR2);
-    	
-    	
-    	
-    	Entity sockel = new BeamSocket("SocketL2");
-    	sockel.setPosition(new Vector2f(100,200));
-    	entityManager.addEntity(stateID, sockel);
-    	*/
     	
     	}
     	else if(Parser.map != null) {
     		Entity[][] map = Parser.parse();
     		int y_dim = map.length;
     		int x_dim = map[0].length;
-    		marios= new LinkedList<Mario>();
+    		robots = new LinkedList<Robot>();
     		for (int y = 0; y < y_dim; y++) {
     			for( int x = 0; x < x_dim; x++) {
     				//wichtig: beachte reihenfolge der Dimensionen!
@@ -185,12 +189,13 @@ public class GamePlayState extends BasicGameState {
     					if(map[y][x] instanceof Mario) {
     						Mario m = (Mario) map[y][x];
     						entityManager.addEntity(stateID, m.getHitbox());
+    						robots.add(m);
     						marios.add(m);
     						maxMarios +=1;
     					}else if(map[y][x] instanceof Fire) {
     						Fire f = (Fire)map[y][x];
+    						robots.add(f);
     						entityManager.addEntity(stateID, f.getHitbox());
-    						//soll auch hinzugefügt werden, damit es auch von träger fallen kann, wenn dieser abgebaut wird
     					}
     				}
     			}
@@ -239,6 +244,7 @@ public class GamePlayState extends BasicGameState {
 		//float werte sind x und y koordinate der Stringposition
 		g.drawString(ressourcen, 110, 10);
 		g.drawString(points, 330, 10);
+		g.drawString(pausetext, 400, 10);
 		
 	}
 
@@ -315,11 +321,13 @@ public class GamePlayState extends BasicGameState {
 	 * @param socket Sockel, auf den 2 mal geklickt wurde. 
 	 */
 	public void dropRobotFromBeams(BeamSocket socket) {
-		for(Mario m : marios){
-			if(socket.equals(m.getStart())|| socket.equals(m.getEnd())) {
-				m.stopWalkOnBeam();
+		for(Robot r : robots){
+			if(socket.equals(r.getStart())|| socket.equals(r.getEnd())) {
+				r.stopWalkOnBeam();
+				System.out.println(r.getID());
 			}
 		}
+		
 	}
 	
 	

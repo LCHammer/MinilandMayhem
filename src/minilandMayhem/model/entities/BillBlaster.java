@@ -6,6 +6,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
+import minilandMayhem.model.action.SpawnBillAction;
 import minilandMayhem.model.events.TimedEvent;
 
 public class BillBlaster extends Entity {

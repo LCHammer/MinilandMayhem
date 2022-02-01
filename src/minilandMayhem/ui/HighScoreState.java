@@ -1,6 +1,5 @@
 package minilandMayhem.ui;
 
-import java.io.File;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -22,7 +21,6 @@ import eea.engine.event.basicevents.KeyPressedEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
 import minilandMayhem.highscore.Highscore;
-import minilandMayhem.model.events.NoMarioLeftEvent;
 
 public class HighScoreState extends BasicGameState {
 	
@@ -48,7 +46,7 @@ public class HighScoreState extends BasicGameState {
 		
 		
 		Entity mainmenu = new Entity("zurück");
-		mainmenu.setPosition(new Vector2f(218,390));
+		mainmenu.setPosition(new Vector2f(170,390));
     	mainmenu.setScale(0.28f);
     	mainmenu.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
     	
@@ -62,8 +60,11 @@ public class HighScoreState extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		entityManager.renderEntities(gc, game, g);
 		if(score!=null) {
-			g.drawString(score, 100, 100);
+			g.drawString(score, 120, 150);
+		
 		}
+		String numbers = "1."+System.lineSeparator()+"2."+System.lineSeparator()+"3."+System.lineSeparator()+"4."+System.lineSeparator()+"5.";
+		g.drawString(numbers, 100, 150);
 		g.drawString("Zurück", 110, 380);
 	}
 

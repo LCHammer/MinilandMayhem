@@ -14,7 +14,6 @@ import eea.engine.entity.Entity;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.Event;
 import eea.engine.event.NOTEvent;
-import eea.engine.event.basicevents.CollisionEvent;
 import eea.engine.event.basicevents.LoopEvent;
 import minilandMayhem.model.events.FlatGroundCollision;
 import minilandMayhem.model.events.GroundCollision;
@@ -27,7 +26,7 @@ public class PhysicsHitbox extends Entity{
 	public PhysicsHitbox(String entityID, Vector2f position, Robot robot) {
 		super(entityID);
 		owner = robot;
-		this.setVisible(true); 
+		this.setVisible(false); 
 		//Wichtig: setzt die Groesse der Hitbox. Diese darf nicht mit dem entsprechenden Roboter kollidieren,
 		//da sonst alle anderen Kollisionen überdeckt werden.
 		this.setSize(new Vector2f(48,2));		

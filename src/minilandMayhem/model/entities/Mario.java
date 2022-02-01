@@ -1,10 +1,7 @@
 package minilandMayhem.model.entities;
 
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
@@ -12,16 +9,11 @@ import org.newdawn.slick.state.StateBasedGame;
 import eea.engine.action.Action;
 import eea.engine.action.basicactions.*;
 import eea.engine.component.Component;
-import eea.engine.component.render.AnimationRenderComponent;
+
 import eea.engine.component.render.ImageRenderComponent;
-import eea.engine.entity.Entity;
 import eea.engine.event.ANDEvent;
-import eea.engine.event.Event;
-import eea.engine.event.NOTEvent;
 import eea.engine.event.basicevents.*;
-import minilandMayhem.model.action.Collide;
 import minilandMayhem.model.action.MarioCollide;
-import minilandMayhem.model.events.GroundCollision;
 import minilandMayhem.model.events.RobotLooksLeftEvent;
 import minilandMayhem.model.events.RobotLooksRightEvent;
 import minilandMayhem.render.MyAnimationRenderComponent;
@@ -36,6 +28,8 @@ public class Mario extends Robot{
 	private Component imageR;
 	private Component animationLeft;
 	private Component animationRight;
+	private Component powerAnimationL;
+	private Component powerAnimationR;
 	
 	/**
 	 * Konstruktor
@@ -65,8 +59,21 @@ public class Mario extends Robot{
 			Image l3 = new Image("assets/mario3Left.png");
 			Image[] arrLeft = new Image[] {l1,l2,l1,l3};
 			
+			Image pr1 = new Image("assets/powerUp1.png");
+			Image pr2 = new Image("assets/powerUp2.png");
+			Image pr3 = new Image("assets/powerup3.png");
+			Image[] powerArrRight = new Image[] {pr1,pr2,pr1,pr3};
+			
+			Image pl1 = new Image("assets/powerup1Left.png");
+			Image pl2 = new Image("assets/powerup2Left.png");
+			Image pl3 = new Image("assets/powerup3Left.png");
+			Image[] powerArrLeft = new Image[] {pl1,pl2,pl1,pl3};
+			
 			this.animationRight = new MyAnimationRenderComponent(arrRight, 0.002f, 48, 48, true);
 			this.animationLeft = new MyAnimationRenderComponent(arrLeft, 0.002f, 48, 48, true);
+			
+			this.powerAnimationR = new MyAnimationRenderComponent(powerArrRight, 0.002f, 48, 48, true);
+			this.powerAnimationL = new MyAnimationRenderComponent(powerArrLeft, 0.002f, 48, 48, true);
 			this.addComponent(this.imageR);
 		}
 		catch(SlickException e) {
@@ -79,7 +86,6 @@ public class Mario extends Robot{
 
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
-				// TODO Auto-generated method stub
 				Mario r = (Mario) event.getOwnerEntity();
 			    r.activate();
 			}
@@ -173,7 +179,18 @@ public class Mario extends Robot{
 	 */
 	public void powerUp() {
 		this.hasPowerUp = true;
-		//TODO ueberschreibe animationleft und animationRight
+		if(this.looksRight) {
+			this.removeComponent(animationRight);
+			this.animationRight=powerAnimationR;
+			this.animationLeft = powerAnimationL;
+			this.addComponent(animationRight);
+		}else {
+			this.removeComponent(animationLeft);
+			this.animationRight=powerAnimationR;
+			this.animationLeft = powerAnimationL;
+			this.addComponent(animationLeft);
+			
+		}
 	}
 	
 	/**
@@ -185,6 +202,9 @@ public class Mario extends Robot{
 	}
 	
 	
+	/**
+	 * @return true, wenn dieser Mario ein PowerUp(=Stern) eingesammelt hat.
+	 */
 	public boolean getHasPowerUp() {
 		return this.hasPowerUp;
 	}

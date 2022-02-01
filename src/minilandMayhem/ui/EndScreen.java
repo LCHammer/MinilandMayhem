@@ -1,13 +1,9 @@
 package minilandMayhem.ui;
 
 
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.LinkedList;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -56,7 +52,7 @@ public class EndScreen extends BasicGameState {
     	entityManager.addEntity(stateID, background);
 		
 		Entity resume = new Entity("resume");
-		resume.setPosition(new Vector2f(218, 190));
+		resume.setPosition(new Vector2f(170, 190));
 		resume.setScale(0.28f);
 		resume.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
 		ANDEvent resume_event = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
@@ -67,7 +63,7 @@ public class EndScreen extends BasicGameState {
 		entityManager.addEntity(stateID, resume);
 		
 		Entity main = new Entity("Hauptmenü");
-		main.setPosition(new Vector2f(218, 290));
+		main.setPosition(new Vector2f(170, 290));
 		main.setScale(0.28f);
 		main.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
 		ANDEvent main_event = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
@@ -78,7 +74,7 @@ public class EndScreen extends BasicGameState {
 		
 		
 		Entity highscore = new Entity("Highscore");
-		highscore.setPosition(new Vector2f(218,390));
+		highscore.setPosition(new Vector2f(170,390));
 		highscore.setScale(0.28f);
 		highscore.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
 		ANDEvent highscore_event = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
@@ -119,7 +115,7 @@ public class EndScreen extends BasicGameState {
 		
 		
 		Entity end = new Entity("Beenden");
-		end.setPosition(new Vector2f(218,490));
+		end.setPosition(new Vector2f(170,490));
 		end.setScale(0.28f);
 		end.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
 		ANDEvent end_event = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());

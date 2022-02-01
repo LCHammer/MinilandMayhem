@@ -2,11 +2,9 @@ package minilandMayhem.ui;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
@@ -51,7 +49,7 @@ public class MainMenuState extends BasicGameState{
 		// Hintergrund laden
     	Entity background = new Entity("menu");	// Entitaet fuer Hintergrund
     	background.setPosition(new Vector2f(400,300));	// Startposition des Hintergrunds
-    	background.addComponent(new ImageRenderComponent(new Image("/assets/background.png"))); // Bildkomponente
+    	background.addComponent(new ImageRenderComponent(new Image("/assets/mainbackground.png"))); // Bildkomponente
     	    	
     	// Hintergrund-Entitaet an StateBasedEntityManager uebergeben
     	entityManager.addEntity(stateID, background);
@@ -61,7 +59,7 @@ public class MainMenuState extends BasicGameState{
     	Entity new_Game_Entity = new Entity(new_Game);
     	
     	// Setze Position und Bildkomponente
-    	new_Game_Entity.setPosition(new Vector2f(218, 190));
+    	new_Game_Entity.setPosition(new Vector2f(170, 190));
     	new_Game_Entity.setScale(0.28f);
     	new_Game_Entity.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
     	
@@ -72,7 +70,7 @@ public class MainMenuState extends BasicGameState{
 
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
-				if(Parser.map != null && Parser.check()) {
+				if(Parser.map == null || (Parser.map != null && Parser.check())) {
 					Action a = new ChangeStateInitAction(MinilandMayhem.GAMEPLAYSTATE);
 					a.update(gc, game, delta, event);
 				}else {
@@ -91,7 +89,7 @@ public class MainMenuState extends BasicGameState{
    	Entity quit_Entity = new Entity("Beenden");
     	
     	// Setze Position und Bildkomponente
-    	quit_Entity.setPosition(new Vector2f(218, 490));
+    	quit_Entity.setPosition(new Vector2f(170, 490));
     	quit_Entity.setScale(0.28f);
     	quit_Entity.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
     	
@@ -110,7 +108,7 @@ public class MainMenuState extends BasicGameState{
     	//Level waehlen
     	Entity choose_level = new Entity("Choose_Level");
     	
-    	choose_level.setPosition(new Vector2f(218,290));
+    	choose_level.setPosition(new Vector2f(170,290));
     	choose_level.setScale(0.28f);
     	choose_level.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
     	
@@ -120,7 +118,7 @@ public class MainMenuState extends BasicGameState{
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				JFileChooser fc = new JFileChooser();
-				int retval = fc.showOpenDialog(null);
+				fc.showOpenDialog(null);
 				File file = fc.getSelectedFile();
 				if(file != null) {
 					try {
@@ -154,7 +152,7 @@ public class MainMenuState extends BasicGameState{
     	
     	//Highscore anzeigen
     	Entity highscore = new Entity("Highscore");
-    	highscore.setPosition(new Vector2f(218,390));
+    	highscore.setPosition(new Vector2f(170,390));
     	highscore.setScale(0.28f);
     	highscore.addComponent(new ImageRenderComponent(new Image("assets/entry.png")));
     	ANDEvent score = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
@@ -163,9 +161,8 @@ public class MainMenuState extends BasicGameState{
 
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
-				// TODO Auto-generated method stub
 				JFileChooser fc = new JFileChooser();
-				int retval = fc.showOpenDialog(null);
+				fc.showOpenDialog(null);
 				File file = fc.getSelectedFile();
 				if(file != null && Highscore.readFile(file)) { 
 					Action a = new ChangeStateInitAction(MinilandMayhem.HIGHSCORESTATE);
@@ -189,7 +186,7 @@ public class MainMenuState extends BasicGameState{
 		int counter = 0;
 		
 		g.drawString("Neues Spiel", 110, start_Position+counter*distance); counter++;
-		g.drawString("Aktuelles level: "+ Parser.levelname, 110,start_Position+counter*distance);counter++;
+		g.drawString("Level: "+ Parser.levelname, 110,start_Position+counter*distance);counter++;
 		g.drawString("Highscore", 110, start_Position+counter*distance); counter++;
 		g.drawString("Beenden", 110, start_Position+counter*distance); counter++;
 		

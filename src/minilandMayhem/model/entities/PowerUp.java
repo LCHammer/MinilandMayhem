@@ -10,14 +10,17 @@ public class PowerUp extends Collectable{
 	public PowerUp(String entityID) {
 		super(entityID);
 		try {
-			this.addComponent(new ImageRenderComponent(new Image("/assets/key.png")));
+			this.addComponent(new ImageRenderComponent(new Image("/assets/star.png")));
 		}
 		catch(SlickException e) {
-			System.out.println("Pilzbild konnte nicht geladen werden");
+			System.out.println("Sternbild konnte nicht geladen werden");
 		}
 	}
 
 	@Override
+	/**
+	 * laesst den Mario (fast) ein PowerUp durchfuehren
+	 */
 	public void performPickup(Mario m) {
 		m.powerUp();
 		

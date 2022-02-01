@@ -13,7 +13,6 @@ import eea.engine.event.Event;
 import eea.engine.event.basicevents.CollisionEvent;
 import eea.engine.event.basicevents.LoopEvent;
 import minilandMayhem.model.action.BulletBillCollision;
-import minilandMayhem.model.events.TimedEvent;
 
 
 public class BulletBill extends Entity{
