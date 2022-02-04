@@ -1,0 +1,60 @@
+Minimal:
+-Es soll Hauptmenü geben mit buttons "start", "level" und "beenden".
+	"start" soll ins Spielmenü wechseln
+	"beenden" soll app schließen
+	"level" wird später gefüllt
+
+-Gameplaystate: hier ist das "hauptspiel". 
+	Bei drücken der P-Taste soll das spiel pausiert werden
+	Wird P nochmal gedrückt soll spiel weitergehen
+	Ist Spiel pausiert, soll ein "pausiert" Text angezeigt werden
+	Bei drücken der Escape-Taste, soll das Spiel sofort beendet werden und in einen EndeScreen übergehen
+	Zusätzlich Anzahl an Ressourcen sichtbar (Startwert: 5)
+
+-Im Endscreen sollen 3 Buttons sein: 
+	"neustart", "hauptmenü" und "beenden" mit jeweiliger funktion.
+
+-Mapparser: klickt man im Hauptmenü auf "level" so kann man eine text datei wählen
+	ist die Datei eine textdatei, welche einen Rechteckigen Aufbau hat (genauer erklären), soll sie geparst werden.
+	Ist die Datei vom falschen Format (z.B. nicht rechteckig, keine textdatei), so soll nichts geparst werden
+	Folgende übersetzung: M:Mario, D:Tür, W:Wand, S:Sockel, _:Nichts/Leer, X:Gefahr. (Hinweis: wird später erweitert werden) unbekannte zeichen sollen als leer interpretiert werden
+	Bei klick auf "start" soll dann das eingelesene Level im Hauptmenü spielbar sein. (Hinweis: Objekte sollen nicht größer als 50 auf 50 sein)
+	Die einzelnen Entities befinden sich an den entsprechenden Positionen wie in der Text datei.
+
+-Bei erfolgreichem einlesen soll es dazu eine Bounding box aus Wänden geben
+
+
+-Mario: startet inaktiv, muss angeklickt werden, damit er läuft (startet laufen nach rechts mit speed 0.125f)
+	Läuft Mario gegen eine Tür oder Gefahr, wird er vom Spiel entfernt (Hinweis: Punktzah kommt später)
+	Läuft er gegen eine Wand / Sockel oder einen anderen Mario, dreht er um und ändert laufrichtung (links-> rechts und umgekehrt)
+	Mario hat laufanimation
+
+-Spiel zu Ende, wenn alle Marios entfernt wurden (wechsel in Endscreen)
+
+-Schwerkraft: Marios fallen, wenn sie keinen Boden(=Wand, Sockel oder Stahlträger) unter sich haben.
+	Beschläunigen Fall entsprechend ein zehntel der Erdbeschläunigung (ein zehntel, da sonst zu schnell)
+	Dabei hören sie sofort auf zu fallen, wenn sie auf Boden landen
+	Marios bewegen sich beim Fallen weiterhin nach links/rechts!
+
+-Stahlträger bauen: Wird auf einen sockel geklickt und dann auf einen anderen, so soll zwischen beiden sockeln ein gerader stahlträger gebaut werden.
+	zusätzlich soll für alle 50 längeneinheiten, welche zwischen den sockeln besteht, eine Ressource verbraucht werden.
+	Sind nicht genügend Ressourcen vorhanden für einen Träger, soll er auch nicht gebaut werden.
+	
+-Stahlträger abreißen: wird auf einen Sockel 2 mal hintereinander geklickt, so werden alle Stahlträger entfernt, welche an diesem Träger angebaut wurden
+	Ressourcen werden entsprechend zurückerstattet.
+
+-Marios können Stahlträger mit winkel <45° hoch- und runterlaufen. sind sie oben/unten angekommen, laufen sie normal weiter
+	kollidieren sie mit einer Wand und würden die richtung ändern, so tun sie dies und laufen runter, wenn sie zuvor hochgelaufen sind und umgekehrt
+	Fällt ein Mario auf einen träger, welchen er hoch/runterlaufen kann, so tut er dies
+	Wird ein Träger abgebaut, so fallen alle Marios, die auf ihm laufen.	
+	läuft ein Mario gerade einen Träger hoch/runter, so ignoriert er alle stahlträger, welche weniger als 45° haben und lässt sich nicht von ihnen beeinflussen.
+	
+
+-Stahlträger mit winkel über 45° zählen als Wand und Marios ändern die laufrichtung, wenn sie gegen einen derartigen träger laufen (auch wenn sie einen anderen Träger gerade hoch/runterlaufen
+	Oder läuft der Mario von der falschen seite gegen den Träger so zählt dieser (auch bei <45° als Wand für ihn)
+	
+Ausbaustufe1:
+
+Ausbaustufe2:
+
+Ausbaustufe3:
