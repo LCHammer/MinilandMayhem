@@ -18,9 +18,8 @@ public class MinilandMayhem extends StateBasedGame {
 
 	public static final int MAINMENUSTATE = 0;
 	public static final int GAMEPLAYSTATE = 1;
-	public static final int OPTIONSTATE = 2;
-	public static final int HIGHSCORESTATE = 3;
-	public static final int ENDSCREENSTATE = 4;
+	public static final int HIGHSCORESTATE = 2;
+	public static final int ENDSCREENSTATE = 3;
 	
 	public static boolean debug = false;
 	
@@ -59,13 +58,11 @@ public class MinilandMayhem extends StateBasedGame {
 		//der zuerst hinzugefügte state ist der, mit dem das Spiel startet
 		this.addState(new MainMenuState(MAINMENUSTATE));
 		this.addState(new GamePlayState(GAMEPLAYSTATE));
-		//this.addState(new OptionState(OPTIONSTATE));
 		this.addState(new HighScoreState(HIGHSCORESTATE));
 		this.addState(new EndScreen(ENDSCREENSTATE));
 		
 		StateBasedEntityManager.getInstance().addState(MAINMENUSTATE);
 		StateBasedEntityManager.getInstance().addState(GAMEPLAYSTATE);
-		//StateBasedEntityManager.getInstance().addState(OPTIONSTATE);
 		StateBasedEntityManager.getInstance().addState(HIGHSCORESTATE);
 		StateBasedEntityManager.getInstance().addState(ENDSCREENSTATE);
 		

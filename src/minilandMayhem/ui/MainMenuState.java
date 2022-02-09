@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
@@ -24,6 +25,9 @@ import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.ANDEvent;
+import eea.engine.event.Event;
+import eea.engine.event.basicevents.KeyDownEvent;
+import eea.engine.event.basicevents.KeyPressedEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
 import minilandMayhem.highscore.Highscore;
@@ -35,7 +39,6 @@ public class MainMenuState extends BasicGameState{
 	private int stateID = 0;
     private StateBasedEntityManager entityManager;
     
-    //werte aus DOW, ändern!
     private final int distance = 100;
     private final int start_Position = 180;
 	
@@ -71,8 +74,20 @@ public class MainMenuState extends BasicGameState{
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				if(Parser.map == null || (Parser.map != null && Parser.check())) {
-					Action a = new ChangeStateInitAction(MinilandMayhem.GAMEPLAYSTATE);
-					a.update(gc, game, delta, event);
+					game.enterState(MinilandMayhem.GAMEPLAYSTATE);
+					//System.out.println(game.getCurrentStateID());
+					//Action a = new ChangeStateInitAction(MinilandMayhem.GAMEPLAYSTATE);
+					//a.update(gc, game, delta, event);
+
+					
+					try {
+						game.update(gc, delta);
+					} catch (SlickException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println("hier"+game.getCurrentStateID());
+				
 				}else {
 					System.out.println("Level nicht rechteckig!");
 				}
@@ -176,6 +191,25 @@ public class MainMenuState extends BasicGameState{
     	
     	highscore.addComponent(score);
     	entityManager.addEntity(stateID, highscore);
+    
+    	
+    	Entity f = new Entity("bla");
+    	Event g = new KeyPressedEvent(Input.KEY_X);
+    	g.addAction(new Action() {
+
+			@Override
+			public void update(GameContainer gc, StateBasedGame game, int arg2, Component arg3) {
+				// TODO Auto-generated method stub
+				System.out.println("test");
+				System.out.println(gc.getInput().getMouseX());
+				System.out.println(gc.getInput().getMouseY());
+				
+			}
+    		
+    	});
+    	f.addComponent(g);
+    	entityManager.addEntity(stateID, f);
+    	
     	
 	}
 

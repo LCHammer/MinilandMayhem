@@ -1,5 +1,6 @@
 package minilandMayhem.test.students.testcase;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
@@ -8,7 +9,7 @@ import org.junit.Test;
 
 import minilandMayhem.test.MinilandTestAdapterMinimal;
 
-public class HasEntitiesTest {
+public class GameStateTest {
 
 	MinilandTestAdapterMinimal adapter;
 	
@@ -23,10 +24,12 @@ public class HasEntitiesTest {
 	}
 	
 	@Test
-	public void test1() {
+	public void testMainMenu() {
 		adapter.initGame();
-		assertTrue(true);
-		System.out.println("here");
+		assertTrue("Game does not start in Main menu",adapter.getCurrentStateID()==adapter.getMainStateID());
+		adapter.handleMouseClick(170, 190);
+		System.out.println(adapter.getCurrentStateID());
+		assertTrue("Game is not in GameState after click on start",adapter.getCurrentStateID()==adapter.getGameStateID());
 		adapter.stopGame();
 	}
 	
