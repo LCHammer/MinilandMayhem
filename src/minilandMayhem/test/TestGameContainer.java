@@ -4,17 +4,14 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Game;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
 
 
 public class TestGameContainer extends AppGameContainer {
 
 	TestInput input;
-	Input input2;
 	
 	public TestGameContainer(Game game) throws SlickException {
 		super(game,800,600,false);
-		input2 = new Input(0);
 	}
 	
 	
@@ -47,7 +44,7 @@ public class TestGameContainer extends AppGameContainer {
 	
 	public void updateGame(int delta) throws SlickException{
 		game.update(this, delta);
-		game.update(this, delta);// why 2?
+		game.update(this, delta);
 	}
 
 }

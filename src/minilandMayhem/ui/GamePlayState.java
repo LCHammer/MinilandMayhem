@@ -19,7 +19,6 @@ import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.Event;
 import eea.engine.event.OREvent;
-import eea.engine.event.basicevents.KeyDownEvent;
 import eea.engine.event.basicevents.KeyPressedEvent;
 import minilandMayhem.model.entities.*;
 import minilandMayhem.model.events.NoMarioLeftEvent;
@@ -31,7 +30,7 @@ public class GamePlayState extends BasicGameState {
 	
 	private int stateID;
     private StateBasedEntityManager entityManager;
-    public static int ressources = 50;
+    public static int ressources = 5;
     public static BeamSocket selectedSocket = null;
     public static LinkedList<Mario> marios = new LinkedList<Mario>();
     public static LinkedList<Robot> robots = new LinkedList<Robot>();
@@ -57,16 +56,9 @@ public class GamePlayState extends BasicGameState {
     	// Bei DrÃ¼cken der ESC-Taste ins Pause-Menü wechseln
     	Entity finished = new Entity("finished");
     	Event end_game = new OREvent(new KeyPressedEvent(Input.KEY_ESCAPE),new NoMarioLeftEvent("noMario",this));
-    	//end_game.addAction(new ChangeStateAction(MinilandMayhem.ENDSCREENSTATE));
-    	end_game.addAction(new Action() {
-
-			@Override
-			public void update(GameContainer arg0, StateBasedGame arg1, int arg2, Component arg3) {
-				// TODO Auto-generated method stub
-				System.out.println("end");
-			}
-    		
-    	});
+    	end_game.addAction(new ChangeStateAction(MinilandMayhem.ENDSCREENSTATE));
+    	
+    	
     	finished.addComponent(end_game);    	
     	entityManager.addEntity(stateID, finished);
     	
@@ -100,11 +92,9 @@ public class GamePlayState extends BasicGameState {
 				if(gc.isPaused()){
 					gc.resume();
 					pausetext = "";
-					System.out.println("pause");
 				} else {
 					gc.pause();
 					pausetext = "pausiert";
-					System.out.println("pause");
 				}
 				
 			}    		
@@ -112,16 +102,11 @@ public class GamePlayState extends BasicGameState {
     	p.addComponent(pause);
     	entityManager.addEntity(stateID, p);
     	
-    	
-    	
-    	
-    	
     	successfulMario = 0;
     	score = 500;
+    	ressources = 5;
     	
-    	if(MinilandMayhem.debug || Parser.map==null) {
-    	System.out.println("no map");
-    	
+    	if(MinilandMayhem.debug || Parser.map==null) {    	
     	Mario mario = new Mario("Mario1");
     	mario.setPosition(new Vector2f(100,100));
     	entityManager.addEntity(stateID, mario);

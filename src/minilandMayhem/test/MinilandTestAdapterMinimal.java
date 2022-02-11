@@ -4,6 +4,7 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.StateBasedEntityManager;
 import minilandMayhem.ui.MinilandMayhem;
@@ -70,51 +71,73 @@ public class MinilandTestAdapterMinimal {
 	}
 	
 	
+	
+	
+	
+	/**
+	 * simuliert einen Mausklick an Position (x,y) und triggert MouseEntered Event an Position (x,y) 
+	 * sowie ein MouseClickedEvent
+	 * @param x x-Koordinated des Klicks
+	 * @param y y-Koordinate des Klicks
+	 */
+	public void handleMouseClick(float x, float y) {
+		app.getTestInput().setMouseX((int)x);
+		app.getTestInput().setMouseY((int)y);
+		app.getTestInput().setMouseButtonPressed(Input.MOUSE_LEFT_BUTTON);
+		try {
+			miniland.update(app, 0); //das erste update laesst alle Events triggern, die bei Mausklick ausgeführt werden
+			app.getTestInput().clearMouseButtonPressed(); //loslassen der Maus
+			miniland.update(app, 0); //das zweite update fuehrt potentielle ChangeState Aktionen aus.
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+	}
+
+	/**
+	 * simuliert ein Tastendruck und triggert entsprechende keyPressedEvents
+	 * @param key Taste, welche gedrückt wird.
+	 */
+	public void handleKeyPressed(int key) {
+		app.getTestInput().setKeyPressed(key);
+		
+		try {
+			miniland.update(app, 0); //das erste update laesst alle Events triggern, die bei Tastendruck ausgeführt werden
+			app.getTestInput().clearPressedKeys(); //loslassen der Taste
+			miniland.update(app, 0); //das zweite update fuehrt potentielle ChangeState Aktionen aus.
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+	
 	/**
 	 * 
-	 * @return StateID des aktuellen GameStates
+	 * @return die Position des Buttons, welcher das Spiel vom Mainmenu aus startet (und in den GameState wechselt)
 	 */
-	public int getCurrentStateID() {
-		return miniland.getCurrentStateID();
+	public Vector2f getStartGamePosition() {
+		return new Vector2f(170,190);
+	}
+	
+	/**
+	 * 
+	 * @return die Position des Buttons, welcher ein neues Spiel vom Endscreen aus startet (und in den GameState wechselt)
+	 */
+	public Vector2f getNewGamePosition() {
+		return new Vector2f(170,190);
+	}
+	
+	/**
+	 * 
+	 * @return die Position des Buttons, welcher vom Endscreen aus in das Mainmenu wechselt
+	 */
+	public Vector2f getMainMenuPosition() {
+		return new Vector2f(170,290);
 	}
 	
 	
-	
-	
-	
-	public void handleMouseClick(int x, int y) {
-		app.getTestInput().setMouseX(x);
-		app.getTestInput().setMouseY(y);
-		
-		//miniland.enterState(MinilandMayhem.GAMEPLAYSTATE);
-		app.getTestInput().setMouseButtonPressed(Input.MOUSE_LEFT_BUTTON);
-		
-		
-		System.out.println(miniland.getCurrentStateID());
-		try {
-			miniland.update(app, 0);
-			//app.updateGame(0);
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-
-		app.getTestInput().setKeyPressed(Input.KEY_P);
-		System.out.println(miniland.getCurrentStateID());
-		try {
-			miniland.update(app, 0);
-			//app.updateGame(0);
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-		
-		
-		
-	}
-
 	
 	/**
 	 * 
@@ -140,5 +163,15 @@ public class MinilandTestAdapterMinimal {
 		return MinilandMayhem.ENDSCREENSTATE;
 	}
 		
+
+	/**
+	 * 
+	 * @return StateID des aktuellen GameStates
+	 */
+	public int getCurrentStateID() {
+		return miniland.getCurrentStateID();
+	}
+	
+	
 }
 	
