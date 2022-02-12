@@ -106,7 +106,7 @@ public class GamePlayState extends BasicGameState {
     	score = 500;
     	ressources = 5;
     	
-    	if(MinilandMayhem.debug || Parser.map==null) {    	
+    	if(Parser.map==null) {    	
     	Mario mario = new Mario("Mario1");
     	mario.setPosition(new Vector2f(100,100));
     	entityManager.addEntity(stateID, mario);

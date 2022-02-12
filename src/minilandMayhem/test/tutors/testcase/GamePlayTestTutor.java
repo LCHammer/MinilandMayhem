@@ -1,6 +1,10 @@
-package minilandMayhem.test.students.testcase;
+package minilandMayhem.test.tutors.testcase;
 
 import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.lang.Thread.State;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,11 +12,19 @@ import org.junit.Test;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Vector2f;
 
+import eea.engine.entity.Entity;
+import eea.engine.entity.StateBasedEntityManager;
+import minilandMayhem.model.mapParser.Parser;
 import minilandMayhem.test.MinilandTestAdapterMinimal;
 
-public class GameStateTest {
+public class GamePlayTestTutor {
 
 	MinilandTestAdapterMinimal adapter;
+	String map1= "src/level/Level1.txt";
+	String map2= "src/level/Level2.txt";
+	String map3= "src/level/Level3.txt";
+	String incorrect = "src/level/incorrect.txt";
+	String otherChars = "src/level/nonSpecifiedCharacters.txt";
 	
 	@Before
 	public void setUp() {
@@ -32,7 +44,6 @@ public class GameStateTest {
 		adapter.handleMouseClick(pos.x, pos.y);
 		assertTrue("Game is not in GameState after click on start",adapter.getCurrentStateID()==adapter.getGameStateID());
 		adapter.handleKeyPressed(Input.KEY_ESCAPE);
-		System.out.println(adapter.getCurrentStateID());
 		assertTrue("Game is not in EndScreen after press on ESC from GameState",adapter.getCurrentStateID() == adapter.getEndStateID());
 		pos = adapter.getNewGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
@@ -45,10 +56,6 @@ public class GameStateTest {
 		adapter.stopGame();
 	}
 	
-	@Test
-	public void testParseMap() {
-		//TODO Parse Map test
-	}
 	
 	
 	@Test
@@ -58,3 +65,4 @@ public class GameStateTest {
 	
 	
 }
+

@@ -1,5 +1,11 @@
 package minilandMayhem.model.mapParser;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.LinkedList;
+
 import eea.engine.entity.Entity;
 import minilandMayhem.model.entities.*;
 
@@ -54,6 +60,7 @@ public class Parser {
 	 * @return die uebersetzte Entity 
 	 */
 	public static Entity convert(char c) {
+		
 		switch (c) {
 		case '_': return null;
 		case 'M': uniqueNum +=1;
@@ -91,5 +98,45 @@ public class Parser {
 		}
 		return true;
 	}
+	
+	
+	
+	/**
+	 * identisch zu check() ohne Parameter, kann jedoch vorher noch die Datei einlesen, welche die Map enthällt
+	 * @param file zu lesende Datei
+	 * @return true, wenn die Datei ein rechteckiges Level enthaellt, sonst false
+	 */
+	public static boolean check(File file) {
+		Parser.readMap(file);
+		return Parser.check();
+	}
 
+	/**
+	 * lieest die angegebene Datei und setzt den Wert von Parser.map auf den Inhalt der Datei
+	 * @param file zu lesende Datei
+	 */
+	public static void readMap(File file) {
+		if(file != null) {
+			try {
+				
+				FileReader f = new FileReader(file);
+				BufferedReader b = new BufferedReader(f);
+				LinkedList<String> lst = new LinkedList<String>();
+				
+				for (String line=b.readLine(); line !=null; line = b.readLine()) {
+					lst.add(line);
+				}
+				String[] str_arr = new String[lst.size()];
+				str_arr = lst.toArray(str_arr);
+				Parser.setMap(str_arr);
+				Parser.levelname = file.getName();
+				f.close();
+				b.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+		}		
+	}
 }

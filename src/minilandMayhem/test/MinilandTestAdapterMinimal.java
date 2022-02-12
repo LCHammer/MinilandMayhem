@@ -1,5 +1,7 @@
 package minilandMayhem.test;
 
+import java.io.File;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Input;
@@ -7,6 +9,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.StateBasedEntityManager;
+import minilandMayhem.model.mapParser.Parser;
 import minilandMayhem.ui.MinilandMayhem;
 
 public class MinilandTestAdapterMinimal {
@@ -53,11 +56,54 @@ public class MinilandTestAdapterMinimal {
 		} catch (LWJGLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-        
-    
+		}    
+	}
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Türen
+	 * enthalten alle Tueren in ihrer ID den predix "Tuer", so soll "Tuer" zurueckgegeben werden
+	 */
+	public String getDoorPrefix() {
+		return "Tür";
+	}
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Marios
+	 * enthalten alle Marios in ihrer ID den predix "Mario", so soll "Mario" zurueckgegeben werden
+	 */
+	public String getMarioPrefix() {
+		return "Mario";
+	}
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Waenden
+	 * enthalten alle Waende in ihrer ID den predix "Wand", so soll "Wand" zurueckgegeben werden
+	 */
+	public String getWallPrefix() {
+		return "Wand";
+	}
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Gefahren
+	 * enthalten alle Gefahren in ihrer ID den predix "Gefahr", so soll "Gefahr" zurueckgegeben werden
+	 */
+	public String getDangerPrefix() {
+		return "Gefahr";
 	}
 
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Sockeln
+	 * enthalten alle Sockeln in ihrer ID den predix "Sockel", so soll "Sockel" zurueckgegeben werden
+	 */
+	public String getSocketPrefix() {
+		return "Sockel";
+	}
 	/**
 	 * Stoppe das im Hintergrund laufende Spiel
 	 */
@@ -111,6 +157,15 @@ public class MinilandTestAdapterMinimal {
 			e.printStackTrace();
 		}
 	
+	}
+	
+	/**
+	 * liest die Datei und extrahiert die Map aus der Datei. Ueberprueft danach, ob die Map rechteckig ist
+	 * @param file einzulesende Datei
+	 * @return true, wenn die in der Datei enthaltene Map korrekt(=rechteckig) ist, sonst false
+	 */
+	public boolean checkMap(File file) {
+		return Parser.check(file);
 	}
 	
 	/**

@@ -129,27 +129,7 @@ public class MainMenuState extends BasicGameState{
 				JFileChooser fc = new JFileChooser();
 				fc.showOpenDialog(null);
 				File file = fc.getSelectedFile();
-				if(file != null) {
-					try {
-						FileReader f = new FileReader(file);
-						BufferedReader b = new BufferedReader(f);
-						LinkedList<String> lst = new LinkedList<String>();
-						for (String line=b.readLine(); line !=null; line = b.readLine()) {
-							lst.add(line);
-						}
-						String[] str_arr = new String[lst.size()];
-						str_arr = lst.toArray(str_arr);
-					
-						Parser.setMap(str_arr);
-						Parser.levelname = file.getName();
-					
-						f.close();
-						b.close();
-					} catch (IOException e) {
-						System.out.println("Fehler beim Lesen der Datei");
-					}
-				
-				}
+				Parser.readMap(file);
 			}
     		
     	};
