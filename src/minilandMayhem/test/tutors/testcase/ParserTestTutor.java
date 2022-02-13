@@ -12,15 +12,14 @@ import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
-import minilandMayhem.model.mapParser.Parser;
 import minilandMayhem.test.MinilandTestAdapterMinimal;
 
 public class ParserTestTutor {
 
 	MinilandTestAdapterMinimal adapter;
-	String map1= "src/level/Level1.txt";
-	String map2= "src/level/Level2.txt";
-	String map3= "src/level/Level3.txt";
+	String win= "src/level/Win.txt";
+	String lose= "src/level/Lose.txt";
+	String sockets= "src/level/Sockets.txt";
 	String incorrect = "src/level/incorrect.txt";
 	String otherChars = "src/level/nonSpecifiedCharacters.txt";
 	
@@ -38,9 +37,8 @@ public class ParserTestTutor {
 	@Test
 	public void testParseCorrectMap1() {
 		
-		File f = new File(map1);	
+		File f = new File(win);	
 		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
-		System.out.println("here");
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
@@ -66,7 +64,7 @@ public class ParserTestTutor {
 	@Test
 	public void testParseCorrectMap2() {
 		
-		File f = new File(map2);	
+		File f = new File(lose);	
 		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
@@ -97,14 +95,14 @@ public class ParserTestTutor {
 	@Test
 	public void testIncorrectMap() {
 		File f = new File(incorrect);
-		assertTrue("incorrect file has been detected as correct",!Parser.check(f));
+		assertTrue("incorrect file has been detected as correct",!adapter.checkMap(f));
 	}
 	
 	
 	@Test
 	public void testParseCorrectMap3() {
 		
-		File f = new File(map3);	
+		File f = new File(sockets);	
 		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
@@ -132,7 +130,7 @@ public class ParserTestTutor {
 		assertTrue("Mario has not been recognized",marios == 3);
 		assertTrue("not all walls (including bounding box) have been recognized",walls == 53);
 		assertTrue("not all dangers have been recognized",dangers == 4);
-		assertTrue("not all sockets have been recognized",dangers == 4);
+		assertTrue("not all sockets have been recognized",sockets == 4);
 	}
 	
 	

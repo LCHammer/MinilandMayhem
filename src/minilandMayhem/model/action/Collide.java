@@ -8,13 +8,16 @@ import eea.engine.component.Component;
 import eea.engine.entity.Entity;
 import eea.engine.event.basicevents.CollisionEvent;
 import minilandMayhem.model.entities.*;
-import minilandMayhem.ui.GamePlayState;
 
 public class Collide implements Action {
 
 	private Entity collider;
 	
 	@Override
+	/**
+	 * Standardverhalten für jeden Roboter, wenn er mit anderen Entities kollidiert.
+	 * Genauere Beschreibungen sind als Kommentare jeweils vorhanden
+	 */
 	public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 		
 		CollisionEvent collide =(CollisionEvent) event;

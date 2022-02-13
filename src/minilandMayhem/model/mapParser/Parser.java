@@ -13,8 +13,8 @@ public class Parser {
 	
 	public static String[] map=null;
 	public static String levelname = "default";
-	//sorgt für eine unique benennung der Marios und des Feuers. Die nummer selbst ist egal,
-	//wichtig ist nur, dass unterschiedliche Roboter unterschiedliche Nummern besitzen.
+	//sorgt für eine unique benennung der Marios und des Feuers. Die Nummer selbst ist egal,
+	//wichtig ist nur, dass unterschiedliche Roboter unterschiedliche Nummern besitzen, um miteinander kollidieren zu können.
 	private static int uniqueNum=0;
 	
 	

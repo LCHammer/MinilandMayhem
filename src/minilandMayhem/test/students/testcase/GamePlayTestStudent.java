@@ -3,7 +3,6 @@ package minilandMayhem.test.students.testcase;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.lang.Thread.State;
 import java.util.List;
 
 import org.junit.After;
@@ -14,14 +13,13 @@ import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
-import minilandMayhem.model.mapParser.Parser;
 import minilandMayhem.test.MinilandTestAdapterMinimal;
 
 public class GamePlayTestStudent {
 
 	MinilandTestAdapterMinimal adapter;
-	String map1= "src/level/Level1.txt";
-	String map2= "src/level/Level2.txt";
+	String win= "src/level/Win.txt";
+	String lose= "src/level/Lose.txt";
 	
 	@Before
 	public void setUp() {
@@ -50,9 +48,54 @@ public class GamePlayTestStudent {
 		
 	
 	@Test
-	public void testEndGame() {
-		//TODO test for ending game after no Mario is left (with transition to "new game) and resetting 
-	}
+	public void testWinGame() {
+		File f = new File(win);
+		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
+		adapter.initGame();
+		Vector2f pos = adapter.getStartGamePosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		Entity mario = null;
+		for(Entity e: entities) {
+			if(adapter.isMario(e)) {
+			mario =e;	
+			}
+		}
+		pos = mario.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		assertTrue("Mario was not activated",adapter.marioIsActive(mario));
+		adapter.updateGame(2000);
+		adapter.updateGame(0);
+		assertTrue("Mario has not been removed after colliding with door",!StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(), adapter.getMarioPrefix()));
+		adapter.updateGame(0);
+		assertTrue("Game has not ended after Mario has been removed",adapter.getCurrentStateID()==adapter.getEndStateID());
+			}
 	
+	@Test
+	public void testLoseGame() {
+		File f = new File(lose);
+		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
+		adapter.initGame();
+		Vector2f pos = adapter.getStartGamePosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		Entity mario = null;
+		for(Entity e: entities) {
+			if(adapter.isMario(e)) {
+			mario =e;	
+			}
+		}
+		pos = mario.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		assertTrue("Mario was not activated",adapter.marioIsActive(mario));
+		adapter.updateGame(750);
+		assertTrue("Mario does not look left after collision",adapter.marioLooksLeft(mario));
+		adapter.updateGame(1750);
+		adapter.updateGame(0);
+		assertTrue("Mario has not been removed after colliding with danger",!StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(), adapter.getMarioPrefix()));
+		adapter.updateGame(0);
+		assertTrue("Game has not ended after Mario has been removed",adapter.getCurrentStateID()==adapter.getEndStateID());
+		
+	}
 	
 }

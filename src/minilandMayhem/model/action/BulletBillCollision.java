@@ -15,6 +15,10 @@ public class BulletBillCollision implements Action{
 	public Entity collider;
 	
 	@Override
+	/**
+	 * zerstoert sich selbst bei jeglicher Kollision. Kollidiert der BulletBill mit einem Feuer oder einem Mario ohne PowerUp
+	 * so werden diese auch zerstoert
+	 */
 	public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 		
 

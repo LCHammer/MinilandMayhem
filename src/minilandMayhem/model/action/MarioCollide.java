@@ -8,9 +8,7 @@ import eea.engine.entity.Entity;
 import eea.engine.event.basicevents.CollisionEvent;
 import minilandMayhem.model.entities.Collectable;
 import minilandMayhem.model.entities.Door;
-import minilandMayhem.model.entities.Key;
 import minilandMayhem.model.entities.Mario;
-import minilandMayhem.ui.GamePlayState;
 
 public class MarioCollide extends Collide {
 
@@ -18,6 +16,9 @@ public class MarioCollide extends Collide {
 	private Entity collider;
 	
 	@Override
+	/**
+	 * Standardkollisionsverhalten des Marios. Genauere Beschreibungen jeweils als Kommentare in der Methode
+	 */
 	public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 		CollisionEvent collide =(CollisionEvent) event;
 		this.collider =collide.getCollidedEntity();
@@ -64,7 +65,9 @@ public class MarioCollide extends Collide {
 		else if(collider instanceof Collectable) {
 			Collectable c = (Collectable)collider;
 			c.collect(mario);
-		}else {
+		}
+		//mit etwas anderem kollidiert, welches mit der Collide action behandelt wird
+		else {
 				super.update(gc, game, delta, event);
 		}
 	}

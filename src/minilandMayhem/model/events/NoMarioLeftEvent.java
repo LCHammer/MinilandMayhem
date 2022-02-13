@@ -10,14 +10,10 @@ import minilandMayhem.ui.GamePlayState;
 
 public class NoMarioLeftEvent extends Event {
 
-	private GamePlayState game;
-	
-	public NoMarioLeftEvent(String id, GamePlayState g) {
-		super(id);
-		this.game = g;
-		// TODO Auto-generated constructor stub
+	public NoMarioLeftEvent(String id) {
+		super("NoMarioEvent");
 	}
-	
+
 	@Override
 	/**
 	 * Dieses Event feuert, wenn kein Mario übrig ist. (Und das Spiel wird dadurch beendet.)
@@ -29,7 +25,7 @@ public class NoMarioLeftEvent extends Event {
 				return false;
 			}
 		}
-		//damit das default level nicht sofort beendet wird
+		//damit ein Level ohne Marios nicht sofort beendet wird
 		if(GamePlayState.marios.size()!=0) {
 			return true;
 		}else {

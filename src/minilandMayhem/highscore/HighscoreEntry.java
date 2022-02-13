@@ -5,7 +5,6 @@ public class HighscoreEntry implements Comparable<HighscoreEntry> {
 	private int score;
 	private int maxMario;
 	private int numMario;
-	//ggf noch datum
 	
 	public HighscoreEntry(int score, int num, int max) {
 		this.score = score;
@@ -19,9 +18,9 @@ public class HighscoreEntry implements Comparable<HighscoreEntry> {
 		this.score=Integer.parseInt(arr1[0]);
 		this.numMario = Integer.parseInt(arr2[0]);
 		this.maxMario = Integer.parseInt(arr2[1]);
-		//System.out.println(this.score+" "+this.numMario+" "+ this.maxMario);
 	}
 	
+	@Override
 	public String toString() {
 		return score+","+numMario +"/"+ maxMario;
 	}

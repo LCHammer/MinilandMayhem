@@ -13,7 +13,9 @@ public class Timer {
 		
 	}
 	
-	
+	/**
+	 * startet den Timer
+	 */
 	public void start() {
 		startTime = System.currentTimeMillis();
 		elapsedTime = 0;
@@ -21,6 +23,9 @@ public class Timer {
 	}
 	
 	
+	/**
+	 * pausiert den Timer
+	 */
 	public void pause() {
 		if(!isPaused) {
 			isPaused = true;
@@ -30,11 +35,19 @@ public class Timer {
 	}
 	
 	
+	/**
+	 * laesst den Timer weiterlaufen
+	 */
 	public void unpause() {
 			isPaused = false;
 	}
 	
 	
+	/**
+	 * ueberprueft, ob genug Zeit vergangen ist und wenn ja, wird der Timer resettet und true zurueckgegeben
+	 * @param enoughTime Menge an Zeit, die vergehen soll
+	 * @return true, wenn genug Zeit vergangen ist, sonst false
+	 */
 	public boolean didEnoughTimePass(long enoughTime) {
 		long currentTime = System.currentTimeMillis();
 		if(currentTime - (startTime + elapsedTime) >= enoughTime) {

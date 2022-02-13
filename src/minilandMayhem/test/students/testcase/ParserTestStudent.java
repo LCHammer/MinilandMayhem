@@ -12,14 +12,13 @@ import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
-import minilandMayhem.model.mapParser.Parser;
 import minilandMayhem.test.MinilandTestAdapterMinimal;
 
 public class ParserTestStudent {
 
 	MinilandTestAdapterMinimal adapter;
-	String map1= "src/level/Level1.txt";
-	String map2= "src/level/Level2.txt";
+	String win= "src/level/Win.txt";
+	String lose= "src/level/Lose.txt";
 	String incorrect = "src/level/incorrect.txt";
 	
 	
@@ -36,7 +35,7 @@ public class ParserTestStudent {
 	@Test
 	public void testParseCorrectMap1() {
 		
-		File f = new File(map1);	
+		File f = new File(win);	
 		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
@@ -63,7 +62,7 @@ public class ParserTestStudent {
 	@Test
 	public void testParseCorrectMap2() {
 		
-		File f = new File(map2);	
+		File f = new File(lose);	
 		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
@@ -94,7 +93,7 @@ public class ParserTestStudent {
 	@Test
 	public void testIncorrectMap() {
 		File f = new File(incorrect);
-		assertTrue("incorrect file has been detected as correct",!Parser.check(f));
+		assertTrue("incorrect file has been detected as correct",!adapter.checkMap(f));
 	}
 }
 

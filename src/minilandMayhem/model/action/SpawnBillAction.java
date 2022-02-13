@@ -16,6 +16,9 @@ public class SpawnBillAction implements Action {
 	
 	
 	@Override
+	/**
+	 * laesst einen BulletBill erscheinen, welcher nach links oder rechts schaut
+	 */
 	public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 		Entity owner = event.getOwnerEntity();
 		Vector2f pos = owner.getPosition();

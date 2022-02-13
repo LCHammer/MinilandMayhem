@@ -8,7 +8,9 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
+import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
+import minilandMayhem.model.entities.Mario;
 import minilandMayhem.model.mapParser.Parser;
 import minilandMayhem.ui.MinilandMayhem;
 
@@ -59,51 +61,7 @@ public class MinilandTestAdapterMinimal {
 		}    
 	}
 	
-	/**
-	 * 
-	 * @return prefix aller IDs von Türen
-	 * enthalten alle Tueren in ihrer ID den predix "Tuer", so soll "Tuer" zurueckgegeben werden
-	 */
-	public String getDoorPrefix() {
-		return "Tür";
-	}
-	
-	/**
-	 * 
-	 * @return prefix aller IDs von Marios
-	 * enthalten alle Marios in ihrer ID den predix "Mario", so soll "Mario" zurueckgegeben werden
-	 */
-	public String getMarioPrefix() {
-		return "Mario";
-	}
-	
-	/**
-	 * 
-	 * @return prefix aller IDs von Waenden
-	 * enthalten alle Waende in ihrer ID den predix "Wand", so soll "Wand" zurueckgegeben werden
-	 */
-	public String getWallPrefix() {
-		return "Wand";
-	}
-	
-	/**
-	 * 
-	 * @return prefix aller IDs von Gefahren
-	 * enthalten alle Gefahren in ihrer ID den predix "Gefahr", so soll "Gefahr" zurueckgegeben werden
-	 */
-	public String getDangerPrefix() {
-		return "Gefahr";
-	}
 
-	
-	/**
-	 * 
-	 * @return prefix aller IDs von Sockeln
-	 * enthalten alle Sockeln in ihrer ID den predix "Sockel", so soll "Sockel" zurueckgegeben werden
-	 */
-	public String getSocketPrefix() {
-		return "Sockel";
-	}
 	/**
 	 * Stoppe das im Hintergrund laufende Spiel
 	 */
@@ -114,6 +72,21 @@ public class MinilandTestAdapterMinimal {
 		}
 		StateBasedEntityManager.getInstance().clearAllStates();
 		miniland = null;
+	}
+	
+	/**
+	 * simuliert das Vergehen von Zeit in Hoehe des angegebenen Parameters in ms
+	 * @param ms vergangene Zeit in ms
+	 */
+	public void updateGame(int ms) {
+		try {
+			miniland.update(app, ms);
+			miniland.update(app,0);
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
@@ -157,6 +130,43 @@ public class MinilandTestAdapterMinimal {
 			e.printStackTrace();
 		}
 	
+	}
+	
+
+	/**
+	 * 
+	 * @param mario Entity, bei welcher ueberprueft wird, ob sie aktiv ist (oder nicht)
+	 * @return true wenn der uebergebene Mario aktiv ist, sonst false. Auch false, wenn Parameter kein Mario ist
+	 */
+	public boolean marioIsActive(Entity mario) {
+		if(mario instanceof Mario) {
+			Mario m = (Mario)mario;
+			return m.getIsActive();
+		}
+		return false;
+	}
+	
+	
+	/**
+	 * 
+	 * @param mario Entity, bei welcher ueberprueft wird, ob sie nach links schaut (oder nicht)
+	 * @return true wenn der uebergebene Mario nach links schaut, sonst false. Auch false, wenn Parameter kein Mario ist
+	 */
+	public boolean marioLooksLeft(Entity mario) {
+		if(mario instanceof Mario) {
+			Mario m = (Mario)mario;
+			return !m.getLooksRight();
+		}
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param e zu ueberpruefende Entity
+	 * @return true, wenn der uebergebene Parameter ein Mario ist
+	 */
+	public boolean isMario(Entity e) {
+		return e instanceof Mario;
 	}
 	
 	/**
@@ -226,6 +236,55 @@ public class MinilandTestAdapterMinimal {
 	public int getCurrentStateID() {
 		return miniland.getCurrentStateID();
 	}
+
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Türen
+	 * enthalten alle Tueren in ihrer ID den predix "Tuer", so soll "Tuer" zurueckgegeben werden
+	 */
+	public String getDoorPrefix() {
+		return "Tür";
+	}
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Marios
+	 * enthalten alle Marios in ihrer ID den predix "Mario", so soll "Mario" zurueckgegeben werden
+	 */
+	public String getMarioPrefix() {
+		return "Mario";
+	}
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Waenden
+	 * enthalten alle Waende in ihrer ID den predix "Wand", so soll "Wand" zurueckgegeben werden
+	 */
+	public String getWallPrefix() {
+		return "Wand";
+	}
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Gefahren
+	 * enthalten alle Gefahren in ihrer ID den predix "Gefahr", so soll "Gefahr" zurueckgegeben werden
+	 */
+	public String getDangerPrefix() {
+		return "Gefahr";
+	}
+
+	
+	/**
+	 * 
+	 * @return prefix aller IDs von Sockeln
+	 * enthalten alle Sockeln in ihrer ID den predix "Sockel", so soll "Sockel" zurueckgegeben werden
+	 */
+	public String getSocketPrefix() {
+		return "Sockel";
+	}
+
+	
 	
 	
 }
