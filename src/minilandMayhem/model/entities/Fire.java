@@ -44,6 +44,9 @@ public class Fire extends Robot {
 		
 	}
 	
+	/**
+	 * aktviert das Feuer, sodass es sich bewegt. Wird direkt bei Konstruktion aufgerufen
+	 */
 	public void activate() {
 		this.isActive=true;
 		this.looksRight = false;

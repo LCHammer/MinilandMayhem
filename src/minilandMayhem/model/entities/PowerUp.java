@@ -19,7 +19,7 @@ public class PowerUp extends Collectable{
 
 	@Override
 	/**
-	 * laesst den Mario (fast) ein PowerUp durchfuehren
+	 * laesst den Mario ein PowerUp durchfuehren und (fast) unbesiegbar
 	 */
 	public void performPickup(Mario m) {
 		m.powerUp();

@@ -13,13 +13,13 @@ public class TimedEvent extends Event {
 	public TimedEvent(String id, long time) {
 		super(id);
 		timeUntilTrigger = time;
-		// TODO Auto-generated constructor stub
 		timer = new Timer();
 	}
 	
 	@Override
 	/**
 	 * Dieses Event feuert, wenn genügend Zeit beim internen Timer vergangen ist.
+	 * Pausiert zusätzlich den Timer, wenn das Spiel pausiert wird.d
 	 */
 	protected boolean performAction(GameContainer gc, StateBasedGame game, int delta) {
 		if(gc.isPaused()) {

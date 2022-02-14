@@ -27,11 +27,17 @@ public class MyAnimationRenderComponent extends RenderComponent{
 	}
 
 	@Override
+	/**
+	 * updated die Animation
+	 */
 	public void update(GameContainer gc, StateBasedGame sb, int delta) {
 		if(animation.isStopped()) StateBasedEntityManager.getInstance().removeEntity(sb.getCurrentStateID(), getOwnerEntity());
 	}
 
 	@Override
+	/**
+	 * @return size groeße der Animation
+	 */
 	public Vector2f getSize() {
 		return size;
 	}
@@ -41,6 +47,9 @@ public class MyAnimationRenderComponent extends RenderComponent{
 	//die "normale" AnimationrenderComponent setzt die obere linke ecke der Bilder in die Mitte der entsprechenden Entity.
 	//deshalb wurde eine kleine Änderung vorgenommen, damit die Mitte der Bilder (frames) mit der Mitte der Entity uebereinstimmt 
 	@Override
+	/**
+	 * zeichnet das aktuelle Bild an die entsprechende Position der Entity
+	 */
 	public void render(GameContainer gc, StateBasedGame sb, Graphics gr) {
 		if(!animation.isStopped()) {
 			float x = getOwnerEntity().getPosition().x;

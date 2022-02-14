@@ -82,16 +82,13 @@ public class EndScreen extends BasicGameState {
 
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
-				// TODO Auto-generated method stub
 				if(!alreadyUsed) {
 					alreadyUsed = true;
 					String path  ="src\\highscores\\Highscore_"+Parser.levelname;
 					File highscore = new File(path);
 					HighscoreEntry entry = new HighscoreEntry(GamePlayState.score,GamePlayState.successfulMario,GamePlayState.maxMarios);
 					try {
-						if(highscore.createNewFile()) {
-							System.out.println("created");
-						}
+						highscore.createNewFile();
 						Highscore.readFile(highscore);
 						Highscore.insert(entry);
 						FileWriter fw = new FileWriter(highscore);
@@ -99,11 +96,10 @@ public class EndScreen extends BasicGameState {
 						fw.close();
 					
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}else {
-					System.out.println("already used");
+					System.out.println("Der Hghscore wurde bereits gespeichert!");
 				}
 		
 			}
@@ -122,13 +118,7 @@ public class EndScreen extends BasicGameState {
 		Action end_act = new QuitAction();
 		end_event.addAction(end_act);
 		end.addComponent(end_event);
-		entityManager.addEntity(stateID, end);
-		
-		
-		
-		
-		
-		
+		entityManager.addEntity(stateID, end);		
 		
 	}
 

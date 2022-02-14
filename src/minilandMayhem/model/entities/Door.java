@@ -32,13 +32,20 @@ public class Door extends Entity{
 		}
 	}
 	
-	public void unlock() { //unlocks the door
+	/**
+	 * schließt die Tuer auf, damit auch Marios ohne Schluessel hindurch gehen können
+	 * Aendert außerdem das Bild der Tuer (in eine normale Tuer)
+	 */
+	public void unlock() { 
 		this.unlocked=true;
 		this.removeComponent(locked);
-		//TODO: needs to change image :remove lock or so
 		this.addComponent(open);
 	}
 
+	/**
+	 * 
+	 * @return true, wenn die Tuer aufgeschlossen ist, sonst false
+	 */
 	public boolean getUnlocked() {
 		return this.unlocked;
 	}

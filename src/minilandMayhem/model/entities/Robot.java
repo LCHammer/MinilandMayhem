@@ -37,7 +37,6 @@ public abstract class Robot extends Entity{
 		looksRight = true;
 		speed = 0.1f;
 		pHitbox = new PhysicsHitbox("Phyisc"+entityID, this.getPosition(), this);
-		//StateBasedEntityManager.getInstance().addEntity(1, pHitbox);
 		fall = new LoopEvent();
 		this.addComponent(fall);
 		jump = new LoopEvent();
@@ -46,13 +45,13 @@ public abstract class Robot extends Entity{
 		this.addComponent(walkUp);
 		walkDown = new LoopEvent();
 		this.addComponent(walkDown);
-		//this.setSize(new Vector2f(48,48));
 	}
 
 	
 	
 	/**
-	 * Ändert die Blickrichtung dieses Roboters und somit auch die Richtung, in die er sich bewegt.
+	 * Aendert die Blickrichtung dieses Roboters und somit auch die Richtung, in die er sich bewegt.
+	 * Laeuft er gerade einen Stahltraeger hoch/runter so soll er auch die Richtung wechseln.
 	 */
 	public void changeDirection() { 
 		if(getIsWalkingUp()) {
@@ -86,7 +85,7 @@ public abstract class Robot extends Entity{
 	
 	
 	/**
-	 * Entfernt diesen Roboter
+	 * Entfernt diesen Roboter (und seine PhysicsHitbox) vom Spielgeschehen
 	 */
 	public void removeEntity() {
 
@@ -129,8 +128,6 @@ public abstract class Robot extends Entity{
 	 * @param b Stahltraeger, den der Roboter hochlaeuft
 	 */
 	public void walkOnBeam(Beam b) {
-		//System.out.println(isFalling);
-		System.out.println("start");
 		if(!getIsWalkingUp() && !getIsWalkingDown()) {
 			BeamSocket first = b.getFirst();
 			BeamSocket second = b.getSecond();
@@ -153,7 +150,6 @@ public abstract class Robot extends Entity{
 			}else {
 				this.walkDown.addAction(new MoveDownAction((float)up_distance));
 				this.isWalkingDown=true;
-				//this.setPosition(new Vector2f(this.getPosition().x,this.getPosition().y+5));
 			}
 			
 		}

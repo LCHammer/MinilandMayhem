@@ -1,15 +1,12 @@
 package minilandMayhem.model.entities;
 
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.action.Action;
 import eea.engine.action.basicactions.DestroyEntityAction;
 import eea.engine.component.Component;
-import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
 import eea.engine.event.ANDEvent;
 import eea.engine.event.Event;
@@ -23,6 +20,7 @@ public class PhysicsHitbox extends Entity{
 	
 	private Robot owner;
 
+	//Ist eine Hitbox, welche immer unter dem jeweiligen Roboter ist, um auf Kollisionen mit dem Boden zu reagieren
 	public PhysicsHitbox(String entityID, Vector2f position, Robot robot) {
 		super(entityID);
 		owner = robot;
@@ -30,13 +28,6 @@ public class PhysicsHitbox extends Entity{
 		//Wichtig: setzt die Groesse der Hitbox. Diese darf nicht mit dem entsprechenden Roboter kollidieren,
 		//da sonst alle anderen Kollisionen überdeckt werden.
 		this.setSize(new Vector2f(48,2));		
-		//this.setPassable(true);
-		try {
-			this.addComponent(new ImageRenderComponent(new Image("assets/stahltrager.png")));
-		} catch (SlickException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		
 		
 		//ueberprueft, ob der Roboter aktuell KEINEN Boden unter sich hat.
@@ -111,6 +102,7 @@ public class PhysicsHitbox extends Entity{
 		
 		this.addComponent(e);
 		
+		//detektiert Kollisionen mit einem Stahltraeger.
 		IsOnBeamEvent isOnBeam = new IsOnBeamEvent();
 		isOnBeam.addAction(new Action() {
 

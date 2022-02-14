@@ -53,18 +53,15 @@ public class GamePlayState extends BasicGameState {
     	
     	entityManager.addEntity(stateID, background);
     	
-    	// Bei DrÃ¼cken der ESC-Taste ins Pause-Menü wechseln
+    	// Bei Druecken der ESC-Taste oder Ende des Spiels in den Endscreen wechseln
     	Entity finished = new Entity("finished");
-    	Event end_game = new OREvent(new KeyPressedEvent(Input.KEY_ESCAPE),new NoMarioLeftEvent("noMario",this));
-    	end_game.addAction(new ChangeStateAction(MinilandMayhem.ENDSCREENSTATE));
-    	
-    	
+    	Event end_game = new OREvent(new KeyPressedEvent(Input.KEY_ESCAPE),new NoMarioLeftEvent("noMario"));
+    	end_game.addAction(new ChangeStateAction(MinilandMayhem.ENDSCREENSTATE));    	
     	finished.addComponent(end_game);    	
     	entityManager.addEntity(stateID, finished);
     	
     	
     	Entity t = new Entity("Timer");
-    	
     	Event time = new TimedEvent("Timer",1000);
     	time.addAction(new Action() {
 
@@ -78,12 +75,9 @@ public class GamePlayState extends BasicGameState {
     	t.addComponent(time);
     	entityManager.addEntity(stateID, t);
     	
-    	
-    	Entity p = new Entity("Pause");
-    	// Wird die Taste 'p' gedrueckt, ...
-    	
+    	//pausiert das Spiel bei Tastendruck auf P
+    	Entity p = new Entity("Pause");    	
     	Event pause = new KeyPressedEvent(Input.KEY_P);
-    	// ... dann wird das Spiel pausiert
     	pause.addAction(new Action(){
     		@Override
 			public void update(GameContainer gc, StateBasedGame sb, int delta,
@@ -106,6 +100,7 @@ public class GamePlayState extends BasicGameState {
     	score = 500;
     	ressources = 5;
     	
+    	//default Level, wenn keines ausgewaehlt wurde; enthaellt jede Entity 
     	if(Parser.map==null) {    	
     	Mario mario = new Mario("Mario1");
     	mario.setPosition(new Vector2f(100,100));
@@ -135,8 +130,7 @@ public class GamePlayState extends BasicGameState {
     	
     	Entity closed = new Door("geschlossen",false);
     	closed.setPosition(new Vector2f(350,100));
-    	entityManager.addEntity(stateID, closed);
-    	
+    	entityManager.addEntity(stateID, closed);    	
     	
     	Entity doorL = new Door("Tür",true);
     	doorL.setPosition(new Vector2f(400,100));
@@ -324,10 +318,7 @@ public class GamePlayState extends BasicGameState {
 				r.stopWalkOnBeam();
 				System.out.println(r.getID());
 			}
-		}
-		
+		}	
 	}
 	
-	
-
 }

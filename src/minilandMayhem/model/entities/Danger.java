@@ -11,12 +11,10 @@ public class Danger extends Entity {
 
 	public Danger(String entityID) {
 		super(entityID);
-		// TODO Auto-generated constructor stub
 		
 		try {
 			this.addComponent(new ImageRenderComponent(new Image("assets/Spikes.png")));
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Gefahrenbild konnte nicht geladen werden");
 		}
 		this.setSize(new Vector2f(48,48));

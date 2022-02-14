@@ -49,6 +49,7 @@ public class Mario extends Robot{
 		
 		try {
 			this.imageR = new ImageRenderComponent(new Image("assets/mario1.png"));
+			//Bilder fuer die Laufanimation
 			Image r1 = new Image("assets/mario1.png");
 			Image r2 = new Image("assets/mario2.png");
 			Image r3 = new Image("assets/mario3.png");
@@ -80,7 +81,7 @@ public class Mario extends Robot{
 			System.out.println("Mariobild konnte nicht geladen werden");
 		}
 		
-		//Standardverhalten des Mario
+		//Mario wird durch anklicken aktiviert
     	ANDEvent activate = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
 		activate.addAction(new Action() {
 
@@ -93,7 +94,6 @@ public class Mario extends Robot{
 		});
 		this.addComponent(activate);
 	
-		//Event collide = new KeyPressedEvent(Input.KEY_SPACE);
 		CollisionEvent collide = new CollisionEvent();
 		collide.addAction(new MarioCollide());
 		this.addComponent(collide);
@@ -143,7 +143,8 @@ public class Mario extends Robot{
 	}
 	
 	/**
-	 * Zieht dem Spieler Punkte ab und entfernt den Mario. Wird aufgerufen, wenn der Mario mit einer Gefahr/Gegner kollidiert.
+	 * Zieht dem Spieler Punkte ab und entfernt den Mario. 
+	 * Wird aufgerufen, wenn der Mario mit einer Gefahr/Gegner kollidiert.
 	 */
 	public void destroy() {
 		if(!this.destroyed) {
@@ -154,7 +155,8 @@ public class Mario extends Robot{
 	}
 	
 	/**
-	 * Gibt dem Spieler Punkte und entfernt den Mario. Wird aufgerufen, wenn der Mario durch eine Tür laeuft
+	 * Gibt dem Spieler Punkte und entfernt den Mario. 
+	 * Wird aufgerufen, wenn der Mario durch eine Tuer laeuft
 	 */
 	public void score() {
 		if(!this.destroyed) {
@@ -168,14 +170,15 @@ public class Mario extends Robot{
 	
 		
 	/**
-	 * setzt das Feld hasKey auf true, somit kann dieser Mario nun verschlossene Türen aufschließen.
+	 * laesst den Mario nun verschlossene Türen aufschließen.
 	 */
 	public void collectKey() {
 		this.hasKey=true;
 	}
 	
 	/**
-	 * laesst den Mario (fast) unbesiegbar werden und aendert seine Farbe
+	 * laesst den Mario (fast) unbesiegbar werden und aendert seine Farbe. 
+	 * Feuer und BulletBll zerstören ihn nicht mer, Gefahren (Danger) jedoch schon
 	 */
 	public void powerUp() {
 		this.hasPowerUp = true;

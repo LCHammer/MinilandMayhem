@@ -18,11 +18,11 @@ public class Key extends Collectable {
 	}
 
 	@Override
+	/**
+	 * laesst den Mario einen Schluessel besitzen, sodass er verschlossene Türen aufschließen kann.
+	 */
 	public void performPickup(Mario m) {
 		m.collectKey();
 		
 	}
-	
-	
-
 }

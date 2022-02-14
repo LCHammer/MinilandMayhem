@@ -63,7 +63,8 @@ public class HighScoreState extends BasicGameState {
 			g.drawString(score, 120, 150);
 		
 		}
-		String numbers = "1."+System.lineSeparator()+"2."+System.lineSeparator()+"3."+System.lineSeparator()+"4."+System.lineSeparator()+"5.";
+		String numbers = "1."+System.lineSeparator()+"2."+System.lineSeparator()+
+				"3."+System.lineSeparator()+"4."+System.lineSeparator()+"5.";
 		g.drawString(numbers, 100, 150);
 		g.drawString("Zurück", 110, 380);
 	}

@@ -18,6 +18,9 @@ public class Coin extends Collectable {
 	}
 
 	@Override
+	/**
+	 * Wird die Muenze aufgesammelt, erhöht sich der Score um 500
+	 */
 	public void performPickup(Mario m) {
 		GamePlayState.score += 500;
 		

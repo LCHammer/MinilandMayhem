@@ -29,14 +29,14 @@ public abstract class Collectable extends Entity {
 	}
 
 	/**
-	 * führt die bei Collision mit diesem Collecteble die entsprechende Methode der erbenden Klasse aus
+	 * führt die bei Collision mit diesem Collectable die entsprechende Methode der erbenden Klasse aus
 	 * @param m Mario, welcher dieses Collectable aufgesammelt hat
 	 */
 	public abstract void performPickup(Mario m);
 	
 	
 	/**
-	 * zerstoert dieses collectable
+	 * zerstoert dieses Collectable
 	 */
 	public void destroy() {
 		LoopEvent l  = new LoopEvent();

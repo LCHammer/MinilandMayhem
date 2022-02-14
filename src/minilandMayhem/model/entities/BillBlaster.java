@@ -13,7 +13,6 @@ public class BillBlaster extends Entity {
 
 	public BillBlaster(String entityID) {
 		super(entityID);
-		// TODO Auto-generated constructor stub
 		try {
 			this.addComponent(new ImageRenderComponent(new Image("assets/canon.png")));
 		} catch (SlickException e) {
@@ -21,6 +20,7 @@ public class BillBlaster extends Entity {
 		}
 		this.setSize(new Vector2f(48,48));
 		
+		//spawne alle 5 Sekunden einen BulletBill (abwechselnd links, dann rechts)
 		TimedEvent time = new TimedEvent("time",5000);
 		time.addAction(new SpawnBillAction());
 		this.addComponent(time);
