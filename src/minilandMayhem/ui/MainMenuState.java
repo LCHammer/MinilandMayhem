@@ -60,13 +60,8 @@ public class MainMenuState extends BasicGameState{
 			@Override
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				if(Parser.map == null || (Parser.map != null && Parser.check())) {
-					game.enterState(MinilandMayhem.GAMEPLAYSTATE);					
-					try {
-						game.update(gc, delta);
-					} catch (SlickException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					Action a = new ChangeStateInitAction(MinilandMayhem.GAMEPLAYSTATE);
+					a.update(gc, game, delta, newGameEvent);
 					
 				}else {
 					System.out.println("Das gewählte Level ist nicht rechteckig!");

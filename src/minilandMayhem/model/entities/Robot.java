@@ -17,8 +17,8 @@ public abstract class Robot extends Entity{
 	protected float speed;
 	
 	protected LoopEvent fall;
-	protected int fallings = 0;
 	protected boolean isFalling = false;
+	protected float fallingSpeed = 0;
 	
 	protected LoopEvent walkUp;
 	protected boolean isWalkingUp=false;
@@ -38,6 +38,7 @@ public abstract class Robot extends Entity{
 		speed = 0.1f;
 		pHitbox = new PhysicsHitbox("Phyisc"+entityID, this.getPosition(), this);
 		fall = new LoopEvent();
+		fall.addAction(new MoveDownAction(0));
 		this.addComponent(fall);
 		jump = new LoopEvent();
 		this.addComponent(jump);
@@ -96,16 +97,18 @@ public abstract class Robot extends Entity{
 		
 	}
 
+	
 	/**
 	 * laesst den Roboter fallen. Dabei wird er enstsprechend 1/10 der Erdgravitation beschleunigt.
-	 * Um Echtzeitverhalten zu simulieren, werden die aktuellen FPS miteinbezogen
+	 * Um Echtzeitverhalten zu simulieren, wird die vergangene Zeit (delta) mit einbezogen
 	 */
-	public void fall(int fps) {
+	public void fall(float delta) {
 		isFalling = true;
 		if(isActive) {
-		fallings +=1;
 		isFalling = true;
-		fall.addAction(new MoveDownAction(0.981f/fps));
+		fallingSpeed+=0.981*delta;
+		fall.removeAction(0);
+		fall.addAction(new MoveDownAction(fallingSpeed));
 		}
 	}
 	
@@ -114,11 +117,10 @@ public abstract class Robot extends Entity{
 	 */
 	public void land() {
 		this.endJump();
-		for(int i =0; i<fallings; i++) {
 		fall.removeAction(0);
-		}
-		fallings = 0;
+		fall.addAction(new MoveDownAction(0));
 		isFalling = false;
+		fallingSpeed=0;
 	}
 	
 	

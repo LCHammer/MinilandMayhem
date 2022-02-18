@@ -40,7 +40,7 @@ public class PhysicsHitbox extends Entity{
 					PhysicsHitbox self = (PhysicsHitbox) event.getOwnerEntity();
 					Robot r = self.getOwner();
 					//Hat der Roboter keinen Boden unter sich, soll er fallen und dabei schneller werden.
-					r.fall(gc.getFPS());
+					r.fall(delta/1000f);
 				}
 			}
 			

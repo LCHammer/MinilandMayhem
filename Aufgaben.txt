@@ -26,7 +26,7 @@ Minimal:
 
 -Mario: startet inaktiv, muss angeklickt werden, damit er läuft (startet laufen nach rechts mit speed 0.125f)
 	Läuft Mario gegen eine Tür oder Gefahr, wird er vom Spiel entfernt (Hinweis: Punktzah kommt später)
-	Läuft er gegen eine Wand / Sockel oder einen anderen Mario, dreht er um und ändert laufrichtung (links-> rechts und umgekehrt)
+	Läuft er gegen eine Wand / Sockel oder einen anderen Mario, dreht er um und ändert Laufrichtung (links-> rechts und umgekehrt)
 	Mario hat laufanimation
 
 -Spiel zu Ende, wenn alle Marios entfernt wurden (wechsel in Endscreen)
@@ -52,8 +52,30 @@ Minimal:
 
 -Stahlträger mit winkel über 45° zählen als Wand und Marios ändern die laufrichtung, wenn sie gegen einen derartigen träger laufen (auch wenn sie einen anderen Träger gerade hoch/runterlaufen
 	Oder läuft der Mario von der falschen seite gegen den Träger so zählt dieser (auch bei <45° als Wand für ihn)
+
 	
-Ausbaustufe1:
+Ausbaustufe1: "Neue Entities"
+
+-neuer Gegner: Feuer. Bewegt sich identisch zu Mario, muss aber nicht per Mausklick aktiviert werden sondern läuft direkt (nach links) los
+	kollidiert Feuer gegen Mario, so wird Mario zerstört (wie als wäre er in eine Gefahr/Stacheln gelaufen) und Feuer läuft normal weiter.
+	Feuer ist etwas langsamer als Mario (nur 0.1f speed und nicht 0.125f)
+	kollidieren 2 Feuer gegeneinander, drehen beide um
+	Feuer werden von Gefahren/Stacheln zerstört (wie der Mario)
+	MapParser: F für Feuer
+
+Kugelwilli Kanone: kanone selbst kann sich nicht bewegen, lässt alle 5 sekunden einen Kugelwilli erscheinen (links/rechts abwechselnd, angefangen mit "links")
+	Marios/Feuer können gegen Kanonen laufen, und kollidieren, als Wäre die Kanone eine Wand
+	MapParser: B für BillBlaster
+
+Kugelwilli: fliegt immer in eine Richtung (entweder nur nach links oder nur nach rechts)
+	werden nicht von schwerkraft beeinflusst
+	geht sofort bei Aufprall mit (egal welcher) anderen Entity kaputt
+	ist die andere Entity bei kollision ein Mario/Feuer, so wird Mario bzw. Feuer auch zerstört.
+
+Trampolin: lässt Mario/Feuer einmalig hochspringen mit Geschwindigkeit 0.5f. (Schwerkraft wirkt ab dem moment, ab dem Mario/Feuer nicht mehr auf dem Boden ist)
+	berührt Mario/Feuer beim Springen eine Wand/Decke, so hört das Springen sofort auf und der Mario/Feuer fällt zu boden.
+	Während dem Sprung bewegen sich Mario/Feuer in der Luft wie gehabt nach links/recht
+	MapParser: T für Trampolin
 
 Ausbaustufe2:
 

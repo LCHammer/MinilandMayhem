@@ -283,7 +283,7 @@ public class GamePlayState extends BasicGameState {
 			
 		}
 		//Fülle den Zwischenraum mit Stahltraegern
-		for (int i=0; i<count;i++) {
+		for (int i=1; i<count;i++) {
 			Beam b  = new Beam("Stahltraeger",firstSocket,secondSocket,upRight);
 			int x = (int)(second.x+(xdist/count)*i);
 			int y= (int)(second.y+(ydist/count)*i);

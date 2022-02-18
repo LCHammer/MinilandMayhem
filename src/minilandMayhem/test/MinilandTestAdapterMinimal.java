@@ -4,14 +4,19 @@ import java.io.File;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
+import org.newdawn.slick.Game;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
+import minilandMayhem.model.entities.Beam;
+import minilandMayhem.model.entities.BeamSocket;
 import minilandMayhem.model.entities.Mario;
 import minilandMayhem.model.mapParser.Parser;
+import minilandMayhem.test.tutors.testcase.GamePlayTestTutor;
+import minilandMayhem.ui.GamePlayState;
 import minilandMayhem.ui.MinilandMayhem;
 
 public class MinilandTestAdapterMinimal {
@@ -284,8 +289,44 @@ public class MinilandTestAdapterMinimal {
 		return "Sockel";
 	}
 
+	/**
+	 * 
+	 * @param mario zu ueberpruefende Entity
+	 * @return true, wenn die uebergebene Entity ein Mario ist und sie gerade am fallen ist
+	 */
+	public boolean marioIsFalling(Entity mario) {
+		if(mario instanceof Mario) {
+			Mario m = (Mario)mario;
+			return m.getFalling();
+		}
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param beam zu ueberpruefende Entity
+	 * @return true, wenn die uebergebene Entity ein Stahltraeger ist
+	 */
+	public boolean isBeam(Entity beam) {
+		return beam instanceof Beam;
+	}
+
+	/**
+	 * 
+	 * @param socket zu ueberpruefende Entity
+	 * @return true, wenn die uebergebene Entity ein Stahltraeger-Sockel ist
+	 */
+	public boolean isSocket(Entity socket) {
+		return socket instanceof BeamSocket;
+	}
 	
 	
-	
+	/**
+	 * 
+	 * @return aktuelle Anzahl an verfuegbaren Ressourcen
+	 */
+	public int getRessources() {
+		return GamePlayState.ressources;
+	}
 }
 	

@@ -105,7 +105,7 @@ X18) Erweiterte Gefahren: Kugelwilli die Marios bei Berührung zerstören. Gehen
   	In Mapparser integrieren (B:Kanone)"english Bullet Bill"
 
 X19) Feuer Roboter, die Marios bei berührung zerstören (gehen selbst nicht kaputt außer sie laufen in stacheln/Kugelwilli)
-  Laufen wie Marios, können nicht springen/leitern klettern. (F:Feuer) Laufen anfangs nach links
+  Laufen wie Marios. (F:Feuer) Laufen anfangs nach links
 
 
 

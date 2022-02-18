@@ -21,6 +21,7 @@ public class GamePlayTestTutor {
 	String win= "src/level/Win.txt";
 	String lose= "src/level/Lose.txt";
 	String winAndLose= "src/level/WinAndLose.txt";
+	String fall = "src/level/Falling.txt";
 	
 	@Before
 	public void setUp() {
@@ -134,6 +135,52 @@ public class GamePlayTestTutor {
 		assertTrue("Mario is not at the same position after new Game",pos.y==mario.getPosition().y);
 		adapter.handleMouseClick(pos.x, pos.y);
 		assertTrue("Mario can not be activated after new Game",adapter.marioIsActive(mario));	
+	}
+	
+	@Test
+	public void marioFalling() {
+		File f = new File(fall);
+		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
+		adapter.initGame();
+		Vector2f pos = adapter.getStartGamePosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		Entity mario = null;
+		for(Entity e: entities) {
+			if(mario == null && adapter.isMario(e) ) {
+			mario =e;	
+			}
+		}
+		pos = mario.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		assertTrue("Mario was not activated",adapter.marioIsActive(mario));
+		int index = -1;
+		boolean landed = false;
+		for(int i = 0; i<2000; i++) {
+			adapter.updateGame(1); //update mit Dauer von 1ms
+			
+			
+			if(mario.getPosition().y!=pos.y && index == -1) {
+				index = i; //wann faellt der Mario
+			}
+			
+			if(index != -1 &&(i-index)%100==0) {
+				int t = i - index; //t = 100, 200, 300,...
+				float t_quadrat = t*t / 1000f;
+				float s = 0.5f * 0.981f * t_quadrat; //s = 0.5*a*t*t
+				float eps = 0.5f + t/1000f; //erlaubte Abweichung
+				
+				if(adapter.marioIsFalling(mario)) {
+					assertTrue("Mario is falling again after landing",!landed);
+					assertTrue("Mario falling behaviour is not realistic",s-eps <= mario.getPosition().y-pos.y && s+eps >= mario.getPosition().y-pos.y );
+				}else {
+					landed = true;
+				}
+			}
+			
+		}
+		assertTrue("Mario did not land at all",landed);
+		
 	}
 }
 
