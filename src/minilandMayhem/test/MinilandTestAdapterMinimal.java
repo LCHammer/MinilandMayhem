@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
-import org.newdawn.slick.Game;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
@@ -15,7 +14,6 @@ import minilandMayhem.model.entities.Beam;
 import minilandMayhem.model.entities.BeamSocket;
 import minilandMayhem.model.entities.Mario;
 import minilandMayhem.model.mapParser.Parser;
-import minilandMayhem.test.tutors.testcase.GamePlayTestTutor;
 import minilandMayhem.ui.GamePlayState;
 import minilandMayhem.ui.MinilandMayhem;
 
@@ -44,19 +42,10 @@ public class MinilandTestAdapterMinimal {
 			 app = new TestGameContainer(new MinilandMayhem(false));
 			 Display.create();
 			 app.start(0);
-			// miniland.init(app);
-			 
 			 miniland.initStatesList(app);
-			
-			 //miniland.getCurrentState().init(app, miniland);
 			 for(int i =0; i < miniland.getStateCount(); i++) {
-				 //System.out.println(miniland.getState(i));
 				 miniland.getState(i).init(app, miniland);
-			 }
-			
-		
-			 
-			 
+			 }			 
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -208,7 +197,6 @@ public class MinilandTestAdapterMinimal {
 	}
 	
 	
-	
 	/**
 	 * 
 	 * @return StateID des GamePlayStates
@@ -327,6 +315,15 @@ public class MinilandTestAdapterMinimal {
 	 */
 	public int getRessources() {
 		return GamePlayState.ressources;
+	}
+	
+	
+	/**
+	 * setzt die Anzahl an verfuegbaren Ressurcen auf den uebergebenen Wert (Hinweis: wird NUR fuer die Tests benoetigt)
+	 * @param ressources Anzahl an Ressourcen
+	 */
+	public void setRessources(int ressources) {
+		GamePlayState.ressources = ressources;
 	}
 }
 	

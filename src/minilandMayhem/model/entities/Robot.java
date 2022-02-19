@@ -197,7 +197,9 @@ public abstract class Robot extends Entity{
 	
 
 	
-	//TODO: nur ausführen, wenn Wall unter den füßen/Beam mit rotation 0/ sockel
+	/**
+	 * laesst den Roboter "sauber" landen, damit er nicht über dem Boden schwebt
+	 */
 	public void smoothLanding() {
 		float height = this.getPosition().y;
 		double smoothHeight = Math.round(height/50)*50;
@@ -219,7 +221,6 @@ public abstract class Robot extends Entity{
 			this.isWalkingUp = false;
 			this.walkUp.removeAction(0);
 		}
-		System.out.println("here");
 		
 		if(this.getIsWalkingDown()) {
 			this.setRotation(0f);

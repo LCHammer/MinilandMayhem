@@ -1,6 +1,5 @@
 package minilandMayhem.test.students.testcase;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -100,54 +99,7 @@ public class GamePlayTestStudent {
 		assertTrue("Game has not ended after Mario has been removed",adapter.getCurrentStateID()==adapter.getEndStateID());
 		
 	}
-/*	
-	@Test
-	public void collideMario() {
-		File f = new File(marioCollide);
-		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
-		adapter.initGame();
-		Vector2f pos = adapter.getStartGamePosition();
-		adapter.handleMouseClick(pos.x, pos.y);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
-		Entity mario = null;
-		Entity mario2 = null;
-		for(Entity e: entities) {
-			if(mario == null && adapter.isMario(e) ) {
-			mario =e;	
-			}else if(mario2 == null && adapter.isMario(e)) {
-				mario2 = e;
-			}
-		}
-		pos = mario.getPosition();
-		adapter.handleMouseClick(pos.x, pos.y);
-		assertTrue("Mario was not activated",adapter.marioIsActive(mario));
-		System.out.println(pos.x);
-		//System.out.println(pos.y);
-		//pos = mario2.getPosition();
-		//System.out.println(pos.x);
-		//System.out.println(pos.y);
-		for(int i = 0; i <25;i++) {
-			adapter.updateGame(100);
-			System.out.println(mario.getPosition().x);
-		}
-		
-		adapter.updateGame(1600);
-		adapter.updateGame(0);
-		pos = mario2.getPosition();
 
-		adapter.updateGame(500);
-		pos = mario.getPosition();
-		System.out.println(pos.x);
-		assertTrue("Mario did not turn around after colliding with other Mario",adapter.marioLooksLeft(mario));
-		
-		pos = mario.getPosition();
-		System.out.println(pos.x);
-		Vector2f pos2 = mario.getPosition();
-		System.out.println(pos2.x);
-		assertTrue("Mario did not walk in other direction after colliding",pos.x > pos2.x);
-		//Tests collision with other mario
-	}
-	*/
 	
 	@Test
 	public void marioFalling() {
@@ -179,7 +131,7 @@ public class GamePlayTestStudent {
 				int t = i-index;
 				float t_quadrat = t*t/1000f;
 				float height = (float)(0.5*0.981*t_quadrat); //s = 0.5*a*t*t
-				float eps = 1+(t)/1000f; //bei t = 0.1s , erlaube Abweichung von 1.1; bei t=0.2s erlaube 1.2 usw.
+				float eps = 1+ t/1000f; //bei t = 0.1s , erlaube Abweichung von 1.1; bei t=0.2s erlaube 1.2 usw.
 				
 				if(adapter.marioIsFalling(mario)) {
 					assertTrue("Mario falling behaviour is not realistic",height-eps <= mario.getPosition().y-pos.y && height+eps >= mario.getPosition().y-pos.y );
