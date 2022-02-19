@@ -65,7 +65,7 @@ public class Collide implements Action {
 					||(b.getUpRight() && robot.getPosition().x > b.getPosition().x)
 					||(!b.getUpRight() && robot.getPosition().x < b.getPosition().x)) {
 					
-					//Stahltraeger zu steil zum hochlaufen
+					//Stahltraeger zu steil zum hochlaufen oder falsche Seite
 						if(canCollide(robot,collider)){
 							robot.changeDirection();
 						}
@@ -76,7 +76,9 @@ public class Collide implements Action {
 							robot.walkOnBeam(b);
 						} 					
 					}
-				}				
+				}else if( (b.getRotation() > 44f || b.getRotation() < -44f) && canCollide(robot,collider) )		{
+					robot.changeDirection();
+				}
 				//mit einer Gefahr kollidiert
 			}else if(collider instanceof Danger) {
 				//ziehe Punkte ab

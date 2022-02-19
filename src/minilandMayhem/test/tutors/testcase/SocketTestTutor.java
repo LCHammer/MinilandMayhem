@@ -19,6 +19,7 @@ public class SocketTestTutor {
 
 	MinilandTestAdapterMinimal adapter;
 	String sockets = "src/level/Sockets.txt";
+	String sockets2 = "src/level/Sockets2.txt";
 	
 	
 	@Before
@@ -276,5 +277,57 @@ public class SocketTestTutor {
 		adapter.handleMouseClick(pos.x, pos.y);
 		adapter.handleMouseClick(pos.x, pos.y);
 		assertTrue("Wrong amount of Ressources",adapter.getRessources()==15);
+	}
+	
+	@Test
+	public void testDiagonal2() {
+		File f = new File(sockets2);
+		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
+		adapter.initGame();
+		Vector2f pos = adapter.getStartGamePosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		assertTrue("Game started with wrong amount of ressources",adapter.getRessources()==5);
+		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> sockel = new LinkedList<Entity>(); 
+		List<Entity> marios = new LinkedList<Entity>();
+		for(Entity e: entities) {
+			if(adapter.isSocket(e) ) {
+				sockel.add(e);	
+			}else if(adapter.isMario(e)) {
+				marios.add(e);
+			}
+		}
+		
+		Entity bottom_left = sockel.get(3);
+		Entity top_right = sockel.get(2);
+		Entity top_middle = sockel.get(0);
+		Entity bottom_middle = sockel.get(5);
+		adapter.setRessources(15);
+		pos = bottom_middle.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		pos = top_middle.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		assertTrue("no Ressources consumed",adapter.getRessources()<15);
+		pos = bottom_left.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		pos = top_right.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		
+		Entity mario = marios.get(2);
+		pos = mario.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		
+		adapter.updateGame(600);
+		assertTrue("Mario changed direction after collision with beam",!adapter.marioLooksLeft(mario));
+		adapter.updateGame(100);
+		Vector2f pos2 = mario.getPosition();
+		assertTrue("Mario did not walk on beam",pos.y > pos2.y);
+		assertTrue("Mario did not walk on beam",pos.x < pos2.x);
+		assertTrue("Mario has not the right angle",(mario.getRotation() <= 31f && mario.getRotation() >= 30f) || 
+													mario.getRotation() <=-30f && mario.getRotation() >=-31f);
+		assertTrue("Mario changed direction without running into a wall",!adapter.marioLooksLeft(mario));
+		adapter.updateGame(400);
+		assertTrue("Mario did not change direction after running into a wall",adapter.marioLooksLeft(mario));
+		
 	}
 }

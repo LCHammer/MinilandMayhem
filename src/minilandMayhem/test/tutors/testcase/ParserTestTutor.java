@@ -128,7 +128,7 @@ public class ParserTestTutor {
 		}
 		assertTrue("not all doors have been recognized",doors == 1);
 		assertTrue("Mario has not been recognized",marios == 3);
-		assertTrue("not all walls (including bounding box) have been recognized",walls == 53);
+		assertTrue("not all walls (including bounding box) have been recognized",walls == 55);
 		assertTrue("not all dangers have been recognized",dangers == 4);
 		assertTrue("not all sockets have been recognized",sockets == 4);
 	}
