@@ -77,6 +77,47 @@ Trampolin: lässt Mario/Feuer einmalig hochspringen mit Geschwindigkeit 0.5f. (S
 	Während dem Sprung bewegen sich Mario/Feuer in der Luft wie gehabt nach links/recht
 	MapParser: T für Trampolin
 
-Ausbaustufe2:
+Ausbaustufe2: Highscore:
 
-Ausbaustufe3:
+	Aktuelle Punktzahl (startet bei 500) wird im GamePlayState angezeigt.
+	Jede Sekunde verliert man 1 Punkt
+	Immer, wenn ein Stahlträger gebaut wird, verliert man 10 Punke
+	Wenn ein Mario durch eine Gefahr oder einen Gegner zerstört wird, verliert man 500 Punkte
+	Läuft ein Mario durch eine Tür, erhällt man 500 Punke
+	Wird ein Feuer (z.B. durch eine Gefahr oder Kugelwilli) zerstört, so erhällt man 100 Punkte
+	Punkte können negativ sein.
+
+	Im endscreen soll es einen Button geben, der den Highscore speichern lässt in txt Datei.
+	txt Datei soll wie folgt benannt werden "LevelnameHighscore.txt" Bsp für Level "Einfach": "EinfachHighscore.txt"
+	Eine Punktzahl soll wie folgt eingefügt werden: punktzahl,Anzahl Marios durch Tür/Anzahl Marios gesamt
+	Bsp: "1000,3/4" bedeutet das Spiel wurde mit 1000 Punkten abgeschlossen und 3 von 4 Marios sind durch die Tür gelaufen, der letzte wurde vorher zerstört
+	In highscore Datei sollen nur die 5 besten Einträge vorhanden sein (sortiert nach Punktzahl, bei Punktegleichstand nach anzahl erfolgreicher Marios)
+	Im Hauptmenü soll es einen zusätzlichen Button geben, bei dem man eine highscore Datei wählen kann. Der Highscore wird dann in einem separaten Highscorescreen angezeigt
+	
+
+Ausbaustufe3:Collectables und verschlossene Tür
+Generell: alle sollen aufgesammelt werden, wenn ein Mario über/durch sie läuft (und danach verschwinden)
+	haben beim Aufsammeln einmaligen Effekt
+
+Münze: Gibt einmalig 500 Punkte extra. 
+	Mapparser: C für Coin
+
+Ressource: gbt einmalig 3 Ressourcen, damit mehr Stahlträger gebaut werden können. 
+	Mapparser: R für Ressource
+
+PowerUp(Stern): lässt den Mario (fast) unbesiegbar werden. Er wird nicht mehr durch Kugelwillis/Feuer zerstört, sondern zerstört statdessen den Kugelwilli/Feuer 
+	(Hinweis: der Kugelwilli wird auch zerstört, wenn der Mario kein Powerup besitzt)
+	Hinweis: das Zerstören eines Feuers gibt 100 Punkte
+	Soll Farbe des Marios ändern
+	Mario wird weiterhin durch Gefahren/stachel zerstört
+	MapParser: P für PowerUp.
+
+Schlüssel: Der Mario, welcher einen Schlüssel aufsammelt kann verschlossene Türen aufschließen (und geht sofort hindurch)
+	Mapparser: K für Key
+
+Verschlossene Tür: Hat anderes Bild
+	Marios können nicht hindurchgehen sondern ändern die Richtung, wenn sie gegen eine verschlossene Tür laufen (wie bei einer Wand)
+	außer, Mario welcher gegen die Tür läuft hat vorher einen Schlüssel aufgesammelt. Dann wird sie zur normalen Tür, ändert Bild und Mario mit Schlüssel geht sofort hindurch
+	Mapparser: d für verschlossene Tür (Hinweis: normale Tür hat großes D)
+
+

@@ -61,7 +61,7 @@ public class Collide implements Action {
 				Beam b = (Beam)collider;
 				//soll nur kollidieren, wenn er aktuell nicht hoch- oder runterlaeuft.
 				if(!robot.getWalkingUpDown()) {
-					if(b.getRotation() > 44f || b.getRotation() < -44f 
+					if(b.getRotation() > 45f || b.getRotation() < -45f 
 					||(b.getUpRight() && robot.getPosition().x > b.getPosition().x)
 					||(!b.getUpRight() && robot.getPosition().x < b.getPosition().x)) {
 					
@@ -76,7 +76,7 @@ public class Collide implements Action {
 							robot.walkOnBeam(b);
 						} 					
 					}
-				}else if( (b.getRotation() > 44f || b.getRotation() < -44f) && canCollide(robot,collider) )		{
+				}else if( (b.getRotation() > 45f || b.getRotation() < -45f) && canCollide(robot,collider) )		{
 					robot.changeDirection();
 				}
 				//mit einer Gefahr kollidiert

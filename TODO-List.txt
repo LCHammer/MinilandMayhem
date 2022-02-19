@@ -83,6 +83,8 @@ X15) Schlüssel Pickup (auch in Mapparser einfügen) (K:Schlüssel)
 
 X16) Münzen Pickup für mehr Punkte (einmalig) (auch in Parser hinzufügen) C: Coin
 
+X22) PowerUp: Mario mit Power up unbesiegbar und ändert Farbe
+
 
 Ausbaustufe 2:
 
@@ -90,7 +92,7 @@ X20) Highscores, die gespeichert werden können (von Ende screen aus) in Datei. 
 
 X21) Highscorescreen vom Startmenü aus, der Highscore einträge anzeigt (nur die besten 5)
 
-22) PowerUp: Mario mit Power up unbesiegbar und ändert Farbe
+
 
 
 Ausbaustufe 3:
