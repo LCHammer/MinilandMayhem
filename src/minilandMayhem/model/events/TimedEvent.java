@@ -9,7 +9,7 @@ import minilandMayhem.model.Timer;
 public class TimedEvent extends Event {
 
 	private long timeUntilTrigger;
-	private Timer timer;
+	public Timer timer;
 	public TimedEvent(String id, long time) {
 		super(id);
 		timeUntilTrigger = time;

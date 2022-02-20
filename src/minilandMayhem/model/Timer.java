@@ -58,5 +58,15 @@ public class Timer {
 		}
 		
 	}
+
+	/**
+	 * laesst Zeit verstreichen, indem die Startzeit vorgezogen wird. (dadurch muss man keine Echt-Zeit warten)
+	 * wird nur für Tests verwendet
+	 * @param time Menge an Zeit, die vergehen soll 
+	 */
+	public void letTimePass(long time) {
+		startTime -= time;
+		
+	}
 	
 }

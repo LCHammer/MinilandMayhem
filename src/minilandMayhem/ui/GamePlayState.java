@@ -275,7 +275,6 @@ public class GamePlayState extends BasicGameState {
 		//Anzahl an Stahltraeger-teilen, die gebaut werden müssen. Jedes kostet genau eine Ressource.
 		double round_up = Math.ceil(length/50)*50;
 		int count = (int)round_up/50;
-		//GamePlayState.ressources=20;
 		if(GamePlayState.ressources>=count-1) {
 		LinkedList<Beam> lst = new LinkedList<Beam>();
 		if(first.x < second.x ) {
@@ -290,12 +289,8 @@ public class GamePlayState extends BasicGameState {
 			b.setPosition(new Vector2f(x,y));
 			lst.add(b);
 			//Rotiere sie entsprechend des Winkels
-			
-			
-			
+						
 			b.setRotation((float) angle);
-			
-			
 			entityManager.addEntity(stateID, b);
 		}
 		firstSocket.addBeams(lst);
@@ -316,7 +311,6 @@ public class GamePlayState extends BasicGameState {
 		for(Robot r : robots){
 			if(socket.equals(r.getStart())|| socket.equals(r.getEnd())) {
 				r.stopWalkOnBeam();
-				System.out.println(r.getID());
 			}
 		}	
 	}

@@ -16,7 +16,7 @@ Minimal:
 
 -Mapparser: klickt man im Hauptmenü auf "level" so kann man eine text datei wählen
 	ist die Datei eine textdatei, welche einen Rechteckigen Aufbau hat (genauer erklären), soll sie geparst werden.
-	Ist die Datei vom falschen Format (z.B. nicht rechteckig, keine textdatei), so soll nichts geparst werden
+	Ist die Datei vom falschen Format (z.B. nicht rechteckig, keine textdatei), so soll nichts geparst werden (als wäre keine Map eingelesen worden)
 	Folgende übersetzung: M:Mario, D:Tür, W:Wand, S:Sockel, _:Nichts/Leer, X:Gefahr. (Hinweis: wird später erweitert werden) unbekannte zeichen sollen als leer interpretiert werden
 	Bei klick auf "start" soll dann das eingelesene Level im Hauptmenü spielbar sein. (Hinweis: Objekte sollen nicht größer als 50 auf 50 sein)
 	Die einzelnen Entities befinden sich an den entsprechenden Positionen wie in der Text datei.
@@ -92,7 +92,10 @@ Ausbaustufe2: Highscore:
 	Eine Punktzahl soll wie folgt eingefügt werden: punktzahl,Anzahl Marios durch Tür/Anzahl Marios gesamt
 	Bsp: "1000,3/4" bedeutet das Spiel wurde mit 1000 Punkten abgeschlossen und 3 von 4 Marios sind durch die Tür gelaufen, der letzte wurde vorher zerstört
 	In highscore Datei sollen nur die 5 besten Einträge vorhanden sein (sortiert nach Punktzahl, bei Punktegleichstand nach anzahl erfolgreicher Marios)
-	Im Hauptmenü soll es einen zusätzlichen Button geben, bei dem man eine highscore Datei wählen kann. Der Highscore wird dann in einem separaten Highscorescreen angezeigt
+
+	Im Hauptmenü soll es einen zusätzlichen Button geben, bei dem man eine highscore Datei wählen kann. 
+	Der Highscore wird dann in einem separaten Highscorescreen angezeigt.
+	Hat die eingelesene Datei falsches Format, so soll man nicht in den Highscorescreen wechseln und Fehlermeldung auf Konsole ausgeben
 	
 
 Ausbaustufe3:Collectables und verschlossene Tür

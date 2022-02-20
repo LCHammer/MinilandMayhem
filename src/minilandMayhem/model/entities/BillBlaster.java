@@ -11,6 +11,7 @@ import minilandMayhem.model.events.TimedEvent;
 
 public class BillBlaster extends Entity {
 
+	public TimedEvent time;
 	public BillBlaster(String entityID) {
 		super(entityID);
 		try {
@@ -21,7 +22,7 @@ public class BillBlaster extends Entity {
 		this.setSize(new Vector2f(48,48));
 		
 		//spawne alle 5 Sekunden einen BulletBill (abwechselnd links, dann rechts)
-		TimedEvent time = new TimedEvent("time",5000);
+		time = new TimedEvent("time",5000);
 		time.addAction(new SpawnBillAction());
 		this.addComponent(time);
 	}

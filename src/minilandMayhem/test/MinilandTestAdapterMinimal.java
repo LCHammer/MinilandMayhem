@@ -234,7 +234,7 @@ public class MinilandTestAdapterMinimal {
 	/**
 	 * 
 	 * @return prefix aller IDs von Türen
-	 * enthalten alle Tueren in ihrer ID den predix "Tuer", so soll "Tuer" zurueckgegeben werden
+	 * enthalten alle Tueren in ihrer ID den prefix "Tuer", so soll "Tuer" zurueckgegeben werden
 	 */
 	public String getDoorPrefix() {
 		return "Tür";
@@ -243,7 +243,7 @@ public class MinilandTestAdapterMinimal {
 	/**
 	 * 
 	 * @return prefix aller IDs von Marios
-	 * enthalten alle Marios in ihrer ID den predix "Mario", so soll "Mario" zurueckgegeben werden
+	 * enthalten alle Marios in ihrer ID den prefix "Mario", so soll "Mario" zurueckgegeben werden
 	 */
 	public String getMarioPrefix() {
 		return "Mario";
@@ -252,7 +252,7 @@ public class MinilandTestAdapterMinimal {
 	/**
 	 * 
 	 * @return prefix aller IDs von Waenden
-	 * enthalten alle Waende in ihrer ID den predix "Wand", so soll "Wand" zurueckgegeben werden
+	 * enthalten alle Waende in ihrer ID den prefix "Wand", so soll "Wand" zurueckgegeben werden
 	 */
 	public String getWallPrefix() {
 		return "Wand";
@@ -261,7 +261,7 @@ public class MinilandTestAdapterMinimal {
 	/**
 	 * 
 	 * @return prefix aller IDs von Gefahren
-	 * enthalten alle Gefahren in ihrer ID den predix "Gefahr", so soll "Gefahr" zurueckgegeben werden
+	 * enthalten alle Gefahren in ihrer ID den prefix "Gefahr", so soll "Gefahr" zurueckgegeben werden
 	 */
 	public String getDangerPrefix() {
 		return "Gefahr";
@@ -271,7 +271,7 @@ public class MinilandTestAdapterMinimal {
 	/**
 	 * 
 	 * @return prefix aller IDs von Sockeln
-	 * enthalten alle Sockeln in ihrer ID den predix "Sockel", so soll "Sockel" zurueckgegeben werden
+	 * enthalten alle Sockeln in ihrer ID den prefix "Sockel", so soll "Sockel" zurueckgegeben werden
 	 */
 	public String getSocketPrefix() {
 		return "Sockel";
