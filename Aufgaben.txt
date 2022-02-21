@@ -88,7 +88,7 @@ Ausbaustufe2: Highscore:
 	Punkte können negativ sein.
 
 	Im endscreen soll es einen Button geben, der den Highscore speichern lässt in txt Datei.
-	txt Datei soll wie folgt benannt werden "LevelnameHighscore.txt" Bsp für Level "Einfach": "EinfachHighscore.txt"
+	txt Datei soll wie folgt benannt werden "Highscore_Levelname.txt" Bsp für Level "Einfach": "Highscore_Einfach.txt"
 	Eine Punktzahl soll wie folgt eingefügt werden: punktzahl,Anzahl Marios durch Tür/Anzahl Marios gesamt
 	Bsp: "1000,3/4" bedeutet das Spiel wurde mit 1000 Punkten abgeschlossen und 3 von 4 Marios sind durch die Tür gelaufen, der letzte wurde vorher zerstört
 	In highscore Datei sollen nur die 5 besten Einträge vorhanden sein (sortiert nach Punktzahl, bei Punktegleichstand nach anzahl erfolgreicher Marios)

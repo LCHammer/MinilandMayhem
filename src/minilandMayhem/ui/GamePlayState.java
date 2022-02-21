@@ -38,6 +38,7 @@ public class GamePlayState extends BasicGameState {
 	public static int score;
 	public static int maxMarios;
 	private String pausetext = "";
+	public static TimedEvent time;
     
 	public GamePlayState(int stateID) {
 		this.stateID = stateID;
@@ -62,7 +63,7 @@ public class GamePlayState extends BasicGameState {
     	
     	
     	Entity t = new Entity("Timer");
-    	Event time = new TimedEvent("Timer",1000);
+    	time = new TimedEvent("Timer",1000);
     	time.addAction(new Action() {
 
 			@Override
@@ -99,6 +100,7 @@ public class GamePlayState extends BasicGameState {
     	successfulMario = 0;
     	score = 500;
     	ressources = 5;
+    	maxMarios = 0;
     	
     	//default Level, wenn keines ausgewaehlt wurde; enthaellt jede Entity 
     	if(Parser.map==null) {    	
