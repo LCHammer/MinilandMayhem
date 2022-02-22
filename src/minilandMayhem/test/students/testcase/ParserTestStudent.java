@@ -45,11 +45,11 @@ public class ParserTestStudent {
 		int walls = 0;
 		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getDoorPrefix())) {
+			if(adapter.isDoor(e)) {
 				doors+=1;
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				marios +=1;
-			}else if(e.getID().startsWith(adapter.getWallPrefix())) {
+			}else if(adapter.isWall(e)) {
 				walls+=1;
 			}
 		}
@@ -73,13 +73,13 @@ public class ParserTestStudent {
 		int dangers = 0;
 		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getDoorPrefix())) {
+			if(adapter.isDoor(e)) {
 				doors+=1;
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				marios +=1;
-			}else if(e.getID().startsWith(adapter.getWallPrefix())) {
+			}else if(adapter.isWall(e)) {
 				walls+=1;
-			}else if(e.getID().startsWith(adapter.getDangerPrefix())) {
+			}else if(adapter.isDanger(e)) {
 				dangers+=1;
 			}
 		}

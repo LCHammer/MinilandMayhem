@@ -1,48 +1,11 @@
 package minilandMayhem.test;
 
 import eea.engine.entity.Entity;
-import minilandMayhem.model.entities.BillBlaster;
+import minilandMayhem.model.entities.*;
 
 public class MinilandTestAdapterExtended1 extends MinilandTestAdapterMinimal{
 
-	
-	/**
-	 * 
-	 *@return prefix aller IDs von Feuer Entities
-	 * enthalten alle Feuer in ihrer ID den prefix "Feuer", so soll "Feuer" zurueckgegeben werden
-	 
-	 */
-	public String getFirePrefix() {
-		return "Feuer";
-	}
-	
-	/**
-	 * 
-	 * @return prefix aller IDs von Trampolin Entities
-	 * enthalten alle Trampolne in ihrer ID den prefix "Trampolin", so soll "Trampolin" zurueckgegeben werden
-	 */
-	public String getTrampolinePrefix() {
-		return "Trampolin";
-	}
-	
-	/**
-	 * 
-	 * @return prefix aller IDs von BillBlaster Entities
-	 * enthalten alle BillBlaster(=Kanonen) in ihrer ID den prefix "Kanone", so soll "Kanone" zurueckgegeben werden
-	 */
-	public String getBlasterPrefix() {
-		return "Kanone";
-	}
-
-	/**
-	 * 
-	 * @return prefix aller IDs von Kugelwilli Entities
-	 * enthalten alle Kugelwillis in ihrer ID den prefix "Bill", so soll "Bill" zurueckgegeben werden
-	 */
-	public String getBillPrefix() {
-		return "Kugelwilli";
-	}
-	
+		
 	/**
 	 * 
 	 * @param time Menge an Zeit, die für den blaster vergehen soll
@@ -55,5 +18,38 @@ public class MinilandTestAdapterExtended1 extends MinilandTestAdapterMinimal{
 			this.updateGame(0);
 		}
 		
+	}
+
+	/**
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e ein Feuer ist
+	 **/
+	public boolean isFire(Entity e) {
+		return e instanceof Fire;
+	}
+
+	/**
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e ein Trampolin ist
+	 **/
+	public boolean isTrampoline(Entity e) {
+		return e instanceof Trampoline;
+	}
+	
+	
+	/**
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e eine Kanone ist
+	 **/
+	public boolean isBlaster(Entity e) {
+		return e instanceof BillBlaster;
+	}
+	
+	/**
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e ein Kugelwilli ist
+	 **/
+	public boolean isBill(Entity e) {
+		return e instanceof BulletBill;
 	}
 }

@@ -20,6 +20,14 @@ public class MinilandTestAdapterExtended2 extends MinilandTestAdapterExtended1 {
 
 	/**
 	 * 
+	 * @return prefix des Feuers. Haben die IDs aller Feuer z.B. den Prefix "Feuer", so soll "Feuer" zurueckgegeben werden.
+	 */
+	public String getFirePrefix() {
+		return "Feuer";
+	}
+	
+	/**
+	 * 
 	 * @return die Position des "Highscore Speichern" Buttons im Endescreen
 	 */
 	public Vector2f getSaveScorePosition() {

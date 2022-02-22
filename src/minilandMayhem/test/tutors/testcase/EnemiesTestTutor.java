@@ -43,9 +43,9 @@ public class EnemiesTestTutor {
 		List<Entity> blasters = new LinkedList<Entity>();
 		List<Entity> marios = new LinkedList<Entity>();
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getBlasterPrefix())) {
+			if(adapter.isBlaster(e)) {
 				blasters.add(e);
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				marios.add(e);
 			}
 		}
@@ -58,9 +58,9 @@ public class EnemiesTestTutor {
 		int bill = 0;
 		int fire = 0;
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getBillPrefix())) {
+			if(adapter.isBill(e)) {
 				bill +=1;
-			}else if(e.getID().startsWith(adapter.getFirePrefix())) {
+			}else if(adapter.isFire(e)) {
 				fire +=1;
 			}
 		}
@@ -73,11 +73,11 @@ public class EnemiesTestTutor {
 		fire = 0;
 		int mario =0;
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getBillPrefix())) {
+			if(adapter.isBill(e)) {
 				bill +=1;
-			}else if(e.getID().startsWith(adapter.getFirePrefix())) {
+			}else if(adapter.isFire(e)) {
 				fire +=1;
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				mario +=1;
 			}
 		}
@@ -97,9 +97,9 @@ public class EnemiesTestTutor {
 		List<Entity> sockets = new LinkedList<Entity>();
 		Entity fire =null;
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getSocketPrefix())) {
+			if(adapter.isSocket(e)) {
 				sockets.add(e);
-			}else if(e.getID().startsWith(adapter.getFirePrefix())) {
+			}else if(adapter.isFire(e)) {
 				fire = e;
 			}
 		}

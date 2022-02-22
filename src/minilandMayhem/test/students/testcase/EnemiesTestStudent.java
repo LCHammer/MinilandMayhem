@@ -44,11 +44,11 @@ public class EnemiesTestStudent {
 		int blaster = 0;
 		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getTrampolinePrefix())) {
+			if(adapter.isTrampoline(e)) {
 				trampoline+=1;
-			}else if(e.getID().startsWith(adapter.getFirePrefix())) {
+			}else if(adapter.isFire(e)) {
 				fire +=1;
-			}else if(e.getID().startsWith(adapter.getBlasterPrefix())) {
+			}else if(adapter.isBlaster(e)) {
 				blaster+=1;
 			}
 		}
@@ -67,7 +67,7 @@ public class EnemiesTestStudent {
 		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		List<Entity> blasters = new LinkedList<Entity>();
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getBlasterPrefix())) {
+			if(adapter.isBlaster(e)) {
 				blasters.add(e);
 			}
 		}
@@ -77,7 +77,7 @@ public class EnemiesTestStudent {
 		 entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		int bill = 0;
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getBillPrefix())) {
+			if(adapter.isBill(e)) {
 				bill +=1;
 			}
 		}
@@ -95,9 +95,9 @@ public class EnemiesTestStudent {
 		int marios =0;
 		List<Entity> fire = new LinkedList<Entity>();
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getFirePrefix())) {
+			if(adapter.isFire(e)) {
 				fire.add(e);
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				marios +=1;
 			}
 		}

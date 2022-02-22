@@ -10,9 +10,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
-import minilandMayhem.model.entities.Beam;
-import minilandMayhem.model.entities.BeamSocket;
-import minilandMayhem.model.entities.Mario;
+import minilandMayhem.model.entities.*;
 import minilandMayhem.model.mapParser.Parser;
 import minilandMayhem.ui.GamePlayState;
 import minilandMayhem.ui.MinilandMayhem;
@@ -232,51 +230,31 @@ public class MinilandTestAdapterMinimal {
 
 	
 	/**
-	 * 
-	 * @return prefix aller IDs von Türen
-	 * enthalten alle Tueren in ihrer ID den prefix "Tuer", so soll "Tuer" zurueckgegeben werden
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e eine Tuer ist
 	 */
-	public String getDoorPrefix() {
-		return "Tür";
+	public boolean isDoor(Entity e) {
+		return e instanceof Door;
 	}
 	
-	/**
-	 * 
-	 * @return prefix aller IDs von Marios
-	 * enthalten alle Marios in ihrer ID den prefix "Mario", so soll "Mario" zurueckgegeben werden
-	 */
-	public String getMarioPrefix() {
-		return "Mario";
-	}
 	
 	/**
-	 * 
-	 * @return prefix aller IDs von Waenden
-	 * enthalten alle Waende in ihrer ID den prefix "Wand", so soll "Wand" zurueckgegeben werden
-	 */
-	public String getWallPrefix() {
-		return "Wand";
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e eine Wand ist
+	 **/
+	public boolean isWall(Entity e) {
+		return e instanceof Wall;
 	}
 	
-	/**
-	 * 
-	 * @return prefix aller IDs von Gefahren
-	 * enthalten alle Gefahren in ihrer ID den prefix "Gefahr", so soll "Gefahr" zurueckgegeben werden
-	 */
-	public String getDangerPrefix() {
-		return "Gefahr";
-	}
 
-	
 	/**
-	 * 
-	 * @return prefix aller IDs von Sockeln
-	 * enthalten alle Sockeln in ihrer ID den prefix "Sockel", so soll "Sockel" zurueckgegeben werden
-	 */
-	public String getSocketPrefix() {
-		return "Sockel";
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e eine Gefahr ist
+	 **/
+	public boolean isDanger(Entity e) {
+		return e instanceof Danger;
 	}
-
+	
 	/**
 	 * 
 	 * @param mario zu ueberpruefende Entity
@@ -324,6 +302,15 @@ public class MinilandTestAdapterMinimal {
 	 */
 	public void setRessources(int ressources) {
 		GamePlayState.ressources = ressources;
+	}
+
+
+	/**
+	 * 
+	 * @return prefix des Marios. Haben alle Marios z.B. die ID "Mario", so soll "Mario" zurueckgegeben werden.
+	 */
+	public String getMarioPrefix() {
+		return "Mario";
 	}
 }
 	

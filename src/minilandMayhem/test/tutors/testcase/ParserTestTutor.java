@@ -47,11 +47,11 @@ public class ParserTestTutor {
 		int walls = 0;
 		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getDoorPrefix())) {
+			if(adapter.isDoor(e)) {
 				doors+=1;
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				marios +=1;
-			}else if(e.getID().startsWith(adapter.getWallPrefix())) {
+			}else if(adapter.isWall(e)) {
 				walls+=1;
 			}
 		}
@@ -75,13 +75,13 @@ public class ParserTestTutor {
 		int dangers = 0;
 		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getDoorPrefix())) {
+			if(adapter.isDoor(e)) {
 				doors+=1;
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				marios +=1;
-			}else if(e.getID().startsWith(adapter.getWallPrefix())) {
+			}else if(adapter.isWall(e)) {
 				walls+=1;
-			}else if(e.getID().startsWith(adapter.getDangerPrefix())) {
+			}else if(adapter.isDanger(e)) {
 				dangers+=1;
 			}
 		}
@@ -114,15 +114,15 @@ public class ParserTestTutor {
 		int sockets = 0;
 		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getDoorPrefix())) {
+			if(adapter.isDoor(e)) {
 				doors+=1;
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				marios +=1;
-			}else if(e.getID().startsWith(adapter.getWallPrefix())) {
+			}else if(adapter.isWall(e)) {
 				walls+=1;
-			}else if(e.getID().startsWith(adapter.getDangerPrefix())) {
+			}else if(adapter.isDanger(e)) {
 				dangers+=1;
-			}else if(e.getID().startsWith(adapter.getSocketPrefix())) {
+			}else if(adapter.isSocket(e)) {
 				sockets+=1;
 			}
 		}
@@ -147,11 +147,11 @@ public class ParserTestTutor {
 		int walls = 0;
 		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
 		for(Entity e: entities) {
-			if(e.getID().startsWith(adapter.getDoorPrefix())) {
+			if(adapter.isDoor(e)) {
 				doors+=1;
-			}else if(e.getID().startsWith(adapter.getMarioPrefix())) {
+			}else if(adapter.isMario(e)) {
 				marios +=1;
-			}else if(e.getID().startsWith(adapter.getWallPrefix())) {
+			}else if(adapter.isWall(e)) {
 				walls+=1;
 			}
 		}
