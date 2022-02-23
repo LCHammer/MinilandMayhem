@@ -84,7 +84,7 @@ public class EndScreen extends BasicGameState {
 			public void update(GameContainer gc, StateBasedGame game, int delta, Component event) {
 				if(!alreadyUsed) {
 					alreadyUsed = true;
-					String path  ="src\\highscores\\Highscore_"+Parser.levelname;
+					String path  ="highscores\\Highscore_"+Parser.levelname;
 					File highscore = new File(path);
 					HighscoreEntry entry = new HighscoreEntry(GamePlayState.score,GamePlayState.successfulMario,GamePlayState.maxMarios);
 					try {
@@ -127,7 +127,7 @@ public class EndScreen extends BasicGameState {
 		entityManager.renderEntities(container, game, g);
 		
 		int counter = 0;
-		String result = "Spielende! "+GamePlayState.successfulMario+ " von "+GamePlayState.marios.size() + " haben es zur Tür geschafft!";
+		String result = "Spielende! "+GamePlayState.successfulMario+ " von "+GamePlayState.maxMarios + " haben es zur Tür geschafft!";
 		g.drawString(result, 100, 10);
 		g.drawString("Erreichte Punktzahl: "+GamePlayState.score, 100, 30);
 		g.drawString("Neustart", 110, start_Position+counter*distance); counter++;

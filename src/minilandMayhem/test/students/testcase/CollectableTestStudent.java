@@ -17,7 +17,7 @@ import minilandMayhem.test.MinilandTestAdapterExtended3;
 public class CollectableTestStudent {
 
 	MinilandTestAdapterExtended3 adapter;
-	String coll = "src/level/Collectable.txt";
+	String coll = "level/Collectable.txt";
 	
 
 	@Before
@@ -49,7 +49,6 @@ public class CollectableTestStudent {
 		adapter.handleMouseClick(pos.x, pos.y);
 		adapter.updateGame(600);
 		adapter.updateGame(0);
-		System.out.println(mario.getPosition().x);
 		assertTrue("Mario went through closed door",adapter.getCurrentStateID() == adapter.getGameStateID());
 		assertTrue("Mario did not turn around", adapter.marioLooksLeft(mario));
 		assertTrue("Key was not created",StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getKeyPrefix()));

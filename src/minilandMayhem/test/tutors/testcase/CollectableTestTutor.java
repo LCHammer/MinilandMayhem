@@ -17,7 +17,7 @@ import minilandMayhem.test.MinilandTestAdapterExtended3;
 public class CollectableTestTutor {
 
 	MinilandTestAdapterExtended3 adapter;
-	String coll = "src/level/Collectable2.txt";
+	String coll = "level/Collectable2.txt";
 	
 
 	@Before

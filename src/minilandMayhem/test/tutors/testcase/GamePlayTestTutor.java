@@ -18,10 +18,10 @@ import minilandMayhem.test.MinilandTestAdapterMinimal;
 public class GamePlayTestTutor {
 
 	MinilandTestAdapterMinimal adapter;
-	String win= "src/level/Win.txt";
-	String lose= "src/level/Lose.txt";
-	String winAndLose= "src/level/WinAndLose.txt";
-	String fall = "src/level/Falling.txt";
+	String win= "level/Win.txt";
+	String lose= "level/Lose.txt";
+	String winAndLose= "level/WinAndLose.txt";
+	String fall = "level/Falling.txt";
 	
 	@Before
 	public void setUp() {
@@ -111,7 +111,6 @@ public class GamePlayTestTutor {
 		}
 		pos = mario.getPosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		System.out.println(pos.x);
 		assertTrue("Mario was not activated",adapter.marioIsActive(mario));
 		adapter.updateGame(750);
 		assertTrue("Mario does not look left after collision",adapter.marioLooksLeft(mario));

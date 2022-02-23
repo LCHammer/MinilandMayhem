@@ -20,10 +20,10 @@ import minilandMayhem.test.MinilandTestAdapterExtended2;
 public class HighscoreTestTutor {
 
 	MinilandTestAdapterExtended2 adapter;
-	String score = "src/level/Score.txt";
-	String win = "src/level/Win.txt";
-	String highscore = "src/highscores/Highscore_Score.txt";
-	String winningscore = "src/highscores/Highscore_Win.txt";
+	String score = "level/Score.txt";
+	String win = "level/Win.txt";
+	String highscore = "highscores/Highscore_Score.txt";
+	String winningscore = "highscores/Highscore_Win.txt";
 	
 	
 	@Before

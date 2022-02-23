@@ -97,82 +97,172 @@ public class GamePlayState extends BasicGameState {
     	p.addComponent(pause);
     	entityManager.addEntity(stateID, p);
     	
+    	//resette statusvariablen
     	successfulMario = 0;
     	score = 500;
     	ressources = 5;
-    	maxMarios = 0;
+    	robots = new LinkedList<Robot>();
+		marios = new LinkedList<Mario>();
+		maxMarios = 0;
     	
-    	//default Level, wenn keines ausgewaehlt wurde; enthaellt jede Entity 
-    	if(Parser.map==null) {    	
+    	
+    	//default Level, wenn keines ausgewaehlt wurde
+    	if(Parser.map==null) { 
+    		
+    	//Standardlevel 	
+    	maxMarios = 2;
     	Mario mario = new Mario("Mario1");
-    	mario.setPosition(new Vector2f(100,100));
+    	mario.setPosition(new Vector2f(150,300));
     	entityManager.addEntity(stateID, mario);
     	entityManager.addEntity(stateID, mario.getHitbox());
     	
+    	Mario mario2 = new Mario("Mario2");
+    	mario2.setPosition(new Vector2f(200,300));
+    	entityManager.addEntity(stateID, mario2);
+    	entityManager.addEntity(stateID, mario2.getHitbox());
+    	
+    	marios.add(mario);
+    	marios.add(mario2);
+    	
     	Entity wall1 = new Wall("Boden");
-    	wall1.setPosition(new Vector2f(150,100));
+    	wall1.setPosition(new Vector2f(150,350));
     	entityManager.addEntity(stateID, wall1);
     	
-    	Fire fire = new Fire("Feuer",false);
-    	fire.setPosition(new Vector2f(200,100));
-    	entityManager.addEntity(stateID, fire);
-    	entityManager.addEntity(stateID, fire.getHitbox());
     	
-    	Entity socket = new BeamSocket("Sockel");
-    	socket.setPosition(new Vector2f(250,100));
-    	entityManager.addEntity(stateID, socket);
+    	Entity wall2 = new Wall("Boden");
+    	wall2.setPosition(new Vector2f(200,350));
+    	entityManager.addEntity(stateID, wall2);
     	
-    	Entity beam = new Beam("Träger", null, null, false);
-    	beam.setPosition(new Vector2f(300,100));
-    	entityManager.addEntity(stateID, beam);
     	
-    	Entity blaster = new BillBlaster("Kanone");
-    	blaster.setPosition(new Vector2f(250,400));
-    	entityManager.addEntity(stateID, blaster);
+    	Entity wall3 = new Wall("Boden");
+    	wall3.setPosition(new Vector2f(200,400));
+    	entityManager.addEntity(stateID, wall3);
     	
-    	Entity closed = new Door("geschlossen",false);
-    	closed.setPosition(new Vector2f(350,100));
-    	entityManager.addEntity(stateID, closed);    	
+    	Entity wall4 = new Wall("Boden");
+    	wall4.setPosition(new Vector2f(250,400));
+    	entityManager.addEntity(stateID, wall4);
     	
-    	Entity doorL = new Door("Tür",true);
-    	doorL.setPosition(new Vector2f(400,100));
-    	entityManager.addEntity(stateID, doorL);
-    
-    	Entity coin = new Coin("coin");
-    	coin.setPosition(new Vector2f(450,100));
-    	entityManager.addEntity(stateID, coin);
+    	Entity wall5 = new Wall("Boden");
+    	wall5.setPosition(new Vector2f(150,400));
+    	entityManager.addEntity(stateID, wall5);
     	
     	Entity danger = new Danger("Gefahr");
-    	danger.setPosition(new Vector2f(100,200));
+    	danger.setPosition(new Vector2f(300,400));
     	entityManager.addEntity(stateID, danger);
     	
+    	Entity danger2 = new Danger("Gefahr");
+    	danger2.setPosition(new Vector2f(350,400));
+    	entityManager.addEntity(stateID, danger2);
+    	
+    	Entity socket = new BeamSocket("Sockel");
+    	socket.setPosition(new Vector2f(250,350));
+    	entityManager.addEntity(stateID, socket);
+    	
+    	Entity socket2 = new BeamSocket("Sockel2");
+    	socket2.setPosition(new Vector2f(450,350));
+    	entityManager.addEntity(stateID, socket2);
+    	
+    	Entity danger3 = new Danger("Gefahr");
+    	danger3.setPosition(new Vector2f(400,400));
+    	entityManager.addEntity(stateID, danger3);
+    	
+    	Entity wall7 = new Wall("Boden");
+    	wall7.setPosition(new Vector2f(450,400));
+    	entityManager.addEntity(stateID, wall7);
+    	
+    	
+    	Entity wall9 = new Wall("Boden");
+    	wall9.setPosition(new Vector2f(500,350));
+    	entityManager.addEntity(stateID, wall9);
+    	
+    	Entity wall10 = new Wall("Boden");
+    	wall10.setPosition(new Vector2f(550,350));
+    	entityManager.addEntity(stateID, wall10);
+    	
+    	Entity wall11 = new Wall("Boden");
+    	wall11.setPosition(new Vector2f(600,350));
+    	entityManager.addEntity(stateID, wall11);
+    	
+    	Entity socket3 = new BeamSocket("Sockel3");
+    	socket3.setPosition(new Vector2f(600,200));
+    	entityManager.addEntity(stateID, socket3);
+    	
+    	Entity socket4 = new BeamSocket("Sockel4");
+    	socket4.setPosition(new Vector2f(250,200));
+    	entityManager.addEntity(stateID, socket4);
+    	
+    	Entity wall12 = new Wall("Boden");
+    	wall12.setPosition(new Vector2f(650,200));
+    	entityManager.addEntity(stateID, wall12);
+    	
+    	Entity closed = new Door("geschlossen",false);
+    	closed.setPosition(new Vector2f(650,150));
+    	entityManager.addEntity(stateID, closed); 
+    	
+    	Entity wall13 = new Wall("Boden");
+    	wall13.setPosition(new Vector2f(650,400));
+    	entityManager.addEntity(stateID, wall13);
+    	
+    	Entity wall14 = new Wall("Boden");
+    	wall14.setPosition(new Vector2f(600,400));
+    	entityManager.addEntity(stateID, wall14);
+    	
+    	Entity wall15 = new Wall("Boden");
+    	wall15.setPosition(new Vector2f(550,400));
+    	entityManager.addEntity(stateID, wall15);
+    	
+    	Entity wall16 = new Wall("Boden");
+    	wall16.setPosition(new Vector2f(500,400));
+    	entityManager.addEntity(stateID, wall16);
+    	
+    	Entity wall17 = new Wall("Boden");
+    	wall17.setPosition(new Vector2f(650,350));
+    	entityManager.addEntity(stateID, wall17);
+    	
+    	Entity wall18 = new Wall("Boden");
+    	wall18.setPosition(new Vector2f(150,200));
+    	entityManager.addEntity(stateID, wall18);
+    	
+    	
+    	Entity wall19 = new Wall("Boden");
+    	wall19.setPosition(new Vector2f(200,200));
+    	entityManager.addEntity(stateID, wall19);
+    	
     	Entity key = new Key("key");
-    	key.setPosition(new Vector2f(150,200));
+    	key.setPosition(new Vector2f(650,300));
     	entityManager.addEntity(stateID, key);
     	
-    	Entity star = new PowerUp("PowerUp");
-    	star.setPosition(new Vector2f(200,200));
-    	entityManager.addEntity(stateID, star);
-    	
     	Entity iron = new SteelPickup("Ressource");
-    	iron.setPosition(new Vector2f(250,200));
+    	iron.setPosition(new Vector2f(150,150));
     	entityManager.addEntity(stateID, iron);
     	
-    	Entity trampoline = new Trampoline("Trampolin");
-    	trampoline.setPosition(new Vector2f(300,200));
-    	entityManager.addEntity(stateID, trampoline);
+    	//Decke
+    	for (int i=1; i < 14;i++) {
+			Wall w = new Wall("Wand");
+			w.setPosition(new Vector2f(50+i*50,100));
+			entityManager.addEntity(stateID, w);
+			}
     	
-    	Entity bill = new BulletBill("Bill",false);
-    	bill.setPosition(new Vector2f(100,300));
-    	entityManager.addEntity(stateID, bill);
-    	
+    	//Linke Wand
+		for (int i = 0; i<6;i++) {
+			Wall w = new Wall("Wand");
+			w.setPosition(new Vector2f(100,150+50*i));
+			entityManager.addEntity(stateID, w);
+			}
+		
+		//Rechte Wand
+		for (int i = 0; i<6;i++) {
+			Wall w = new Wall("Wand");
+			w.setPosition(new Vector2f(700,150+50*i));
+			entityManager.addEntity(stateID, w);
+			}
     	
     	}
     	else if(Parser.map != null) {
+    		
     		Entity[][] map = Parser.parse();
     		int y_dim = map.length;
     		int x_dim = map[0].length;
-    		robots = new LinkedList<Robot>();
     		for (int y = 0; y < y_dim; y++) {
     			for( int x = 0; x < x_dim; x++) {
     				//wichtig: beachte reihenfolge der Dimensionen!

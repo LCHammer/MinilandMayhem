@@ -17,11 +17,11 @@ import minilandMayhem.test.MinilandTestAdapterMinimal;
 public class ParserTestTutor {
 
 	MinilandTestAdapterMinimal adapter;
-	String win= "src/level/Win.txt";
-	String lose= "src/level/Lose.txt";
-	String sockets= "src/level/Sockets.txt";
-	String incorrect = "src/level/incorrect.txt";
-	String otherChars = "src/level/nonSpecifiedCharacters.txt";
+	String win= "level/Win.txt";
+	String lose= "level/Lose.txt";
+	String sockets= "level/Sockets.txt";
+	String incorrect = "level/incorrect.txt";
+	String otherChars = "level/nonSpecifiedCharacters.txt";
 	
 	
 	@Before

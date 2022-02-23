@@ -19,7 +19,7 @@ public class HighscoreTestStudent {
 
 	
 	MinilandTestAdapterExtended2 adapter;
-	String score = "src/level/Score.txt";
+	String score = "level/Score.txt";
 	
 	
 	@Before

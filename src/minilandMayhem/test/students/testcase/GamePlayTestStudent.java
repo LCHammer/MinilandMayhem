@@ -18,10 +18,10 @@ import minilandMayhem.test.MinilandTestAdapterMinimal;
 public class GamePlayTestStudent {
 
 	MinilandTestAdapterMinimal adapter;
-	String win= "src/level/Win.txt";
-	String lose= "src/level/Lose.txt";
-	String marioCollide = "src/level/marioCollide.txt";
-	String fall = "src/level/Falling.txt";
+	String win= "level/Win.txt";
+	String lose= "level/Lose.txt";
+	String marioCollide = "level/marioCollide.txt";
+	String fall = "level/Falling.txt";
 	
 	@Before
 	public void setUp() {

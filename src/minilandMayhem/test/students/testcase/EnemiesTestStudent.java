@@ -19,8 +19,8 @@ public class EnemiesTestStudent {
 
 
 	MinilandTestAdapterExtended1 adapter;
-	String enemies = "src/level/Enemies.txt";
-	String trampoline = "src/level/Trampoline.txt";
+	String enemies = "level/Enemies.txt";
+	String trampoline = "level/Trampoline.txt";
 
 	@Before
 	public void setUp() {

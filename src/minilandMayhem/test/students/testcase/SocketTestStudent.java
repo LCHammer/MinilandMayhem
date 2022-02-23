@@ -18,7 +18,7 @@ import minilandMayhem.test.MinilandTestAdapterMinimal;
 public class SocketTestStudent {
 
 	MinilandTestAdapterMinimal adapter;
-	String sockets = "src/level/Sockets.txt";
+	String sockets = "level/Sockets.txt";
 	
 	
 	@Before

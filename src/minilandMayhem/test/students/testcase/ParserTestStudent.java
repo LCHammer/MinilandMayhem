@@ -17,9 +17,9 @@ import minilandMayhem.test.MinilandTestAdapterMinimal;
 public class ParserTestStudent {
 
 	MinilandTestAdapterMinimal adapter;
-	String win= "src/level/Win.txt";
-	String lose= "src/level/Lose.txt";
-	String incorrect = "src/level/incorrect.txt";
+	String win= "level/Win.txt";
+	String lose= "level/Lose.txt";
+	String incorrect = "level/incorrect.txt";
 	
 	
 	@Before
