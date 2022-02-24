@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.13)  19 NOV 2021 16:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.13)  24 FEB 2022 13:48
 entering extended mode
-**./Miniland.tex
-(Miniland.tex
+**./marioMayhem.tex
+(marioMayhem.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-05-11>
 ("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
@@ -389,14 +389,18 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 ("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstlang1.
 sty"
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-)) (MinilandBody.tex
+)) (minilandBody.tex
 ("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l3backen
 d-pdfmode.def"
 File: l3backend-pdfmode.def 2020-05-05 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count278
 \l__pdf_internal_box=\box49
-) (Miniland.aux)
-\openout1 = `Miniland.aux'.
+) (marioMayhem.aux
+
+LaTeX Warning: Label `pt:doorEnter' multiply defined.
+
+)
+\openout1 = `marioMayhem.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
@@ -416,11 +420,9 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Trying to load font information for T1+ptm on input line 11
 .
-
-("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\t1ptm.fd"
+ ("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\t1ptm.fd"
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-)
-("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ucs\ucsencs.def"
+) ("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ucs\ucsencs.def"
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 ("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
@@ -466,9 +468,9 @@ LaTeX Info: Redefining \Ref on input line 520.
 LaTeX Info: Redefining \ref on input line 11.
 LaTeX Info: Redefining \pageref on input line 11.
 LaTeX Info: Redefining \nameref on input line 11.
- (Miniland.out) (Miniland.out)
+ (marioMayhem.out) (marioMayhem.out)
 \@outlinefile=\write3
-\openout3 = `Miniland.out'.
+\openout3 = `marioMayhem.out'.
 
 LaTeX Info: Redefining \Ref on input line 11.
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 13
@@ -487,9 +489,9 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
 
 ("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (Miniland.toc)
+) (marioMayhem.toc)
 \tf@toc=\write4
-\openout4 = `Miniland.toc'.
+\openout4 = `marioMayhem.toc'.
 
  [1
 
@@ -515,130 +517,121 @@ Underfull \hbox (badness 1253) in paragraph at lines 6--6
 tp : / / de . wikipedia . org / wiki / Geschlechtergerechte _ Sprache #
  []
 
-(tasks/de/Miniland/gameIntro.tex
-<tasks/de/Miniland/menu.png, id=116, 764.8575pt x 480.29437pt>
-File: tasks/de/Miniland/menu.png Graphic file (type png)
-<use tasks/de/Miniland/menu.png>
-Package pdftex.def Info: tasks/de/Miniland/menu.png  used on input line 22.
-(pdftex.def)             Requested size: 305.93758pt x 192.11433pt.
-<tasks/de/Miniland/gameplay.png, id=117, 764.8575pt x 480.29437pt>
-File: tasks/de/Miniland/gameplay.png Graphic file (type png)
-<use tasks/de/Miniland/gameplay.png>
-Package pdftex.def Info: tasks/de/Miniland/gameplay.png  used on input line 30.
+(tasks/de/miniland/gameIntro.tex
+<tasks/de/miniland/menu.png, id=106, 400.49625pt x 320.69812pt>
+File: tasks/de/miniland/menu.png Graphic file (type png)
+<use tasks/de/miniland/menu.png>
+Package pdftex.def Info: tasks/de/miniland/menu.png  used on input line 25.
+(pdftex.def)             Requested size: 160.19566pt x 128.27696pt.
+<tasks/de/miniland/gameplay.png, id=108, 400.99812pt x 322.20375pt>
+File: tasks/de/miniland/gameplay.png Graphic file (type png)
+<use tasks/de/miniland/gameplay.png>
+Package pdftex.def Info: tasks/de/miniland/gameplay.png  used on input line 33.
 
-(pdftex.def)             Requested size: 305.93758pt x 192.11433pt.
-)) (de/orgaSL.tex [2]
+(pdftex.def)             Requested size: 160.3964pt x 128.87921pt.
+)) (de/orgaSL.tex [2] [3 <./tasks/de/miniland/menu.png> <./tasks/de/miniland/ga
+meplay.png>]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 7.
 
 ("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1ptm.fd"
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [3 <./tasks/de/Miniland/menu.png>] [4 <./tasks/de/Miniland/gameplay.png>])
-(de/aufgabe.tex [5]) (tasks/de/Miniland/minimalHeader.tex [6])
+)) (de/aufgabe.tex [4] [5]) (tasks/de/miniland/minimalHeader.tex)
 Tasks: 1\ total points: 0
 (tasks/de/ontime.tex)
 Tasks: 2\ total points: 0
-(tasks/de/compiles.tex)
+(tasks/de/compiles.tex) [6]
 Tasks: 3\ total points: 0
 (tasks/de/ownCode.tex)
 Tasks: 4\ total points: 0
-(tasks/de/Miniland/junitPrepared.tex (tasks/de/Miniland/initExample.tex))
-[7]
+(tasks/de/miniland/junitPrepared.tex (tasks/de/miniland/initExample.tex
+Overfull \hbox (5.48616pt too wide) in paragraph at lines 1--2
+\T1/ptm/m/n/10.95 de Im-ple-men-tie-rung der Me-tho-de \T1/txtt/m/n/10.95 getRe
+ssources() \T1/ptm/m/n/10.95 der Klas-se \T1/txtt/m/n/10.95 MinilandTest-Adapte
+rMi-
+ []
+
+))
 Tasks: 5\ total points: 0
-(tasks/de/Miniland/public0.tex)
+(tasks/de/miniland/public0.tex
+Overfull \hbox (78.5747pt too wide) in paragraph at lines 2--6
+[]\T1/ptm/m/n/10.95 Die öf-fent-li-chen Test-fäl-le der Klas-se \T1/txtt/m/n/10
+.95 MinilandTestsuiteMinimal
+ []
+
+)
 Tasks: 6\ total points: 3
 (tasks/de/gui.tex)
-Tasks: 7\ total points: 4
-(tasks/de/Miniland/menu.tex
-("C:\Users\LordC\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ucs\uni-32.def"
-File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-))
-Tasks: 8\ total points: 5
-(tasks/de/Miniland/newGame.tex)
-Tasks: 9\ total points: 6
-(tasks/de/Miniland/pause.tex)
-Tasks: 10\ total points: 12
-(tasks/de/Miniland/playerNames.tex)
-Tasks: 11\ total points: 16
-(tasks/de/Miniland/guiObjects.tex)
-Overfull \hbox (3.46913pt too wide) in paragraph at lines 2--47
+Tasks: 7\ total points: 5
+(tasks/de/miniland/menu.tex) [7]
+Tasks: 8\ total points: 7
+(tasks/de/miniland/newLevel.tex)
+Tasks: 9\ total points: 11
+(tasks/de/miniland/guiObjects.tex
+Overfull \hbox (3.46913pt too wide) in paragraph at lines 2--3
 []\T1/ptm/m/n/10.95 Für je-des Spie-l-ob-jekt und je-den Spiel-zu-stand exis-
  []
 
-Tasks: 12\ total points: 19
-(tasks/de/Miniland/gorillaPlacement.tex)
-Tasks: 13\ total points: 25
-(tasks/de/Miniland/keyboardControl.tex [8])
-Tasks: 14\ total points: 33
-(tasks/de/Miniland/shootBehaviour.tex)
-Tasks: 15\ total points: 39
-(tasks/de/Miniland/skylineHit.tex)
-Tasks: 16\ total points: 43
-(tasks/de/Miniland/leaveScreen.tex)
-Overfull \hbox (5.06729pt too wide) in paragraph at lines 1--57
-[]\T1/ptm/m/n/10.95 Verlässt die Ba-na-ne den Bild-schirm
+[8])
+Tasks: 10\ total points: 17
+(tasks/de/miniland/doorEnter.tex) (tasks/de/miniland/ext1Header.tex)
+Overfull \hbox (84.1857pt too wide) in paragraph at lines 8--51
+\T1/ptm/m/n/10.95 wer-den. Die öf-fent-li-chen Test-fäl-le für die-se Aus-bau-s
+tu-fe be-fin-den sich in der Klas-se \T1/txtt/m/n/10.95 MinilandTestsuiteExtend
+ed1\T1/ptm/m/n/10.95 .
  []
 
-Tasks: 17\ total points: 49
-(tasks/de/Miniland/enemyHit.tex [9]) (tasks/de/Miniland/ext1Header.tex)
-Tasks: 18\ total points: 49
-(tasks/de/Miniland/public1.tex)
-Tasks: 19\ total points: 54
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--51
+
+ []
+
+Tasks: 11\ total points: 17
+(tasks/de/miniland/public1.tex)
+Tasks: 12\ total points: 22
 (tasks/de/mvc.tex)
-Tasks: 20\ total points: 59
-(tasks/de/Miniland/highscore.tex (tasks/de/Miniland/sortHighscores.tex [10]))
-Tasks: 21\ total points: 64
-(tasks/de/Miniland/highscoreGUI.tex)
-Tasks: 22\ total points: 69
-(tasks/de/Miniland/mapgenerator.tex)
-Tasks: 23\ total points: 72
-(tasks/de/Miniland/score.tex)
-Overfull \hbox (1.78253pt too wide) in paragraph at lines 1--78
-[]\T1/ptm/m/n/10.95 Der Spiel-stand wird wäh-rend
+Tasks: 13\ total points: 27
+(tasks/de/miniland/highscoreGUI.tex)
+Tasks: 14\ total points: 32
+(tasks/de/miniland/mapgenerator.tex) [9]
+Tasks: 15\ total points: 40
+(tasks/de/miniland/jumpBehaviour.tex)
+Tasks: 16\ total points: 46
+(tasks/de/miniland/doorEnter.tex)
+Tasks: 17\ total points: 52
+(tasks/de/miniland/enemyHit.tex) (tasks/de/miniland/ext2Header.tex)
+Overfull \hbox (84.1857pt too wide) in paragraph at lines 8--73
+\T1/ptm/m/n/10.95 wer-den. Die öf-fent-li-chen Test-fäl-le für die-se Aus-bau-s
+tu-fe be-fin-den sich in der Klas-se \T1/txtt/m/n/10.95 MinilandTestsuiteExtend
+ed2\T1/ptm/m/n/10.95 .
  []
 
-Tasks: 24\ total points: 74
-(tasks/de/Miniland/parametersaved.tex) (tasks/de/Miniland/ext2Header.tex)
-Tasks: 25\ total points: 74
-(tasks/de/Miniland/public2.tex)
-Tasks: 26\ total points: 79
-(tasks/de/Miniland/wind.tex [11])
-Tasks: 27\ total points: 84
-(tasks/de/Miniland/bounce.tex)
-Tasks: 28\ total points: 87
-(tasks/de/Miniland/sun.tex)
-Tasks: 29\ total points: 89
-(tasks/de/Miniland/namessaved.tex)
-Overfull \hbox (0.26062pt too wide) in paragraph at lines 1--96
-[]\T1/ptm/m/n/10.95 Bei der Na-mens-aus-wahl der Spie-ler_innen
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--73
+
  []
 
-(tasks/de/Miniland/ext3Header.tex)
-Overfull \hbox (10.73297pt too wide) in paragraph at lines 8--102
+Tasks: 18\ total points: 52
+(tasks/de/miniland/public2.tex) (tasks/de/miniland/ext3Header.tex)
+Overfull \hbox (111.19893pt too wide) in paragraph at lines 8--90
 \T1/ptm/m/n/10.95 reicht wer-den. Die öf-fent-li-chen Test-fäl-le für die-se Au
-s-bau-stu-fe be-fin-den sich in der Klas-se \T1/txtt/m/n/10.95 Gorillas-
+s-bau-stu-fe be-fin-den sich in der Klas-se \T1/txtt/m/n/10.95 MinilandTestsuit
+eExtended3\T1/ptm/m/n/10.95 .
  []
 
-Tasks: 30\ total points: 89
-(tasks/de/Miniland/public3.tex)
-Tasks: 31\ total points: 93
-(tasks/de/Miniland/gravity.tex) [12]
-Tasks: 32\ total points: 97
-(tasks/de/Miniland/incitingmessages.tex)
-Overfull \hbox (6.25163pt too wide) in paragraph at lines 1--110
-[]\T1/ptm/m/n/10.95 Je nach-dem wie gut oder schlecht der Wurf war, wird der_di
-e
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--90
+
  []
 
-Tasks: 33\ total points: 99
-(tasks/de/Miniland/instructions.tex) (tasks/de/Miniland/anpassungCE.tex
-[13]) (tasks/de/Miniland/appStore.tex [14]) (tasks/de/bonusHeader.tex)
-Tasks: 34\ total points: 100
+Tasks: 19\ total points: 52
+(tasks/de/miniland/public3.tex) [10] (tasks/de/bonusHeader.tex)
+Tasks: 20\ total points: 53
 (tasks/de/audio.tex)
-Tasks: 35\ total points: 101
+Tasks: 21\ total points: 54
 (tasks/de/about.tex)
-Tasks: 36\ total points: 101
-(tasks/de/surprise.tex) [15] (tasks/de/Miniland/noDialog.tex
+Tasks: 22\ total points: 54
+(tasks/de/surprise.tex) (tasks/de/miniland/noDialog.tex
 Overfull \hbox (4.19124pt too wide) in paragraph at lines 4--6
 []\T1/ptm/m/n/10.95 Die Tests be-nut-zen wei-ter-hin nicht die Klas-se \T1/ptm/
 m/it/10.95 de.tu_darmstadt.informatik.fop.gorillas.main.Gorillas
@@ -651,7 +644,7 @@ Overfull \hbox (58.06554pt too wide) in paragraph at lines 4--6
 TWLTestStateBasedGame\T1/ptm/m/n/10.95 .
  []
 
-) (tasks/de/Miniland/materialien.tex [16]
+) (tasks/de/miniland/materialien.tex [11]
 Underfull \hbox (badness 6859) in paragraph at lines 52--52
 []\T1/ptm/m/it/10.95 MovementDoesntCollideEvent(float speed,
  []
@@ -667,52 +660,50 @@ Underfull \hbox (badness 1286) in paragraph at lines 68--68
 n der
  []
 
-<tasks/de/Miniland/directions.png, id=216, 805.0075pt x 631.35875pt>
-File: tasks/de/Miniland/directions.png Graphic file (type png)
-<use tasks/de/Miniland/directions.png>
-Package pdftex.def Info: tasks/de/Miniland/directions.png  used on input line 8
+<tasks/de/miniland/directions.png, id=170, 805.0075pt x 631.35875pt>
+File: tasks/de/miniland/directions.png Graphic file (type png)
+<use tasks/de/miniland/directions.png>
+Package pdftex.def Info: tasks/de/miniland/directions.png  used on input line 8
 6.
 (pdftex.def)             Requested size: 199.16928pt x 156.20155pt.
-) (tasks/de/Miniland/zeitplanung.tex [17] [18]) (Miniland.lor [19 <./tasks/de/M
-iniland/directions.png>] [20])
+) (tasks/de/miniland/zeitplanung.tex [12] [13 <./tasks/de/miniland/directions.p
+ng>] [14]) (marioMayhem.lor [15])
 \tf@lor=\write5
-\openout5 = `Miniland.lor'.
+\openout5 = `marioMayhem.lor'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
- [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
- (Miniland.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
-Package rerunfilecheck Info: File `Miniland.out' has not changed.
-(rerunfilecheck)             Checksum: FBD8EC7E6406DCDBFE4D20486FCA4CCA;1438.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
+ [16]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
+ (marioMayhem.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
+Package rerunfilecheck Info: File `marioMayhem.out' has not changed.
+(rerunfilecheck)             Checksum: DBC436DBE7B49FFAB3FCB9AC33A6D7B5;1243.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
  ) ) 
 Here is how much of TeX's memory you used:
- 10755 strings out of 480811
- 158115 string characters out of 2896163
- 611804 words of memory out of 3000000
- 26284 multiletter control sequences out of 15000+200000
+ 10402 strings out of 480811
+ 154084 string characters out of 2896163
+ 613810 words of memory out of 3000000
+ 26002 multiletter control sequences out of 15000+200000
  577853 words of font info for 92 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,10n,42p,946b,1146s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,10n,42p,674b,1146s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.e
 nc}<C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmmi10.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmmi8.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/LordC/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/LordC/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/LordC/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
-Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/t1xtt.
-pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utm
-b8a.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times
-/utmbi8a.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/
-times/utmr8a.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-urw/times/utmri8a.pfb>
-Output written on Miniland.pdf (21 pages, 553736 bytes).
+ublic/txfonts/t1xtt.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/urw/times/utmb8a.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/urw/times/utmbi8a.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/LordC/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on marioMayhem.pdf (16 pages, 813379 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
- 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 236 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 160 words of extra memory for PDF output out of 10000 (max. 10000000)
 

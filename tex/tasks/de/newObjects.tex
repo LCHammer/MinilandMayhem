@@ -1,0 +1,20 @@
+Neuer Gegner: 
+
+Feuer: 
+	Bewegt sich identisch zu Mario, muss aber nicht per Mausklick aktiviert werden sondern läuft direkt (nach links) los.
+	Kollidiert das Feuer gegen Mario, so wird Mario zerstört (wie als wäre er in eine Gefahr/Stacheln gelaufen) und das Feuer läuft normal weiter.
+	Das Feuer ist etwas langsamer als Mario (nur 0.1f speed und nicht 0.125f).
+	Kollidieren 2 Feuer gegeneinander, drehen beide um.
+	Feuer werden von anderen Gefahren/Stacheln zerstört (wie der Mario).
+	MapParser: F für Feuer
+
+Kugelwilli Kanone: 
+	Die Kanone selbst kann sich nicht bewegen, lässt aber alle 5 sekunden einen Kugelwilli erscheinen (links/rechts abwechselnd, angefangen mit "links")
+	Marios/Feuer können gegen Kanonen laufen, und kollidieren, als Wäre die Kanone eine Wand
+	MapParser: B für BillBlaster
+
+Kugelwilli: 
+	Der Kugelwilli selbst fliegt immer in eine Richtung (entweder nur nach links oder nur nach rechts).
+	Diese werden nicht von Schwerkraft beeinflusst
+	Er geht sofort bei einem Aufprall mit (egal welcher) anderen Entity kaputt.
+	Ist die andere Entity bei Kollision ein Mario/Feuer, so wird Mario bzw. Feuer auch zerstört.

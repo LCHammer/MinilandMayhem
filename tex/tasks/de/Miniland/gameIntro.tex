@@ -1,21 +1,24 @@
 %\newpage
 \subsection{Das Spiel \emph{\gameTitle}}
- ////////////////ändern! gameIntro.tey
-Im Spiel \emph{\gameTitle{}} spielen Sie Eins gegen Eins. Jede Person steuert dabei einen Gorilla und versucht den gegnerischen Gorilla mit einer Banane abzuwerfen. Die Gorillas stehen in gewisser Entfernung, einer links und einer rechts, auf verschiedenen Hochh\"ausern einer Skyline. Das Spiel ist rundenbasiert: Zun\"achst t\"atigt der/die erste Spieler\_in den Wurf. Trifft dieser Wurf, so wurde die Runde gewonnen, ansonsten ist der/die n\"achste Spieler\_in an der Reihe. Ein Wurf wird durch zwei Eingaben gesteuert: den Abwurfwinkel und die Wurfgeschwindigkeit. Der Winkel wird als Gradzahl von 0 bis 360 angegeben, die Geschwindigkeit auf einer Skala von 0 bis 200.
+ 
+Im Spiel \emph{\gameTitle{}} wird gegen den Computer gespielt. Dabei steuern Sie eine oder mehrere Spielfiguren in Form von Mario-Aufziehrobotern über verschiedene Hindernisse zu einer Tür, um das nächste Level zu erreichen.\\
+Die Steuerung erfolgt grundsätzlich über die  Maus. 
+Klickt man auf einen Mario-Aufziehroboter (kurz: Mario), "zieht man ihn auf" und er rennt sofort los.
+Ist ein Mario einmal aufgezogen, kann der Spieler mit ihm nicht mehr interagieren und der Mario hört nicht auf zu laufen.
+Sogar Wände halten ihn nicht auf, läuft ein Mario gegen eine Wand, dreht er einfach um und läuft in die entgegengesetzte Richtung weiter.
+Um zu verhindern, das ein aufgezogener Mario blind in sein Verderben läuft (z.B. in Form eines Abgrunds), kann der Spieler für ihn Stahlträger bauen.
+Diese können dem Mario als Brücke dienen oder schlichtweg als Wand, um Gegner fernzuhalten.\\
+Stahlträger können nur zwischen Sockeln gebaut werden. 
+Klickt der Spieler auf zwei unterschiedliche Sockel, so wird ein Stahlträger zwischen ihnen gebaut, auf dem der Mario laufen kann. 
+Einen Stahlträger kostet jedoch (je nach Länge) Ressourcen und der Spieler hat davon nur begrenzt viele pro Level. 
+Das ganze Level komplett zubauen ist also nicht möglich.
+Hier muss abgewogen werden, wann es sich lohnt einen Träger zu bauen und wann nicht!
+Hat man sich verbaut, ist dies jedoch kein Problem. 
+Klickt man zwei mal auf den gleichen Sockel, so verschwinden alle angrenzenden Stahlträger und man erhält seine eingesetzten Ressourcen zurück. \\
+Um noch etwas mehr Spannung in das Spiel zu bringen, gibt es zusätzlich noch Gegner, welche die Aufziehroboter zerstören wollen sowie sammelbare Gegenstände, wie z.B. einen Schlüssel, welcher erst aufgesammelt werden muss, bevor man eine verschlossene Tür öffnen kann.
+ 
+Abbildung \vref{fig:screenshot1} zeigt ein m\"ogliches Menü. Abbildung \vref{fig:screenshot2} zeigt ein mögliches Spielfenster. Wir erwarten nicht, dass das im Rahmen des Projekts erstellte Spiel der Ausgabe optisch \"ahnlich sieht; die Abbildung soll nur zum besseren Nachvollziehen dienen.
 
-Abbildung \vref{fig:screenshot1} zeigt ein m\"ogliches Menü. Abbildung \vref{fig:screenshot2} zeigt ein mögliches Spielfenster. Wir erwarten nicht, dass 
-das im Rahmen des Projekts erstellte Spiel der Ausgabe optisch \"ahnlich sieht; die 
-Abbildung soll nur zum besseren Nachvollziehen dienen.
-
-Auf einem beliebig großen rechteckigen Spielfeld kann es folgende Spielobjekte geben:
-\begin{description}
-\item[Gorilla]
-Jeder Spieler verfügt über einen Gorilla. Folglich befinden sich zum Start zwei Gorillas, einer links und einer rechts, auf dem Feld. Gorillas unterschiedlicher Parteien müssen nicht visuell unterscheidbar sein.
-\item[Hochhaus]
-Die Gorillas stehen auf Hochhäusern, die eine Skyline bilden.
-\item[Banane]
-Tätigt ein Spieler einen Wurf, so fliegt eine Banane (hoffentlich) in Richtung des gegnerischen Gorillas.
-\end{description}
 
 \begin{figure}[htb]
 \begin{center}

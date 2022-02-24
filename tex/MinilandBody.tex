@@ -35,27 +35,13 @@
 
 \requirement{Grafische Benutzerschnittstelle}{3}{Minimal}{gui}{\basepath/gui}
 
-\requirement{Hauptmen\"u}{1}{Minimal}{menu}{\gamepath/menu}
+\requirement{Spielmen\"u}{2}{Minimal}{menu}{\gamepath/menu}
 
-\requirement{Neues Spiel starten}{1}{Minimal}{newGame}{\gamepath/newGame}
-
-\requirement{Pause}{1}{Minimal}{pause}{\gamepath/pause}
-
-\requirement{Eingabe und Anzeige der Spielernamen}{6}{Minimal}{playerNames}{\gamepath/playerNames}
+\requirement{Neues Level starten}{2}{Minimal}{newGame}{\gamepath/newLevel}
 
 \requirement{Grafische Umsetzung der Objekte}{4}{Minimal}{icons}{\gamepath/guiObjects}
 
-\requirement{Platzierung der Gorillas}{3}{Minimal}{gorillaPlacement}{\gamepath/gorillaPlacement}
-
-\requirement{Eingabe der Wurfparameter}{6}{Minimal}{keyboard}{\gamepath/keyboardControl}
-
-\requirement{Wurfverhalten}{8}{Minimal}{shootBehaviour}{\gamepath/shootBehaviour}
-
-\requirement{Erkennen Zugende: Skyline getroffen}{6}{Minimal}{skylineHit}{\gamepath/skylineHit}
-
-\requirement{Erkennen Zugende: Banane verlässt Bildschirm}{4}{Minimal}{leaveScreen}{\gamepath/leaveScreen}
-
-\requirement{Erkennen Zugende: Gegner getroffen}{6}{Minimal}{enemyHit}{\gamepath/enemyHit}
+\requirement{Erkennen Zugende: Tor erreicht}{6}{Minimal}{doorEnter}{\gamepath/doorEnter}
 
 
 \end{description}
@@ -68,15 +54,17 @@
 
 \requirement{Sinnvolle Modellierung}{5}{1}{\basepath/mvc}{\basepath/mvc}
 
-\requirement{Highscore-Liste}{5}{1}{highscoreDB}{\gamepath/highscore}
-
 \requirement{Highscore GUI}{5}{1}{highscoreGUI}{\gamepath/highscoreGUI}
 
-\requirement{Rundenbasiertes Spiel: Kartengenerator}{5}{1}{mapgenerator}{\gamepath/mapgenerator}
+\requirement{Spiel: Kartengenerator}{5}{1}{mapgenerator}{\gamepath/mapgenerator}
 
-\requirement{Rundenbasiertes Spiel: Spiel bis 3 und Score-Anzeige}{3}{1}{score}{\gamepath/score}
+%\requirement{Grafische Umsetzung der Objekte}{4}{Minimal}{icons}{\gamepath/newObjects}
 
-\requirement{Wurfparameter werden gespeichert}{2}{1}{parametersaved}{\gamepath/parametersaved}
+\requirement{Sprungverhalten}{8}{Minimal}{jumpBehaviour}{\gamepath/jumpBehaviour}
+
+\requirement{Erkennen Spielende: Tor erreicht}{6}{Minimal}{doorEnter}{\gamepath/doorEnter}
+
+\requirement{Erkennen Spielende: Gegner getroffen}{6}{Minimal}{enemyHit}{\gamepath/enemyHit}
 
 \end{description}
 
@@ -86,13 +74,13 @@
 \begin{description}
 \requirement{\"Offentliche Tests der Ausbaustufe 2 sind erfolgreich}{0}{2}{extended2Test}{\gamepath/public2}
 
-\requirement{Wind}{5}{2}{wind}{\gamepath/wind}
+%\requirement{Wind}{5}{2}{wind}{\gamepath/wind}
 
-\requirement{Dotzen}{5}{2}{bounce}{\gamepath/bounce}
+%\requirement{Dotzen}{5}{2}{bounce}{\gamepath/bounce}
 
-\requirement{Sonne}{3}{2}{sun}{\gamepath/sun}
+%\requirement{Sonne}{3}{2}{sun}{\gamepath/sun}
 
-\requirement{Spieler\_innennamen werden gespeichert}{2}{2}{namessaved}{\gamepath/namessaved}
+%\requirement{Spieler\_innennamen werden gespeichert}{2}{2}{namessaved}{\gamepath/namessaved}
 
 
 \end{description}
@@ -104,17 +92,17 @@
 
 \requirement{\"Offentliche Tests der Ausbaustufe 3 sind erfolgreich}{0}{3}{extended3Test}{\gamepath/public3}
 
-\requirement{Erdbeschleunigung kann verändert werden}{4}{3}{gravity}{\gamepath/gravity}
+%\requirement{Erdbeschleunigung kann verändert werden}{4}{3}{gravity}{\gamepath/gravity}
 
-\requirement{Spöttische Bemerkungen}{4}{3}{incitingmessages}{\gamepath/incitingmessages}
+%\requirement{Spöttische Bemerkungen}{4}{3}{incitingmessages}{\gamepath/incitingmessages}
 
-\requirement{Anleitung}{2}{3}{instructions}{\gamepath/instructions}
+%\requirement{Anleitung}{2}{3}{instructions}{\gamepath/instructions}
 
 \end{description}
 
-\input{\gamepath/anpassungCE}
+%\input{\gamepath/anpassungCE}
 
-\input{\gamepath/appStore}
+%\input{\gamepath/appStore}
 
 \input{\basepath/bonusHeader} % Bonuspunkte
 
