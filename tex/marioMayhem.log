@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.13)  24 FEB 2022 13:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.13)  26 FEB 2022 20:04
 entering extended mode
 **./marioMayhem.tex
 (marioMayhem.tex
@@ -397,6 +397,9 @@ File: l3backend-pdfmode.def 2020-05-05 L3 backend support: PDF mode
 \l__pdf_internal_box=\box49
 ) (marioMayhem.aux
 
+LaTeX Warning: Label `fig:screenshot2' multiply defined.
+
+
 LaTeX Warning: Label `pt:doorEnter' multiply defined.
 
 )
@@ -565,72 +568,120 @@ Tasks: 6\ total points: 3
 Tasks: 7\ total points: 5
 (tasks/de/miniland/menu.tex) [7]
 Tasks: 8\ total points: 7
-(tasks/de/miniland/newLevel.tex)
-Tasks: 9\ total points: 11
-(tasks/de/miniland/guiObjects.tex
-Overfull \hbox (3.46913pt too wide) in paragraph at lines 2--3
+(tasks/de/miniland/guiObjects.tex)
+Overfull \hbox (3.46913pt too wide) in paragraph at lines 2--41
 []\T1/ptm/m/n/10.95 Für je-des Spie-l-ob-jekt und je-den Spiel-zu-stand exis-
  []
 
-[8])
-Tasks: 10\ total points: 17
-(tasks/de/miniland/doorEnter.tex) (tasks/de/miniland/ext1Header.tex)
-Overfull \hbox (84.1857pt too wide) in paragraph at lines 8--51
+Tasks: 9\ total points: 11
+(tasks/de/miniland/mapgenerator.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 14--43
+
+ []
+
+Tasks: 10\ total points: 13
+(tasks/de/miniland/newLevel.tex) [8]
+Tasks: 11\ total points: 17
+(tasks/de/miniland/mario.tex)
+Tasks: 12\ total points: 23
+(tasks/de/miniland/doorEnter.tex)
+Tasks: 13\ total points: 27
+(tasks/de/miniland/beams.tex)
+Tasks: 14\ total points: 31
+(tasks/de/miniland/beam_walk.tex
+Overfull \hbox (1.52003pt too wide) in paragraph at lines 1--2
+[]\T1/ptm/m/n/10.95 Marios in-ter-a-gie-ren auf fol-gen-de Wei-se mit ge-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+[9]
+<tasks/de/miniland/beams.png, id=160, 230.36063pt x 197.73875pt>
+File: tasks/de/miniland/beams.png Graphic file (type png)
+<use tasks/de/miniland/beams.png>
+Package pdftex.def Info: tasks/de/miniland/beams.png  used on input line 15.
+(pdftex.def)             Requested size: 230.36005pt x 197.73827pt.
+)
+Tasks: 15\ total points: 36
+(tasks/de/miniland/gravity.tex) (tasks/de/miniland/ext1Header.tex)
+Overfull \hbox (84.1857pt too wide) in paragraph at lines 8--62
 \T1/ptm/m/n/10.95 wer-den. Die öf-fent-li-chen Test-fäl-le für die-se Aus-bau-s
 tu-fe be-fin-den sich in der Klas-se \T1/txtt/m/n/10.95 MinilandTestsuiteExtend
 ed1\T1/ptm/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--51
+Underfull \hbox (badness 10000) in paragraph at lines 8--62
 
  []
 
-Tasks: 11\ total points: 17
-(tasks/de/miniland/public1.tex)
-Tasks: 12\ total points: 22
+Tasks: 16\ total points: 36
+(tasks/de/miniland/public1.tex) [10 <./tasks/de/miniland/beams.png>]
+Tasks: 17\ total points: 41
 (tasks/de/mvc.tex)
-Tasks: 13\ total points: 27
+Tasks: 18\ total points: 46
 (tasks/de/miniland/highscoreGUI.tex)
-Tasks: 14\ total points: 32
-(tasks/de/miniland/mapgenerator.tex) [9]
-Tasks: 15\ total points: 40
-(tasks/de/miniland/jumpBehaviour.tex)
-Tasks: 16\ total points: 46
+Tasks: 19\ total points: 51
+(tasks/de/miniland/mapgenerator.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 14--71
+
+ []
+
+Tasks: 20\ total points: 59
+(tasks/de/miniland/jumpBehaviour.tex [11])
+Tasks: 21\ total points: 65
 (tasks/de/miniland/doorEnter.tex)
-Tasks: 17\ total points: 52
+Tasks: 22\ total points: 71
 (tasks/de/miniland/enemyHit.tex) (tasks/de/miniland/ext2Header.tex)
-Overfull \hbox (84.1857pt too wide) in paragraph at lines 8--73
+Overfull \hbox (84.1857pt too wide) in paragraph at lines 8--84
 \T1/ptm/m/n/10.95 wer-den. Die öf-fent-li-chen Test-fäl-le für die-se Aus-bau-s
 tu-fe be-fin-den sich in der Klas-se \T1/txtt/m/n/10.95 MinilandTestsuiteExtend
 ed2\T1/ptm/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--73
+Underfull \hbox (badness 10000) in paragraph at lines 8--84
 
  []
 
-Tasks: 18\ total points: 52
+Tasks: 23\ total points: 71
 (tasks/de/miniland/public2.tex) (tasks/de/miniland/ext3Header.tex)
-Overfull \hbox (111.19893pt too wide) in paragraph at lines 8--90
+Overfull \hbox (111.19893pt too wide) in paragraph at lines 8--101
 \T1/ptm/m/n/10.95 reicht wer-den. Die öf-fent-li-chen Test-fäl-le für die-se Au
 s-bau-stu-fe be-fin-den sich in der Klas-se \T1/txtt/m/n/10.95 MinilandTestsuit
 eExtended3\T1/ptm/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--90
+Underfull \hbox (badness 10000) in paragraph at lines 8--101
 
  []
 
-Tasks: 19\ total points: 52
-(tasks/de/miniland/public3.tex) [10] (tasks/de/bonusHeader.tex)
-Tasks: 20\ total points: 53
+Tasks: 24\ total points: 71
+(tasks/de/miniland/public3.tex) (tasks/de/bonusHeader.tex) [12]
+Tasks: 25\ total points: 72
 (tasks/de/audio.tex)
-Tasks: 21\ total points: 54
+Tasks: 26\ total points: 73
 (tasks/de/about.tex)
-Tasks: 22\ total points: 54
+Tasks: 27\ total points: 73
 (tasks/de/surprise.tex) (tasks/de/miniland/noDialog.tex
 Overfull \hbox (4.19124pt too wide) in paragraph at lines 4--6
 []\T1/ptm/m/n/10.95 Die Tests be-nut-zen wei-ter-hin nicht die Klas-se \T1/ptm/
@@ -644,7 +695,7 @@ Overfull \hbox (58.06554pt too wide) in paragraph at lines 4--6
 TWLTestStateBasedGame\T1/ptm/m/n/10.95 .
  []
 
-) (tasks/de/miniland/materialien.tex [11]
+) (tasks/de/miniland/materialien.tex [13]
 Underfull \hbox (badness 6859) in paragraph at lines 52--52
 []\T1/ptm/m/it/10.95 MovementDoesntCollideEvent(float speed,
  []
@@ -660,36 +711,36 @@ Underfull \hbox (badness 1286) in paragraph at lines 68--68
 n der
  []
 
-<tasks/de/miniland/directions.png, id=170, 805.0075pt x 631.35875pt>
+<tasks/de/miniland/directions.png, id=183, 805.0075pt x 631.35875pt>
 File: tasks/de/miniland/directions.png Graphic file (type png)
 <use tasks/de/miniland/directions.png>
 Package pdftex.def Info: tasks/de/miniland/directions.png  used on input line 8
 6.
 (pdftex.def)             Requested size: 199.16928pt x 156.20155pt.
-) (tasks/de/miniland/zeitplanung.tex [12] [13 <./tasks/de/miniland/directions.p
-ng>] [14]) (marioMayhem.lor [15])
+) (tasks/de/miniland/zeitplanung.tex [14] [15 <./tasks/de/miniland/directions.p
+ng>] [16]) (marioMayhem.lor [17])
 \tf@lor=\write5
 \openout5 = `marioMayhem.lor'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
- [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
+ [18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
  (marioMayhem.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 140.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 140.
 Package rerunfilecheck Info: File `marioMayhem.out' has not changed.
 (rerunfilecheck)             Checksum: DBC436DBE7B49FFAB3FCB9AC33A6D7B5;1243.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 140.
  ) ) 
 Here is how much of TeX's memory you used:
- 10402 strings out of 480811
- 154084 string characters out of 2896163
+ 10433 strings out of 480811
+ 154996 string characters out of 2896163
  613810 words of memory out of 3000000
- 26002 multiletter control sequences out of 15000+200000
+ 26016 multiletter control sequences out of 15000+200000
  577853 words of font info for 92 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,10n,42p,674b,1146s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -701,9 +752,9 @@ ublic/txfonts/t1xtt.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 2.9/fonts
 onts/type1/urw/times/utmbi8a.pfb><C:/Users/LordC/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/LordC/AppData/Local/Programs/MiK
 TeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on marioMayhem.pdf (16 pages, 813379 bytes).
+Output written on marioMayhem.pdf (18 pages, 912641 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
- 48 named destinations out of 1000 (max. 500000)
- 160 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 249 PDF objects out of 1000 (max. 8388607)
+ 51 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

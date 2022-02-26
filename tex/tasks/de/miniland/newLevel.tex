@@ -1,16 +1,3 @@
- Es soll ein Mapparser mit folgenden Funktionen erstellt werden: 
-	- wird im Hauptmenü auf "Level" geklickt so kann man eine Textdatei wählen
-	- ist die Datei eine Textdatei, die einen rechteckigen Aufbau gemäß des Startbildschirms hat, soll diese geparst werden
-	- ist die Datei vom falschen Format (z.B. nicht rechteckig, keine textdatei), so soll nichts geparst werden
-
-Auf folgende Weise wird dabei die Textdatei übersetzt: 
-M : Mario 
-D : Tür 
-W : Wand
-S : Sockel
-\_ : Nichts (Leeres Feld) 
-X: Gefahr (Hinweis: wird später erweitert werden) 
-Unbekannte Zeichen sollen als leeres Feld interpretiert werden
-Beim Klick auf "start" soll dann das eingelesene Level im Hauptmenü spielbar sein. (Hinweis: Objekte sollen nicht größer als 50 auf 50 sein)
-Die einzelnen Entities befinden sich an den entsprechenden Positionen wie in der Textdatei.
-Beim erfolgreichem Einlesen soll es dazu eine Bounding-Box aus Wänden geben.
+Wurde ein Level ausgew\"ahlt und erfolgreich geparst, so soll ein Klick auf den Button \glqq Start\grqq{} im Hauptmen\"u ein neues Spiel starten. Dabei wird das zuvor gespeicherte Level geladen. Die Spielobjekte (Entities) befinden sich dann an den entsprechenden Positionen wie in der Textdatei.
+Au\"serdem soll es noch eine Bounding-Box aus Wand-Objekten geben, welche das eigentliche Level komplett umrandet.\\
+Wurde das Level nicht erfolgreich geparst (oder keines ausgew\"ahlt), so soll bei Klick auf \glqq Start\grqq{} ein (nicht leeres!) default Level erstellt und angezeigt werden. Wie dieses default Level aussehen soll wird nicht weiter spezifiziert. Lassen Sie Ihrer Kreativit\"at freien Lauf!

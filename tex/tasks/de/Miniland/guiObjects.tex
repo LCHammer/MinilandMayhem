@@ -1,27 +1,3 @@
 %\requirement{Grafische Umsetzung der Objekte}{5}{Minimal}{icons}
-F\"ur \everyObject{} und jeden Spielzustand existiert eine passende grafische Umsetzung gem\"a\ss{} der Spielbeschreibung.
-
--Mario: startet inaktiv, muss angeklickt werden, damit er läuft (startet laufen nach rechts mit speed 0.125f)
-	Läuft Mario gegen eine Tür oder eine Gefahr, wird er vom Spiel entfernt (Hinweis: Punktzahl kommt später)
-	Läuft er gegen eine Wand / Sockel oder einen anderen Mario, dreht er um und ändert Laufrichtung (links-> rechts und umgekehrt)
-	Der Mario hat zudem eine Laufanimation.
-
--Spiel zu Ende, wenn alle Marios entfernt wurden (Wechsel in den Endscreen)
-
--Schwerkraft: Marios fallen, wenn sie keinen Boden(=Wand, Sockel oder Stahlträger) unter sich haben.
-	Beschleunigter Fall entsprechend ein zehntel der Erdbeschleunigung (ein zehntel, da sonst der Fall zu schnell ist)
-	Wenn sie auf den Boden landen, hört der Fall sofort auf.
-	Achtung die Marios bewegen sich beim Fallen weiterhin nach links/rechts!
-
--Stahlträger bauen: Wird auf einen Sockel geklickt und dann auf einen anderen, so soll zwischen beiden Sockeln ein gerader Stahlträger gebaut werden.
-	Zusätzlich soll für alle 50 Längeneinheiten, welche zwischen den sockeln besteht, eine Ressource verbraucht werden.
-	Sind nicht genügend Ressourcen vorhanden für einen Träger, soll dieser auch nicht gebaut werden.
-	Stahlträger können auch gebaut werden, während das Spiel pausiert ist.
-	
--Stahlträger abreißen: Wird auf einen Sockel 2 mal hintereinander geklickt, so werden alle Stahlträger entfernt, welche an diesem Träger angebaut wurden.
-	Die Ressourcen werden entsprechend zurückerstattet.
-
-Die Marios können Stahlträger mit einem Winkel von <45° hoch- und runterlaufen. Sind sie oben/unten angekommen, laufen sie normal weiter. Kollidieren sie mit einer Wand und würden die richtung ändern, so tun sie dies und laufen runter, wenn sie zuvor hochgelaufen sind und umgekehrt. Fällt ein Mario auf einen träger, welchen er hoch/runterlaufen kann, so tut er dies auch.
-Wenn ein Träger abgebaut wird, so fallen alle Marios, die auf ihm laufen herunter. Läuft ein Mario gerade einen Träger hoch/runter, so ignoriert er alle Stahlträger, welche weniger als 45° haben und lässt sich nicht von Ihnen beeinflussen.
-	
-Die Stahlträger mit einem Winkel über 45° zählen als Wand und Marios ändern die laufrichtung, wenn sie gegen einen derartigen Träger laufen (auch wenn sie einen anderen Träger gerade hoch/runterlaufen). Wenn der Mario von der falschen Seite gegen den Träger so zählt dieser auch bei <45° als Wand für ihn.
+F\"ur \everyObject{} und jeden Spielzustand existiert eine passende grafische Umsetzung gem\"a\ss{} der Spielbeschreibung. Die folgenden Objekte sind in der Minimalstufe enthalten: Mario-Aufziehroboter, Wände, Stahltr\"agersockel, Stahltr\"ager, T\"uren und Gefahren (in Form von Stacheln).\\
+Hinweis: die Bilder der Vorlage gehen dabei von einer Maximalgr\"o"se von 50 Pixel x 50 Pixel pro Spielobjekt aus. Sollten Sie eigene Bilder verwenden, achten Sie darauf, dass die Gr\"o"senverh\"altnisse der Spielobjekte zueinander passen.

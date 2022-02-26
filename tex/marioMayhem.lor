@@ -5,18 +5,23 @@
 \PointsLine {Minimal}{\"Offentliche Tests sind erfolgreich (0 Punkte)}{7}
 \PointsLine {Minimal}{Grafische Benutzerschnittstelle (3 Punkte)}{7}
 \PointsLine {Minimal}{Spielmen\"u (2 Punkte)}{8}
+\PointsLine {Minimal}{Grafische Umsetzung der Objekte (2 Punkte)}{8}
+\PointsLine {Minimal}{Level einlesen (4 Punkte)}{8}
 \PointsLine {Minimal}{Neues Level starten (2 Punkte)}{8}
-\PointsLine {Minimal}{Grafische Umsetzung der Objekte (4 Punkte)}{8}
-\PointsLine {Minimal}{Erkennen Zugende: Tor erreicht (6 Punkte)}{9}
-\PointsLine {1}{\"Offentliche Tests der Ausbaustufe 1 sind erfolgreich (0 Punkte)}{9}
-\PointsLine {1}{Sinnvolle Modellierung (5 Punkte)}{9}
-\PointsLine {1}{Highscore GUI (5 Punkte)}{9}
-\PointsLine {1}{Spiel: Kartengenerator (5 Punkte)}{10}
-\PointsLine {Minimal}{Sprungverhalten (8 Punkte)}{10}
-\PointsLine {Minimal}{Erkennen Spielende: Tor erreicht (6 Punkte)}{10}
-\PointsLine {Minimal}{Erkennen Spielende: Gegner getroffen (6 Punkte)}{10}
-\PointsLine {2}{\"Offentliche Tests der Ausbaustufe 2 sind erfolgreich (0 Punkte)}{10}
-\PointsLine {3}{\"Offentliche Tests der Ausbaustufe 3 sind erfolgreich (0 Punkte)}{11}
-\PointsLine {Bonus}{Nutzung von Audio-Clips (1 Punkte)}{11}
-\PointsLine {Bonus}{\glqq {}About\grqq -Fenster (1 Punkte)}{11}
-\PointsLine {Bonus}{\"Uberraschen Sie uns (0 Punkte)}{11}
+\PointsLine {Minimal}{Verhalten des Marios (4 Punkte)}{9}
+\PointsLine {Minimal}{Spielende (6 Punkte)}{9}
+\PointsLine {Minimal}{Stahltr\"ager bauen und entfernen (4 Punkte)}{9}
+\PointsLine {Minimal}{Stahltr\"ager Hoch- und Runterlaufen (4 Punkte)}{9}
+\PointsLine {Minimal}{Realistische Schwerkraft (5 Punkte)}{10}
+\PointsLine {1}{\"Offentliche Tests der Ausbaustufe 1 sind erfolgreich (0 Punkte)}{10}
+\PointsLine {1}{Sinnvolle Modellierung (5 Punkte)}{11}
+\PointsLine {1}{Highscore GUI (5 Punkte)}{11}
+\PointsLine {1}{Spiel: Kartengenerator (5 Punkte)}{11}
+\PointsLine {Minimal}{Sprungverhalten (8 Punkte)}{11}
+\PointsLine {Minimal}{Erkennen Spielende: Tor erreicht (6 Punkte)}{12}
+\PointsLine {Minimal}{Erkennen Spielende: Gegner getroffen (6 Punkte)}{12}
+\PointsLine {2}{\"Offentliche Tests der Ausbaustufe 2 sind erfolgreich (0 Punkte)}{12}
+\PointsLine {3}{\"Offentliche Tests der Ausbaustufe 3 sind erfolgreich (0 Punkte)}{12}
+\PointsLine {Bonus}{Nutzung von Audio-Clips (1 Punkte)}{13}
+\PointsLine {Bonus}{\glqq {}About\grqq -Fenster (1 Punkte)}{13}
+\PointsLine {Bonus}{\"Uberraschen Sie uns (0 Punkte)}{13}
