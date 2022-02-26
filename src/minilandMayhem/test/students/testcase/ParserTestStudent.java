@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
-import eea.engine.entity.StateBasedEntityManager;
 import minilandMayhem.test.MinilandTestAdapterMinimal;
 
 public class ParserTestStudent {
@@ -43,7 +42,7 @@ public class ParserTestStudent {
 		int doors = 0;
 		int marios = 0;
 		int walls = 0;
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities = adapter.getEntities();
 		for(Entity e: entities) {
 			if(adapter.isDoor(e)) {
 				doors+=1;
@@ -71,7 +70,7 @@ public class ParserTestStudent {
 		int marios = 0;
 		int walls = 0;
 		int dangers = 0;
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities = adapter.getEntities();
 		for(Entity e: entities) {
 			if(adapter.isDoor(e)) {
 				doors+=1;

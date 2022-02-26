@@ -12,19 +12,18 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
-import eea.engine.entity.StateBasedEntityManager;
-import minilandMayhem.test.MinilandTestAdapterExtended1;
+import minilandMayhem.test.MinilandTestAdapterExtended3;
 
 public class EnemiesTestTutor {
 
 
-	MinilandTestAdapterExtended1 adapter;
+	MinilandTestAdapterExtended3 adapter;
 	String enemies = "level/Enemies.txt";
 	String fire = "level/Fire.txt";
 
 	@Before
 	public void setUp() {
-		adapter = new MinilandTestAdapterExtended1();
+		adapter = new MinilandTestAdapterExtended3();
 	}
 	
 	@After
@@ -39,7 +38,7 @@ public class EnemiesTestTutor {
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities =adapter.getEntities();
 		List<Entity> blasters = new LinkedList<Entity>();
 		List<Entity> marios = new LinkedList<Entity>();
 		for(Entity e: entities) {
@@ -54,7 +53,7 @@ public class EnemiesTestTutor {
 		adapter.timeBlaster(5000,blasters.get(1));
 		adapter.timeBlaster(5000,blasters.get(1));
 		
-		entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		entities =adapter.getEntities();
 		int bill = 0;
 		int fire = 0;
 		for(Entity e: entities) {
@@ -68,7 +67,7 @@ public class EnemiesTestTutor {
 		adapter.updateGame(100);
 		adapter.updateGame(500);
 		
-		entities = StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		entities = adapter.getEntities();
 		bill = 0;
 		fire = 0;
 		int mario =0;
@@ -84,6 +83,7 @@ public class EnemiesTestTutor {
 		assertTrue("Bill did not get destroyed after collision",bill == 0);
 		assertTrue("Fire did not get destroyed after collision with bill",fire == 1);
 		assertTrue("Mario did not get destroyed after collision with bill",mario == 0);		
+		assertTrue("Destruction of Fire did not add points",adapter.getScore()== -400);
 	}
 	
 	@Test
@@ -93,7 +93,7 @@ public class EnemiesTestTutor {
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities =adapter.getEntities();
 		List<Entity> sockets = new LinkedList<Entity>();
 		Entity fire =null;
 		for(Entity e: entities) {

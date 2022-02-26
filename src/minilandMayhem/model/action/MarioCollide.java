@@ -34,7 +34,7 @@ public class MarioCollide extends Collide {
 				mario.score();
 				
 				if(!d.getUnlocked()) {
-					d.unlock(); //schließe Tür auf
+					d.unlock(); //schließe Tuer auf
 				}
 			}else {
 				if(canCollide(mario,collider)){

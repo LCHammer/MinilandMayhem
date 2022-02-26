@@ -1,6 +1,7 @@
 package minilandMayhem.test;
 
 import java.io.File;
+import java.util.List;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -304,13 +305,22 @@ public class MinilandTestAdapterMinimal {
 		GamePlayState.ressources = ressources;
 	}
 
+	
+	/**
+	 * 
+	 * @return alle Entities des Spielmenues in einer Liste.
+	 */
+	public List<Entity> getEntities(){
+		return StateBasedEntityManager.getInstance().getEntitiesByState(getGameStateID());
+	}
+
 
 	/**
 	 * 
-	 * @return prefix des Marios. Haben alle Marios z.B. die ID "Mario", so soll "Mario" zurueckgegeben werden.
+	 * @return true, wenn noch mindestens ein Mario im Spiel existiert
 	 */
-	public String getMarioPrefix() {
-		return "Mario";
+	public boolean existsMario() {
+		return StateBasedEntityManager.getInstance().hasEntity(getGameStateID(), "Mario");
 	}
 }
 	

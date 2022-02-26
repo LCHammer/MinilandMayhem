@@ -12,19 +12,19 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
-import eea.engine.entity.StateBasedEntityManager;
-import minilandMayhem.test.MinilandTestAdapterExtended1;
+import minilandMayhem.test.MinilandTestAdapterExtended3;
 
 public class EnemiesTestStudent {
 
 
-	MinilandTestAdapterExtended1 adapter;
+	MinilandTestAdapterExtended3 adapter;
 	String enemies = "level/Enemies.txt";
 	String trampoline = "level/Trampoline.txt";
+	String powerup = "level/Powerup.txt";
 
 	@Before
 	public void setUp() {
-		adapter = new MinilandTestAdapterExtended1();
+		adapter = new MinilandTestAdapterExtended3();
 	}
 	
 	@After
@@ -42,7 +42,7 @@ public class EnemiesTestStudent {
 		int trampoline = 0;
 		int fire = 0;
 		int blaster = 0;
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities =adapter.getEntities();
 		for(Entity e: entities) {
 			if(adapter.isTrampoline(e)) {
 				trampoline+=1;
@@ -58,30 +58,36 @@ public class EnemiesTestStudent {
 	}
 	
 	@Test
-	public void testBlaster() {
-		File f = new File(enemies);	
+	public void testPowerUp() {
+		File f = new File(powerup);	
 		assertTrue("correct map was considered incorrect",adapter.checkMap(f));
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
-		List<Entity> blasters = new LinkedList<Entity>();
+		Entity blaster = null;
+		Entity mario = null;
+		List<Entity> entities =adapter.getEntities();
 		for(Entity e: entities) {
-			if(adapter.isBlaster(e)) {
-				blasters.add(e);
+			 if(adapter.isMario(e)) {
+				mario = e;
+			}else if(adapter.isBlaster(e)) {
+				blaster = e;
 			}
 		}
-		adapter.timeBlaster(5000,blasters.get(0));
-		adapter.timeBlaster(5000,blasters.get(1));
+		pos = mario.getPosition();
+		adapter.handleMouseClick(pos.x, pos.y);
+		adapter.updateGame(100);
+		assertTrue("Mario did not collect PowerUp",adapter.marioPowerUp(mario));
+		adapter.updateGame(500);
+		assertTrue("Destruction of Fire did not give 100 points", adapter.getScore() == 600);
+		adapter.timeBlaster(5000l, blaster);
+		assertTrue("no Bill was spawned",adapter.existsBill());
+		adapter.updateGame(500);
+		adapter.updateGame(0);
+		adapter.updateGame(0);
+		assertTrue("Bill was not destroyed",!adapter.existsBill());
+		assertTrue("Bill destroyed Mario even though he had a powerUp",adapter.getCurrentStateID() == adapter.getGameStateID());
 		
-		 entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
-		int bill = 0;
-		for(Entity e: entities) {
-			if(adapter.isBill(e)) {
-				bill +=1;
-			}
-		}
-		assertTrue("not enough Bills have spawned",bill == 2);
 	}
 	
 	@Test 
@@ -91,7 +97,7 @@ public class EnemiesTestStudent {
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities =adapter.getEntities();
 		int marios =0;
 		List<Entity> fire = new LinkedList<Entity>();
 		for(Entity e: entities) {
@@ -107,7 +113,7 @@ public class EnemiesTestStudent {
 		assertTrue("fire did not move to the left",fire.get(0).getPosition().x < pos.x);
 		assertTrue("fire did not stay on the ground", fire.get(0).getPosition().y == pos.y);
 		adapter.updateGame(0);
-		entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		entities =adapter.getEntities();
 		marios = 0;
 		for(Entity e: entities) {
 			 if(adapter.isMario(e)) {
@@ -129,7 +135,7 @@ public class EnemiesTestStudent {
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities =adapter.getEntities();
 		Entity mario = null;
 		for(Entity e: entities) {
 			if(adapter.isMario(e)) {

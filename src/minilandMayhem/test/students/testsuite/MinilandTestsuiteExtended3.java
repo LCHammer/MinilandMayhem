@@ -16,6 +16,7 @@ public static Test suite() {
 		extended3.addTest(new JUnit4TestAdapter(SocketTestStudent.class));
 		extended3.addTest(new JUnit4TestAdapter(EnemiesTestStudent.class));
 		extended3.addTest(new JUnit4TestAdapter(HighscoreTestStudent.class));
+		extended3.addTest(new JUnit4TestAdapter(BillTestStudent.class));
 		extended3.addTest(new JUnit4TestAdapter(CollectableTestStudent.class));
 		return extended3;
 	}

@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
-import eea.engine.entity.StateBasedEntityManager;
 import minilandMayhem.test.MinilandTestAdapterMinimal;
 
 public class SocketTestStudent {
@@ -40,7 +39,7 @@ public class SocketTestStudent {
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
 		assertTrue("Game started with wrong amount of ressources",adapter.getRessources()==5);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities = adapter.getEntities();
 		List<Entity> sockel = new LinkedList<Entity>(); 
 		List<Entity> marios = new LinkedList<Entity>();
 		for(Entity e: entities) {
@@ -57,7 +56,7 @@ public class SocketTestStudent {
 		adapter.handleMouseClick(pos.x, pos.y);
 		pos = bottom_left.getPosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		entities = StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		entities = adapter.getEntities();
 		int beamCount = 0;
 		for(Entity e: entities) {
 			if(adapter.isBeam(e) ) {
@@ -84,7 +83,7 @@ public class SocketTestStudent {
 		adapter.handleMouseClick(pos.x, pos.y);
 		adapter.handleMouseClick(pos.x, pos.y);
 		//2 mal klicken entfernt Traeger
-		entities = StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		entities = adapter.getEntities();
 		beamCount = 0;
 		for(Entity e: entities) {
 			if(adapter.isBeam(e) ) {
@@ -106,7 +105,7 @@ public class SocketTestStudent {
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
 		assertTrue("Game started with wrong amount of ressources",adapter.getRessources()==5);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities = adapter.getEntities();
 		List<Entity> sockel = new LinkedList<Entity>(); 
 		List<Entity> marios = new LinkedList<Entity>();
 		for(Entity e: entities) {
@@ -147,7 +146,7 @@ public class SocketTestStudent {
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
 		assertTrue("Game started with wrong amount of ressources",adapter.getRessources()==5);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities = adapter.getEntities();
 		List<Entity> sockel = new LinkedList<Entity>(); 
 		List<Entity> marios = new LinkedList<Entity>();
 		for(Entity e: entities) {
@@ -195,7 +194,7 @@ public class SocketTestStudent {
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
 		assertTrue("Game started with wrong amount of ressources",adapter.getRessources()==5);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities = adapter.getEntities();
 		List<Entity> sockel = new LinkedList<Entity>(); 
 		for(Entity e: entities) {
 			if(adapter.isSocket(e) ) {
@@ -211,13 +210,13 @@ public class SocketTestStudent {
 		adapter.handleMouseClick(pos.x, pos.y);
 		pos = bottom_right.getPosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		entities = adapter.getEntities();
 		int size = entities.size();
 		pos = top_left.getPosition();
 		adapter.handleMouseClick(pos.x, pos.y);
 		pos = top_right.getPosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		entities = adapter.getEntities();
 		assertTrue("Beam was constructed, but Ressources were not suffcient",size==entities.size());
 		
 		

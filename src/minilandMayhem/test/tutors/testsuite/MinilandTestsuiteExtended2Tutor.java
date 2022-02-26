@@ -14,12 +14,14 @@ public static Test suite() {
 		extended2.addTest(new JUnit4TestAdapter(GamePlayTestStudent.class));
 		extended2.addTest(new JUnit4TestAdapter(ParserTestStudent.class));
 		extended2.addTest(new JUnit4TestAdapter(SocketTestStudent.class));
-		extended2.addTest(new JUnit4TestAdapter(EnemiesTestStudent.class));
+		extended2.addTest(new JUnit4TestAdapter(CollectableTestStudent.class));
+		extended2.addTest(new JUnit4TestAdapter(BillTestStudent.class));
 		extended2.addTest(new JUnit4TestAdapter(HighscoreTestStudent.class));
 		extended2.addTest(new JUnit4TestAdapter(GamePlayTestTutor.class));
 		extended2.addTest(new JUnit4TestAdapter(ParserTestTutor.class));
 		extended2.addTest(new JUnit4TestAdapter(SocketTestTutor.class));
-		extended2.addTest(new JUnit4TestAdapter(EnemiesTestTutor.class));
+		extended2.addTest(new JUnit4TestAdapter(CollectableTestTutor.class));
+		extended2.addTest(new JUnit4TestAdapter(BillTestTutor.class));
 		extended2.addTest(new JUnit4TestAdapter(HighscoreTestTutor.class));
 		return extended2;
 	}

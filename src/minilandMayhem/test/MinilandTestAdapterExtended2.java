@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.newdawn.slick.geom.Vector2f;
 
+import eea.engine.entity.StateBasedEntityManager;
 import minilandMayhem.highscore.Highscore;
 import minilandMayhem.ui.GamePlayState;
 
@@ -16,14 +17,6 @@ public class MinilandTestAdapterExtended2 extends MinilandTestAdapterExtended1 {
 	 */
 	public int getScore() {
 		return GamePlayState.score;
-	}
-
-	/**
-	 * 
-	 * @return prefix des Feuers. Haben die IDs aller Feuer z.B. den Prefix "Feuer", so soll "Feuer" zurueckgegeben werden.
-	 */
-	public String getFirePrefix() {
-		return "Feuer";
 	}
 	
 	/**
@@ -51,6 +44,16 @@ public class MinilandTestAdapterExtended2 extends MinilandTestAdapterExtended1 {
 	 */
 	public void waitFor(long time) {
 		GamePlayState.time.timer.letTimePass(time);
+		
+	}
+	
+	
+	/**
+	 * 
+	 * @return true, wenn mindestens eine Muenze im Spiel existert, sonst false
+	 */
+	public boolean existsCoin() {
+		return StateBasedEntityManager.getInstance().hasEntity(getGameStateID(),"Coin");
 		
 	}
 }

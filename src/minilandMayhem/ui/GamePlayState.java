@@ -37,7 +37,7 @@ public class GamePlayState extends BasicGameState {
     public static int successfulMario;
 	public static int score;
 	public static int maxMarios;
-	private String pausetext = "";
+	private static String pausetext = "";
 	public static TimedEvent time;
     
 	public GamePlayState(int stateID) {
@@ -328,7 +328,7 @@ public class GamePlayState extends BasicGameState {
 		//float werte sind x und y koordinate der Stringposition
 		g.drawString(ressourcen, 110, 10);
 		g.drawString(points, 330, 10);
-		g.drawString(pausetext, 400, 10);
+		g.drawString(GamePlayState.pausetext, 500, 10);
 		
 	}
 

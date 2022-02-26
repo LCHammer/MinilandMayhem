@@ -11,18 +11,17 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Vector2f;
 
 import eea.engine.entity.Entity;
-import eea.engine.entity.StateBasedEntityManager;
-import minilandMayhem.test.MinilandTestAdapterExtended3;
+import minilandMayhem.test.MinilandTestAdapterExtended1;
 
 public class CollectableTestStudent {
 
-	MinilandTestAdapterExtended3 adapter;
+	MinilandTestAdapterExtended1 adapter;
 	String coll = "level/Collectable.txt";
 	
 
 	@Before
 	public void setUp() {
-		adapter = new MinilandTestAdapterExtended3();
+		adapter = new MinilandTestAdapterExtended1();
 	}
 	
 	@After
@@ -37,7 +36,7 @@ public class CollectableTestStudent {
 		adapter.initGame();
 		Vector2f pos = adapter.getStartGamePosition();
 		adapter.handleMouseClick(pos.x, pos.y);
-		List<Entity> entities =StateBasedEntityManager.getInstance().getEntitiesByState(adapter.getGameStateID());
+		List<Entity> entities =adapter.getEntities();
 		Entity mario = null;
 		for(Entity e: entities) {
 			if(adapter.isMario(e)) {
@@ -51,28 +50,28 @@ public class CollectableTestStudent {
 		adapter.updateGame(0);
 		assertTrue("Mario went through closed door",adapter.getCurrentStateID() == adapter.getGameStateID());
 		assertTrue("Mario did not turn around", adapter.marioLooksLeft(mario));
-		assertTrue("Key was not created",StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getKeyPrefix()));
-		assertTrue("Powerup was not created",StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getPowerUpPrefix()));
-		assertTrue("Ressource was not created",StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getRessourcePrefix()));
+		assertTrue("Key was not created",adapter.existsKey());
+		//assertTrue("Powerup was not created",StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getPowerUpPrefix()));
+		assertTrue("Ressource was not created",adapter.existsRessource());
 		
 	
 		adapter.updateGame(1200);
 		adapter.updateGame(0);
 		assertTrue("Mario did not collect key",adapter.marioHasKey(mario));
-		assertTrue("Key has not been removed",!StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getKeyPrefix()));
+		assertTrue("Key has not been removed",!adapter.existsKey());
 		
-		adapter.updateGame(1000);
-		adapter.updateGame(0);
-		assertTrue("Mario did not collect Powerup",adapter.marioPowerUp(mario));
-		assertTrue("Powerup has not been removed",!StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getPowerUpPrefix()));
+		//adapter.updateGame(1000);
+		//adapter.updateGame(0);
+		//assertTrue("Mario did not collect Powerup",adapter.marioPowerUp(mario));
+		//assertTrue("Powerup has not been removed",!StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getPowerUpPrefix()));
 		
 		adapter.updateGame(1000);
 		adapter.updateGame(0);
 		assertTrue("Mario did not collect Powerup",adapter.getRessources() == 8);
-		assertTrue("Ressource has not been removed",!StateBasedEntityManager.getInstance().hasEntity(adapter.getGameStateID(),adapter.getRessourcePrefix()));
+		assertTrue("Ressource has not been removed",!adapter.existsRessource());
 		adapter.updateGame(500);
 		assertTrue("Mario did not change direction",!adapter.marioLooksLeft(mario));
-		adapter.updateGame(3700);
+		adapter.updateGame(3200);
 		adapter.updateGame(0);
 		adapter.updateGame(0);
 		assertTrue("Mario did not unlock closed door",adapter.getCurrentStateID() == adapter.getEndStateID());

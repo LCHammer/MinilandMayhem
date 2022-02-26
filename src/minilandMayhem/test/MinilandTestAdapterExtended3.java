@@ -1,26 +1,12 @@
 package minilandMayhem.test;
 
 import eea.engine.entity.Entity;
+import eea.engine.entity.StateBasedEntityManager;
+import minilandMayhem.model.entities.Fire;
 import minilandMayhem.model.entities.Mario;
+import minilandMayhem.model.entities.Trampoline;
 
-public class MinilandTestAdapterExtended3 extends MinilandTestAdapterExtended2 {
-
-	/**
-	 * 
-	 * @param mario, welcher  ueberprueft wird
-	 * @return true, wenn der zu ueberpruefende Mario einen Schluessel besitzt, sonst false
-	 */
-	public boolean marioHasKey(Entity mario) {
-		if(mario instanceof Mario) {
-			Mario m = (Mario) mario;
-			return m.getHasKey();
-		}
-		return false;
-	}
-	
-	
-	
-	
+public class MinilandTestAdapterExtended3 extends MinilandTestAdapterExtended2 {	
 
 	/**
 	 * 
@@ -35,37 +21,34 @@ public class MinilandTestAdapterExtended3 extends MinilandTestAdapterExtended2 {
 		return false;
 	}
 	
+	
+	
 	/**
-	 * 
-	 * @return prefix des PowerUps. Haben alle PowerUps z.B. die ID "Power", so soll "Power" zurueckgegeben werden.
-	 */
-	public String getPowerUpPrefix() {
-		return "PowerUp";
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e ein Feuer ist
+	 **/
+	public boolean isFire(Entity e) {
+		return e instanceof Fire;
 	}
 	
 	/**
+	 * @param e zu ueberpruefende Entity
+	 * @return true wenn e ein Trampolin ist
+	 **/
+	public boolean isTrampoline(Entity e) {
+		return e instanceof Trampoline;
+	}
+	
+
+
+	/**
 	 * 
-	 * @return prefix des Schluessels. Haben alle Schluessel z.B. die ID "Key", so soll "Key" zurueckgegeben werden.
+	 * @return true, wenn noch mindestens ein Kugelwilli im Spiel existiert, sonst false
 	 */
-	public String getKeyPrefix() {
-		return "Key";
+	public boolean existsBill() {
+		return StateBasedEntityManager.getInstance().hasEntity(getGameStateID(),"Kugelwilli");
+		
 	}
 
 	
-	/**
-	 * 
-	 * @return prefix der Muenze. Haben alle Muenzen z.B. die ID "Coin", so soll "Coin" zurueckgegeben werden.
-	 */
-	public String getCoinPrefix() {
-		return "Coin";
-	}
-	
-	/**
-	 * 
-	 * @return prefix des Ressourcen Collectables. 
-	 * Haben alle Ressourcen z.B. die ID "Ressource", so soll "Ressource" zurueckgegeben werden.
-	 */
-	public String getRessourcePrefix() {
-		return "Ressource";
-	}
 }
