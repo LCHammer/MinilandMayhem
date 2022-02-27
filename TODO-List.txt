@@ -129,3 +129,15 @@ Zu fixen:
 (X)Falsche Nutzereingaben (Highscore und Map)
 (X)Feuer fällt bei Start durch Boden
 ( )code schön machen
+
+
+
+-schwerkraft genauer (auch trampolin)
+-kleinigkeiten mit Gorillas etc.
+-ggf TestMinilandMayhem?
+-Mario laufanimation
+-ausgewählte sockel graphisch erkennbar
+-struktur und ordnung
+-zwei sockel direkt nebeneinander?
+-Träger im parser?
+-bilder, etc.

@@ -1,0 +1,10 @@
+Wird ein Spiel beendet, soll es im Endscreen einen neuen Button geben mit der Aufschrigt \glqq Highscore Speichern\grqq.
+Wird dieser Knopf gedr"uckt, so soll eine neue Textdatei im Ordner \texttt{highscores} erstellt werden oder die bereits bestehende Datei angepasst werden. 
+Die neue Textdatei soll folgendes Namensschema bestzen: "Highscore\_levelname.txt". Ist der Levelname beispielsweise \glqq Level1\grqq, so soll die Highscoredatei \glqq Highscore\_Level1.txt\grqq hei"sen.
+In die Datei soll nun ein neuer Eintrag geschrieben werden, welcher die erreichte Wertung repr"asentiert. 
+
+Der Aufbau des Eintrags ist folgender: \glqq p,e/i\grqq, wobei e für die Anzahl Marios steht, die erfolgreich durch eine T"ur gelaufen sind, i steht f"ur die Gesamtzahl der Marios des Levels und p steht für die erzielte Punktzahl.
+Haben es also 3 von 5 Marios durch die T"ur geschafft und die resultierende Punktzahl ist 1234, so soll der neue Eintrag \glqq 1234,3/5\grqq sein.
+Eine Zeile in der Textdatei darf nur einen Eintrag enthalten.
+Au"serdem sollen in der Datei nur die f"unf besten Eintr"age zu sehen sein.
+Ein Eintrag gilt als besser als ein anderer, wenn mehr Punkte erzielt wurden oder bei gleicher Punktzahl mehr Marios durch eine T"ur gelaufen sind.
